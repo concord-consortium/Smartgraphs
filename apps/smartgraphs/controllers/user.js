@@ -97,6 +97,11 @@ Smartgraphs.userController = SC.ObjectController.create(
     // updated an existing document.
     if (isCreate) {
       // console.log('Creating learner data.');
+
+      if (Smartgraphs.validateLearnerData) {
+        Smartgraphs.validateLearnerData(savedResponse);
+      }
+
       SC.Request.postUrl('/db/%@'.fmt(Smartgraphs.get('couchDatabase')))
           .json()
           .header('Accept', 'application/json')
@@ -108,8 +113,13 @@ Smartgraphs.userController = SC.ObjectController.create(
       var user = this.get('content'),
           url = '/db/%@/%@'.fmt(Smartgraphs.get('couchDatabase'), user._ids[savedResponse.url]);
 
-      console.log(url);
+      // console.log(url);
       savedResponse._rev = user._revs[savedResponse.url];
+
+      if (Smartgraphs.validateLearnerData) {
+        Smartgraphs.validateLearnerData(savedResponse);
+      }
+
       SC.Request.putUrl(url)
           .json()
           .header('Accept', 'application/json')

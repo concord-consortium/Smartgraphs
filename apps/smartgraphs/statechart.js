@@ -98,6 +98,11 @@ Smartgraphs.statechartDef = SC.Statechart.extend(
                 body = response.get('body');
                 if (body.rows.length === 1) {
                   body = body.rows[0].value;
+
+                  if (Smartgraphs.validateLearnerData) {
+                    Smartgraphs.validateLearnerData(body);
+                  }
+
                   user[key] = body;
                   user._ids[key] = body._id;
                   user._revs[key] = body._rev;

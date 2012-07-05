@@ -208,7 +208,19 @@ Smartgraphs.activityPageDef = SC.Page.extend({
   secondTableView: Smartgraphs.TableView.design({
     tableControllerBinding: 'Smartgraphs.secondTableController'
   }),
-
+  
+  firstWebView: SC.WebView.design({
+    valueBinding: SC.Binding.transform(function(value, binding) {
+      return (!value) ? "http://localhost:4020"+sc_static('empty.html') : value ;
+    }).from('Smartgraphs.firstWebController.url')
+  }),
+  
+  secondWebView: SC.WebView.design({
+    valueBinding: SC.Binding.transform(function(value, binding) {
+      return (!value) ? "http://localhost:4020"+sc_static('empty.html') : value ;
+    }).from('Smartgraphs.secondWebController.url')
+  }),
+  
   errorLoadingActivityView: SC.View.design({
     classNames: 'smartgraph-pane',
     childViews: 'errorMessage'.w(),

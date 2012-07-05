@@ -10,6 +10,7 @@ config :all, :required => [:sproutcore]
 
 config :smartgraphs,
   :required => ['sproutcore/statechart', 'raphael_views/raphael_views', 'raphael_views/g_raphael'],
+  :debug_required => ['jsonschema'],
   :test_required => ['sproutcore/testing', 'jsonschema'],
   :load_fixtures => true,
   :layout => 'lib/index.rhtml',
