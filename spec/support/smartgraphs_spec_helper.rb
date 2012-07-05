@@ -21,25 +21,14 @@ ProxyFactory.proxy HighlightedPointView
 # ProxyFactory.proxy AddButtonView
 # ProxyFactory.proxy Link
 
-TEST_PORT =  ENV[:TEST_PORT.to_s] || 4022;
-SELENIUM_PORT = ENV[:SELENIUM_PORT.to_s] || 4244;
-TEST_SETTINGS = {
-  :app_root_path => "/smartgraphs#/test/marias-run",
-  :app_name => "Smartgraphs",
-  :app_server_port => TEST_PORT,
-  :selenium_server_port => SELENIUM_PORT,
-  :browser => :firefox
-}
-
-
 $commands = {
   :sproutcore => {
-    :path => "sc-server --port #{TEST_PORT}",
+    :path => "sc-server --port 4022", # FIXME: Hardcoded port.
     :name => "sproutcore server",
     :pid => nil
   },
   :lebowski => {
-    :path => "lebowski-start-server -port #{SELENIUM_PORT}",
+    :path => "lebowski-start-server -port 4244", # FIXME: Hardcoded port.
     :name => "lebowski",
     :pid => nil
   }
@@ -54,12 +43,14 @@ end
 
 # create a new started test applicaion 
 
-def new_test
-  app =  MainApplication.new TEST_SETTINGS
+def new_test(settings)
+  app =  MainApplication.new settings
   app.start
   app.maximize  # TODO: Seems like dragging doesn't work unless we are maximized.
   sleep 2       # TODO: hackish pause, CanvasView is not ready otherwise..
   # TODO: Would be helpful to define proxies for ToolbarView and SplitView if we wanted to seriously test these.
+  app.define_path 'response_template', 'activityPage.activityView.instructionsWrapper.instructionsView.textWrapper.activityStepWrapper.activityStepDialog.responseTemplate', View
+  app.define_path 'submit_button', 'activityPage.activityView.instructionsWrapper.instructionsView.textWrapper.activityStepWrapper.buttonsView.submitButton', ButtonView
   app.define_path 'top_toolbar', 'mainPage.mainPane.topToolbar', View
   app.define_path 'bottom_toolbar', 'mainPage.mainPane.bottomToolbar', View
   app.define_path 'activity', 'activityPage.activityView', View

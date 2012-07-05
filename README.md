@@ -112,6 +112,22 @@ To visit all integration tests directly, open <http://localhost:4020/static/smar
 
 To visit all unit tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests/jasmine/unit.html>
 
+### Lebowski testing:
+
+TODO: we should script Lebowski testing...
+
+0. use the rvm gemset for smartgraphs, or make a new one for lebowski.
+1. Install prerequisit gems:
+  1. gem install rspec
+  2. gem install selenium
+  3. gem install hoe
+  4. gem install couchrest
+2. gem install lebowski
+
+After Lebowski is installed in your current rvm gemset, time to test!
+
+1. cd to your sproutcore directory: <code> cd /path/to/smartgraphs </code>
+2. run the test! <code>lebowski-spec spec/smartgraphs_spec.rb</code> (where smartgraphs_spec.rb is your test)
 
 ## Working with .coffee files ##
 

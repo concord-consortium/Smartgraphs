@@ -56,6 +56,53 @@ Smartgraphs = SC.Application.create(
     }()
   }),
 
+  couchIdForStoreKey: function(storeKey) {
+    return Smartgraphs.dataSource.couch._ids[storeKey];
+  },
+  
+  couchRevForStoreKey: function(storeKey) {
+    return Smartgraphs.dataSource.couch._revs[storeKey];
+  },
+  
+  ensureCouchDatabase: function(databaseName) {
+    var url = '/db/'+databaseName,
+        response = SC.Request.putUrl(url).async(NO).json().send();
+
+    if (SC.ok(response)) {
+      var body = response.get('body');
+      if (body.ok) {
+        console.log("Created the '%@' database in CouchDB.".fmt(databaseName));
+
+        // create the views
+        response = SC.Request.postUrl(url).async(NO).json().send({
+          "_id": "_design/by_url",
+          "language": "javascript",
+          "views": {
+            "url": {
+              "map": "function(doc) { if (doc.url) emit(doc.url, doc);  }"
+            }
+          }
+        });
+        if (SC.ok(response)) {
+          console.log("Created the 'url' view in CouchDB.");
+        } else {
+          body = response.get('body');
+          console.log("Got a "+body.error+" error when trying to create the 'url' view. Reason: "+body.reason);
+          // alert("Could not create a required CouchDB view.");
+          return false;
+        }
+      }
+    } else {
+      var result = response.get('body') || {} ;
+      if (result.error !== "file_exists") {
+        // alert("CouchDB is not running. Please go to http://www.couchbase.com/downloads and download Couchbase Server Community Edition and start up CouchDB on the default port. Then reload this application.");
+        return false;
+      }
+    }
+    this.set('couchDatabase', databaseName);
+    return true;
+  },
+  
   // DEBUG SETTINGS
   trace:          YES,           // whether to trace firstResponder changes and app actions
   logDataSource:  YES,           // whether the data source should log

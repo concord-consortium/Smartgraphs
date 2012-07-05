@@ -73,6 +73,8 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   */
   submitStep: function () {
     if (Smartgraphs.activityStepController.get('canSubmit')) {
+      Smartgraphs.userController.saveLearnerDataToServer();
+
       this.gotoState('ACTIVITY_STEP_SUBMITTED');
     }
     return YES;

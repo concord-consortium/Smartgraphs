@@ -22,6 +22,10 @@ Smartgraphs.responseTemplateController = SC.ObjectController.create(
 
     var initialValues = this.get('initialValues');
     if (initialValues) this.set('values', initialValues.copy());
+    
+    var savedValues = Smartgraphs.userController.savedValuesForResponseTemplate(newTemplate);
+    if (savedValues) this.set('values', savedValues.copy());
+    
     this.set('viewShouldReset', YES);   // any bound view will unset this
   }
 

@@ -11,10 +11,21 @@ require 'rubygems'
 require 'lebowski'
 
 
+TEST_PORT =  ENV[:TEST_PORT.to_s] || 4022;
+SELENIUM_PORT = ENV[:SELENIUM_PORT.to_s] || 4244;
+TEST_SETTINGS = {
+  :app_root_path => "/smartgraphs#/shared/example?learner=1&database=smartgraphs-lebowski",
+  :app_name => "Smartgraphs",
+  :app_server_port => TEST_PORT,
+  :selenium_server_port => SELENIUM_PORT,
+  :browser => :firefox
+}
+
+
 describe "Smartgraphs" do
   before(:all) do
     start_testing_servers
-    @test = new_test
+    @test = new_test(TEST_SETTINGS)
     # defined with app.define_path in the helper
     @activity = @test['activity']
     @step = @test['description']

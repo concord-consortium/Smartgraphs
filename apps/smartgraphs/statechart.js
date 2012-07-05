@@ -60,7 +60,6 @@ Smartgraphs.statechartDef = SC.Statechart.extend(
 
       initialSubstate: 'READY_DEFAULT',
 
-
       READY_DEFAULT: SC.State.design({
 
         enterState: function () {
@@ -68,9 +67,53 @@ Smartgraphs.statechartDef = SC.Statechart.extend(
         },
 
         route: function (route) {
-          if (route.activityId) Smartgraphs.statechart.sendAction('openActivity', this, { id: route.activityId });
-          // if we have no route try loading from window.authoredActivityJSON
-          else Smartgraphs.statechart.sendAction('loadWindowsAuthoredActivityJSON', this);
+          var databaseName = route.database || 'smartgraphs',
+              haveDatabase = Smartgraphs.ensureCouchDatabase(databaseName);
+
+          if (!haveDatabase) {
+            alert("CouchDB is not running. Please go to http://www.couchbase.com/downloads and download Couchbase Server Community Edition and start up CouchDB on the default port. Then reload this application.");
+          }
+
+          if (route.learner) {
+            var userContent = Smartgraphs.userController.get('content'),
+                learnerId, user, key, url, response, body;
+
+            learnerId = "/learner/"+route.learner ;
+            if (userContent && userContent.get('id') !== learnerId) {
+              user = Smartgraphs.store.find(Smartgraphs.User, learnerId);
+              Smartgraphs.userController.set('content', user);
+            } else user = userContent ; // normalize
+            
+            if (route.activityId) {
+              // Load any saved data for the activity synchronously, so that 
+              // any saved values can be applied as needed when the activity 
+              // loads.
+              key = "%@%@".fmt(route.activityId,learnerId);
+              url = "/db/%@/_design/by_url/_view/url?key=\"%@\"".fmt(databaseName, key);
+
+              // MUST be synchronous, currently.
+              response = SC.Request.getUrl(url).async(NO).json().send();
+
+              if (SC.ok(response)) {
+                body = response.get('body');
+                if (body.rows.length === 1) {
+                  body = body.rows[0].value;
+                  user[key] = body;
+                  user._ids[key] = body._id;
+                  user._revs[key] = body._rev;
+                }
+              }
+              else console.log("Could not retrieve saved data for url = "+url);
+            }
+          }
+
+          if (route.activityId) {
+            Smartgraphs.statechart.sendAction('openActivity', this, { id: route.activityId });
+          }
+          else { 
+            // if we have no route try loading from window.authoredActivityJSON
+            Smartgraphs.statechart.sendAction('loadWindowsAuthoredActivityJSON', this);
+          }
         }
       }),
 
