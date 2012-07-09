@@ -63,7 +63,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
 
     if (recordType === Smartgraphs.User) {
       this.log(  'Automatically creating User record.');
-      store.dataSourceDidComplete(storeKey, { name: "Learner "+id });
+      store.dataSourceDidComplete(storeKey, { userId: id, name: "Learner "+id });
       this.log(  'returning YES from retrieveRecord');
       return YES;
     }

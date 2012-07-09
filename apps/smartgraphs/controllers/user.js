@@ -22,24 +22,20 @@ Smartgraphs.userController = SC.ObjectController.create(
     // activity in the current User object. We could change this later.
     var activity = Smartgraphs.activityController.get('content'),
         activityId = activity ? activity.get('id') : null,
-        savedResponse = activity
-            ? this.get("%@%@".fmt(activity.get('id'), this.get('id')))
-            : null,
+        savedResponse = this.get(this.get('id')),
         isCreate = savedResponse ? false : true,
         shouldUpdate = false ;
 
     if (!savedResponse) {
       // CREATE: we need to create the entire document structure first.
       savedResponse = {} ;
-      this.set("%@%@".fmt(activity.get('id'), this.get('id')), savedResponse); // for next time...
+      this.set(this.get('id'), savedResponse); // for next time...
 
-      savedResponse.url = "%@%@".fmt(activityId, this.get('id'));
+      savedResponse.url = this.get('id');
       savedResponse.learner = {
         url: this.get('id')
       };
       savedResponse.activity = {
-        id: Smartgraphs.couchIdForStoreKey(activity.storeKey),
-        rev: Smartgraphs.couchRevForStoreKey(activity.storeKey),
         url: activityId
       };
       savedResponse.pages = [];
@@ -93,34 +89,15 @@ Smartgraphs.userController = SC.ObjectController.create(
       }
     }
 
-    // PERSIST: we need to either (a) create the document in couchdb, or (b)
-    // updated an existing document.
-    if (isCreate) {
+    // PERSIST
+    if (isCreate || shouldUpdate) {
       // console.log('Creating learner data.');
 
       if (Smartgraphs.validateLearnerData) {
         Smartgraphs.validateLearnerData(savedResponse);
       }
 
-      SC.Request.postUrl('/db/%@'.fmt(Smartgraphs.get('couchDatabase')))
-          .json()
-          .header('Accept', 'application/json')
-          .notify(this, '_didSaveLearnerData', savedResponse)
-          .send(savedResponse);
-    } else if (shouldUpdate) {
-      // Need to add existing data from couchdb
-      // console.log('Updating learner data.');
-      var user = this.get('content'),
-          url = '/db/%@/%@'.fmt(Smartgraphs.get('couchDatabase'), user._ids[savedResponse.url]);
-
-      // console.log(url);
-      savedResponse._rev = user._revs[savedResponse.url];
-
-      if (Smartgraphs.validateLearnerData) {
-        Smartgraphs.validateLearnerData(savedResponse);
-      }
-
-      SC.Request.putUrl(url)
+      SC.Request.postUrl('%@/%@'.fmt(Smartgraphs.get('persistenceDatabaseBasePath'), this.get('learnerId')))
           .json()
           .header('Accept', 'application/json')
           .notify(this, '_didSaveLearnerData', savedResponse)
@@ -135,9 +112,6 @@ Smartgraphs.userController = SC.ObjectController.create(
     if (SC.ok(response)) {
       var body = response.get('body'),
           user = this.get('content');
-
-      user._ids[savedResponse.url] = body.id;
-      user._revs[savedResponse.url] = body.rev;
 
       // console.log(body);
     } else console.log('Failed to save learner data.');
@@ -159,10 +133,7 @@ Smartgraphs.userController = SC.ObjectController.create(
   },
   
   _findSavedResponseTemplate: function(responseTemplate) {
-    var activity = Smartgraphs.activityController.get('content'),
-        savedResponse = activity
-          ? this.get("%@%@".fmt(activity.get('id'), this.get('id')))
-          : null ;
+    var savedResponse = this.get(this.get('id'));
 
     if (!responseTemplate) return;
     if (!savedResponse) return;

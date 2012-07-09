@@ -67,49 +67,44 @@ Smartgraphs.statechartDef = SC.Statechart.extend(
         },
 
         route: function (route) {
-          var databaseName = route.database || 'smartgraphs',
-              haveDatabase = Smartgraphs.ensureCouchDatabase(databaseName);
+          var haveDatabase = Smartgraphs.checkPersistenceDatabase();
 
-          if (!haveDatabase) {
-            alert("CouchDB is not running. Please go to http://www.couchbase.com/downloads and download Couchbase Server Community Edition and start up CouchDB on the default port. Then reload this application.");
-          }
+          //if (!haveDatabase) {
+            //alert("CouchDB is not running. Please go to http://www.couchbase.com/downloads and download Couchbase Server Community Edition and start up CouchDB on the default port. Then reload this application.");
+          //}
 
-          if (route.learner) {
+          if (haveDatabase && route.learner) {
             var userContent = Smartgraphs.userController.get('content'),
-                learnerId, user, key, url, response, body;
+                learnerId, user, url, response, body;
 
             learnerId = "/learner/"+route.learner ;
             if (userContent && userContent.get('id') !== learnerId) {
               user = Smartgraphs.store.find(Smartgraphs.User, learnerId);
               Smartgraphs.userController.set('content', user);
             } else user = userContent ; // normalize
-            
-            if (route.activityId) {
-              // Load any saved data for the activity synchronously, so that 
-              // any saved values can be applied as needed when the activity 
-              // loads.
-              key = "%@%@".fmt(route.activityId,learnerId);
-              url = "/db/%@/_design/by_url/_view/url?key=\"%@\"".fmt(databaseName, key);
 
-              // MUST be synchronous, currently.
-              response = SC.Request.getUrl(url).async(NO).json().send();
+            // Load any saved data for the activity synchronously, so that 
+            // any saved values can be applied as needed when the activity 
+            // loads.
+            url = "%@/%@".fmt(Smartgraphs.get('persistenceDatabaseBasePath'),route.learner);
 
-              if (SC.ok(response)) {
-                body = response.get('body');
-                if (body.rows.length === 1) {
-                  body = body.rows[0].value;
+            // MUST be synchronous, currently.
+            response = SC.Request.getUrl(url).async(NO).json().send();
 
-                  if (Smartgraphs.validateLearnerData) {
-                    Smartgraphs.validateLearnerData(body);
-                  }
-
-                  user[key] = body;
-                  user._ids[key] = body._id;
-                  user._revs[key] = body._rev;
+            if (SC.ok(response)) {
+              body = response.get('body');
+              try {
+                if (Smartgraphs.validateLearnerData) {
+                  Smartgraphs.validateLearnerData(body);
                 }
+
+                //user[route.learner] = body;
+                user[learnerId] = body;
+              } catch (e) {
+                console.log("Previously saved data is invalid. Resetting!", body);
               }
-              else console.log("Could not retrieve saved data for url = "+url);
             }
+            else console.log("Could not retrieve saved data for url = "+url);
           }
 
           if (route.activityId) {

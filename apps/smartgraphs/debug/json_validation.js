@@ -5,7 +5,7 @@ Smartgraphs.jsonSchemaEnviroment = JSV.createEnvironment() ;
 
 // Validates a JSON object against Smartgraphs.LearnerDataSchema using JSV.
 Smartgraphs.validateLearnerData = function(json) {
-  if (!json) throw "Nothing to validate against."
+  if (!json) throw "Nothing to validate against.";
   
   var report = Smartgraphs.jsonSchemaEnviroment.validate(json, Smartgraphs.LearnerDataSchema);
   if (report.errors.length !== 0) throw report;
@@ -16,14 +16,6 @@ Smartgraphs.validateLearnerData = function(json) {
 Smartgraphs.LearnerDataSchema = {
     "type": "object",
     "properties": {
-        "_id": {
-            "type": "string",
-            "required": false // doesn't exist on create
-        },
-        "_rev": {
-            "type": "string",
-            "required": false // doesn't exist on create
-        },
         "url": {
             "type": "string",
             "required": true
@@ -42,14 +34,6 @@ Smartgraphs.LearnerDataSchema = {
             "type": "object",
             "required": true,
             "properties": {
-                "id": {
-                    "type": "string",
-                    "required": true
-                },
-                "rev": {
-                    "type": "string",
-                    "required": true
-                },
                 "url": {
                     "type": "string",
                     "required": true

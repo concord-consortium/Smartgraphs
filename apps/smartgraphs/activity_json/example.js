@@ -144,10 +144,12 @@ Smartgraphs.activityDocs["/shared/example"] =
 
   /************ Unused graph-related configs ************/
   "units": [],
+  "variables": [],
   "axes": [],
   "graphs": [],
   "datasets": [],
   "datapoints": [],
   "tags": [],
+  "datadefs": [],
   "annotations": []
 };

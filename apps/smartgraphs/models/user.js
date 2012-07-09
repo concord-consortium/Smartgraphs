@@ -20,13 +20,16 @@ Smartgraphs.User = SC.Record.extend(
   primaryKey: 'userId',
 
   name: SC.Record.attr(String),
+
+  learnerId: function() {
+    var id = this.get('id');
+    console.log("User id: " + id);
+    if (typeof(id) != 'undefined' && id.indexOf("/") != -1) {
+      return id.split("/").pop();
+    }
+    return "undef";
+  }.property(),
   
-  sessions: SC.Record.toMany(Smartgraphs.Session, { inverse: 'user' }),
-  
-  init: function() {
-    sc_super(); // MUST call first
-    this._ids = {};
-    this._revs = {};
-  }
+  sessions: SC.Record.toMany(Smartgraphs.Session, { inverse: 'user' })
 
 }) ;

@@ -25,6 +25,7 @@ config 'raphael_views/g_raphael_base',
 
 proxy '/db', :to => 'localhost:5984', :url => ''
 proxy "/jnlp", :to => "localhost:4321"
+proxy "/smartgraphs_connector", :to => "localhost:3000"
 
 namespace :build do
   desc "builds a jasmine unit test"
