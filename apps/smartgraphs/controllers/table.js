@@ -89,6 +89,20 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   yShortLabelBindingDefault: SC.Binding.oneWay(),
 
   /**
+    @property String
+
+    To identify the rounding function to display 'x' value of point
+  */
+  xRoundingFunc: 'xRounded',
+
+  /**
+    @property String
+
+    To identify the rounding function to display 'y' value of point
+  */
+  yRoundingFunc: 'yRounded',
+
+  /**
     Whether to display the table (or else the numeric view)
 
     @property {Boolean}
@@ -193,6 +207,18 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
         }
       }
     }
+  },
+
+  /**
+    Set the xDispVal & yDispVal properties
+
+    @param {String} roundingFunc
+      The rounding function to be used for rounding 'x' & 'y' values of a point
+      Expected values of roundingFunc are 'Rounded' for 'Math.round' and 'Fixed' for 'toFixed'.
+  */
+  setRoundingFunc: function (roundingFunc) {
+    this.set('xRoundingFunc', 'x' + roundingFunc);
+    this.set('yRoundingFunc', 'y' + roundingFunc);
   },
 
   // Events

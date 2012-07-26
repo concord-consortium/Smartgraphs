@@ -297,3 +297,9 @@ body.sc-theme {
 .sc-view.sg-overflow-fix {
   overflow: visible;
 }
+
+.toolTipLabel
+{
+  background-color: #EFEDDD;
+  border: 1px solid #000000;
+}

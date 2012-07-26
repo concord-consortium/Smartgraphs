@@ -141,7 +141,9 @@ describe("Smartgraphs.GraphController", function () {
         getNewRepresentation: function () { return "DataRepresentation for: " + this.get('name'); }
       });
 
-      spyOn(controller, 'getAxis').andCallFake(function (id) { return "Axis: "+id; });
+      spyOn(controller, 'getAxis').andCallFake(function (id) {
+        return { max: 10, id: 'Axis: ' + id, get: function () {} }; 
+      });
       spyOn(controller, 'getDatadef').andCallFake(function (name) { return Datadef.create({name: name}); });
       spyOn(controller, 'addDataRepresentation');
       spyOn(Datadef.prototype, 'getNewRepresentation').andCallThrough();
@@ -154,13 +156,17 @@ describe("Smartgraphs.GraphController", function () {
     });
 
     describe("when the config contains title and axis information", function () {
-      beforeEach( function () {
+      beforeEach(function () {
         var config = {
           title: 'test title',
           xAxis: 'test x axis id',
           yAxis: 'test y axis id',
+          showGraphGrid: 'true',
+          showCrossHairs: 'true',
+          showToolTipCoords: 'true',
           data: []
         };
+
         controller.setupGraph(config);
       });
 
@@ -169,8 +175,20 @@ describe("Smartgraphs.GraphController", function () {
       });
 
       it("should set the axis properties", function () {
-        expect(controller.get('xAxis')).toEqual('Axis: test x axis id');
-        expect(controller.get('yAxis')).toEqual('Axis: test y axis id');
+        expect(controller.get('xAxis').id).toEqual('Axis: test x axis id');
+        expect(controller.get('yAxis').id).toEqual('Axis: test y axis id');
+      });
+      
+      it("should set the showGraphGrid property", function () {
+        expect(controller.get('showGraphGrid')).toBeTruthy();
+      });
+      
+      it("should set the showCrossHairs property", function () {
+        expect(controller.get('showCrossHairs')).toBeTruthy();
+      });
+      
+      it("should set the showToolTipCoords property", function () {
+        expect(controller.get('showToolTipCoords')).toBeTruthy();
       });
     });
 

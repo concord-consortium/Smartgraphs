@@ -116,7 +116,7 @@ To visit all unit tests directly, open <http://localhost:4020/static/smartgraphs
 ## Working with .coffee files ##
 
 The following approach is not ideal but works until we improve it.
-Currently these files are only in apps/tests/jasmine/integration/src
+Currently these files are at apps/tests/jasmine/integration/src and apps/tests/jasmine/unit/src 
 When working with them it is most useful to have them be compiled to js files automatically.
 
 1. Install node

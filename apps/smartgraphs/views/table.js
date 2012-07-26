@@ -181,7 +181,8 @@ Smartgraphs.TableView = SC.View.extend(
 
           rowHeightBinding: '.parentView.rowHeight',
           canEditContent: NO,
-          contentValueKey: 'xRounded',
+          tableControllerBinding: '.parentView*tableController',
+          contentValueKeyBinding: '*tableController.xRoundingFunc',
           contentBinding: '.parentView.content',
           isSelectableBinding: '.parentView.isSelectable',
           selectionBinding: '.parentView.selection',
@@ -195,7 +196,8 @@ Smartgraphs.TableView = SC.View.extend(
 
           rowHeightBinding: '.parentView.rowHeight',
           canEditContent: NO,
-          contentValueKey: 'yRounded',
+          tableControllerBinding: '.parentView*tableController',
+          contentValueKeyBinding: '*tableController.yRoundingFunc',
           contentBinding: '.parentView.content',
           isSelectableBinding: '.parentView.isSelectable',
           selectionBinding: '.parentView.selection',

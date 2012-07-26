@@ -110,6 +110,17 @@ Smartgraphs.activityViewController = SC.Object.create(
 
     return NO;
   },
+  
+  tableControllerForPane: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+
+    if (which) {
+      return Smartgraphs.get(which + 'TableController');
+    }
+
+    return NO;
+  },
 
   // ..........................................................
   // ACTIVITY VIEW COMMANDS

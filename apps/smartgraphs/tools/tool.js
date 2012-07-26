@@ -23,6 +23,28 @@ Smartgraphs.Tool = SC.Object.extend({
     return Smartgraphs.activityViewController.graphControllerForPane(pane);
   },
 
+   /**
+    Stubbable method to find the appropriate table controller to use for a given 'pane' argument
+
+    @param {String} pane
+      The pane we want the tool to operate in; generally one of 'top', 'bottom', or 'single'
+    @returns {Smartgraphs.TableController} the controller
+  */
+  tableControllerForPane: function (pane) {
+    return Smartgraphs.activityViewController.tableControllerForPane(pane);
+  },
+
+  /**
+    Stubbable method to retrieve the other pane for given 'pane' argument
+
+    @param {String} pane
+      The pane we want the tool to operate in; generally one of 'top', 'bottom', or 'single'
+    @returns {String} other pane
+  */
+  otherPaneFor: function (pane) {
+    return Smartgraphs.activityViewController.otherPaneFor(pane);
+  },
+
   /**
     Stubbable method retrieve the label or label set object with a particular name
 

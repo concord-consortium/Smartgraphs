@@ -71,20 +71,55 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
 
   mouseEntered: function () {
     this.set('isHovered', YES);
+    var graphController = this.get('controller');
+    graphController.dataPointEntered(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
   },
 
   mouseExited: function () {
     this.set('isHovered', NO);
+    var graphController = this.get('controller');
+    graphController.dataPointExited(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
   },
 
-  mouseDown: function () { return this._mouseDownOrTouchStart(); },
-  touchStart: function () { return this._mouseDownOrTouchStart(); },
+  mouseDown: function (evt) { return this._mouseDownOrTouchStart(evt); },
+  touchStart: function (evt) { return this._mouseDownOrTouchStart(evt); },
 
-  _mouseDownOrTouchStart: function () {
-      this.get('controller').dataPointSelected(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
+  _mouseDownOrTouchStart: function (evt) {
+    this.get('controller').dataPointSelected(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
       // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
       // also handle it
-      return NO;
+    var graphView = this.getPath('parentView.graphView');
+    var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
+    var point = graphView.pointForCoordinates(coords.x, coords.y);
+    this.get('controller').dataPointDown(this.get('dataRepresentation'), point.x, point.y);
+    return YES;
+  },
+
+  mouseDragged: function (evt) {
+    return this._mouseDragged(evt);
+  },
+
+  _mouseDragged: function (evt) {
+    var graphView = this.getPath('parentView.graphView');
+    var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
+    var point = graphView.pointForCoordinates(coords.x, coords.y);
+    this.get('controller').dataPointDragged(this.get('dataRepresentation'), point.x, point.y);
+    return YES;
+  },
+
+  mouseUp: function (evt) {
+    return this._mouseUp(evt);
+  },
+
+  _mouseUp: function (evt) {
+    var graphView = this.getPath('parentView.graphView');
+    var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
+    var point = graphView.pointForCoordinates(coords.x, coords.y);
+    var graphController = this.get('controller');
+    var dataRepresentation = this.get('dataRepresentation');
+    graphController.dataPointUp(dataRepresentation, point.x, point.y);
+    graphController.dataScreenPointUp(dataRepresentation, evt.pageX, evt.pageY);
+    return YES;
   },
 
   renderCallback: function (raphaelCanvas, x, y, radius, color, strokeWidth) {
