@@ -12,13 +12,10 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-teacher"] =
     "pages": [
       "/shared/motion-towards-and-away-C-teacher/page/1",
       "/shared/motion-towards-and-away-C-teacher/page/2",
-      "/shared/motion-towards-and-away-C-teacher/page/3",
       "/shared/motion-towards-and-away-C-teacher/page/4",
-      "/shared/motion-towards-and-away-C-teacher/page/5",
+      "/shared/motion-towards-and-away-C-teacher/page/9",      
       "/shared/motion-towards-and-away-C-teacher/page/6",
-      "/shared/motion-towards-and-away-C-teacher/page/7",
       "/shared/motion-towards-and-away-C-teacher/page/8",
-      "/shared/motion-towards-and-away-C-teacher/page/9",
       "/shared/motion-towards-and-away-C-teacher/page/10",
       "/shared/motion-towards-and-away-C-teacher/page/11"
     ],
@@ -93,11 +90,12 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-teacher"] =
       "steps": [
         "/shared/motion-towards-and-away-C-teacher/page/4/step/1",
         "/shared/motion-towards-and-away-C-teacher/page/4/step/2",
-        "/shared/motion-towards-and-away-C-teacher/page/4/step/3"
+        "/shared/motion-towards-and-away-C-teacher/page/4/step/3",
+        "/shared/motion-towards-and-away-C-teacher/page/4/step/4"        
       ],
       "name": "Walking to Match Drawings",
       "firstStep": "/shared/motion-towards-and-away-C-teacher/page/4/step/1",
-      "introText": "<p>To the right are your predictions for walking away and toward point B.</p><p>Now that you &quot;have the hang of it,&quot; you will walk with the sensor to see if your sketches of forward and backward motion are correct.</p>",
+      "introText": "<p>To the right are your predictions for walking away and toward point B.</p><p>Now you will walk with the sensor to see if your sketches of forward and backward motion are correct.</p>",
       "url": "/shared/motion-towards-and-away-C-teacher/page/4",
       "activity": "/shared/motion-towards-and-away-C-teacher",
       "index": 4
@@ -120,7 +118,8 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-teacher"] =
         "/shared/motion-towards-and-away-C-teacher/page/6/step/2",
         "/shared/motion-towards-and-away-C-teacher/page/6/step/3",
         "/shared/motion-towards-and-away-C-teacher/page/6/step/4",
-        "/shared/motion-towards-and-away-C-teacher/page/6/step/5"
+        "/shared/motion-towards-and-away-C-teacher/page/6/step/5",
+        "/shared/motion-towards-and-away-C-teacher/page/6/step/6"        
       ],
       "name": "MC: y-intercept of Walker",
       "firstStep": "/shared/motion-towards-and-away-C-teacher/page/6/step/1",
@@ -169,7 +168,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-teacher"] =
       "introText": "<p>Look at the position-time graph to the right. You are going to recreate this graph as closely as possible by walking in front of the motion sensor to collect position and time data.</p>",
       "url": "/shared/motion-towards-and-away-C-teacher/page/9",
       "activity": "/shared/motion-towards-and-away-C-teacher",
-      "index": 9
+      "index": 5
     },
     {
       "steps": [
@@ -548,7 +547,59 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-teacher"] =
           "name": "graph-with-toward-prediction"
         }
       },
-      "beforeText": "<p>How does your collected data differ from your predicted data?</p>",
+      "beforeText": "<p>Now review existing graphs on the screen. How do they differ from your predictions?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+        
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/motion-towards-and-away-C-teacher/page/4/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/motion-towards-and-away-C-teacher/page/4/step/4",
+      "activityPage": "/shared/motion-towards-and-away-C-teacher/page/4",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-with-away-prediction"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "graph-with-toward-prediction"
+        }
+      },
+      "beforeText": "<p>How does motion away from the sensor differ from motion toward the sensor on a position-time graph?</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -1066,6 +1117,54 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-teacher"] =
       "responseBranches": [
         
       ],
+      "defaultBranch": "/shared/motion-towards-and-away-C-teacher/page/6/step/6",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/motion-towards-and-away-C-teacher/page/6/step/6",
+      "activityPage": "/shared/motion-towards-and-away-C-teacher/page/6",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "walking-example-1"
+        }
+      },
+      "beforeText": "<p>What is the significance of the y-intercept (the y-value of the point where the graph crosses the y-axis) of the position-time graph?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+        
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
       "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
@@ -1073,6 +1172,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-teacher"] =
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
     },
+    
     {
       "url": "/shared/motion-towards-and-away-C-teacher/page/7/step/1",
       "activityPage": "/shared/motion-towards-and-away-C-teacher/page/7",
