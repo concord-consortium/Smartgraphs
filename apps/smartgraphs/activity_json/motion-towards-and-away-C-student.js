@@ -12,13 +12,10 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
     "pages": [
       "/shared/motion-towards-and-away-C-student/page/1",
       "/shared/motion-towards-and-away-C-student/page/2",
-      "/shared/motion-towards-and-away-C-student/page/3",
       "/shared/motion-towards-and-away-C-student/page/4",
-      "/shared/motion-towards-and-away-C-student/page/5",
-      "/shared/motion-towards-and-away-C-student/page/6",
-      "/shared/motion-towards-and-away-C-student/page/7",
-      "/shared/motion-towards-and-away-C-student/page/8",
       "/shared/motion-towards-and-away-C-student/page/9",
+      "/shared/motion-towards-and-away-C-student/page/6",
+      "/shared/motion-towards-and-away-C-student/page/8",
       "/shared/motion-towards-and-away-C-student/page/10",
       "/shared/motion-towards-and-away-C-student/page/11"
     ],
@@ -79,48 +76,36 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
     },
     {
       "steps": [
-        "/shared/motion-towards-and-away-C-student/page/3/step/1",
-        "/shared/motion-towards-and-away-C-student/page/3/step/2"
-      ],
-      "name": "Experimenting with the Sensor",
-      "firstStep": "/shared/motion-towards-and-away-C-student/page/3/step/1",
-      "introText": "<p>Let\u2019s practice collecting data with the motion sensor so you can see whether your sketches were accurate. You will walk on a 4-meter walking path like the one described earlier.</p>",
-      "url": "/shared/motion-towards-and-away-C-student/page/3",
-      "activity": "/shared/motion-towards-and-away-C-student",
-      "index": 3
-    },
-    {
-      "steps": [
-        "/shared/motion-towards-and-away-C-student/page/4/step/1",
-        "/shared/motion-towards-and-away-C-student/page/4/step/2",
-        "/shared/motion-towards-and-away-C-student/page/4/step/3"
+        "/shared/motion-towards-and-away-C-student/page/4/step/3",
+        "/shared/motion-towards-and-away-C-student/page/4/step/4"        
       ],
       "name": "Walking to Match Drawings",
-      "firstStep": "/shared/motion-towards-and-away-C-student/page/4/step/1",
-      "introText": "<p>To the right are your predictions for walking away and toward point B.</p><p>Now that you &quot;have the hang of it,&quot; you will walk with the sensor to see if your sketches of forward and backward motion are correct.</p>",
+      "firstStep": "/shared/motion-towards-and-away-C-student/page/4/step/3",
+      "introText": "<p>To the right are your predictions for walking away and toward point B.</p><p>Watch at the front of the class as a classmate walks with the sensor to see if your sketches of forward and backward motion are correct.</p>",
       "url": "/shared/motion-towards-and-away-C-student/page/4",
       "activity": "/shared/motion-towards-and-away-C-student",
       "index": 4
     },
     {
       "steps": [
-        "/shared/motion-towards-and-away-C-student/page/5/step/1",
-        "/shared/motion-towards-and-away-C-student/page/5/step/2"
+        "/shared/motion-towards-and-away-C-student/page/9/step/1",
+        "/shared/motion-towards-and-away-C-student/page/9/step/2"
       ],
-      "name": "Reflecting on Motions",
-      "firstStep": "/shared/motion-towards-and-away-C-student/page/5/step/1",
-      "introText": "<p>At right is the data you just collected with the motion sensor.</p>",
-      "url": "/shared/motion-towards-and-away-C-student/page/5",
+      "name": "Motion Challenge",
+      "firstStep": "/shared/motion-towards-and-away-C-student/page/9/step/1",
+      "introText": "<p>Look at the position-time graph to the right. You are going to recreate this graph as closely as possible by walking in front of the motion sensor to collect position and time data.</p>",
+      "url": "/shared/motion-towards-and-away-C-student/page/9",
       "activity": "/shared/motion-towards-and-away-C-student",
       "index": 5
-    },
+    },    
     {
       "steps": [
         "/shared/motion-towards-and-away-C-student/page/6/step/1",
         "/shared/motion-towards-and-away-C-student/page/6/step/2",
         "/shared/motion-towards-and-away-C-student/page/6/step/3",
         "/shared/motion-towards-and-away-C-student/page/6/step/4",
-        "/shared/motion-towards-and-away-C-student/page/6/step/5"
+        "/shared/motion-towards-and-away-C-student/page/6/step/5",
+        "/shared/motion-towards-and-away-C-student/page/6/step/6"        
       ],
       "name": "MC: y-intercept of Walker",
       "firstStep": "/shared/motion-towards-and-away-C-student/page/6/step/1",
@@ -128,20 +113,6 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
       "url": "/shared/motion-towards-and-away-C-student/page/6",
       "activity": "/shared/motion-towards-and-away-C-student",
       "index": 6
-    },
-    {
-      "steps": [
-        "/shared/motion-towards-and-away-C-student/page/7/step/1",
-        "/shared/motion-towards-and-away-C-student/page/7/step/2",
-        "/shared/motion-towards-and-away-C-student/page/7/step/3",
-        "/shared/motion-towards-and-away-C-student/page/7/step/4"
-      ],
-      "name": "Motion from Different Starting Point",
-      "firstStep": "/shared/motion-towards-and-away-C-student/page/7/step/1",
-      "introText": "<p>Now you will collect and analyze your own data once again.</p>",
-      "url": "/shared/motion-towards-and-away-C-student/page/7",
-      "activity": "/shared/motion-towards-and-away-C-student",
-      "index": 7
     },
     {
       "steps": [
@@ -158,18 +129,6 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
       "url": "/shared/motion-towards-and-away-C-student/page/8",
       "activity": "/shared/motion-towards-and-away-C-student",
       "index": 8
-    },
-    {
-      "steps": [
-        "/shared/motion-towards-and-away-C-student/page/9/step/1",
-        "/shared/motion-towards-and-away-C-student/page/9/step/2"
-      ],
-      "name": "Motion Challenge",
-      "firstStep": "/shared/motion-towards-and-away-C-student/page/9/step/1",
-      "introText": "<p>Look at the position-time graph to the right. You are going to recreate this graph as closely as possible by walking in front of the motion sensor to collect position and time data.</p>",
-      "url": "/shared/motion-towards-and-away-C-student/page/9",
-      "activity": "/shared/motion-towards-and-away-C-student",
-      "index": 9
     },
     {
       "steps": [
@@ -441,100 +400,6 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/motion-towards-and-away-C-student/page/4/step/1",
-      "activityPage": "/shared/motion-towards-and-away-C-student/page/4",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "name": "graph-with-away-prediction"
-        },
-        "bottom": {
-          "type": "graph",
-          "name": "graph-with-toward-prediction"
-        }
-      },
-      "beforeText": "<p>First, <b>stand</b> close to the sensor, near the 0-meter mark.</p><p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your movements.</p><p><b>Walk</b> on the path at a slow, steady pace, away from the sensor, for 15 seconds.</p>",
-      "responseTemplate": "",
-      "afterText": "",
-      "startCommands": [
-        {
-          "action": "startSensorInput",
-          "literalArgs": {
-            "graphName": "graph-with-away-prediction",
-            "datasetName": "sensor-away"
-          }
-        }
-      ],
-      "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": false,
-      "submissibilityInspector": null,
-      "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
-      "afterSubmissionCommands": [
-        
-      ],
-      "responseInspector": null,
-      "responseBranches": [
-        
-      ],
-      "defaultBranch": "/shared/motion-towards-and-away-C-student/page/4/step/2",
-      "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
-    },
-    {
-      "url": "/shared/motion-towards-and-away-C-student/page/4/step/2",
-      "activityPage": "/shared/motion-towards-and-away-C-student/page/4",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "name": "graph-with-away-prediction"
-        },
-        "bottom": {
-          "type": "graph",
-          "name": "graph-with-toward-prediction"
-        }
-      },
-      "beforeText": "<p>To make the second graph, <b>stand</b> approximately 4 meters away from the sensor on the path.</p><p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your movements.</p><p><b>Walk</b> on the path at the same slow, steady pace, toward the sensor, for 15 seconds.</p>",
-      "responseTemplate": "",
-      "afterText": "",
-      "startCommands": [
-        {
-          "action": "startSensorInput",
-          "literalArgs": {
-            "graphName": "graph-with-toward-prediction",
-            "datasetName": "sensor-toward"
-          }
-        }
-      ],
-      "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": false,
-      "submissibilityInspector": null,
-      "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
-      "afterSubmissionCommands": [
-        
-      ],
-      "responseInspector": null,
-      "responseBranches": [
-        
-      ],
-      "defaultBranch": "/shared/motion-towards-and-away-C-student/page/4/step/3",
-      "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
-    },
-    {
       "url": "/shared/motion-towards-and-away-C-student/page/4/step/3",
       "activityPage": "/shared/motion-towards-and-away-C-student/page/4",
       "paneConfig": "split",
@@ -548,7 +413,59 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
           "name": "graph-with-toward-prediction"
         }
       },
-      "beforeText": "<p>How does your collected data differ from your predicted data?</p>",
+      "beforeText": "<p>Look at the graphs on the screen in front of the room. How do they differ from your predictions on the right?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+        
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/motion-towards-and-away-C-student/page/4/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+        {
+      "url": "/shared/motion-towards-and-away-C-student/page/4/step/4",
+      "activityPage": "/shared/motion-towards-and-away-C-student/page/4",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-with-away-prediction"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "graph-with-toward-prediction"
+        }
+      },
+      "beforeText": "<p>How does motion away from the sensor differ from motion toward the sensor on a position-time graph?</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -1066,6 +983,54 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
       "responseBranches": [
         
       ],
+      "defaultBranch": "/shared/motion-towards-and-away-C-student/page/6/step/6",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/motion-towards-and-away-C-student/page/6/step/6",
+      "activityPage": "/shared/motion-towards-and-away-C-student/page/6",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "walking-example-1"
+        }
+      },
+      "beforeText": "<p>What is the significance of the y-intercept (the y-value of the point where the graph crosses the y-axis) of the position-time graph?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+        
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
       "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
@@ -1073,6 +1038,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
     },
+
     {
       "url": "/shared/motion-towards-and-away-C-student/page/7/step/1",
       "activityPage": "/shared/motion-towards-and-away-C-student/page/7",
@@ -1593,18 +1559,12 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
         },
         "bottom": null
       },
-      "beforeText": "<p><b>Move</b> to your starting point and, when you are ready, have your partner <b>click Start</b> to record the data for your movements. <p><b>Walk</b> on the path for 15 seconds while trying to match the given graph.</p>",
+      "beforeText": "<p>Watch as your classmate at the front of the room tries to create this graph. Try to help him or her match the graph.</p>",
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-        {
-          "action": "startSensorInput",
-          "literalArgs": {
-            "graphName": "graph-to-match",
-            "datasetName": "sensor-match"
-          }
-        }
-      ],
+  
+       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
@@ -1637,7 +1597,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-student"] =
         },
         "bottom": null
       },
-      "beforeText": "<p>How closely does your graph match the given graph? What could you have done to match the given graph more closely?</p><p>Try to use some of the following words: fast, slow, toward, away.</p>",
+      "beforeText": "<p>How closely does the sensor graph match the given graph? What could have been done to match the given graph more closely?</p><p>Try to use some of the following words: fast, slow, toward, away.</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
