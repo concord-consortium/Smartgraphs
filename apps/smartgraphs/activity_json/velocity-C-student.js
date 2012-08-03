@@ -1115,7 +1115,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
         },
         "bottom": {}
       },
-      "beforeText": "<p>Does your prediction graph of slow, steady motion match the actual data? Explain.</p>",
+      "beforeText": "<p>Does your prediction graph of normal, steady motion match the actual data? Explain.</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
