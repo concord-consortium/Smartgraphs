@@ -1,60 +1,60 @@
 /*globals Smartgraphs */
 
 Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
-Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
+Smartgraphs.activityDocs["/shared/what-is-velocity-C-teacher"] =
 
 {
   "data_format_version": 5,
   "activity": {
     "title": "How Fast Am I Moving?",
-    "url": "/shared/what-is-velocity-B",
+    "url": "/shared/what-is-velocity-C-teacher",
     "owner": "shared",
     "pages": [
-      "/shared/what-is-velocity-B/page/1",
-      "/shared/what-is-velocity-B/page/2",
-      "/shared/what-is-velocity-B/page/3",
-      "/shared/what-is-velocity-B/page/4",
-      "/shared/what-is-velocity-B/page/5",
-      "/shared/what-is-velocity-B/page/6",
-      "/shared/what-is-velocity-B/page/7",
-      "/shared/what-is-velocity-B/page/8",
-      "/shared/what-is-velocity-B/page/9",
-      "/shared/what-is-velocity-B/page/10",
-      "/shared/what-is-velocity-B/page/11",
-      "/shared/what-is-velocity-B/page/12",
-      "/shared/what-is-velocity-B/page/13",
-      "/shared/what-is-velocity-B/page/14",
-      "/shared/what-is-velocity-B/page/15",
-      "/shared/what-is-velocity-B/page/16",
-      "/shared/what-is-velocity-B/page/17",
-      "/shared/what-is-velocity-B/page/18",
-      "/shared/what-is-velocity-B/page/20"
+      "/shared/what-is-velocity-C-teacher/page/1",
+      "/shared/what-is-velocity-C-teacher/page/2",
+      "/shared/what-is-velocity-C-teacher/page/3",
+      "/shared/what-is-velocity-C-teacher/page/4",
+      "/shared/what-is-velocity-C-teacher/page/5",
+      "/shared/what-is-velocity-C-teacher/page/6",
+      "/shared/what-is-velocity-C-teacher/page/7",
+      "/shared/what-is-velocity-C-teacher/page/8",
+      "/shared/what-is-velocity-C-teacher/page/9",
+      "/shared/what-is-velocity-C-teacher/page/10",
+      "/shared/what-is-velocity-C-teacher/page/11",
+      "/shared/what-is-velocity-C-teacher/page/12",
+      "/shared/what-is-velocity-C-teacher/page/13",
+      "/shared/what-is-velocity-C-teacher/page/14",
+      "/shared/what-is-velocity-C-teacher/page/15",
+      "/shared/what-is-velocity-C-teacher/page/16",
+      "/shared/what-is-velocity-C-teacher/page/17",
+      "/shared/what-is-velocity-C-teacher/page/18",
+      "/shared/what-is-velocity-C-teacher/page/20"
     ],
     "datasets": [
-      "/shared/what-is-velocity-B/dataset/slope-data"
+      "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     ],
     "units": [
 
     ],
     "axes": [
-      "/shared/what-is-velocity-B/axes/10s",
-      "/shared/what-is-velocity-B/axes/15s",
-      "/shared/what-is-velocity-B/axes/30s",
-      "/shared/what-is-velocity-B/axes/4.5m",
-      "/shared/what-is-velocity-B/axes/5m",
-      "/shared/what-is-velocity-B/axes/15m"
+      "/shared/what-is-velocity-C-teacher/axes/10s",
+      "/shared/what-is-velocity-C-teacher/axes/15s",
+      "/shared/what-is-velocity-C-teacher/axes/30s",
+      "/shared/what-is-velocity-C-teacher/axes/4.5m",
+      "/shared/what-is-velocity-C-teacher/axes/5m",
+      "/shared/what-is-velocity-C-teacher/axes/15m"
     ],
     "graphs": [
-      "/shared/what-is-velocity-B/graph/freehand-walking-normal",
-      "/shared/what-is-velocity-B/graph/prediction-walking-normal",
-      "/shared/what-is-velocity-B/graph/freehand-walking-slow",
-      "/shared/what-is-velocity-B/graph/prediction-walking-slow",
-      "/shared/what-is-velocity-B/graph/sensor-normal-walking",
-      "/shared/what-is-velocity-B/graph/sensor-result-normal-walking",
-      "/shared/what-is-velocity-B/graph/sensor-slow-walking",
-      "/shared/what-is-velocity-B/graph/sensor-result-slow-walking",
-      "/shared/what-is-velocity-B/graph/slope-graph",
-      "/shared/what-is-velocity-B/graph/slope-graph-analyze"
+      "/shared/what-is-velocity-C-teacher/graph/freehand-walking-normal",
+      "/shared/what-is-velocity-C-teacher/graph/prediction-walking-normal",
+      "/shared/what-is-velocity-C-teacher/graph/freehand-walking-slow",
+      "/shared/what-is-velocity-C-teacher/graph/prediction-walking-slow",
+      "/shared/what-is-velocity-C-teacher/graph/sensor-normal-walking",
+      "/shared/what-is-velocity-C-teacher/graph/sensor-result-normal-walking",
+      "/shared/what-is-velocity-C-teacher/graph/sensor-slow-walking",
+      "/shared/what-is-velocity-C-teacher/graph/sensor-result-slow-walking",
+      "/shared/what-is-velocity-C-teacher/graph/slope-graph",
+      "/shared/what-is-velocity-C-teacher/graph/slope-graph-analyze"
     ],
     "responseTemplates": [
       "/components/response-template/open",
@@ -64,254 +64,268 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
   "pages": [
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/1/step/1"
+        "/shared/what-is-velocity-C-teacher/page/1/step/1"
       ],
       "name": "Engage",
-      "firstStep": "/shared/what-is-velocity-B/page/1/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/1/step/1",
       "introText": "<h1>Introduction</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current speed.</p><p><b>How can you tell how fast you are moving?</b></p>",
-      "url": "/shared/what-is-velocity-B/page/1",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/1",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 1
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/2/step/1",
-        "/shared/what-is-velocity-B/page/2/step/2",
-        "/shared/what-is-velocity-B/page/2/step/3",
-        "/shared/what-is-velocity-B/page/2/step/4",
-        "/shared/what-is-velocity-B/page/2/step/5",
-        "/shared/what-is-velocity-B/page/2/step/6"
+        "/shared/what-is-velocity-C-teacher/page/2/step/1",
+        "/shared/what-is-velocity-C-teacher/page/2/step/2",
+        "/shared/what-is-velocity-C-teacher/page/2/step/3",
+        "/shared/what-is-velocity-C-teacher/page/2/step/4",
+        "/shared/what-is-velocity-C-teacher/page/2/step/5",
+        "/shared/what-is-velocity-C-teacher/page/2/step/6"
       ],
       "name": "Predict With Numbers",
-      "firstStep": "/shared/what-is-velocity-B/page/2/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/2/step/1",
       "introText": "<h1>Prediction</h1><p>In this activity, you will calculate how fast you are moving while walking. Let's start by predicting how fast you <b>normally</b> walk.</p>",
-      "url": "/shared/what-is-velocity-B/page/2",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/2",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 2
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/3/step/1"
+        "/shared/what-is-velocity-C-teacher/page/3/step/1"
       ],
       "name": "Predict With Graph (Normal)",
-      "firstStep": "/shared/what-is-velocity-B/page/3/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/3/step/1",
       "introText": "<h1>Prediction</h1><p>Draw a graph showing your position over time as you walked from 0 to 4 meters.</b></p>",
-      "url": "/shared/what-is-velocity-B/page/3",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/3",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 3
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/4/step/1"
+        "/shared/what-is-velocity-C-teacher/page/4/step/1"
       ],
       "name": "Predict With Graph (Slow)",
-      "firstStep": "/shared/what-is-velocity-B/page/4/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/4/step/1",
       "introText": "<h1>Prediction</h1><p>The top graph shows your predicted <b>normal</b> walking pace.</p><p>On the bottom graph, <b>predict</b> what <b>slow, steady</b> motion would look like from 0 to 4 meters.</p>",
-      "url": "/shared/what-is-velocity-B/page/4",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/4",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 4
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/5/step/1"
+        "/shared/what-is-velocity-C-teacher/page/5/step/1"
       ],
       "name": "Normal vs Slow (Predictions)",
-      "firstStep": "/shared/what-is-velocity-B/page/5/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/5/step/1",
       "introText": "<h1>Prediction</h1><p>The top graph shows your predicted <b>normal</b> walking pace. The bottom graph shows your predicted <b>slow</b> walking pace.</p><p>What do you observe about your predictions?</p>",
-      "url": "/shared/what-is-velocity-B/page/5",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/5",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 5
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/6/step/1"
+        "/shared/what-is-velocity-C-teacher/page/6/step/1"
       ],
       "name": "Collect Data (Normal)",
-      "firstStep": "/shared/what-is-velocity-B/page/6/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/6/step/1",
       "introText": "<h1>Data Collection</h1><p>You will test your prediction by walking at a <b>normal, steady</b> pace along a straight 4-meter path while using a motion sensor.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>normal, steady</b> pace.</p><p><b>Click Clear</b> to try a different normal, steady pace.</p>",
-      "url": "/shared/what-is-velocity-B/page/6",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/6",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 6
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/7/step/1",
-        "/shared/what-is-velocity-B/page/7/step/2",
-        "/shared/what-is-velocity-B/page/7/step/3",
-        "/shared/what-is-velocity-B/page/7/step/4"
+        "/shared/what-is-velocity-C-teacher/page/7/step/1",
+        "/shared/what-is-velocity-C-teacher/page/7/step/2",
+        "/shared/what-is-velocity-C-teacher/page/7/step/3",
+        "/shared/what-is-velocity-C-teacher/page/7/step/4"
       ],
       "name": "Analyze Data (Normal)",
-      "firstStep": "/shared/what-is-velocity-B/page/7/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/7/step/1",
       "introText": "<h1>Data Collection</h1><p>",
-      "url": "/shared/what-is-velocity-B/page/7",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/7",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 7
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/8/step/1"
+        "/shared/what-is-velocity-C-teacher/page/8/step/1"
       ],
       "name": "Collect Data (Slow)",
-      "firstStep": "/shared/what-is-velocity-B/page/8/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/8/step/1",
       "introText": "<h1>Data Collection</h1><p>Now you will try walking at a <b>slow, steady</b> pace.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>slow, steady</b> pace.</p>",
-      "url": "/shared/what-is-velocity-B/page/8",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/8",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 8
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/9/step/1"
+        "/shared/what-is-velocity-C-teacher/page/9/step/1"
       ],
       "name": "Actual vs. Prediction (Normal)",
-      "firstStep": "/shared/what-is-velocity-B/page/9/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/9/step/1",
       "introText": "<h1>Data Collection</h1><p>On the top is your predicted position-time graph for normal, steady motion.  Below is your actual position-time graph for normal, steady motion.</p>",
-      "url": "/shared/what-is-velocity-B/page/9",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/9",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 9
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/10/step/1"
+        "/shared/what-is-velocity-C-teacher/page/10/step/1"
       ],
       "name": "Actual vs. Prediction (Slow)",
-      "firstStep": "/shared/what-is-velocity-B/page/10/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/10/step/1",
       "introText": "<h1>Data Collection</h1><p>On the top is your predicted position-time graph for slow, steady motion.  Below is your actual position-time graph for slow, steady motion.</p>",
-      "url": "/shared/what-is-velocity-B/page/10",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/10",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 10
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/11/step/1"
+        "/shared/what-is-velocity-C-teacher/page/11/step/1"
       ],
       "name": "Normal vs Slow (Actual)",
-      "firstStep": "/shared/what-is-velocity-B/page/11/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/11/step/1",
       "introText": "<h1>Data Collection</h1><p>Here is the data you just collected for normal and slow, steady motion.</p>",
-      "url": "/shared/what-is-velocity-B/page/11",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/11",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 11
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/12/step/1",
-        "/shared/what-is-velocity-B/page/12/step/2",
-        "/shared/what-is-velocity-B/page/12/step/3",
-        "/shared/what-is-velocity-B/page/12/step/4",
-        "/shared/what-is-velocity-B/page/12/step/5",
-        "/shared/what-is-velocity-B/page/12/step/13",
-        "/shared/what-is-velocity-B/page/12/step/14",
-        "/shared/what-is-velocity-B/page/12/step/15",
-        "/shared/what-is-velocity-B/page/12/step/16"
+        "/shared/what-is-velocity-C-teacher/page/12/step/1",
+        "/shared/what-is-velocity-C-teacher/page/12/step/2",
+        "/shared/what-is-velocity-C-teacher/page/12/step/3",
+        "/shared/what-is-velocity-C-teacher/page/12/step/4",
+        "/shared/what-is-velocity-C-teacher/page/12/step/5",
+        "/shared/what-is-velocity-C-teacher/page/12/step/6",
+        "/shared/what-is-velocity-C-teacher/page/12/step/7",
+        "/shared/what-is-velocity-C-teacher/page/12/step/8",
+        "/shared/what-is-velocity-C-teacher/page/12/step/9",
+        "/shared/what-is-velocity-C-teacher/page/12/step/10",
+        "/shared/what-is-velocity-C-teacher/page/12/step/11",
+        "/shared/what-is-velocity-C-teacher/page/12/step/12",
+        "/shared/what-is-velocity-C-teacher/page/12/step/13",
+        "/shared/what-is-velocity-C-teacher/page/12/step/14",
+        "/shared/what-is-velocity-C-teacher/page/12/step/15",
+        "/shared/what-is-velocity-C-teacher/page/12/step/16"
       ],
       "name": "Instantaneous Speed",
-      "firstStep": "/shared/what-is-velocity-B/page/12/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/12/step/1",
       "introText": "<h1>Analysis</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the velocity between those points. This calculation will be close to your <b>instantaneous</b> velocity. </p>",
-      "url": "/shared/what-is-velocity-B/page/12",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/12",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 12
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/13/step/1",
-        "/shared/what-is-velocity-B/page/13/step/1a",
-        "/shared/what-is-velocity-B/page/13/step/2",
-        "/shared/what-is-velocity-B/page/13/step/3",
-        "/shared/what-is-velocity-B/page/13/step/4",
-        "/shared/what-is-velocity-B/page/13/step/5",
-        "/shared/what-is-velocity-B/page/13/step/13",
-        "/shared/what-is-velocity-B/page/13/step/14",
-        "/shared/what-is-velocity-B/page/13/step/15",
-        "/shared/what-is-velocity-B/page/13/step/16"
+        "/shared/what-is-velocity-C-teacher/page/13/step/1",
+        "/shared/what-is-velocity-C-teacher/page/13/step/1a",
+        "/shared/what-is-velocity-C-teacher/page/13/step/2",
+        "/shared/what-is-velocity-C-teacher/page/13/step/3",
+        "/shared/what-is-velocity-C-teacher/page/13/step/4",
+        "/shared/what-is-velocity-C-teacher/page/13/step/5",
+        "/shared/what-is-velocity-C-teacher/page/13/step/6",
+        "/shared/what-is-velocity-C-teacher/page/13/step/7",
+        "/shared/what-is-velocity-C-teacher/page/13/step/8",
+        "/shared/what-is-velocity-C-teacher/page/13/step/9",
+        "/shared/what-is-velocity-C-teacher/page/13/step/10",
+        "/shared/what-is-velocity-C-teacher/page/13/step/11",
+        "/shared/what-is-velocity-C-teacher/page/13/step/12",
+        "/shared/what-is-velocity-C-teacher/page/13/step/13",
+        "/shared/what-is-velocity-C-teacher/page/13/step/14",
+        "/shared/what-is-velocity-C-teacher/page/13/step/15",
+        "/shared/what-is-velocity-C-teacher/page/13/step/16"
       ],
       "name": "Instantaneous Speed",
-      "firstStep": "/shared/what-is-velocity-B/page/13/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/13/step/1",
       "introText": "<h1>Analysis</h1><p>Now you will pick another set of points that are next to each other and find the velocity between those points.</p>",
-      "url": "/shared/what-is-velocity-B/page/13",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/13",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 13
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/14/step/1"
+        "/shared/what-is-velocity-C-teacher/page/14/step/1"
       ],
       "name": "Instantaneous Speed III",
-      "firstStep": "/shared/what-is-velocity-B/page/14/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/14/step/1",
       "introText": "<h1>Analysis</h1><p>Was your velocity the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>",
-      "url": "/shared/what-is-velocity-B/page/14",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/14",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 14
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/15/step/1",
-        "/shared/what-is-velocity-B/page/15/step/2",
-        "/shared/what-is-velocity-B/page/15/step/3",
-        "/shared/what-is-velocity-B/page/15/step/4",
-        "/shared/what-is-velocity-B/page/15/step/5",
-        "/shared/what-is-velocity-B/page/15/step/6",
-        "/shared/what-is-velocity-B/page/15/step/7",
-        "/shared/what-is-velocity-B/page/15/step/8"        
+        "/shared/what-is-velocity-C-teacher/page/15/step/1",
+        "/shared/what-is-velocity-C-teacher/page/15/step/2",
+        "/shared/what-is-velocity-C-teacher/page/15/step/3",
+        "/shared/what-is-velocity-C-teacher/page/15/step/4",
+        "/shared/what-is-velocity-C-teacher/page/15/step/5",
+        "/shared/what-is-velocity-C-teacher/page/15/step/6",
+        "/shared/what-is-velocity-C-teacher/page/15/step/7",
+        "/shared/what-is-velocity-C-teacher/page/15/step/8"        
       ],
       "name": "Average Speed",
-      "firstStep": "/shared/what-is-velocity-B/page/15/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/15/step/1",
       "introText": "<h1>Analysis</h1><p>To find the average velocity for the entire trip, you will use the start and end points of the whole trip.</p>",
-      "url": "/shared/what-is-velocity-B/page/15",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/15",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 15
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/16/step/1",
-        "/shared/what-is-velocity-B/page/16/step/2",
-        "/shared/what-is-velocity-B/page/16/step/3",
-        "/shared/what-is-velocity-B/page/16/step/4",
-        "/shared/what-is-velocity-B/page/16/step/5"
+        "/shared/what-is-velocity-C-teacher/page/16/step/1",
+        "/shared/what-is-velocity-C-teacher/page/16/step/2",
+        "/shared/what-is-velocity-C-teacher/page/16/step/3",
+        "/shared/what-is-velocity-C-teacher/page/16/step/4",
+        "/shared/what-is-velocity-C-teacher/page/16/step/5"
       ],
       "name": "Analyze/Conclusion",
-      "firstStep": "/shared/what-is-velocity-B/page/16/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/16/step/1",
       "introText": "<h1>Analysis</h1><p>In this activity, you predicted and confirmed different steady velocities while walking along a straight path.</p>",
-      "url": "/shared/what-is-velocity-B/page/16",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/16",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 16
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/17/step/1"
+        "/shared/what-is-velocity-C-teacher/page/17/step/1"
       ],
       "name": "Analyze/Conclusion II",
-      "firstStep": "/shared/what-is-velocity-B/page/17/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/17/step/1",
       "introText": "<h1>Analysis</h1><p>",
-      "url": "/shared/what-is-velocity-B/page/17",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/17",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 17
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/18/step/1"
+        "/shared/what-is-velocity-C-teacher/page/18/step/1"
       ],
       "name": "Analyze/Conclusion III",
-      "firstStep": "/shared/what-is-velocity-B/page/18/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/18/step/1",
       "introText": "<h1>Analysis</h1><p>",
-      "url": "/shared/what-is-velocity-B/page/18",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/18",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 18
     },
     {
       "steps": [
-        "/shared/what-is-velocity-B/page/20/step/1"
+        "/shared/what-is-velocity-C-teacher/page/20/step/1"
       ],
       "name": "Conclusion",
-      "firstStep": "/shared/what-is-velocity-B/page/20/step/1",
+      "firstStep": "/shared/what-is-velocity-C-teacher/page/20/step/1",
       "introText": "<h1>Conclusion</h1><p>Congratulations! You have finished the activity.</p>",
-      "url": "/shared/what-is-velocity-B/page/20",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/page/20",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "index": 20
     }
   ],
   "steps": [
     {
-      "url": "/shared/what-is-velocity-B/page/1/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/1",
+      "url": "/shared/what-is-velocity-C-teacher/page/1/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/1",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -353,8 +367,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/2/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/2",
+      "url": "/shared/what-is-velocity-C-teacher/page/2/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/2",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -404,10 +418,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               30
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/2/step/2"
+          "step": "/shared/what-is-velocity-C-teacher/page/2/step/2"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/2/step/3",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/2/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -415,8 +429,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/2/step/2",
-      "activityPage": "/shared/what-is-velocity-B/page/2",
+      "url": "/shared/what-is-velocity-C-teacher/page/2/step/2",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/2",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -466,10 +480,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               30
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/2/step/2"
+          "step": "/shared/what-is-velocity-C-teacher/page/2/step/2"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/2/step/3",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/2/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -477,8 +491,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/2/step/3",
-      "activityPage": "/shared/what-is-velocity-B/page/2",
+      "url": "/shared/what-is-velocity-C-teacher/page/2/step/3",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/2",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -560,10 +574,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               }
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/2/step/6"
+          "step": "/shared/what-is-velocity-C-teacher/page/2/step/6"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/2/step/4",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/2/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -571,8 +585,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/2/step/4",
-      "activityPage": "/shared/what-is-velocity-B/page/2",
+      "url": "/shared/what-is-velocity-C-teacher/page/2/step/4",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/2",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -634,10 +648,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               }
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/2/step/6"
+          "step": "/shared/what-is-velocity-C-teacher/page/2/step/6"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/2/step/5",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/2/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -645,8 +659,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/2/step/5",
-      "activityPage": "/shared/what-is-velocity-B/page/2",
+      "url": "/shared/what-is-velocity-C-teacher/page/2/step/5",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/2",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -718,8 +732,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/2/step/6",
-      "activityPage": "/shared/what-is-velocity-B/page/2",
+      "url": "/shared/what-is-velocity-C-teacher/page/2/step/6",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/2",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -791,8 +805,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/3/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/3",
+      "url": "/shared/what-is-velocity-C-teacher/page/3/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/3",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -876,8 +890,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/4/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/4",
+      "url": "/shared/what-is-velocity-C-teacher/page/4/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/4",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -934,8 +948,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/5/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/5",
+      "url": "/shared/what-is-velocity-C-teacher/page/5/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -982,8 +996,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/6/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/6",
+      "url": "/shared/what-is-velocity-C-teacher/page/6/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1159,8 +1173,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/7/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/7",
+      "url": "/shared/what-is-velocity-C-teacher/page/7/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1215,10 +1229,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "equals": [ "value", { "variable" : "actual-normal-change-time" } ]
           },
-          "step": "/shared/what-is-velocity-B/page/7/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/7/step/4"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/7/step/2",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/7/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1226,8 +1240,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/7/step/2",
-      "activityPage": "/shared/what-is-velocity-B/page/7",
+      "url": "/shared/what-is-velocity-C-teacher/page/7/step/2",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1284,10 +1298,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "responseBranches": [
         {
           "criterion": { "equals": [ "value", { "variable" : "actual-normal-change-time" } ] },
-          "step": "/shared/what-is-velocity-B/page/7/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/7/step/4"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/7/step/3",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/7/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1295,8 +1309,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/7/step/3",
-      "activityPage": "/shared/what-is-velocity-B/page/7",
+      "url": "/shared/what-is-velocity-C-teacher/page/7/step/3",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1354,7 +1368,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "responseInspector": null,
       "responseBranches": [
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/7/step/4",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/7/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1362,8 +1376,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/7/step/4",
-      "activityPage": "/shared/what-is-velocity-B/page/7",
+      "url": "/shared/what-is-velocity-C-teacher/page/7/step/4",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1430,8 +1444,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/8/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/8",
+      "url": "/shared/what-is-velocity-C-teacher/page/8/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/8",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1478,8 +1492,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/9/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/9",
+      "url": "/shared/what-is-velocity-C-teacher/page/9/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/9",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1526,8 +1540,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/10/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/10",
+      "url": "/shared/what-is-velocity-C-teacher/page/10/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/10",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1574,8 +1588,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/11/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/11",
+      "url": "/shared/what-is-velocity-C-teacher/page/11/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/11",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1622,8 +1636,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1664,7 +1678,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "responseBranches": [
 
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/12/step/2",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1672,8 +1686,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/2",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/2",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1724,10 +1738,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "dataPointsAreAdjacent": []
           },
-          "step": "/shared/what-is-velocity-B/page/12/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/4"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/12/step/3",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1735,8 +1749,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/3",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/3",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1787,10 +1801,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "dataPointsAreAdjacent": []
           },
-          "step": "/shared/what-is-velocity-B/page/12/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/4"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/12/step/3",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1798,8 +1812,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/4",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/4",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2015,10 +2029,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity-B/page/12/step/16"
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/12/step/5",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2026,8 +2040,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/5",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/5",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2073,10 +2087,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity-B/page/12/step/16"
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/12/step/13",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/6",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2084,8 +2098,565 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/13",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/6",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position, in meters?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Look at the graph.</p>",
+      "startCommands": [
+        {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A",
+            "second-point-A"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/10"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/7",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/7",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position, in meters?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Look at the table and the graph.</p>",
+      "startCommands": [
+        {
+          "action": "createRiseBracket",
+          "literalArgs": {
+            "bracketName": "rise-bracket-A",
+            "point1": "first-point-A",
+            "point2": "second-point-A",
+            "datasetName": "slope-data",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A",
+            "second-point-A"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/10"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/8",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/8",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "max-position-A" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "min-position-A" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-position-A" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-position-units-A" ]
+          }
+        }
+      ],
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/9",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Continue",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/9",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>What is the change in time, in seconds? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint:Look at the graph.</p>",
+      "startCommands": [
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A",
+            "second-point-A"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/13"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/10",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct!</p><p>What is the change in time, in seconds? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint:Look at the graph.</p>",
+      "startCommands": [
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A",
+            "second-point-A"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/13"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/11",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in time, in seconds?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Look at the table and the graph.</p>",
+      "startCommands": [
+        {
+          "action": "createRunBracket",
+          "literalArgs": {
+            "bracketName": "run-bracket-A",
+            "point1": "first-point-A",
+            "point2": "second-point-A",
+            "datasetName": "slope-data",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A",
+            "second-point-A"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/13"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/12",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/12",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "max-time-A" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "min-time-A" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-time-A" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-time-units-A" ]
+          }
+        }
+      ],
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/13",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Continue",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/13",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2188,10 +2759,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity-B/page/12/step/16"
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/12/step/14",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/14",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2199,8 +2770,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/14",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/14",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2276,10 +2847,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity-B/page/12/step/16"
+          "step": "/shared/what-is-velocity-C-teacher/page/12/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/12/step/15",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/12/step/15",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2287,8 +2858,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/15",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/15",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2387,8 +2958,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/12/step/16",
-      "activityPage": "/shared/what-is-velocity-B/page/12",
+      "url": "/shared/what-is-velocity-C-teacher/page/12/step/16",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2473,8 +3044,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2559,10 +3130,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               ]
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/13/step/1a"
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/1a"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/13/step/2",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2570,8 +3141,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/1a",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/1a",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2640,10 +3211,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               ]
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/13/step/1a"
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/1a"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/13/step/2",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2651,8 +3222,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/2",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/2",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2703,10 +3274,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "dataPointsAreAdjacent": []
           },
-          "step": "/shared/what-is-velocity-B/page/13/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/4"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/13/step/3",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2714,8 +3285,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/3",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/3",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2766,10 +3337,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "dataPointsAreAdjacent": []
           },
-          "step": "/shared/what-is-velocity-B/page/13/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/4"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/13/step/3",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2777,8 +3348,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/4",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/4",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2994,10 +3565,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity-B/page/13/step/16"
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/13/step/5",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3005,8 +3576,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/5",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/5",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3052,10 +3623,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity-B/page/13/step/16"
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/13/step/13",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/6",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3063,8 +3634,565 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/13",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/6",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position, in meters?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Look at the graph.</p>",
+      "startCommands": [
+        {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B",
+            "second-point-B"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/10"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/7",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/7",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position, in meters?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Look at the table and the graph.</p>",
+      "startCommands": [
+        {
+          "action": "createRiseBracket",
+          "literalArgs": {
+            "bracketName": "rise-bracket-B",
+            "point1": "first-point-B",
+            "point2": "second-point-B",
+            "datasetName": "slope-data",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-B",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B",
+            "second-point-B"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/10"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/8",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/8",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "max-position-B" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "min-position-B" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-position-B" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-position-units-B" ]
+          }
+        }
+      ],
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/9",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Continue",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/9",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>What is the change in time, in seconds? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint:Look at the graph.</p>",
+      "startCommands": [
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-bracket-B",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B",
+            "second-point-B"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/13"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/10",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct!</p><p>What is the change in time, in seconds? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint:Look at the graph.</p>",
+      "startCommands": [
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-bracket-B",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B",
+            "second-point-B"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/13"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/11",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in time, in seconds?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Look at the table and the graph.</p>",
+      "startCommands": [
+        {
+          "action": "createRunBracket",
+          "literalArgs": {
+            "bracketName": "run-bracket-B",
+            "point1": "first-point-B",
+            "point2": "second-point-B",
+            "datasetName": "slope-data",
+            "color": "#cccccc",
+            "isHighlighted": true
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-B",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B",
+            "second-point-B"
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/13"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/12",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/12",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "max-time-B" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "min-time-B" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-time-B" ]
+          }
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-time-units-B" ]
+          }
+        }
+      ],
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/13",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Continue",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/13",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3167,10 +4295,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity-B/page/13/step/16"
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/13/step/14",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/14",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3178,8 +4306,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/14",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/14",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3255,10 +4383,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity-B/page/13/step/16"
+          "step": "/shared/what-is-velocity-C-teacher/page/13/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/13/step/15",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/13/step/15",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3266,8 +4394,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/15",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/15",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3366,8 +4494,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/13/step/16",
-      "activityPage": "/shared/what-is-velocity-B/page/13",
+      "url": "/shared/what-is-velocity-C-teacher/page/13/step/16",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3452,8 +4580,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/14/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/14",
+      "url": "/shared/what-is-velocity-C-teacher/page/14/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/14",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3552,8 +4680,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/15/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/15",
+      "url": "/shared/what-is-velocity-C-teacher/page/15/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/15",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3600,10 +4728,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "responseBranches": [
         {
           "criterion": { "equals" : [ "value", 0 ] },
-          "step": "/shared/what-is-velocity-B/page/15/step/3"
+          "step": "/shared/what-is-velocity-C-teacher/page/15/step/3"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/15/step/2",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/15/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3611,8 +4739,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/15/step/2",
-      "activityPage": "/shared/what-is-velocity-B/page/15",
+      "url": "/shared/what-is-velocity-C-teacher/page/15/step/2",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/15",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3659,10 +4787,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "responseBranches": [
         {
           "criterion": { "equals" : [ "value", 0 ] },
-          "step": "/shared/what-is-velocity-B/page/15/step/3"
+          "step": "/shared/what-is-velocity-C-teacher/page/15/step/3"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/15/step/2",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/15/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3670,8 +4798,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/15/step/3",
-      "activityPage": "/shared/what-is-velocity-B/page/15",
+      "url": "/shared/what-is-velocity-C-teacher/page/15/step/3",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/15",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3716,10 +4844,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "responseBranches": [
         {
           "criterion": { "equals" : [ "value", 10 ] },
-          "step": "/shared/what-is-velocity-B/page/15/step/5"
+          "step": "/shared/what-is-velocity-C-teacher/page/15/step/5"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/15/step/4",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/15/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3727,8 +4855,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/15/step/4",
-      "activityPage": "/shared/what-is-velocity-B/page/15",
+      "url": "/shared/what-is-velocity-C-teacher/page/15/step/4",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/15",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3773,10 +4901,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "responseBranches": [
         {
           "criterion": { "equals" : [ "value", 10 ] },
-          "step": "/shared/what-is-velocity-B/page/15/step/5"
+          "step": "/shared/what-is-velocity-C-teacher/page/15/step/5"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/15/step/4",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/15/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3785,8 +4913,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
     },
     
     {
-      "url": "/shared/what-is-velocity-B/page/15/step/5",
-      "activityPage": "/shared/what-is-velocity-B/page/15",
+      "url": "/shared/what-is-velocity-C-teacher/page/15/step/5",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/15",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3849,10 +4977,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               1.5
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/15/step/8"
+          "step": "/shared/what-is-velocity-C-teacher/page/15/step/8"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/15/step/6",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/15/step/6",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3861,8 +4989,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
     },
     
     {
-      "url": "/shared/what-is-velocity-B/page/15/step/6",
-      "activityPage": "/shared/what-is-velocity-B/page/15",
+      "url": "/shared/what-is-velocity-C-teacher/page/15/step/6",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/15",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3924,10 +5052,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               1.5
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/15/step/8"
+          "step": "/shared/what-is-velocity-C-teacher/page/15/step/8"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/15/step/7",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/15/step/7",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3936,8 +5064,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
     },    
     
     {
-      "url": "/shared/what-is-velocity-B/page/15/step/7",
-      "activityPage": "/shared/what-is-velocity-B/page/15",
+      "url": "/shared/what-is-velocity-C-teacher/page/15/step/7",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/15",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3995,8 +5123,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
     },
     
     {
-      "url": "/shared/what-is-velocity-B/page/15/step/8",
-      "activityPage": "/shared/what-is-velocity-B/page/15",
+      "url": "/shared/what-is-velocity-C-teacher/page/15/step/8",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/15",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -4054,8 +5182,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
     },
     
     {
-      "url": "/shared/what-is-velocity-B/page/16/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/16",
+      "url": "/shared/what-is-velocity-C-teacher/page/16/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/16",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -4161,7 +5289,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               1
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/3"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/3"
         },
         {
           "criterion": {
@@ -4170,7 +5298,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               2
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/2"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/2"
         },
         {
           "criterion": {
@@ -4179,7 +5307,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               3
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/2"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/2"
         },
         {
           "criterion": {
@@ -4188,10 +5316,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               4
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/2"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/2"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/16/step/3",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/16/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -4199,8 +5327,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/16/step/2",
-      "activityPage": "/shared/what-is-velocity-B/page/16",
+      "url": "/shared/what-is-velocity-C-teacher/page/16/step/2",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/16",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -4306,7 +5434,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               1
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/3"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/3"
         },
         {
           "criterion": {
@@ -4315,7 +5443,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               2
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/2"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/2"
         },
         {
           "criterion": {
@@ -4324,7 +5452,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               3
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/2"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/2"
         },
         {
           "criterion": {
@@ -4333,10 +5461,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               4
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/2"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/2"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/16/step/2",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/16/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -4344,8 +5472,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/16/step/3",
-      "activityPage": "/shared/what-is-velocity-B/page/16",
+      "url": "/shared/what-is-velocity-C-teacher/page/16/step/3",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/16",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -4451,7 +5579,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               1
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/4"
         },
         {
           "criterion": {
@@ -4460,7 +5588,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               2
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/4"
         },
         {
           "criterion": {
@@ -4469,7 +5597,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               3
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/4"
         },
         {
           "criterion": {
@@ -4478,10 +5606,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               4
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/5"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/5"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/16/step/4",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/16/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -4489,8 +5617,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/16/step/4",
-      "activityPage": "/shared/what-is-velocity-B/page/16",
+      "url": "/shared/what-is-velocity-C-teacher/page/16/step/4",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/16",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -4596,7 +5724,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               1
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/4"
         },
         {
           "criterion": {
@@ -4605,7 +5733,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               2
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/4"
         },
         {
           "criterion": {
@@ -4614,7 +5742,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               3
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/4"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/4"
         },
         {
           "criterion": {
@@ -4623,10 +5751,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
               4
             ]
           },
-          "step": "/shared/what-is-velocity-B/page/16/step/5"
+          "step": "/shared/what-is-velocity-C-teacher/page/16/step/5"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity-B/page/16/step/5",
+      "defaultBranch": "/shared/what-is-velocity-C-teacher/page/16/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -4634,8 +5762,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity-B/page/16/step/5",
-      "activityPage": "/shared/what-is-velocity-B/page/16",
+      "url": "/shared/what-is-velocity-C-teacher/page/16/step/5",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/16",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -4732,8 +5860,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/17/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/17",
+      "url": "/shared/what-is-velocity-C-teacher/page/17/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/17",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -4777,8 +5905,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/18/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/18",
+      "url": "/shared/what-is-velocity-C-teacher/page/18/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/18",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -4822,8 +5950,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity-B/page/20/step/1",
-      "activityPage": "/shared/what-is-velocity-B/page/20",
+      "url": "/shared/what-is-velocity-C-teacher/page/20/step/1",
+      "activityPage": "/shared/what-is-velocity-C-teacher/page/20",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -4865,7 +5993,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
   ],
   "axes": [
     {
-      "url": "/shared/what-is-velocity-B/axes/10s",
+      "url": "/shared/what-is-velocity-C-teacher/axes/10s",
       "units": "/builtins/units/seconds",
       "min": 0,
       "max": 10,
@@ -4873,7 +6001,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "label": "Time"
     },
     {
-      "url": "/shared/what-is-velocity-B/axes/15s",
+      "url": "/shared/what-is-velocity-C-teacher/axes/15s",
       "units": "/builtins/units/seconds",
       "min": 0,
       "max": 15,
@@ -4881,7 +6009,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "label": "Time"
     },
     {
-      "url": "/shared/what-is-velocity-B/axes/30s",
+      "url": "/shared/what-is-velocity-C-teacher/axes/30s",
       "units": "/builtins/units/seconds",
       "min": 0,
       "max": 30,
@@ -4889,7 +6017,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "label": "Time"
     },
     {
-      "url": "/shared/what-is-velocity-B/axes/4.5m",
+      "url": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "units": "/builtins/units/meters",
       "min": 0,
       "max": 4.5,
@@ -4898,7 +6026,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
     },
 
     {
-      "url": "/shared/what-is-velocity-B/axes/5m",
+      "url": "/shared/what-is-velocity-C-teacher/axes/5m",
       "units": "/builtins/units/meters",
       "min": 0,
       "max": 5,
@@ -4906,7 +6034,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "label": "Position"
     },
     {
-      "url": "/shared/what-is-velocity-B/axes/15m",
+      "url": "/shared/what-is-velocity-C-teacher/axes/15m",
       "units": "/builtins/units/meters",
       "min": 0,
       "max": 15,
@@ -4916,13 +6044,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
   ],
   "graphs": [
     {
-      "url": "/shared/what-is-velocity-B/graph/freehand-walking-normal",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/freehand-walking-normal",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "freehand-walking-normal",
       "description": "freehand prediciton of normal walking velocity",
       "title": "Predicted Data (Normal)",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/4.5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4931,13 +6059,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/prediction-walking-normal",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/prediction-walking-normal",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "prediction-walking-normal",
       "description": "prediciton of normal walking velocity",
       "title": "Predicted Data (Normal)",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/4.5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4949,13 +6077,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/freehand-walking-slow",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/freehand-walking-slow",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "freehand-walking-slow",
       "description": "freehand prediciton of slow walking velocity",
       "title": "Predicted Data (Slow)",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/4.5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4964,13 +6092,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/prediction-walking-slow",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/prediction-walking-slow",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "prediction-walking-slow",
       "description": "prediciton of slow walking velocity",
       "title": "Predicted Data (Slow)",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/4.5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4982,13 +6110,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/sensor-normal-walking",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/sensor-normal-walking",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "sensor-normal-walking",
       "description": "using sensor to measure normal walking pace",
       "title": "Actual Data (Normal)",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/4.5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4997,13 +6125,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/sensor-result-normal-walking",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/sensor-result-normal-walking",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "sensor-result-normal-walking",
       "description": "sensor result from normal walking",
       "title": "Actual Data (Normal)",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/4.5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "initialDatasets": [
         "sensor-normal"
       ],
@@ -5012,13 +6140,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/sensor-slow-walking",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/sensor-slow-walking",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "sensor-slow-walking",
       "description": "using sensor to measure slow walking pace",
       "title": "Actual Data (Slow)",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/4.5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -5027,13 +6155,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/sensor-result-slow-walking",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/sensor-result-slow-walking",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "sensor-result-slow-walking",
       "description": "sensor result from slow walking",
       "title": "Actual Data (Slow)",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/4.5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/4.5m",
       "initialDatasets": [
         "sensor-slow"
       ],
@@ -5042,13 +6170,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/slope-graph",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/slope-graph",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "slope-graph",
       "description": "graph for calculating slope",
       "title": "Position vs. Time",
-      "xAxis": "/shared/what-is-velocity-B/axes/10s",
-      "yAxis": "/shared/what-is-velocity-B/axes/15m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/10s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/15m",
       "initialDatasets": [
         "slope-data"
       ],
@@ -5057,13 +6185,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       ]
     },
     {
-      "url": "/shared/what-is-velocity-B/graph/slope-graph-analyze",
-      "activity": "/shared/what-is-velocity-B",
+      "url": "/shared/what-is-velocity-C-teacher/graph/slope-graph-analyze",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "name": "slope-graph-analyze",
       "description": "graph for analyzing slope",
       "title": "Position vs. Time",
-      "xAxis": "/shared/what-is-velocity-B/axes/15s",
-      "yAxis": "/shared/what-is-velocity-B/axes/5m",
+      "xAxis": "/shared/what-is-velocity-C-teacher/axes/15s",
+      "yAxis": "/shared/what-is-velocity-C-teacher/axes/5m",
       "initialDatasets": [
 
       ],
@@ -5143,9 +6271,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
   ],
   "datasets": [
     {
-      "url": "/shared/what-is-velocity-B/dataset/slope-data",
+      "url": "/shared/what-is-velocity-C-teacher/dataset/slope-data",
       "name": "slope-data",
-      "activity": "/shared/what-is-velocity-B",
+      "activity": "/shared/what-is-velocity-C-teacher",
       "xUnits": "/builtins/units/seconds",
       "xLabel": "Time",
       "xShortLabel": "Time",
@@ -5174,67 +6302,67 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "x": 0,
       "y": 0,
       "guid": 1,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 1,
       "y": 2,
       "guid": 2,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 2,
       "y": 4,
       "guid": 3,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 3,
       "y": 5,
       "guid": 4,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 4,
       "y": 6,
       "guid": 5,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 5,
       "y": 8,
       "guid": 6,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 6,
       "y": 8,
       "guid": 7,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 7,
       "y": 10,
       "guid": 8,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 8,
       "y": 11,
       "guid": 9,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 9,
       "y": 12,
       "guid": 10,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 10,
       "y": 15,
       "guid": 11,
-      "dataset": "/shared/what-is-velocity-B/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity-C-teacher/dataset/slope-data"
     },
     {
       "x": 7,
@@ -5262,9 +6390,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "type": "FreehandSketch",
       "records": [
         {
-          "url": "/shared/what-is-velocity-B/annotation/slope-data-analyze-line-A",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/slope-data-analyze-line-A",
           "name": "slope-data-analyze-line-A",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "points": [
             {
               "x": 0,
@@ -5279,9 +6407,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "strokeColor": "#2f7f0d"
         },
         {
-          "url": "/shared/what-is-velocity-B/annotation/slope-data-analyze-line-B",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/slope-data-analyze-line-B",
           "name": "slope-data-analyze-line-B",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "points": [
             {
               "x": 0,
@@ -5296,9 +6424,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "strokeColor": "#000000"
         },
         {
-          "url": "/shared/what-is-velocity-B/annotation/slope-data-analyze-line-C",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/slope-data-analyze-line-C",
           "name": "slope-data-analyze-line-C",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "points": [
             {
               "x": 0,
@@ -5313,9 +6441,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "strokeColor": "#ff7f0d"
         },
         {
-          "url": "/shared/what-is-velocity-B/annotation/slope-data-analyze-line-D",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/slope-data-analyze-line-D",
           "name": "slope-data-analyze-line-D",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "points": [
             {
               "x": 0,
@@ -5335,9 +6463,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
       "type": "HighlightedPoint",
       "records": [
         {
-          "url": "/shared/what-is-velocity-B/annotation/first-point-A",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/first-point-A",
           "name": "first-point-A",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
@@ -5345,9 +6473,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "pointColor": "#1f77b4"
         },
         {
-          "url": "/shared/what-is-velocity-B/annotation/second-point-A",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/second-point-A",
           "name": "second-point-A",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
@@ -5355,9 +6483,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "pointColor": "#ff7f0e"
         },
         {
-          "url": "/shared/what-is-velocity-B/annotation/first-point-B",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/first-point-B",
           "name": "first-point-B",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
@@ -5365,9 +6493,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "pointColor": "#1f77b4"
         },
         {
-          "url": "/shared/what-is-velocity-B/annotation/second-point-B",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/second-point-B",
           "name": "second-point-B",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
@@ -5375,9 +6503,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "pointColor": "#ff7f0e"
         },
         {
-          "url": "/shared/what-is-velocity-B/annotation/first-point-C",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/first-point-C",
           "name": "first-point-C",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
@@ -5385,9 +6513,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-B"] =
           "pointColor": "#1f77b4"
         },
         {
-          "url": "/shared/what-is-velocity-B/annotation/second-point-C",
+          "url": "/shared/what-is-velocity-C-teacher/annotation/second-point-C",
           "name": "second-point-C",
-          "activity": "/shared/what-is-velocity-B",
+          "activity": "/shared/what-is-velocity-C-teacher",
           "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
