@@ -4942,7 +4942,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       },
       "beforeText": "<p>Which of the lines in the accompanying graph indicates the fastest velocity?</p>",
       "responseTemplate": "/components/response-template/slope-graph-analyze",
-      "afterText": "<p><b>Incorrect</b>, Try again. <p>Hint: The steepest line represents the fastest velocity since more distance is covered in the same amount of time.</p>",
+      "afterText": "<p><b>Incorrect</b>. Try again. <p>Hint: An object that travels a longer distance in a given amount of time has a faster velocity than an object that travels a shorter distance in the same amount of time.</p>",
       "startCommands": [
         {
           "action": "createLabelAnnotation",
@@ -5232,7 +5232,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       },
       "beforeText": "<p>Which of the lines in the accompanying graph indicates the <b>slowest</b> velocity?</p>",
       "responseTemplate": "/components/response-template/slope-graph-analyze",
-      "afterText": "<p><b>Incorrect</b>, Try again.</p><p>Hint: The flattest line represents the slowest velocity since less distance is covered in the same amount of time.</p>",
+      "afterText": "<p><b>Incorrect</b>. Try again. <p>Hint: If two objects travel for the same amount of time, the one that travels farther has the faster velocity.</p>",
       "startCommands": [
         {
           "action": "createLabelAnnotation",
