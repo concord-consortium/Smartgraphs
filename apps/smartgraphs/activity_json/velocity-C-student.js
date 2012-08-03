@@ -128,17 +128,14 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       ],
       "name": "Collect Data (Normal)",
       "firstStep": "/shared/what-is-velocity-C-student/page/6/step/1",
-      "introText": "<h1>Data Collection</h1><p>You will test your prediction by walking at a <b>normal, steady</b> pace along a straight 4-meter path while using a motion sensor.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>normal, steady</b> pace.</p><p><b>Click Clear</b> to try a different normal, steady pace.</p>",
+      "introText": "<h1>Data Collection</h1>",
       "url": "/shared/what-is-velocity-C-student/page/6",
       "activity": "/shared/what-is-velocity-C-student",
       "index": 6
     },
     {
       "steps": [
-        "/shared/what-is-velocity-C-student/page/7/step/1",
-        "/shared/what-is-velocity-C-student/page/7/step/2",
-        "/shared/what-is-velocity-C-student/page/7/step/3",
-        "/shared/what-is-velocity-C-student/page/7/step/4"
+        "/shared/what-is-velocity-C-student/page/7/step/1"
       ],
       "name": "Analyze Data (Normal)",
       "firstStep": "/shared/what-is-velocity-C-student/page/7/step/1",
@@ -153,7 +150,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       ],
       "name": "Collect Data (Slow)",
       "firstStep": "/shared/what-is-velocity-C-student/page/8/step/1",
-      "introText": "<h1>Data Collection</h1><p>Now you will try walking at a <b>slow, steady</b> pace.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>slow, steady</b> pace.</p>",
+      "introText": "<h1>Data Collection</h1><p>Watch at the front of the room as your classmate walks along the 4-meter path at a <b>slow</b>, <b>steady</b> pace.</p>",
       "url": "/shared/what-is-velocity-C-student/page/8",
       "activity": "/shared/what-is-velocity-C-student",
       "index": 8
@@ -164,7 +161,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       ],
       "name": "Actual vs. Prediction (Normal)",
       "firstStep": "/shared/what-is-velocity-C-student/page/9/step/1",
-      "introText": "<h1>Data Collection</h1><p>On the top is your predicted position-time graph for normal, steady motion.  Below is your actual position-time graph for normal, steady motion.</p>",
+      "introText": "<h1>Data Collection</h1><p>On the top is your predicted position-time graph for normal, steady motion. Look at the screen in the front of the room to see the actual position-time graph that your classmate walked.</p>",
       "url": "/shared/what-is-velocity-C-student/page/9",
       "activity": "/shared/what-is-velocity-C-student",
       "index": 9
@@ -175,7 +172,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       ],
       "name": "Actual vs. Prediction (Slow)",
       "firstStep": "/shared/what-is-velocity-C-student/page/10/step/1",
-      "introText": "<h1>Data Collection</h1><p>On the top is your predicted position-time graph for slow, steady motion.  Below is your actual position-time graph for slow, steady motion.</p>",
+      "introText": "<h1>Data Collection</h1><p>On the top is your predicted position-time graph for slow, steady motion. Look at the screen in the front of the room to see the actual position-time graph that your classmate walked.</p>",
       "url": "/shared/what-is-velocity-C-student/page/10",
       "activity": "/shared/what-is-velocity-C-student",
       "index": 10
@@ -186,7 +183,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       ],
       "name": "Normal vs Slow (Actual)",
       "firstStep": "/shared/what-is-velocity-C-student/page/11/step/1",
-      "introText": "<h1>Data Collection</h1><p>Here is the data you just collected for normal and slow, steady motion.</p>",
+      "introText": "<h1>Data Collection</h1><p>Look at the screen in the front of the room to see the data you just collected for normal and slow, steady motion.</p>",
       "url": "/shared/what-is-velocity-C-student/page/11",
       "activity": "/shared/what-is-velocity-C-student",
       "index": 11
@@ -998,29 +995,18 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
     {
       "url": "/shared/what-is-velocity-C-student/page/6/step/1",
       "activityPage": "/shared/what-is-velocity-C-student/page/6",
-      "paneConfig": "split",
+      "paneConfig": "single",
       "panes": {
-        "top": {
-          "type": "graph",
-          "name": "sensor-normal-walking"
-        },
-        "bottom": {
-          "type": "table",
-          "graphName": "sensor-normal-walking",
-          "datasetName": "sensor-normal"
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
-      "beforeText": "",
+      "beforeText": "<p>Watch at the front of the room as your classmate walks along a 4-meter path using a motion sensor.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-        {
-          "action": "startSensorInput",
-          "literalArgs": {
-            "graphName": "sensor-normal-walking",
-            "datasetName": "sensor-normal"
-          }
-        }
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1030,136 +1016,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
 
       ],
       "afterSubmissionCommands": [
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "actual-normal-start-time",
-            "inspectorType": "Smartgraphs.DatasetAttributeInspector",
-            "config": {
-              "datasetName": "sensor-normal",
-              "attributePath": "points.firstObject.x"
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "actual-normal-start-position",
-            "inspectorType": "Smartgraphs.DatasetAttributeInspector",
-            "config": {
-              "datasetName": "sensor-normal",
-              "attributePath": "points.firstObject.y"
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "actual-normal-end-time",
-            "inspectorType": "Smartgraphs.DatasetAttributeInspector",
-            "config": {
-              "datasetName": "sensor-normal",
-              "attributePath": "points.lastObject.x"
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "actual-normal-end-position",
-            "inspectorType": "Smartgraphs.DatasetAttributeInspector",
-            "config": {
-              "datasetName": "sensor-normal",
-              "attributePath": "points.lastObject.y"
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "rounded-actual-normal-start-time",
-            "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": { "round" : [ { "variable": "actual-normal-start-time" }, 2 ] }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "rounded-actual-normal-end-time",
-            "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": { "round" : [ { "variable": "actual-normal-end-time" }, 2 ] }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "rounded-actual-normal-start-position",
-            "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": { "round" : [ { "variable": "actual-normal-start-position" }, 2 ] }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "rounded-actual-normal-end-position",
-            "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": { "round" : [ { "variable": "actual-normal-end-position" }, 2 ] }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "actual-normal-change-time",
-            "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": {
-              "round": [
-                {
-                  "difference": [
-                    { "variable": "rounded-actual-normal-end-time" },
-                    { "variable": "rounded-actual-normal-start-time" }
-                  ]
-                },
-                2
-              ]
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "actual-normal-change-position",
-            "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": {
-              "round" : [
-                {
-                  "difference": [
-                    { "variable": "rounded-actual-normal-end-position" },
-                    { "variable": "rounded-actual-normal-start-position" }
-                  ]
-                },
-                2
-              ]
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "actual-normal-velocity",
-            "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": {
-              "round" : [
-                {
-                  "quotient": [
-                    { "variable": "actual-normal-change-position" },
-                    { "variable": "actual-normal-change-time" }
-                  ]
-                },
-                1
-              ]
-            }
-          }
-        }
+
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -1175,188 +1032,24 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
     {
       "url": "/shared/what-is-velocity-C-student/page/7/step/1",
       "activityPage": "/shared/what-is-velocity-C-student/page/7",
-      "paneConfig": "split",
+      "paneConfig": "single",
       "panes": {
-        "top": {
-          "type": "graph",
-          "name": "sensor-result-normal-walking"
-        },
-        "bottom": {
-          "type": "table",
-          "graphName": "sensor-result-normal-walking",
-          "datasetName": "sensor-normal"
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
-      "beforeText": "<p>At your normal pace you walked <b>%@</b> meters, starting at <b>%@</b> meters and ending at <b>%@</b> meters.</p><p>How many seconds did it take for you to walk that distance?</p>",
-      "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
-      "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-change-position" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-start-position" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-end-position" }
-        }
-       ],
-      "startCommands": [
-
-      ],
-      "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
-      "submissibilityInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "submissibilityCriterion": {
-        "isNumeric": { "strip": "value" }
-      },
-      "triggeredCommands": [
-
-      ],
-      "afterSubmissionCommands": [
-
-      ],
-      "responseInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "responseBranches": [
-        {
-          "criterion": {
-            "equals": [ "value", { "variable" : "actual-normal-change-time" } ]
-          },
-          "step": "/shared/what-is-velocity-C-student/page/7/step/4"
-        }
-      ],
-      "defaultBranch": "/shared/what-is-velocity-C-student/page/7/step/2",
-      "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
-    },
-    {
-      "url": "/shared/what-is-velocity-C-student/page/7/step/2",
-      "activityPage": "/shared/what-is-velocity-C-student/page/7",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "name": "sensor-result-normal-walking"
-        },
-        "bottom": {
-          "type": "table",
-          "graphName": "sensor-result-normal-walking",
-          "datasetName": "sensor-normal"
-        }
-      },
-      "beforeText": "<p>Incorrect.</p><p>Hint: You started walking at <b>%@</b> seconds and ended at <b>%@</b> seconds.</p><p>%@ - %@ = ? <p>",
-      "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
-      "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-start-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-end-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-end-time" }
-        },                
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-start-time" }
-        }
-      ],
-      "startCommands": [
-
-      ],
-      "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
-      "submissibilityInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "submissibilityCriterion": {
-        "isNumeric": { "strip": "value" }
-      },
-      "triggeredCommands": [
-
-      ],
-      "afterSubmissionCommands": [
-
-      ],
-      "responseInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "responseBranches": [
-        {
-          "criterion": { "equals": [ "value", { "variable" : "actual-normal-change-time" } ] },
-          "step": "/shared/what-is-velocity-C-student/page/7/step/4"
-        }
-      ],
-      "defaultBranch": "/shared/what-is-velocity-C-student/page/7/step/3",
-      "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
-    },
-    {
-      "url": "/shared/what-is-velocity-C-student/page/7/step/3",
-      "activityPage": "/shared/what-is-velocity-C-student/page/7",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "name": "sensor-result-normal-walking"
-        },
-        "bottom": {
-          "type": "table",
-          "graphName": "sensor-result-normal-walking",
-          "datasetName": "sensor-normal"
-        }
-      },
-      "beforeText": "<p>Incorrect.</p><p>You started walking at <b>%@</b> seconds and ended at <b>%@</b> seconds, so you were walking for <b>%@</b> seconds since <b>%@</b> - <b>%@</b> = <b>%@</b>. </p>",
-      "responseTemplate": "",
+      "beforeText": "<p>Look at the graph created in the front of the room. Work with your class to find the rate at which your classmate walked.</p>",
+      "responseTemplate": null,
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-start-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-end-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-change-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-end-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-start-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-change-time" }
-        }
        ],
       "startCommands": [
 
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
+      "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
@@ -1366,77 +1059,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
 
       ],
       "responseInspector": null,
-      "responseBranches": [
-      ],
-      "defaultBranch": "/shared/what-is-velocity-C-student/page/7/step/4",
-      "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
-    },
-    {
-      "url": "/shared/what-is-velocity-C-student/page/7/step/4",
-      "activityPage": "/shared/what-is-velocity-C-student/page/7",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "name": "sensor-result-normal-walking"
-        },
-        "bottom": {
-          "type": "table",
-          "graphName": "sensor-result-normal-walking",
-          "datasetName": "sensor-normal"
-        }
-      },
-      "beforeText": "<p>If it took you <b>%@</b> seconds to walk <b>%@</b> meters, then you were walking at a rate of <b>%@</b> meters per second.</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>%@ m<hr/>%@ s</td><td style='border-width:0px'>=</td><td style='border-width:0px'>%@ m/s</td></tr></table></blockquote>",
-      "responseTemplate": "",
-      "afterText": "",
-      "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-change-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-change-position" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-velocity" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-change-position" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-change-time" }
-        },
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "actual-normal-velocity" }
-        }
-      ],
-      "startCommands": [
-
-      ],
-      "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
-      "submissibilityInspector": null,
-      "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
-      "afterSubmissionCommands": [
-
-      ],
-      "responseInspector": null,
-      "responseBranches": [
-
-      ],
-      "defaultBranch": null,
+      "responseBranches": [],
+      "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
@@ -1446,32 +1070,21 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
     {
       "url": "/shared/what-is-velocity-C-student/page/8/step/1",
       "activityPage": "/shared/what-is-velocity-C-student/page/8",
-      "paneConfig": "split",
+      "paneConfig": "single",
       "panes": {
-        "top": {
-          "type": "graph",
-          "name": "sensor-slow-walking"
-        },
-        "bottom": {
-          "type": "table",
-          "graphName": "sensor-slow-walking",
-          "datasetName": "sensor-slow"
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-        {
-          "action": "startSensorInput",
-          "literalArgs": {
-            "graphName": "sensor-slow-walking",
-            "datasetName": "sensor-slow"
-          }
-        }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
+      "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
@@ -1500,12 +1113,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
           "type": "graph",
           "name": "prediction-walking-normal"
         },
-        "bottom": {
-          "type": "graph",
-          "name": "sensor-result-normal-walking"
-        }
+        "bottom": {}
       },
-      "beforeText": "<p>How does your collected data differ from your predicted data?</p>",
+      "beforeText": "<p>Does your prediction graph of slow, steady motion match the actual data? Explain.</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -1548,12 +1158,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
           "type": "graph",
           "name": "prediction-walking-slow"
         },
-        "bottom": {
-          "type": "graph",
-          "name": "sensor-result-slow-walking"
-        }
+        "bottom": {},
       },
-      "beforeText": "<p>Did your prediction graph of slow, steady motion match the actual data? Explain.</p>",
+      "beforeText": "<p>Does your prediction graph of slow, steady motion match the actual data? Explain.</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -1590,16 +1197,13 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
     {
       "url": "/shared/what-is-velocity-C-student/page/11/step/1",
       "activityPage": "/shared/what-is-velocity-C-student/page/11",
-      "paneConfig": "split",
+      "paneConfig": "single",
       "panes": {
-        "top": {
-          "type": "graph",
-          "name": "sensor-result-normal-walking"
-        },
-        "bottom": {
-          "type": "graph",
-          "name": "sensor-result-slow-walking"
-        }
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
+        }        
       },
       "beforeText": "<p>How does normal, steady motion differ from slow, steady motion on a position-time graph?</p>",
       "responseTemplate": "/components/response-template/open",
@@ -5866,7 +5470,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/`_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
