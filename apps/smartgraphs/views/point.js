@@ -41,7 +41,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
 
   isEnabled: YES,
   isHovered: NO,
-
+  isMouseDown: false,
   // required by CollectionFastPath
   layerIsCacheable: YES,
   isPoolable: YES,
@@ -72,19 +72,26 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   mouseEntered: function () {
     this.set('isHovered', YES);
     var graphController = this.get('controller');
-    graphController.dataPointEntered(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
+    var point = Smartgraphs.Point.create({x:  this.getPath('content.x'), y:  this.getPath('content.y')});
+    graphController.set("toolTipPoint", point);
+    graphController.set("toolTipVisibilityOverrideOnPointHover", true);
   },
 
   mouseExited: function () {
     this.set('isHovered', NO);
     var graphController = this.get('controller');
-    graphController.dataPointExited(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
+    var isMouseDown = this.get("isMouseDown");
+    if (!isMouseDown) {
+      graphController.set("toolTipPoint", null);
+      graphController.set("toolTipVisibilityOverrideOnPointHover", false);
+    }
   },
 
   mouseDown: function (evt) { return this._mouseDownOrTouchStart(evt); },
   touchStart: function (evt) { return this._mouseDownOrTouchStart(evt); },
 
   _mouseDownOrTouchStart: function (evt) {
+    this.set("isMouseDown", true);
     this.get('controller').dataPointSelected(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
       // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
       // also handle it
@@ -104,6 +111,12 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
     var point = graphView.pointForCoordinates(coords.x, coords.y);
     this.get('controller').dataPointDragged(this.get('dataRepresentation'), point.x, point.y);
+    var dragX = this.get('datadef').get('dragValueX');
+    var dragY = this.get('datadef').get('dragValueY');
+    var pointDragged = Smartgraphs.Point.create({x: dragX, y: dragY});
+    var graphController = this.get('controller');
+    graphController.set("toolTipPoint", pointDragged);
+    graphController.set("toolTipVisibilityOverrideOnPointHover", true);
     return YES;
   },
 
@@ -117,8 +130,18 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     var point = graphView.pointForCoordinates(coords.x, coords.y);
     var graphController = this.get('controller');
     var dataRepresentation = this.get('dataRepresentation');
+    var datadef = this.get('datadef');
+    var x = datadef.get('dragValueX');
+    var y = datadef.get('dragValueY');
+    this.set("isMouseDown", false);
+    var isMouseUpInGraph = graphView.graphCanvasView._checkInputAreaScreenBounds(evt.pageX, evt.pageY);
     graphController.dataPointUp(dataRepresentation, point.x, point.y);
-    graphController.dataScreenPointUp(dataRepresentation, evt.pageX, evt.pageY);
+    var coordsContent = graphView.coordinatesForPoint(x, y);
+    var r = this.get('strokeWidth'); // because we allow to start point dragging within point's strokewidth 
+    if ((r < Math.sqrt(((coords.x - coordsContent.x) * (coords.x - coordsContent.x)) + ((coords.y - coordsContent.y) * (coords.y - coordsContent.y)))) || !isMouseUpInGraph) {
+      graphController.set("toolTipPoint", null);
+      graphController.set("toolTipVisibilityOverrideOnPointHover", false);
+    }
     return YES;
   },
 

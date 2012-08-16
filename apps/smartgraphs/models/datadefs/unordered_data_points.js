@@ -52,6 +52,13 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
     this.set('latestY', y);
   },
 
+  replacePoint: function (index, x, y) {
+    var datadefPoints = this.get('points');
+    datadefPoints.replace(index, 1, [[x, y]]);
+    this.set('latestX', x);
+    this.set('latestY', y);
+  },
+
   clearPoints: function () {
     this.set('points', []);
   }

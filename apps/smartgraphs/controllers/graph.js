@@ -151,19 +151,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   /**
    @property Bool
    
-   Hide tooltip on instances where crosshair goes outside the bounds of the graph.
+   Override tooltip visibility according to state of the tool
    
   */
   
-  hideToolTipCoords : true,
+  toolTipVisibilityOverrideFromToolState: true,
   
   /**
   @property Bool
   
-  Hide tooltip according to overide of tool
+  Override tooltip visibility according to point hover
   
  */
-  toolTipOverrideVisibility: true,
+  toolTipVisibilityOverrideOnPointHover: true,
   /**
   @property Point
   
@@ -228,6 +228,13 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     this.get('datadefList').pushObject(datadef);
   },
+
+  toolTipPointDidChange: function () {
+    var toolTipPoint = this.get('toolTipPoint');
+    if (toolTipPoint !== null) {
+      this.updateToolTip(toolTipPoint, null);
+    }
+  }.observes('toolTipPoint'),
 
   /**
     Removes all datadefs from the list. Sets the datadefList attribute to [] (therefore, also initializes the
@@ -396,7 +403,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('showGraphGrid', null);
     this.set('showCrossHairs', null);
     this.set('showToolTipCoords', null);
-    this.set('hideToolTipCoords', false);
     this.set('graphableDataObjects', []);
     this.set('dataRepresentations', []);
     this.clearAnnotations();
@@ -437,7 +443,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     var iTooltipWidth = (xMax + "," + yMax).length * widthMultiplier;
     var tooltipCoords = this.get("tooltipCoords"); 
     this.set("tooltipCoords", { x: 0, y: 0, top: 0, left: 0, coordOffset: 5, width: iTooltipWidth});
-    this.showToolTip(!config.showToolTipCoords);
 
     dataSpecs.forEach(function (dataSpec) {
       var datadefName,
@@ -540,19 +545,27 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     var yRounded = newPoint.yRounded().toFixed(2);
 
     var tooltipCoords = this.get("tooltipCoords");
-    tooltipCoords = {
-      x: xRounded,
-      y: yRounded,
-      top: coords.y,
-      left: coords.x,
-      coordOffset: tooltipCoords.coordOffset,
-      width: tooltipCoords.width
-    };
+    if (coords === null || coords === undefined) {
+      tooltipCoords = {
+          x: xRounded,
+          y: yRounded,
+          top: tooltipCoords.top,
+          left: tooltipCoords.left,
+          coordOffset: tooltipCoords.coordOffset,
+          width: tooltipCoords.width
+        };
+    }
+    else {
+      tooltipCoords = {
+        x: xRounded,
+        y: yRounded,
+        top: coords.y,
+        left: coords.x,
+        coordOffset: tooltipCoords.coordOffset,
+        width: tooltipCoords.width
+      };
+    }
     this.set("tooltipCoords", tooltipCoords);
-  },
-
-  showToolTip : function (bShow) {
-    this.set("hideToolTipCoords", !bShow);
   },
 
   // Events
@@ -621,21 +634,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     return !!this.sendAction('mouseMoveAtPoint', this, {x: x, y: y});
   },
 
-  dataPointEntered: function (dataRepresentation, x, y) {
-    
-    if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
-      Smartgraphs.statechart.sendAction('dataPointEntered', this, { dataRepresentation: dataRepresentation, x: x, y: y });
-    }
-    this.sendAction('dataPointEntered', this, { dataRepresentation: dataRepresentation, x: x, y: y });
-  },
-
-  dataPointExited: function (dataRepresentation, x, y) {
-    if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
-      Smartgraphs.statechart.sendAction('dataPointExited', this, { dataRepresentation: dataRepresentation, x: x, y: y });
-    }
-    this.sendAction('dataPointExited', this, { dataRepresentation: dataRepresentation, x: x, y: y });
-  },
-
   dataPointSelected: function (dataRepresentation, x, y) {
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
@@ -657,20 +655,11 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
   },
 
-//This event occurs with logical bounds in args as an argument.
   dataPointUp: function (dataRepresentation, x, y) {
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
     }
     this.sendAction('dataPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
-  },
-
-  //This event occurs with screen bounds in args as an argument.
-  dataScreenPointUp: function (dataRepresentation, x, y) {
-    if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
-      Smartgraphs.statechart.sendAction('dataScreenPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
-    }
-    this.sendAction('dataScreenPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
   }
 
 });

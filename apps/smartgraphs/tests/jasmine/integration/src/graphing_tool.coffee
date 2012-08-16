@@ -43,6 +43,8 @@ describe "Smartgraphs.graphingTool with 'singleLine' shape option", ->
       spyOn(graphingTool, "getDatadef").andReturn rep
       spyOn(graphingTool, "hideGraphTitle")
       spyOn(graphingTool, "updateGraphLogicalBounds")
+      spyOn(graphingTool, "showToolTip")
+      spyOn(graphingTool, "isPointOverlap").andReturn false
       controller.showCrossHairs = true
       controller.graphingToolStartTool
         annotationName: "freehand-sketch-1"
@@ -87,8 +89,6 @@ describe "Smartgraphs.graphingTool with 'singleLine' shape option", ->
 
     describe "when the controller's inputAreaMouseDown method is called twice with (0, 1) and (2, 3)", ->
       beforeEach ->
-        spyOn(graphingTool, "showToolTip")
-        spyOn(graphingTool, "setToolTipPoint")
         controller.inputAreaMouseDown 0, 1
         controller.inputAreaMouseDown 2, 3
 
@@ -106,11 +106,9 @@ describe "Smartgraphs.graphingTool with 'singleLine' shape option", ->
 
       describe "when point (0, 1) is dragged to (1, 2)", ->
         beforeEach ->
-          spyOn(graphingTool, "checkInputAreaScreenBounds").andReturn(true)
           controller.dataPointSelected rep, 0, 1
-          controller.dataPointDown rep, 0, 1
           controller.dataPointDragged rep, 1, 2
-          controller.dataScreenPointUp rep, 1, 2
+          controller.dataPointUp rep, 1, 2
 
         describe "the sketch", ->
           it "line should be drawn with points [[0, 1], [9, 10]]", ->

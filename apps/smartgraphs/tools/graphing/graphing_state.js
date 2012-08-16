@@ -92,8 +92,7 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
         if (shape === 'singleLine') {
           this.gotoState(this.getPath('parentState.SINGLE_LINE'));
         }
-        else
-        {
+        else {
           throw SC.Error.desc("Graphing tool was started with unknown 'shape' argument '%@'".fmt(shape));
         }
       }
@@ -111,8 +110,8 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
       START: SC.State.design({
 
         pointDraggedInfo: {
-          datadefPoints: null,
-          annotationPoints: null,
+          datadef: null,
+          annotation: null,
           initialPoint: null
         },
 
@@ -121,6 +120,28 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
 
         enterState: function () {
           this.get('owner').disableAllControls();
+          Smartgraphs.graphingTool.showToolTip(true);
+        },
+
+        mouseMoveAtPoint: function (context, args) {
+          var graphingTool = Smartgraphs.graphingTool;
+          var radius = graphingTool.get('pointRadius');
+          if (radius === null) {
+            graphingTool.setPointRadius();
+          }
+          if (graphingTool.isPointOverlap(args)) {
+            graphingTool.showToolTip(false);
+          }
+          else {
+            var datadef = this.getPath('toolRoot.datadef');
+            var datadefPoints = datadef.get("points");
+            if (datadefPoints.length < 2) {
+              graphingTool.showToolTip(true);
+            }
+            else {
+              graphingTool.showToolTip(false);
+            }
+          }
         },
 
         mouseDownAtPoint: function (context, args) {
@@ -128,8 +149,8 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
           var datadef = this.getPath('toolRoot.datadef');
           var datadefPoints = datadef.get("points");
           if (datadefPoints.length < 2) {
-            graphingTool.plotPoint(Smartgraphs.Point.create({ x: args.x, y: args.y }));
-            if (datadefPoints.length === 2) {
+            graphingTool.plotPoint({ x: args.x, y: args.y });
+            if (datadefPoints.length >= 2) {
               graphingTool.drawLineThroughPoints(datadefPoints[0], datadefPoints[1], this);
               graphingTool.graphingFinished(this);
               graphingTool.showToolTip(false);
@@ -139,114 +160,59 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
 
         dataPointSelected: function (context, args) {
           var graphingTool = Smartgraphs.graphingTool;
-          var datadefPoints = this.getPath('toolRoot.datadef').get('points');
-          var annotationPoints = this.getPath('toolRoot.annotation').get('points');
+          var datadef = this.getPath('toolRoot.datadef');
+          var datadefPoints = datadef.get('points');
+          var annotation = this.getPath('toolRoot.annotation');
+          var annotationPoints = annotation.get('points');
           for (var i = 0 ; i < datadefPoints.length; i++) {
             if ((args.x === datadefPoints[i][0]) && (args.y === datadefPoints[i][1])) {
               graphingTool.set('pointMovedNumber', i);
               break;
             }
           }
-          graphingTool.showToolTip(true);
-          this.pointDraggedInfo.datadefPoints = datadefPoints;
-          this.pointDraggedInfo.annotationPoints = annotationPoints;
+          datadef.set('dragValueX', args.x);
+          datadef.set('dragValueY', args.y);
+          this.pointDraggedInfo.datadef = datadef;
+          this.pointDraggedInfo.annotation = annotation;
           this.pointDraggedInfo.initialPoint = Smartgraphs.Point.create({x: args.x, y: args.y});
           return;
         },
 
-        dataPointEntered: function (context, args) {
-          var point = Smartgraphs.Point.create({x: args.x, y: args.y});
-          var graphingTool = Smartgraphs.graphingTool;
-          graphingTool.setToolTipPoint(point);
-          graphingTool.showToolTip(true);
-        },
-
-        dataPointExited: function (context, args) {
-          var graphingTool = Smartgraphs.graphingTool;
-          graphingTool.setToolTipPoint(null);
-          var datadefPoints = this.pointDraggedInfo.datadefPoints;
-          if (datadefPoints !== null && datadefPoints.length >= 2) {
-            graphingTool.showToolTip(false);
-          }
-        },
-
-        isPointInDatadef: function (xCur, yCur) {
-          var graphingTool = Smartgraphs.graphingTool;
-          var info = this.pointDraggedInfo;
-          var pointMovedNumber = graphingTool.get('pointMovedNumber');
-          for (var i = 0 ; i < info.datadefPoints.length; i++) {
-            if (i === pointMovedNumber) {
-              continue;
-            }
-            var point = info.datadefPoints[i];
-            if (point[0] === xCur && point[1] === yCur) {
-              return true;
-            }
-            return false;
-          }
-        },
-
         dataPointDragged: function (context, args) {
           var graphingTool = Smartgraphs.graphingTool;
-          graphingTool.setToolTipPoint(null);
-          if (this.isPointInDatadef(args.x, args.y)) {
+          if (graphingTool.isPointOverlap(args)) {
             graphingTool.showToolTip(false);
-          }
-          else {
-            graphingTool.showToolTip(true);
+            return;
           }
           var info = this.pointDraggedInfo;
+          var datadef = info.datadef;//this.getPath('toolRoot.datadef');
+          var datadefPoints = datadef.get('points');
+          var annotation = info.annotation;//this.getPath('toolRoot.annotation');
+          var annotationPoints = annotation.get('points');
           var pointMovedNumber = graphingTool.get('pointMovedNumber');
-          info.datadefPoints.replace(pointMovedNumber, 1, [[args.x, args.y]]);
-          if (info.datadefPoints.length >= 2) {
-            var pointLogicalArray = graphingTool.getLineEndPointsArray(info.datadefPoints[0], info.datadefPoints[1]);
-            info.annotationPoints.replace(0, 2, pointLogicalArray);
+          datadef.replacePoint(pointMovedNumber, args.x, args.y);
+          datadef.set('dragValueX', args.x);
+          datadef.set('dragValueY', args.y);
+          if (datadefPoints.length >= 2) {
+            var pointLogicalArray = graphingTool.getLineEndPointsArray(datadefPoints[0], datadefPoints[1]);
+            annotationPoints.replace(0, 2, pointLogicalArray);
           }
           return;
-        },
-
-        rollbackPointDragged: function () {
-          var graphingTool = Smartgraphs.graphingTool;
-          var info = this.pointDraggedInfo;
-          var pointMovedNumber = graphingTool.get('pointMovedNumber');
-          info.datadefPoints.replace(pointMovedNumber, 1, [[info.initialPoint.x, info.initialPoint.y]]);
-          if (info.datadefPoints.length >= 2) {
-            var pointLogicalArray = graphingTool.getLineEndPointsArray(info.datadefPoints[0], info.datadefPoints[1]);
-            info.annotationPoints.replace(0, 2, pointLogicalArray);
-          }
-        },
-
-        dataScreenPointUp: function (context, args) {
-          var graphingTool = Smartgraphs.graphingTool;
-          if (!graphingTool.checkInputAreaScreenBounds(args.x, args.y)) {
-            graphingTool.setToolTipPoint(null);
-            var datadefPoints = this.pointDraggedInfo.datadefPoints;
-            if (datadefPoints !== null && datadefPoints.length >= 2) {
-              graphingTool.showToolTip(false);
-            }
-          }
         },
 
         dataPointUp: function (context, args) {
           var graphingTool = Smartgraphs.graphingTool;
           var info = this.pointDraggedInfo;
-          var bPointInDatadef = this.isPointInDatadef(args.x, args.y);
+          var datadefPoints = info.datadef.get('points');
           var pointMovedNumber = graphingTool.get('pointMovedNumber');
-          var datadefPoint = info.datadefPoints[pointMovedNumber];
+          var datadefPoint = datadefPoints[pointMovedNumber];
           var selPoint = Smartgraphs.Point.create({x: datadefPoint[0], y: datadefPoint[1]});
-          if (!bPointInDatadef) {
-            var initialPoint = info.initialPoint;
-            if (initialPoint.xFixed() !== selPoint.xFixed() || initialPoint.yFixed() !== selPoint.yFixed()) {
-              graphingTool.set('pointMoved', true);
-              graphingTool.setToolTipPoint(null);
-              graphingTool.showToolTip(false);
-            }
-            return;
+          var initialPoint = info.initialPoint;
+          if (initialPoint.xFixed() !== selPoint.xFixed() || initialPoint.yFixed() !== selPoint.yFixed()) {
+            graphingTool.set('pointMoved', true);
           }
-          else {
-            graphingTool.setToolTipPoint(selPoint);
-          }
-          this.rollbackPointDragged();
+          info.datadef.set("dragValueX", null);
+          info.datadef.set("dragValueY", null);
           return;
         }
       })

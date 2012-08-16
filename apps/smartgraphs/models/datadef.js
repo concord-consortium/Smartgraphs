@@ -137,6 +137,20 @@ Smartgraphs.Datadef = SC.Record.extend(
   latestY: null,
 
   /**
+    X-value of the data point which is being dragged  . Transient.
+
+    @property {Number|null}
+  */
+  dragValueX: null,
+  
+  /**
+    Y-value of the data point which is being dragged . Transient.
+
+  @property {Number|null}
+*/
+  dragValueY: null,
+
+  /**
     Return a new DataRepresentation tied to an appropriate SampleSet for objects of this Datadef class. Options will
     eventually allow you to customize the DataRepresentation and reuse SampleSets.
 

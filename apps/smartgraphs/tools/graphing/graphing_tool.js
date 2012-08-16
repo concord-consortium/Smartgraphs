@@ -17,9 +17,9 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
   annotationName: null,
   datadefName: null,
   requestedCursorStyle: 'default',
-  showTooltip: true,
   graphLogicalBounds: {xmin: 0, xmax: 0, ymin: 0, ymax: 0},
   graphPane: null,
+  pointRadius: null, // this tool-variable stores radius of point and used to check point overlap
 
   setup: function (args) {
     this.set('graphPane', args.pane);
@@ -74,17 +74,12 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
 
   showToolTip: function (bShow) {
     var graphController = this.graphControllerForPane(this.get('graphPane'));
-    graphController.set('toolTipOverrideVisibility', bShow);
+    graphController.set('toolTipVisibilityOverrideFromToolState', bShow);
   },
 
-  setToolTipPoint: function (point) {
-    var graphController = this.graphControllerForPane(this.get('graphPane'));
-    graphController.set('toolTipPoint', point);
-  },
-
-  checkInputAreaScreenBounds: function (x, y) {
+  coordinatesForPoint: function (x, y) {
     var graphView = this.graphViewForPane(this.get('graphPane'));
-    return graphView.graphCanvasView._checkInputAreaScreenBounds(x, y);
+    return graphView.coordinatesForPoint(x, y);
   },
 
   updateGraphLogicalBounds: function () {
@@ -93,18 +88,46 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
   },
 
   plotPoint: function (point) {
+    if (!this.isPointOverlap(point)) {
+      var datadef = this.getDatadef(this.get('datadefName'));
+      datadef.addPoint(point.x, point.y);
+    }
+  },
+
+  isPointOverlap: function (point) {
+    var curPoint = this.coordinatesForPoint(point.x, point.y);
+    var radius = this.getPointRadius();
     var datadef = this.getDatadef(this.get('datadefName'));
     var datadefPoints = datadef.get('points');
-    var i = 0;
-
-    for (i = 0; i < datadefPoints.length; i++) {
-      var datadefPoint = Smartgraphs.Point.create({ x: datadefPoints[i][0], y: datadefPoints[i][1] });
-      if (datadefPoint.xFixed() === point.xFixed() && datadefPoint.yFixed() === point.yFixed()) {
-        return; // Nothing to be done
+    for (var i = 0; i < datadefPoints.length; i++) {
+      var datadefPoint = this.coordinatesForPoint(datadefPoints[i][0], datadefPoints[i][1]);
+      var distance = Math.sqrt(Math.pow(datadefPoint.x - curPoint.x, 2) +  Math.pow(datadefPoint.y - curPoint.y, 2));
+      if (distance < radius + radius) {
+        return true;
       }
     }
+    return false;
+  },
 
-    datadef.addPoint(point.x, point.y);
+  getPointRadius: function () {
+    var radius = this.get('pointRadius');
+    if (radius === null) {
+      this.setPointRadius();
+      radius = this.get('pointRadius');
+    }
+    return radius;
+  },
+
+  setPointRadius: function () {
+    var graphView = this.graphViewForPane(this.graphPane);
+    var childViews = graphView.dataHolder.childViews;
+    for (var i = 0; i < childViews.length; i++) {
+      if (childViews[i].childViews.length > 0) {
+        var radius = childViews[i].childViews[0].get("notHoveredRadius");
+        this.set('pointRadius', radius);
+        return;
+      }
+    }
   },
 
   drawLineThroughPoints: function (point1, point2) {
