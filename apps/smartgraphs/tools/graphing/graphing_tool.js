@@ -99,7 +99,11 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
     var radius = this.getPointRadius();
     var datadef = this.getDatadef(this.get('datadefName'));
     var datadefPoints = datadef.get('points');
+    var pointMovedNumber = this.get('pointMovedNumber');
     for (var i = 0; i < datadefPoints.length; i++) {
+      if (i === pointMovedNumber) {
+        continue;
+      }
       var datadefPoint = this.coordinatesForPoint(datadefPoints[i][0], datadefPoints[i][1]);
       var distance = Math.sqrt(Math.pow(datadefPoint.x - curPoint.x, 2) +  Math.pow(datadefPoint.y - curPoint.y, 2));
       if (distance < radius + radius) {

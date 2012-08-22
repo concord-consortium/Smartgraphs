@@ -59,8 +59,8 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
 
       toolRoot.set('annotation', annotation);
       toolRoot.set('datadef', datadef);
-      Smartgraphs.graphingTool.appendSketch(this, annotation);
-      Smartgraphs.graphingTool.appendRepresentation(this, datadef);
+      graphingTool.appendSketch(this, annotation);
+      graphingTool.appendRepresentation(this, datadef);
     },
 
     exitState: function () {
@@ -185,9 +185,9 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
             return;
           }
           var info = this.pointDraggedInfo;
-          var datadef = info.datadef;//this.getPath('toolRoot.datadef');
+          var datadef = info.datadef;
           var datadefPoints = datadef.get('points');
-          var annotation = info.annotation;//this.getPath('toolRoot.annotation');
+          var annotation = info.annotation;
           var annotationPoints = annotation.get('points');
           var pointMovedNumber = graphingTool.get('pointMovedNumber');
           datadef.replacePoint(pointMovedNumber, args.x, args.y);
@@ -211,6 +211,7 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
           if (initialPoint.xFixed() !== selPoint.xFixed() || initialPoint.yFixed() !== selPoint.yFixed()) {
             graphingTool.set('pointMoved', true);
           }
+          graphingTool.set('pointMovedNumber', null);
           info.datadef.set("dragValueX", null);
           info.datadef.set("dragValueY", null);
           return;
