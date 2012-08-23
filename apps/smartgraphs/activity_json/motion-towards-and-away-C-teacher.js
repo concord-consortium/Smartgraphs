@@ -6,7 +6,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away-C-teacher"] =
 {
   "data_format_version": 5,  
   "activity": {
-    "title": "Motion Towards And Away",
+    "title": "Motion Towards And Away (Teacher version)",
     "url": "/shared/motion-towards-and-away-C-teacher",
     "owner": "shared",
     "pages": [
