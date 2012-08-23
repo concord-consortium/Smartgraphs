@@ -21,7 +21,7 @@ Smartgraphs.mainPage = SC.Page.design({
       childViews: ['title', 'runButton', 'saveButton', 'savingMessage'],
 
       title: SC.LabelView.design({
-        layout: { centerY: 0, height: 24, left: 8, width: 400 },
+        layout: { centerY: 0, height: 24, left: 8, width: 600 },
         controlSize: SC.LARGE_CONTROL_SIZE,
         fontWeight: SC.BOLD_WEIGHT,
         valueBinding:   'Smartgraphs.activityController.title'
