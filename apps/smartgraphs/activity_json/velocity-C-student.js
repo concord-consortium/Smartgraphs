@@ -6,7 +6,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
 {
   "data_format_version": 5,
   "activity": {
-    "title": "How Fast Am I Moving?",
+    "title": "How Fast Am I Moving? (Student version)",
     "url": "/shared/what-is-velocity-C-student",
     "owner": "shared",
     "pages": [
@@ -5470,7 +5470,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/`_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
