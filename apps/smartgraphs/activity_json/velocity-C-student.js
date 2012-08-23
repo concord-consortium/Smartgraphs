@@ -6,7 +6,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
 {
   "data_format_version": 5,
   "activity": {
-    "title": "How Fast Am I Moving?",
+    "title": "How Fast Am I Moving? (Student version)",
     "url": "/shared/what-is-velocity-C-student",
     "owner": "shared",
     "pages": [
