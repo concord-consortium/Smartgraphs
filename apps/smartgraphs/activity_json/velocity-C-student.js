@@ -5470,7 +5470,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/`_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
