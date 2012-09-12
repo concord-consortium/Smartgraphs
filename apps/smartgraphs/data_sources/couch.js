@@ -96,10 +96,15 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
           self.loadRecordsFromArray(store, Smartgraphs[pair[0]], doc[pair[1]]);
         });
 
-        doc.datadefs.forEach( function (datadefRecs) {
+        doc.datadefs.forEach(function (datadefRecs) {
           self.loadRecordsFromArray(store, Smartgraphs[datadefRecs.type], datadefRecs.records);
         });
-        doc.annotations.forEach( function (annotationRecs) {
+        if (doc.datarefs) {
+          doc.datarefs.forEach(function (datarefRecs) {
+            self.loadRecordsFromArray(store, Smartgraphs[datarefRecs.type], datarefRecs.records);
+          });
+        }
+        doc.annotations.forEach(function (annotationRecs) {
           self.loadRecordsFromArray(store, Smartgraphs[annotationRecs.type], annotationRecs.records);
         });
 

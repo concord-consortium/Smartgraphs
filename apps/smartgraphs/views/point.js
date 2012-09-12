@@ -98,6 +98,8 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     var graphView = this.getPath('parentView.graphView');
     var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
     var point = graphView.pointForCoordinates(coords.x, coords.y);
+    this.get('datadef').set('dragValueX', this.getPath('content.x'));
+    this.get('datadef').set('dragValueY', this.getPath('content.y'));
     this.get('controller').dataPointDown(this.get('dataRepresentation'), point.x, point.y);
     return YES;
   },
@@ -134,11 +136,13 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     var x = datadef.get('dragValueX');
     var y = datadef.get('dragValueY');
     this.set("isMouseDown", false);
+    var isHovered = this.get('isHovered');
     var isMouseUpInGraph = graphView.graphCanvasView._checkInputAreaScreenBounds(evt.pageX, evt.pageY);
     graphController.dataPointUp(dataRepresentation, point.x, point.y);
     var coordsContent = graphView.coordinatesForPoint(x, y);
-    var r = this.get('strokeWidth'); // because we allow to start point dragging within point's strokewidth 
-    if ((r < Math.sqrt(((coords.x - coordsContent.x) * (coords.x - coordsContent.x)) + ((coords.y - coordsContent.y) * (coords.y - coordsContent.y)))) || !isMouseUpInGraph) {
+    var radius = this.get('strokeWidth'); // because we allow to start point dragging within point's strokewidth
+    var distance = Math.sqrt(Math.pow(coords.x - coordsContent.x, 2) + Math.pow(coords.y - coordsContent.y, 2));
+    if (radius < distance || !isHovered || !isMouseUpInGraph) {
       graphController.set("toolTipPoint", null);
       graphController.set("toolTipVisibilityOverrideOnPointHover", false);
     }

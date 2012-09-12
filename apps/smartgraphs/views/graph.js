@@ -293,7 +293,24 @@ Smartgraphs.GraphView = SC.View.extend(
     valueBinding: '.parentView*graphController.title',
     classNames: 'pane-label',
     layout: { width: 400, centerX: 0, height: 20, top: 20, zIndex: 1 },
-    textAlign: SC.ALIGN_CENTER
+    textAlign: SC.ALIGN_CENTER,
+
+    mouseDown : function (evt) {
+      this.handleEvent(evt);
+      return NO; // Return NO so won't get mouse events on drag.
+    },
+
+    handleEvent: function (evt) {
+      evt.stopPropagation();
+      // Find the element UNDER us at the location of the mouse event
+      this.$().hide();
+      var el = document.elementFromPoint(evt.clientX, evt.clientY);     // should work in IE!
+      this.$().show();
+      evt.target = el;
+      // NOW let SproutCore think the event happened directly to the element below us. It will handle forwarding
+      // mouseDown, mouseMoved, mouseExited, mouseEntered events to the SC.Views beneath us.
+      SC.Event.handle.call(document, evt);
+    }
   }),
  
   tooltipView: SC.View.extend({

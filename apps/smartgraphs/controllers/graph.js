@@ -107,6 +107,14 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
  
   */
   datadefList: null,
+  
+  /**
+    @property {Smartgraphs.Dataref[]}
+
+    A list of all the Datadefs added to this graph.
+ 
+  */
+  datarefList: null,
 
   /**
     @property {Smartgraphs.Unit|null}
@@ -228,6 +236,20 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     this.get('datadefList').pushObject(datadef);
   },
+  
+  /**
+    Add a dataref to this controller.
+
+    @param {Smartgraphs.Dataref} dataref
+      The dataref to be added.
+  */
+  addDataref: function (dataref) {
+    if (this.findDatarefByName(dataref.get('name'))) {
+      return; // Nothing to be done
+    }
+    this.get('datarefList').pushObject(dataref);
+  },
+
 
   toolTipPointDidChange: function () {
     var toolTipPoint = this.get('toolTipPoint');
@@ -251,6 +273,20 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
 
   /**
+    Removes all datarefs from the list. Sets the datarefList attribute to [] (therefore, also initializes the
+    list if the value had previously been null).
+  */
+  clearDatarefs: function () {
+    var self = this;
+    var datarefNames = (this.get('datarefList') || []).getEach('name');
+
+    datarefNames.forEach(function (datarefName) {
+      self.removeDataref(datarefName);
+    });
+    this.set('datarefList', []);
+  },
+
+  /**
     Remove the datadef from this controller.
 
     @param {Smartgraphs.Datadef|String} datadefOrName
@@ -265,6 +301,20 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
 
   /**
+    Remove the dataref from this controller.
+
+    @param {Smartgraphs.Dataref|String} datarefOrName
+      The dataref, or name of the dataref, to remove.
+  */
+  removeDataref: function (datarefOrName) {
+    var datadef = (SC.typeOf(datarefOrName) === SC.T_STRING) ? this.findDatarefByName(datarefOrName) : datarefOrName;
+
+    if (dataref) {
+      this.get('datarefList').removeObject(dataref);
+    }
+  },
+
+  /**
     Given a valid datadef name, returns the named datadef. Returns null if the datadef
     is not found in this controller.
 
@@ -273,6 +323,18 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   findDatadefByName: function (name) {
     var list = this.get('datadefList');
+    return list ? list.findProperty('name', name) : null;
+  },
+
+  /**
+    Given a valid dataref name, returns the named dataref. Returns null if the dataref
+    is not found in this controller.
+
+    @param {String} name
+      The name under which to search for the dataref.
+  */
+  findDatarefByName: function (name) {
+    var list = this.get('datarefList');
     return list ? list.findProperty('name', name) : null;
   },
 
@@ -390,6 +452,16 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
 
   /**
+    @private
+
+    Stubbable method to return a datadef given its name.
+  */
+  getDataref: function (name) {
+    return Smartgraphs.activityObjectsController.findDataref(name);
+  },
+
+  /**
+
     Clears all graph state (i.e., title, units, data representations, graphable data objects, and annotations).
   */
   clear: function () {
@@ -423,7 +495,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   setupGraph: function (config) {
     var dataSpecs = config.data || [],
-        self      = this;
+        self      = this,
+        datarefNames = config.datarefs || [];
 
     this.clear();
 
@@ -436,8 +509,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
     var xMax = this.getAxis(config.xAxis).get("max");
     var yMax = this.getAxis(config.yAxis).get("max");
+    var xMin = this.getAxis(config.xAxis).get("min");
+    var yMin = this.getAxis(config.yAxis).get("min");
     var widthMultiplier = 15;
-    if (parseInt(this.getAxis(config.yAxis).get("min"), 10) < 0 || parseInt(this.getAxis(config.xAxis).get("min"), 10) < 0) {
+    if (parseInt(yMin, 10) < 0 || parseInt(xMin, 10) < 0) {
       widthMultiplier = 21;
     }
     var iTooltipWidth = (xMax + "," + yMax).length * widthMultiplier;
@@ -465,9 +540,23 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       }
 
       datadef = self.getDatadef(datadefName);
+      if (options['pointType'] === undefined) {
+        options['point-type'] = datadef.get('pointType');
+      }
+      if (options['lineType'] === undefined) {
+        options['line-type'] = datadef.get('lineType');
+      }
       rep = datadef.getNewRepresentation(options);
       self.addDataRepresentation(rep);
     });
+
+    if (datarefNames) {
+      datarefNames.forEach(function (datarefName) {
+        var dataref = self.getDataref(datarefName);
+        dataref.setGraphBounds({xMin: xMin, yMin: yMin, xMax: xMax, yMax: yMax});
+        dataref.initialise();
+      });
+    }
 
     this.addAnnotationsByName(config.annotations);
   },
@@ -568,6 +657,20 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set("tooltipCoords", tooltipCoords);
   },
 
+  /**
+
+    return DataRepresentation which represents the given datadefName.
+  */
+  getDataRepresentation: function (datadefName) {
+    var dataRepresentations = this.get('dataRepresentations');
+    for (var i = dataRepresentations.get('length') - 1; i >= 0; i--) {
+      if (dataRepresentations[i].get('name') === datadefName) {
+        return dataRepresentations[i];
+      }
+    }
+    return null;
+  },
+
   // Events
 
   sendAction: function (action, context, args) {
@@ -619,6 +722,9 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
 
   inputAreaMouseDown: function (x, y) {
+    if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
+      Smartgraphs.statechart.sendAction('mouseDownAtPoint', this, { x: x, y: y });
+    }
     return !!this.sendAction('mouseDownAtPoint', this, {x: x, y: y});
   },
 

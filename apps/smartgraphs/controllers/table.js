@@ -93,14 +93,14 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
 
     To identify the rounding function to display 'x' value of point
   */
-  xRoundingFunc: 'xRounded',
+  xRoundingFunc: 'xFixed',
 
   /**
     @property String
 
     To identify the rounding function to display 'y' value of point
   */
-  yRoundingFunc: 'yRounded',
+  yRoundingFunc: 'yFixed',
 
   /**
     Whether to display the table (or else the numeric view)
@@ -141,6 +141,12 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     }
 
     datadef = Smartgraphs.activityObjectsController.findDatadef(datadefName);
+    if (options['pointType'] === undefined) {
+      options['point-type'] = datadef.get('pointType');
+    }
+    if (options['lineType'] === undefined) {
+      options['line-type'] = datadef.get('lineType');
+    }
     rep = datadef.getNewRepresentation(options);
 
     this.set('datadef', datadef);
@@ -196,10 +202,16 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
         delete this._stackIndicesOfTagsByGuid[guid];
       }
 
+       // Set Point in pointset of dataRepresetation to display the selected point.
+      var rep = this.get('dataRepresentation');
+      if (rep && rep.getPath('datadef.lineType') === "connected" && rep.getPath('datadef.pointType') === "none") {
+        rep.showSinglePoint(tagX, tagY);
+      }
+
       // Find the index, in the table, of the just-tagged point.
       for (i = 0, len = this.get('length'); i < len; i++) {
         point = this.objectAt(i);
-        if (point.get('x') === tagX && point.get('y') == tagY) {
+        if (point.get('x') === tagX && point.get('y') === tagY) {
           stack.pushObject(i);
           stackIndex = stack.get('length') - 1;
           this._stackIndicesOfTagsByGuid[guid] = stackIndex;

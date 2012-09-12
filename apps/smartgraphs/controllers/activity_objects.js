@@ -40,6 +40,12 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   /**
     @private
 
+    All datarefs available to the activity session, indexed by name.
+  */
+  _datarefs: {},
+  /**
+    @private
+
     All variables available to the activity session, indexed by name.
   */
   _variables: {},
@@ -66,6 +72,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
         self = this;
 
     this._datadefs = {};
+    this._datarefs = {};
     this._annotations = {};
     this._variables = {};
     this._tags = {};
@@ -95,12 +102,14 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     activity = Smartgraphs.activityController.get('content');
     if (activity) {
       findObjects(Smartgraphs.Datadef,    'datadef',    this._datadefs);
+      findObjects(Smartgraphs.Dataref,    'dataref',    this._datarefs);
       findObjects(Smartgraphs.Annotation, 'annotation', this._annotations);
       findObjects(Smartgraphs.Variable,   'variable',   this._variables);
       findObjects(Smartgraphs.Tag,        'tag',        this._tags);
     }
 
     this.notifyPropertyChange('datadefNames');
+    this.notifyPropertyChange('datarefNames');
     this.notifyPropertyChange('annotationNames');
     this.notifyPropertyChange('variableNames');
   },
@@ -115,6 +124,18 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   */
   findDatadef: function (name) {
     return this._datadefs[name];
+  },
+
+  /**
+    Returns the dataref with the given name in the current activity session, or undefined if the specified name does
+    not correspond to a dataref in the current activity session.
+
+    @param name The name of the dataref.
+
+    @returns {Smartgraphs.Datadef|undefined}
+  */
+  findDataref: function (name) {
+    return this._datarefs[name];
   },
 
   /**
@@ -200,6 +221,20 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     var names = [];
     for (var name in this._datadefs) {
       if (this._datadefs.hasOwnProperty(name)) names.push(name);
+    }
+    return names;
+  }.property(),
+
+  /**
+    @property {SC.Array} datarefNames
+
+    Observable list of the names of all datarefs defined in the current activity session. (Observers are notified
+    whenever datarefs are added or removed from this list.)
+  */
+  datarefNames: function () {
+    var names = [];
+    for (var name in this._datarefs) {
+      if (this._datarefs.hasOwnProperty(name)) names.push(name);
     }
     return names;
   }.property(),

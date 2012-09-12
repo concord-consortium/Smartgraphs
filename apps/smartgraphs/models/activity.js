@@ -67,6 +67,16 @@ Smartgraphs.Activity = SC.Record.extend(
   }.property(),     // note that find() returns a cached copy of the recordarray (whose contents update live)
 
   /**
+    Datarefs that are part of the activity.
+
+    @property(Smartgraphs.Dataref[])
+  */
+  datarefs: function () {
+    this._datarefsQuery = this._datarefsQuery || SC.Query.local(Smartgraphs.Dataref, 'activity={activity}', { activity: this });
+    return this.get('store').find(this._datarefsQuery);
+  }.property(),     // note that find() returns a cached copy of the recordarray (whose contents update live)
+
+  /**
     Annotations defined as part of this activity.
 
     @property(Smartgraphs.Annotation[])
@@ -141,6 +151,7 @@ Smartgraphs.Activity = SC.Record.extend(
     };
 
     ret.datadefs = serializeSubclasses(Smartgraphs.Datadef);
+    ret.datarefs = serializeSubclasses(Smartgraphs.Dataref);
     ret.annotations = serializeSubclasses(Smartgraphs.Annotation);
 
     return ret;

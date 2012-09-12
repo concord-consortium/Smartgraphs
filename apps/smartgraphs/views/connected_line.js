@@ -60,9 +60,9 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
       point = points.objectAt(i);
       coords = graphView.coordinatesForPoint(point[0], point[1]) || {x: 0, y: 0};
       str.push(i === 0 ? 'M' : 'L');
-      str.push(Math.round(coords.x));
+      str.push(coords.x);
       str.push(' ');
-      str.push(Math.round(coords.y));
+      str.push(coords.y);
     }
 
     pathStr = str.join('') || 'M0 0';         // Raphael won't make path go away in IE if path string = ''

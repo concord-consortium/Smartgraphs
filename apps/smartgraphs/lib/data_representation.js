@@ -24,15 +24,23 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
         line,
         sampleset;
 
+    this.set('pointStyle', options['point-type']);
+    this.set('lineStyle', options['line-type']);
+
     if (options['line-type'] === "connected") {
       line = Smartgraphs.ConnectedLine.create({
         dataRepresentation: this
       });
       this.set('line', line);
       graphableObjects.push(line);
-    }
 
-    if (options['point-type'] !== "none") {
+      pointset = Smartgraphs.Pointset.create({
+        dataRepresentation: this
+      });
+      this.set('pointset', pointset);
+      graphableObjects.push(pointset);
+    }
+    else if (options['point-type'] !== "none") {
       pointset = Smartgraphs.Pointset.create({
         dataRepresentation: this
       });
@@ -88,17 +96,30 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   _pointsDidChange: function () {
     var samplePoints = this.getPath('sampleset.points') || [],    // FIXME I don't know why this.get('points') doesn't work
         pointset     = this.get('pointset'),
+        pointStyle   = this.get('pointStyle'),
         line         = this.get('line');
 
-    if (pointset) {
-      pointset.set('points', samplePoints.map( function (pair) {
-        return Smartgraphs.Point.create( { x: pair[0], y: pair[1] });
+    if (pointset && pointStyle !== "none") {
+      pointset.set('points', samplePoints.map(function (pair) {
+        return Smartgraphs.Point.create({ x: pair[0], y: pair[1] });
       }));
     }
 
     if (line) {
       line.set('points', samplePoints);
     }
-  }
+  },
 
+  // Display single point irrespective of point present in datadef or not.
+  showSinglePoint: function (x, y) {
+    var pointsetPoints = this.getPath('pointset.points');
+    var pointsetPoint = Smartgraphs.Point.create({x: x, y: y});
+    if (pointsetPoints) {
+      pointsetPoints.replace(0, 1, [pointsetPoint]);
+    }
+    else {
+      var pointset = this.get('pointset');
+      pointset.set('points', [pointsetPoint]);
+    }
+  }
 });
