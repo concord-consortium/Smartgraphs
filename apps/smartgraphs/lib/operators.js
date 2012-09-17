@@ -24,6 +24,13 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     }
   }
 
+  function veryClose(a, b, epsillon_digits) {
+    var epsillon;
+    if (epsillon_digits == null) epsillon_digits = 7.0;
+    epsillon = 1.0 / Math.pow(10, epsillon_digits);
+    return Math.abs(a - b) < epsillon;
+  }
+
   def('+', function () {
     var ret = 0;
     for (var i = 0; i < arguments.length; i++) {
@@ -205,7 +212,7 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   def('coordinates=', function (name, x, y) {
     var tag = Smartgraphs.activityObjectsController.findTag(name);
 
-    return tag && tag.get('x') === x && tag.get('y') === y;
+    return tag && veryClose(tag.get('x'),x) && veryClose(tag.get('y'),y);
   }).args(3);
 
   def('coordinatesInRange', function (name, xMin, yMin, xMax, yMax) {
