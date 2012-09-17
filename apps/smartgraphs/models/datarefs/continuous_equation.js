@@ -33,12 +33,15 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
       var graphBounds = this.get('graphBounds');
       var isContinue = true;
       var datarefPoints = this.get('points');
+      var fnInverse = this.getInverseExpressionFunction();
       var x, y, xPrev, yPrev;
+
       for (x = graphBounds.xMin; x <= graphBounds.xMax; x += stepInterval) {
         y = fn(x);
-        if (y <= graphBounds.yMin || y >= graphBounds.yMax) {
-          yPrev = y >= graphBounds.yMax ? graphBounds.yMax : graphBounds.yMin;
-          var fnInverse = this.getInverseExpressionFunction();
+
+        // outside of drawable y?
+        if (y < graphBounds.yMin || y > graphBounds.yMax) {
+          yPrev = y > graphBounds.yMax ? graphBounds.yMax : graphBounds.yMin;    
           xPrev = fnInverse(yPrev);
           if (isContinue) {
             continue;
@@ -46,19 +49,24 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
           break;
         }
         else {
+          // bottom clipping:
           if (isContinue && x !== graphBounds.xMin) {
             datarefPoints.pushObject([xPrev, yPrev]);
           }
           isContinue = false;
         }
+        // add the data point as normal.
         datarefPoints.pushObject([x, y]);
       }
+      
       if (x - stepInterval !== graphBounds.xMax) {
+        // right side clipping:
         if (x > graphBounds.xMax) {
           x = graphBounds.xMax;
           y = fn(x);
           datarefPoints.pushObject([x, y]);
         }
+        // top clipping:
         else {
           datarefPoints.pushObject([xPrev, yPrev]);
         }
