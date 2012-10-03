@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.Point
-// Copyright: ©2011 Concord Consortium
+// Copyright: ©2012 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
@@ -14,16 +14,27 @@ sc_require('lib/mark');
   @extends Smartgraphs.Mark
   @version 0.1
 */
-Smartgraphs.Point = Smartgraphs.Mark.extend(
-/** @scope Smartgraphs.Point.prototype */ {
+(function() {
 
-  x: null,
-  xRounded: function () {
-    return Math.round(this.get('x') * 100) / 100;
-  }.property('x').cacheable(),
+  function format(x) {
+    x = x || 0;
+    x = Math.round(x * 1000) / 1000;
+    var leadingSpace = x >= 0 ? " " : "";
+    return leadingSpace + x;
+  }
 
-  y: null,
-  yRounded: function () {
-    return Math.round(this.get('y') * 100) / 100;
-  }.property('y').cacheable()
-});
+  Smartgraphs.Point = Smartgraphs.Mark.extend(
+    /** @scope Smartgraphs.Point.prototype */ {
+
+    x: null,
+    xFormatted: function () {
+      return format(this.get('x'));
+    }.property('x').cacheable(),
+
+    y: null,
+    yFormatted: function () {
+      return format(this.get('y'));
+    }.property('y').cacheable()
+  });
+
+}());
