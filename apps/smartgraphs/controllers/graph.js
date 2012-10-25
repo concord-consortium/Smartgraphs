@@ -496,8 +496,26 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   setupGraph: function (config) {
     var dataSpecs = config.data || [],
         self      = this,
-        datarefNames = config.datarefs || [];
+        datarefNames = config.datarefs || [],
+        activeDatadefs = config.activeDatadefs || [];
 
+    // datadefs are re-ordered, keeping active datadefs at the end so that they are above inactive datadefs.
+    var activeDatadefLength = activeDatadefs.length;
+    var tempArray = [];
+    if (activeDatadefLength > 0) {
+      for (var i = 0; i < dataSpecs.length; i++) {
+        this.getDatadef(dataSpecs[i]).set('isActive', false);
+        for (var j = 0; j < activeDatadefs.length; j++) {
+          if (dataSpecs[i] === activeDatadefs[j]) {
+            this.getDatadef(dataSpecs[i]).set('isActive', true);
+            dataSpecs.splice(i, 1);
+            i--;
+            break;
+          }
+        }
+      }
+      dataSpecs = dataSpecs.concat(activeDatadefs); 
+    }
     this.clear();
 
     this.set('title', config.title);
@@ -540,10 +558,13 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       }
 
       datadef = self.getDatadef(datadefName);
-      if (options['pointType'] === undefined) {
+      if (options === undefined) {
+        options = [];
+      }
+      if (options['point-type'] === undefined) {
         options['point-type'] = datadef.get('pointType');
       }
-      if (options['lineType'] === undefined) {
+      if (options['line-type'] === undefined) {
         options['line-type'] = datadef.get('lineType');
       }
       rep = datadef.getNewRepresentation(options);

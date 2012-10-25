@@ -57,19 +57,30 @@
       });
     });
     return describe("when the graphing tool is started with shape: 'SINGLE_LINE'", function() {
-      var rep, sketch, startState;
-      rep = sketch = startState = null;
+      var datadef, rep, sketch, startState;
+      datadef = rep = sketch = startState = null;
       beforeEach(function() {
-        rep = store.createRecord(Smartgraphs.UnorderedDataPoints, {
+        datadef = store.createRecord(Smartgraphs.UnorderedDataPoints, {
           url: "rep",
-          points: []
+          points: [],
+          name: "datadef-1"
         });
+        rep = {
+          datadef: datadef,
+          getPath: function(getParam) {
+            if (getParam === 'datadef.name') {
+              return datadef.get('name');
+            } else {
+              return null;
+            }
+          }
+        };
         sketch = store.createRecord(Smartgraphs.FreehandSketch, {
           url: "sketch",
           points: []
         });
         spyOn(graphingTool, "getAnnotation").andReturn(sketch);
-        spyOn(graphingTool, "getDatadef").andReturn(rep);
+        spyOn(graphingTool, "getDatadef").andReturn(datadef);
         spyOn(graphingTool, "hideGraphTitle");
         spyOn(graphingTool, "updateGraphLogicalBounds");
         spyOn(graphingTool, "showToolTip");
@@ -95,12 +106,12 @@
           return expect(controller.get("annotationList")).toContain(sketch);
         });
       });
-      describe("the dataRepresentation", function() {
+      describe("the datadef", function() {
         it("should have been cleared (have no points)", function() {
-          return expect(rep.get("points")).toBeEmpty();
+          return expect(datadef.get("points")).toBeEmpty();
         });
-        return it("should be in the graph controller's list of dataRepresentations", function() {
-          return expect(controller.get("datadefList")).toContain(rep);
+        return it("should be in the graph controller's list of datadefs", function() {
+          return expect(controller.get("datadefList")).toContain(datadef);
         });
       });
       describe("the cursor style requested by the controller", function() {
@@ -112,9 +123,9 @@
         beforeEach(function() {
           return controller.inputAreaMouseDown(0, 1);
         });
-        describe("the representation", function() {
+        describe("the datadef", function() {
           return it("should have points [[0, 1]]", function() {
-            return expect(rep.get("points")).toEqualPairs([[0, 1]]);
+            return expect(datadef.get("points")).toEqualPairs([[0, 1]]);
           });
         });
         return describe("the cursor style requested by the controller", function() {
@@ -133,9 +144,9 @@
             return expect(sketch.get("points")).toEqualPairs([[0, 1], [9, 10]]);
           });
         });
-        describe("the representation", function() {
+        describe("the datadef", function() {
           return it("should have points [[0,1], [2, 3]]", function() {
-            return expect(rep.get("points")).toEqualPairs([[0, 1], [2, 3]]);
+            return expect(datadef.get("points")).toEqualPairs([[0, 1], [2, 3]]);
           });
         });
         describe("the cursor style requested by the controller", function() {
@@ -154,9 +165,9 @@
               return expect(sketch.get("points")).toEqualPairs([[0, 1], [9, 10]]);
             });
           });
-          describe("the representation", function() {
+          describe("the datadef", function() {
             return it("should have points [[1, 2], [2, 3]]", function() {
-              return expect(rep.get("points")).toEqualPairs([[1, 2], [2, 3]]);
+              return expect(datadef.get("points")).toEqualPairs([[1, 2], [2, 3]]);
             });
           });
           return describe("the cursor style requested by the controller", function() {

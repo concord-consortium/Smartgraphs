@@ -28,19 +28,25 @@ describe "Smartgraphs.graphingTool with 'singleLine' shape option", ->
       expect(toolState).toBeDefined()
 
   describe "when the graphing tool is started with shape: 'SINGLE_LINE'", ->
-    rep = sketch = startState = null
+    datadef = rep = sketch = startState = null
     beforeEach ->
-      rep = store.createRecord(Smartgraphs.UnorderedDataPoints,
+      datadef = store.createRecord(Smartgraphs.UnorderedDataPoints,
         url: "rep"
         points: []
+        name: "datadef-1"
       )
+      rep = {
+        datadef: datadef
+        getPath: (getParam) ->
+          if getParam is 'datadef.name' then datadef.get('name') else null
+      }
       sketch = store.createRecord(Smartgraphs.FreehandSketch,
         url: "sketch"
         points: []
       )
 
       spyOn(graphingTool, "getAnnotation").andReturn sketch
-      spyOn(graphingTool, "getDatadef").andReturn rep
+      spyOn(graphingTool, "getDatadef").andReturn datadef
       spyOn(graphingTool, "hideGraphTitle")
       spyOn(graphingTool, "updateGraphLogicalBounds")
       spyOn(graphingTool, "showToolTip")
@@ -64,12 +70,12 @@ describe "Smartgraphs.graphingTool with 'singleLine' shape option", ->
       it "should be in the graph controller's list of annotations", ->
         expect(controller.get("annotationList")).toContain sketch
 
-    describe "the dataRepresentation", ->
+    describe "the datadef", ->
       it "should have been cleared (have no points)", ->
-        expect(rep.get("points")).toBeEmpty()
+        expect(datadef.get("points")).toBeEmpty()
 
-      it "should be in the graph controller's list of dataRepresentations", ->
-        expect(controller.get("datadefList")).toContain rep
+      it "should be in the graph controller's list of datadefs", ->
+        expect(controller.get("datadefList")).toContain datadef
 
     describe "the cursor style requested by the controller", ->
       it "should be 'crosshair'", ->
@@ -79,9 +85,9 @@ describe "Smartgraphs.graphingTool with 'singleLine' shape option", ->
       beforeEach ->
         controller.inputAreaMouseDown 0, 1
 
-      describe "the representation", ->
+      describe "the datadef", ->
         it "should have points [[0, 1]]", ->
-          expect(rep.get("points")).toEqualPairs [[0, 1]]
+          expect(datadef.get("points")).toEqualPairs [[0, 1]]
 
       describe "the cursor style requested by the controller", ->
         it "should be 'crosshair'", ->
@@ -96,9 +102,9 @@ describe "Smartgraphs.graphingTool with 'singleLine' shape option", ->
         it "line should be drawn with points [[0,1], [9,10]]", ->
           expect(sketch.get("points")).toEqualPairs [[0, 1], [9, 10]]
 
-      describe "the representation", ->
+      describe "the datadef", ->
         it "should have points [[0,1], [2, 3]]", ->
-          expect(rep.get("points")).toEqualPairs [[0, 1], [2, 3]]
+          expect(datadef.get("points")).toEqualPairs [[0, 1], [2, 3]]
 
       describe "the cursor style requested by the controller", ->
         it "should be back to 'default'", ->
@@ -114,9 +120,9 @@ describe "Smartgraphs.graphingTool with 'singleLine' shape option", ->
           it "line should be drawn with points [[0, 1], [9, 10]]", ->
             expect(sketch.get("points")).toEqualPairs [[0, 1], [9, 10]]
 
-        describe "the representation", ->
+        describe "the datadef", ->
           it "should have points [[1, 2], [2, 3]]", ->
-            expect(rep.get("points")).toEqualPairs [[1, 2], [2, 3]]
+            expect(datadef.get("points")).toEqualPairs [[1, 2], [2, 3]]
 
         describe "the cursor style requested by the controller", ->
           it "should be back to 'default'", ->

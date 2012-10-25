@@ -57,7 +57,7 @@ Smartgraphs.Datadef = SC.Record.extend(
 
     @property {Smartgraphs.Activity}
   */
-  activity: SC.Record.toOne('Smartgraphs.Activity', { aggregate: YES } ),
+  activity: SC.Record.toOne('Smartgraphs.Activity', { aggregate: YES }),
 
   /**
     The unit of measure for the x values
@@ -66,40 +66,12 @@ Smartgraphs.Datadef = SC.Record.extend(
   */
   xUnits: SC.Record.toOne('Smartgraphs.Unit'),
 
-  /**
-    Full label for the x values
-
-    @property {String}
-  */
-  xLabel: SC.Record.attr(String),
-
-  /**
-    Abbreviated label for the x values
-
-    @property {String}
-  */
-  xShortLabel: SC.Record.attr(String),
-
-  /**
+    /**
     The unit of measure for the y values
 
     @property {Smartgraphs.Unit}
   */
   yUnits: SC.Record.toOne('Smartgraphs.Unit'),
-
-  /**
-    Full label for the y values
-
-    @property {String}
-  */
-  yLabel: SC.Record.attr(String),
-
-  /**
-    Abbreviated label for the y values
-
-    @property {String}
-  */
-  yShortLabel: SC.Record.attr(String),
 
   /**
     x-value of currently selected point, or null if no point is selected. Transient.
@@ -149,6 +121,12 @@ Smartgraphs.Datadef = SC.Record.extend(
   @property {Number|null}
 */
   dragValueY: null,
+
+  /**
+   * Boolean value to indicate whether the datadef is active.
+   * @property {Boolean}
+   */
+  isActive : false,
 
   /**
     Return a new DataRepresentation tied to an appropriate SampleSet for objects of this Datadef class. Options will

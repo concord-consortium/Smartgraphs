@@ -20,7 +20,7 @@ sc_require('mixins/annotation_support');
   @extends SC.Object
   @extends Smartgraphs.AnnotationSupport
 */
-Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationSupport,
+Smartgraphs.TableController = SC.ArrayController.extend(Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.tableController.prototype */ {
 
   init: function () {
@@ -52,6 +52,8 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   datadef: null,
   dataRepresentation: null,
   pointset: null,
+  xLabel: null,
+  yLabel: null,
 
   /**
     Stack maintaining the indices in the table of recently tagged points. The index of the most recently-tagged point
@@ -81,12 +83,6 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
 
   yUnitsBinding:       '*datadef.yUnits',
   yUnitsBindingDefault: SC.Binding.oneWay(),
-
-  xShortLabelBinding:  '*datadef.xShortLabel',
-  xShortLabelBindingDefault: SC.Binding.oneWay(),
-
-  yShortLabelBinding:  '*datadef.yShortLabel',
-  yShortLabelBindingDefault: SC.Binding.oneWay(),
 
   /**
     @property String
@@ -141,14 +137,22 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     }
 
     datadef = Smartgraphs.activityObjectsController.findDatadef(datadefName);
-    if (options['pointType'] === undefined) {
+    if (options === undefined) {
+      options = [];
+    }
+    if (options['point-type'] === undefined) {
       options['point-type'] = datadef.get('pointType');
     }
-    if (options['lineType'] === undefined) {
+    if (options['line-type'] === undefined) {
       options['line-type'] = datadef.get('lineType');
     }
     rep = datadef.getNewRepresentation(options);
-
+    if (config.xLabel !== undefined) {
+      this.set('xLabel', config.xLabel);
+    }
+    if (config.yLabel !== undefined) {
+      this.set('yLabel', config.yLabel);
+    }
     this.set('datadef', datadef);
     this.set('dataRepresentation', rep);
     this.set('pointset', rep.get('pointset'));
