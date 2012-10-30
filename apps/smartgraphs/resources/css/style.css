@@ -308,3 +308,14 @@ body.sc-theme {
 {
   pointer-events: none;
 }
+
+.legendView
+{
+  opacity: 0.9;
+  filter: alpha(opacity = 90);
+}
+
+.legendColorBoxView,.legendView
+{
+  border-radius: 5px;
+}

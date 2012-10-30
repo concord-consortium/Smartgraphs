@@ -19,6 +19,7 @@ Smartgraphs.GraphView = SC.View.extend(
   graphableDataObjectsBinding: '*graphController.graphableDataObjects',
   annotationListBinding: '*graphController.annotationList',
   requestedCursorStyleBinding: '*graphController.requestedCursorStyle',
+  arrLegendsBinding: '*graphController.arrLegends',
 
   animationInfoBinding: '*graphController.animationInfo',
   showAnimationBinding: '*animationInfo.hasAnimation',
@@ -35,7 +36,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
   padding: { top: 15, right: 15, bottom: 45, left: 45 },
 
-  childViews: 'titleView tooltipView graphCanvasView'.w(),
+  childViews: 'titleView tooltipView graphCanvasView legendView'.w(),
 
   init: function () {
     sc_super();
@@ -78,6 +79,10 @@ Smartgraphs.GraphView = SC.View.extend(
   graphableDataObjectsDidChange: function () {
     this._itemListsDidChange();
   }.observes('*graphableDataObjects.[]'),
+
+  arrLegendElementsDidChange: function () {
+    this.legendView.initialize(this.get('arrLegends'));
+  }.observes('*arrLegends.[]'),
 
   _itemListsDidChange: function () {
     var list,
@@ -1339,5 +1344,282 @@ Smartgraphs.GraphView = SC.View.extend(
         }
       }
     })
-  })
+  }),
+
+  legendView: SC.View.extend({
+      defaultValue: false,
+      classNames: ['legendView'],
+      tagName: 'div',
+      layout: { top: 0, left: 0, width: 0, height: 0, zIndex: 2 },
+      verticalElementSpacing: 5,
+      topPadding: 8,
+      bottomPadding: 8,
+      rightPadding: 8,
+      leftPadding: 8,
+      backgroundColor: '#CFECBC',
+      maxWidth: 0,
+      maxHeight: 0,
+      initialTopPos: 0,
+      initialLeftPos: 0,
+
+      childViews: 'legendHeadingView'.w(),
+
+      init: function () {
+        sc_super();
+        var layout = this.parentView.layout;
+        this.set('defaultValue', false);
+        this.set('initialTopPos', layout.top);
+        this.set('initialLeftPos', layout.left);
+      },
+
+      initialize: function (legendElements) {
+        // to remove the legend elements
+        var nLength = this.childViews.length;
+        var index = 1;
+        while (index > 0 && nLength !== 1) {
+          this.childViews[index].removeFromParent();
+          nLength--;
+        }
+
+        var legendHeadingHeight = this.legendHeadingView.layout.height;
+        var len = legendElements.length;
+        // View shouldn't be visible when there are no legends.
+        if (len === 0) {
+          this.set('isVisible', NO);
+          return;
+        }
+        else {
+          this.set('isVisible', YES);
+        }
+        var topOffset = legendHeadingHeight + this.topPadding;
+        var newChild = null;
+        for (var i = 0; i < len; i++) {
+          newChild = this.legendElement.create({ color: legendElements[i].color, text: legendElements[i].text });
+          newChild.set('layout', { left: this.leftPadding });
+          newChild.updatePosition(topOffset);
+          this.appendChild(newChild);
+          topOffset += newChild.layout.height + this.verticalElementSpacing;
+        }
+        if (len > 0) {
+          var maxHeight = topOffset - this.verticalElementSpacing + this.bottomPadding;
+          this.set('maxHeight', maxHeight);
+        }
+      },
+
+      didLayoutChange: function () {
+        var layout = { top: this.initialTopPos, left: this.initialLeftPos, width: this.maxWidth, height: this.maxHeight, zIndex: 2 };
+        this.set('layout', layout);
+        if (!this.defaultValue) {
+          var position = this.getLegendPosition();
+          this.set('initialTopPos', position.top);
+          this.set('initialLeftPos', position.left);
+          if (layout.top > position.top) {
+            this.adjust('top', position.top);
+          }
+          if (layout.left > position.left) {
+            this.adjust('left', position.left);
+          }
+        }
+      }.observes('maxWidth', 'maxHeight'),
+
+      getLegendPosition: function () {
+        var parentFrame = this.getPath('parentView.frame');
+        var layout = this.layout;
+        var topBound = parentFrame.height - layout.height;
+        var leftBound = parentFrame.width - layout.width;
+        var position = { top: topBound, left: leftBound };
+        return position;
+      },
+
+      parentViewDidResize: function () {
+        var position = this.getLegendPosition();
+        var layout = this.layout;
+
+        if (layout.top > position.top) {
+          this.adjust('top', position.top);
+        }
+        if (layout.left > position.left) {
+          this.adjust('left', position.left);
+        }
+      },
+
+      layoutDidChangeFor: function () {
+        sc_super();
+
+        var len = this.childViews.length;
+        // View shouldn't be visible when there are no legends.
+        if (len <= 1) {
+          return;
+        }
+
+        var legendHeadingView = this.legendHeadingView;
+        var maxWidth = legendHeadingView ? legendHeadingView.layout.width : 0;
+        if (isNaN(maxWidth)) {
+          maxWidth = 0;
+        }
+        for (var i = 0; i < len; i++) {
+          var legendChild = this.childViews[i];
+          if (legendChild !== legendHeadingView) {
+            if (maxWidth < legendChild.layout.width) {
+              maxWidth = legendChild.layout.width;
+            }
+          }
+        }
+
+        maxWidth += this.leftPadding + this.rightPadding;
+
+        // to align Legend Heading at center
+        if (legendHeadingView) {
+          var layout = legendHeadingView.layout;
+          var left = (maxWidth - layout.width) / 2;
+          if (!isNaN(left) && left !== layout.left) {
+            layout.left = (maxWidth - layout.width) / 2;
+            legendHeadingView.set('layout', layout);
+          }
+        }
+
+        this.set('maxWidth', maxWidth);
+      },
+
+      mouseDragged: function (evt) {
+        return this._mouseDraggedOrTouchesDragged(evt);
+      }, 
+
+      touchesDragged : function (evt) {
+        return this._mouseDraggedOrTouchesDragged(evt);
+      },
+
+      _mouseDraggedOrTouchesDragged: function (evt) {
+        this.set('defaultValue', true);
+        var info = this._mouseDownInfo,
+            locX, locY;
+
+        // handle X direction
+        locX = info.curX + evt.pageX;
+        if (locX < 0) {
+          locX = 0;
+        }
+        if (locX > info.widthBound) {
+          locX = info.widthBound;
+        }
+        this.adjust('left', locX);
+        this.set('initialLeftPos', locX);
+        // handle Y direction
+        locY = info.curY + evt.pageY;
+        if (locY < 0) {
+          locY = 0;
+        }
+        if (locY > info.heightBound) {
+          locY = info.heightBound;
+        }
+        this.adjust('top', locY);
+        this.set('initialTopPos', locY);
+        return YES; // event was handled!
+      },
+
+      mouseDown: function (evt) {
+        return this._mouseDownOrTouchStart(evt);
+      },
+
+      touchStart: function (evt) {
+        return this._mouseDownOrTouchStart(evt);
+      },
+
+      _mouseDownOrTouchStart: function (evt) {
+        var layout = this.get('layout');
+        var frame = this.getPath('parentView.frame');
+        this._mouseDownInfo = {
+          curY: layout.top - evt.pageY,
+          curX: layout.left - evt.pageX,
+          widthBound: frame.width - layout.width,
+          heightBound: frame.height - layout.height
+        };
+        return YES; // so we get other events
+      },
+
+      mouseUp: function (evt) {
+        return this._mouseUpOrTouchEnd(evt);
+      },
+
+      touchEnd: function (evt) {
+        return this._mouseUpOrTouchEnd(evt);
+      },
+
+      _mouseUpOrTouchEnd: function (evt) {
+       // apply one more time to set final position
+        this.mouseDragged(evt); 
+        this._mouseDownInfo = null; // cleanup info
+        return YES; // handled!
+      },
+
+      legendHeadingView: SC.LabelView.design(SC.AutoResize, {
+        supportsAutoResize: YES,
+        shouldResizeWidth: YES,
+        layout: { top: 0, height: 16 },
+        textAlign: SC.ALIGN_CENTER,
+        value: 'Legend',
+        fontWeight:  SC.BOLD_WEIGHT,
+        classNames: ['legendTitle']
+      }),
+
+      legendElement: SC.View.extend({
+
+        color: null,
+        text: null,
+        iTop: 0,
+        colorBoxWidth: 20,
+        childElementHeight: 18,
+        colorTextSpacing: 2,
+
+        childViews: 'colorView textView'.w(),
+
+        init: function () {
+          sc_super();
+
+          this.colorView.set('layout', {
+            left: 0,
+            width: this.colorBoxWidth,
+            height: this.childElementHeight
+          });
+
+          this.textView.set('layout', {
+            left: this.colorBoxWidth + this.colorTextSpacing,
+            height: this.childElementHeight
+          });
+        },
+
+        updatePosition: function (childTop) {
+          if (!isNaN(childTop) && childTop !== null) {
+            this.iTop = childTop;
+          }
+          this.set('layout', {
+            left: this.layout.left,
+            top: this.iTop,
+            width: this.textView.layout.width + this.colorBoxWidth + this.colorTextSpacing,
+            height: this.childElementHeight
+          });
+        },
+
+        layoutDidChangeFor: function () {
+          sc_super();
+
+          if (this.textView) {
+            this.updatePosition();
+          }
+        },
+
+        colorView: SC.View.extend({
+          classNames: ['legendColorBoxView'],
+          backgroundColor: SC.outlet('parentView.color')
+        }),
+
+        textView: SC.LabelView.design(SC.AutoResize, {
+          supportsAutoResize: YES,
+          shouldResizeWidth: YES,
+          textAlign: SC.ALIGN_CENTER,
+          value: SC.outlet('parentView.text'),
+          autoResizeText: SC.outlet('parentView.text')
+        })
+      })
+    })
 });

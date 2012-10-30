@@ -47,7 +47,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   isPoolable: YES,
 
   color: function () {
-    return this.get('overrideColor') ? this.get('overrideColor') : ( this.get('isDimmed') ? this.get('dimmedColor') : this.get('datasetColor') );
+    return this.get('overrideColor') ? this.get('overrideColor') : (this.get('isDimmed') ? this.get('dimmedColor') : this.get('datasetColor'));
   }.property('overrideColor', 'isDimmed', 'dimmedColor', 'datasetColor').cacheable(),
 
   radius: function () {
@@ -61,15 +61,62 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
         datadefName = this.get('datadefName'),
         color;
 
+    // Using color from dataRepresentation to retain the color on selection.
     if (modifiers[[x, y, datadefName]]) {
-      this.set('overrideColor', modifiers[[x, y, datadefName]].get('color'));
+      this.set('overrideColor', this.dataRepresentation.color);
     }
     else {
       this.set('overrideColor', null);
     }
   }.observes('modifiers'),
 
+  // Bypassing events on inactive datasets
+  handlePropogation: function (evt) {
+    if (!this.dataRepresentation.datadef.isActive) {
+      // Stop propagation. If we let the mousemove event bubble, the SproutCore root responder will think we were the
+      // "last hovered" view, which screws up its calculation of hover (i.e., mouseEntered and mouseExited) events for
+      // any views below us.
+      evt.stopPropagation();
+  
+      // Find the element UNDER us at the location of the mouse event
+      this.$().hide();
+      var el = document.elementFromPoint(evt.clientX, evt.clientY);     // should work in IE!
+      this.$().show();
+  
+      // Set the event target to be the element beneath us. Because 'event' is a jQuery-normalized event, 'target' is a
+      // normal R/W property
+      evt.target = el;
+  
+      // NOW let SproutCore think the event happened directly to the element below us. It will handle forwarding
+      // mouseDown, mouseMoved, mouseExited, mouseEntered events to the SC.Views beneath us.
+      SC.Event.handle.call(document, evt);
+    }
+  },
+
+  didCreateLayer: function () {
+    sc_super();
+    var self = this;
+    this.$().mousedown(function (evt) {
+      self.handlePropogation(evt);
+    });
+    this.$().mouseup(function (evt) {
+      self.handlePropogation(evt);
+    });
+    this.$().mouseenter(function (evt) {
+      self.handlePropogation(evt);
+    });
+    this.$().mouseleave(function (evt) {
+      self.handlePropogation(evt);
+    });
+    this.$().mousemove(function (evt) {
+      self.handlePropogation(evt);
+    });
+  },
+
   mouseEntered: function () {
+    if (!this.dataRepresentation.datadef.isActive) {
+      return;
+    }
     this.set('isHovered', YES);
     var graphController = this.get('controller');
     var point = Smartgraphs.Point.create({x:  this.getPath('content.x'), y:  this.getPath('content.y')});
@@ -78,6 +125,9 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   },
 
   mouseExited: function () {
+    if (!this.dataRepresentation.datadef.isActive) {
+      return;
+    }
     this.set('isHovered', NO);
     var graphController = this.get('controller');
     var isMouseDown = this.get("isMouseDown");
@@ -87,10 +137,18 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     }
   },
 
-  mouseDown: function (evt) { return this._mouseDownOrTouchStart(evt); },
-  touchStart: function (evt) { return this._mouseDownOrTouchStart(evt); },
+  mouseDown: function (evt) {
+    return this._mouseDownOrTouchStart(evt);
+  },
+
+  touchStart: function (evt) {
+    return this._mouseDownOrTouchStart(evt);
+  },
 
   _mouseDownOrTouchStart: function (evt) {
+    if (!this.dataRepresentation.datadef.isActive) {
+      return;
+    }
     this.set("isMouseDown", true);
     this.get('controller').dataPointSelected(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
       // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
@@ -109,6 +167,9 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   },
 
   _mouseDragged: function (evt) {
+    if (!this.dataRepresentation.datadef.isActive) {
+      return;
+    }
     var graphView = this.getPath('parentView.graphView');
     var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
     var point = graphView.pointForCoordinates(coords.x, coords.y);
@@ -127,6 +188,9 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   },
 
   _mouseUp: function (evt) {
+    if (!this.dataRepresentation.datadef.isActive) {
+      return;
+    }
     var graphView = this.getPath('parentView.graphView');
     var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
     var point = graphView.pointForCoordinates(coords.x, coords.y);

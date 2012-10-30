@@ -96,13 +96,17 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
           annotations: allAnnotations,
           showCrossHairs: (config.showCrossHairs === undefined) ? false : config.showCrossHairs,
           showGraphGrid: (config.showGraphGrid === undefined) ? false : config.showGraphGrid,
-          showToolTipCoords : (config.showToolTipCoords === undefined) ? false : config.showToolTipCoords
+          showToolTipCoords : (config.showToolTipCoords === undefined) ? false : config.showToolTipCoords,
+          activeDatadefs: (config.activeDatadefs === undefined) ? [] : config.activeDatadefs,
+          legends: config.legends
         });
         return;
       case 'table':
         Smartgraphs.activityViewController.showTable(pane, {
           data: config.data,
-          annotations: allAnnotations
+          annotations: allAnnotations,
+          xLabel: config.xLabel,
+          yLabel: config.yLabel
         });
         return;
       case 'image':
