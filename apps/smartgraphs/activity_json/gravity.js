@@ -345,7 +345,8 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: ["light-ball-position"],
-            annotations: []
+            annotations: [],
+            activeDatadefs: ["light-ball-position"]
           },
           bottom: {
             type: "graph",
@@ -353,7 +354,8 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: []
+            annotations: [],
+            activeDatadefs: ["light-ball-velocity"]
           }
         },
         hideSubmitButton: true,
@@ -372,6 +374,7 @@
             yAxis: "/shared/gravity/axes/position",
             data: ["light-ball-position"],
             annotations: ["light-ball-position"]
+            
           },
           bottom: {
             type: "graph",
@@ -472,7 +475,8 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: ["heavy-ball-position"],
-            annotations: []
+            annotations: [],
+            activeDatadefs: ["heavy-ball-position"]
           },
           bottom: {
             type: "graph",
@@ -480,7 +484,8 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: []
+            annotations: [],
+            activeDatadefs: ["heavy-ball-velocity"]
           }
         },
         hideSubmitButton: true,
@@ -597,7 +602,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -638,7 +645,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -679,7 +688,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -720,7 +731,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -761,7 +774,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -802,7 +817,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -843,7 +860,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -866,7 +885,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -904,7 +925,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -942,7 +965,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -983,7 +1008,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1024,7 +1051,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1065,7 +1094,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1101,7 +1132,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1132,7 +1165,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1163,7 +1198,9 @@
             type: "table",
             data: ["light-ball-velocity"],
             annotations: ["light-ball-point-1", "light-ball-point-2"],
-            highlightedAnnotations: ["light-ball-rise-bracket"]
+            highlightedAnnotations: ["light-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1194,7 +1231,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         submitButtonTitle: "OK",
@@ -1217,7 +1256,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1248,7 +1289,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1279,7 +1322,9 @@
             type: "table",
             data: ["light-ball-velocity"],
             annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"],
-            highlightedAnnotations: ["light-ball-run-bracket"]
+            highlightedAnnotations: ["light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1310,7 +1355,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         submitButtonTitle: "OK",
@@ -1333,7 +1380,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1364,7 +1413,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1395,7 +1446,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -1419,7 +1472,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -1442,7 +1497,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1483,7 +1540,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1524,7 +1583,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1565,7 +1626,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1606,7 +1669,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1647,7 +1712,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1688,7 +1755,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -1711,7 +1780,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1749,7 +1820,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1787,7 +1860,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1828,7 +1903,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1869,7 +1946,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1910,7 +1989,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1946,7 +2027,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1977,7 +2060,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2008,7 +2093,9 @@
             type: "table",
             data: ["heavy-ball-velocity"],
             annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
-            highlightedAnnotations: ["heavy-ball-rise-bracket"]
+            highlightedAnnotations: ["heavy-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2039,7 +2126,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         submitButtonTitle: "OK",
@@ -2062,7 +2151,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2093,7 +2184,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2124,7 +2217,9 @@
             type: "table",
             data: ["heavy-ball-velocity"],
             annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"],
-            highlightedAnnotations: ["heavy-ball-run-bracket"]
+            highlightedAnnotations: ["heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2155,7 +2250,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         submitButtonTitle: "OK",
@@ -2178,7 +2275,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2209,7 +2308,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2240,7 +2341,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -2264,7 +2367,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,

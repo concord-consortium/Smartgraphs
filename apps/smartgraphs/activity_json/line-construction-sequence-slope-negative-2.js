@@ -58,6 +58,9 @@ Smartgraphs.activityDocs["/shared/line-construction-activity-sample-2"] =
           "highlightedAnnotations": [],
           "data": [
             "datadef-1"
+          ],
+          "activeDatadefs": [
+          "datadef-1"
           ]
         },
         "bottom": {
@@ -164,6 +167,9 @@ Smartgraphs.activityDocs["/shared/line-construction-activity-sample-2"] =
           "highlightedAnnotations": [],
           "data": [
             "datadef-1"
+          ],
+          "activeDatadefs": [
+          "datadef-1"
           ]
         },
         "bottom": {
@@ -276,6 +282,12 @@ Smartgraphs.activityDocs["/shared/line-construction-activity-sample-2"] =
           "highlightedAnnotations": [],
           "data": [
             "datadef-1"
+          ],
+          "activeDatadefs": [
+          "datadef-1"
+          ],
+          "activeDatadefs": [
+          "datadef-1"
           ]
         },
         "bottom": {
@@ -388,6 +400,9 @@ Smartgraphs.activityDocs["/shared/line-construction-activity-sample-2"] =
           "highlightedAnnotations": [],
           "data": [
             "datadef-1"
+          ],
+          "activeDatadefs": [
+          "datadef-1"
           ]
         },
         "bottom": {
@@ -500,6 +515,9 @@ Smartgraphs.activityDocs["/shared/line-construction-activity-sample-2"] =
           "highlightedAnnotations": [],
           "data": [
             "datadef-1"
+          ],
+          "activeDatadefs": [
+          "datadef-1"
           ]
         },
         "bottom": {

@@ -505,23 +505,35 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
         datarefNames = config.datarefs || [],
         legendTexts = config.legends || [],
         activeDatadefs = config.activeDatadefs || [];
-
-    // datadefs are re-ordered, keeping active datadefs at the end so that they are above inactive datadefs.
-    var activeDatadefLength = activeDatadefs.length;
-    var tempArray = [];
-    if (activeDatadefLength > 0) {
-      for (var i = 0; i < dataSpecs.length; i++) {
-        this.getDatadef(dataSpecs[i]).set('isActive', false);
-        for (var j = 0; j < activeDatadefs.length; j++) {
-          if (dataSpecs[i] === activeDatadefs[j]) {
-            this.getDatadef(dataSpecs[i]).set('isActive', true);
-            dataSpecs.splice(i, 1);
-            i--;
-            break;
+    
+    if (dataSpecs.length === 1 && activeDatadefs.length === 1) {
+      this.getDatadef(activeDatadefs[0]).set('isActive', true);
+    }
+    else {
+      // datadefs are re-ordered, keeping active datadefs at the end so that they are above inactive datadefs.
+      var activeDatadefLength = activeDatadefs.length;
+      var tempArray = [];
+      var dataSpec = "";
+      if (activeDatadefLength > 0) {
+        for (var i = 0; i < dataSpecs.length; i++) {
+          if (SC.typeOf(dataSpecs[i]) === SC.T_STRING) {
+            dataSpec = dataSpecs[i];
+          }
+          else {
+            dataSpec = dataSpecs[i][0];
+          }
+          this.getDatadef(dataSpec).set('isActive', false);
+          for (var j = 0; j < activeDatadefs.length; j++) {
+            if (dataSpec === activeDatadefs[j]) {
+              this.getDatadef(dataSpec).set('isActive', true);
+              dataSpecs.splice(i, 1);
+              i--;
+              break;
+            }
           }
         }
+        dataSpecs = dataSpecs.concat(activeDatadefs); 
       }
-      dataSpecs = dataSpecs.concat(activeDatadefs); 
     }
     this.clear();
 
@@ -589,7 +601,11 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
         }
       }
     });
-
+    var dataReps = this.get('dataRepresentations') || [];
+    for (var k = 0; k < dataReps.length; k++) {
+      var rep = dataReps[k];
+      rep.addObserver('graphableObjects', this, this.graphableObjectsDidChange);
+    }
     if (legendTexts.length > 0) {
       this.set('arrLegends', arrLegendElements);
     }
@@ -604,7 +620,20 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
     this.addAnnotationsByName(config.annotations);
   },
-
+  graphableObjectsDidChange: function (arg) {
+    var temp = [];
+    for (var x = 0; x < this.graphableDataObjects.length; x++) {
+      var graphableDataObj = this.graphableDataObjects[x];
+      temp.push(graphableDataObj);
+      for (var y = 0; y < arg.graphableObjects.length; y++) {
+        var repObject = arg.graphableObjects[y];
+        if (repObject !== graphableDataObj) {
+          temp.push(repObject);
+        }
+      }
+    }
+    this.set('graphableDataObjects', temp);
+  },
   /**
      Adds the passed DataRepresentation to the dataRepresentations array, and adds the GraphableObjects specified by
      the DataRepresentation to the graphableDataObjects array (so that they can be displayed by the graph view).

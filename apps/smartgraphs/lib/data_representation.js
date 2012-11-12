@@ -38,7 +38,9 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
         dataRepresentation: this
       });
       this.set('pointset', pointset);
-      graphableObjects.push(pointset);
+      if (options['point-type'] !== "none") {
+        graphableObjects.push(pointset);
+      }
     }
     else if (options['point-type'] !== "none") {
       pointset = Smartgraphs.Pointset.create({
@@ -112,6 +114,14 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
 
   // Display single point irrespective of point present in datadef or not.
   showSinglePoint: function (x, y) {
+    if (this.get('graphableObjects')) {
+      if (!this.get('graphableObjects').contains(this.get('pointset'))) {
+        var temp = [];
+        temp.push.apply(temp, this.get('graphableObjects'));
+        temp.push(this.get('pointset'));
+        this.set('graphableObjects', temp);
+      }
+    }
     var pointsetPoints = this.getPath('pointset.points');
     var pointsetPoint = Smartgraphs.Point.create({x: x, y: y});
     if (pointsetPoints) {

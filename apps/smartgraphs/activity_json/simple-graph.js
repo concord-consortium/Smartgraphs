@@ -43,7 +43,8 @@ Smartgraphs.activityDocs["/shared/simple-graph"] =
           "xAxis": "/shared/simple-graph/axes/12s",
           "yAxis": "/shared/simple-graph/axes/10m",
           "data": ["position-data"],
-          "annotations": ['circled-point-2']
+          "annotations": ['circled-point-2'],
+          "activeDatadefs": ["position-data"]
         }
       },
       "beforeText": "<p>Check out this data!</p>",

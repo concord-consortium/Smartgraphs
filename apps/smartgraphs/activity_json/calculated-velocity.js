@@ -51,7 +51,10 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
           "xAxis": "/shared/calculated-velocity/axes/12s",
           "yAxis": "/shared/calculated-velocity/axes/2mps",
           "data": ["velocity-calculated"],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": [
+          "velocity-calculated"
+          ]
         }
       },
       "tools": [

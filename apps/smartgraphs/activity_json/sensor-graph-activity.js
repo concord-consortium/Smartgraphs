@@ -50,7 +50,9 @@ Smartgraphs.activityDocs["/shared/sensor-graph-activity"] =
         "bottom": {
           "type": "table",
           "data": "datadef-1",
-          "annotations": []
+          "annotations": [],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "tools": [

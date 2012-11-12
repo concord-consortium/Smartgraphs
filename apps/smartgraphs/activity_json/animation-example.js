@@ -54,7 +54,10 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
           "xAxis": "/shared/animation-example/axes/12s",
           "yAxis": "/shared/animation-example/axes/2mps",
           "data": ["velocity-calculated"],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": [
+          "velocity-calculated"
+          ]
         }
       },
       "beforeText": "<p>Click Start, Reset, and Stop to see the animation in the top graph. Note that you can also label one point bottom graph.</p>",
