@@ -120,5 +120,5 @@ Smartgraphs.activityDocs["/shared/simple-graph"] =
          }
        ]
      }
-   ],
+   ]
 };
