@@ -227,7 +227,7 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/source/resources/images/leaning-tower-of-pisa-wide.jpg",
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
             caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary** (<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>)"
           }
         },
@@ -2337,7 +2337,7 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/source/resources/images/leaning-tower-of-pisa-wide.jpg",
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
             caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary** (<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>)"
           }
         },
@@ -2353,7 +2353,7 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/source/resources/images/leaning-tower-of-pisa-wide.jpg",
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
             caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary** (<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>)"
           }
         },

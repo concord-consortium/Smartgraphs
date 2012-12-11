@@ -316,7 +316,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity-B"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -456,7 +456,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity-B"] =
           "annotations": []
         }
       },
-      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph. You should have three labels, one for each motion.</p><p>To add a label, <b>click</b> where you want to add a label, and <b>double click</b> on the label to type in it.</p>",
+      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph. You should have three labels, one for each motion.</p><p>To add a label, <b>click</b> where you want to add a label, and <b>start typing</b>.</p>",
       "substitutedExpressions": ["student-description"],
       "submissibilityDependsOn": ["annotation", "students-segment-labels"],
       "submissibilityCriterion": [">", ["numberOfLabels", "students-segment-labels"], 0],
@@ -3004,7 +3004,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity-B"] =
        "panes": {
          "single": {
            "type": "image",
-           "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
+           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
            "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
          }
        },
@@ -3028,7 +3028,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity-B"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -3051,7 +3051,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity-B"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -3074,7 +3074,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity-B"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -3097,7 +3097,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity-B"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -3114,7 +3114,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity-B"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
