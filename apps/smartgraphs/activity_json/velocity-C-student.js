@@ -1158,7 +1158,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity-C-student"] =
           "type": "graph",
           "name": "prediction-walking-slow"
         },
-        "bottom": {},
+        "bottom": {}
       },
       "beforeText": "<p>Does your prediction graph of slow, steady motion match the actual data? Explain.</p>",
       "responseTemplate": "/components/response-template/open",
