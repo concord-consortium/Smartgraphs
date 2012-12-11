@@ -35,9 +35,9 @@ Smartgraphs.activityDocs["/shared/sensor-graph-activity"] =
     {
       "url": "/shared/sensor-graph-activity/page/1-sensor-graph-page/step/1",
       "activityPage": "/shared/sensor-graph-activity/page/1-sensor-graph-page",
-      "paneConfig": "single",
+      "paneConfig": "split",
       "panes": {
-        "single": {
+        "top": {
           "type": "graph",
           "title": "Back and Forth",
           "xAxis": "/shared/sensor-graph-activity/axes/1",
@@ -46,13 +46,18 @@ Smartgraphs.activityDocs["/shared/sensor-graph-activity"] =
           "data": [
             "datadef-1"
           ]
+        },
+        "bottom": {
+          "type": "table",
+          "data": "datadef-1",
+          "annotations": []
         }
       },
       "tools": [
         {
           "name": "sensor",
           "setup": {
-            "controlsPane": "single",
+            "controlsPane": "top",
             "data": "datadef-1"
           }
         }
@@ -104,18 +109,18 @@ Smartgraphs.activityDocs["/shared/sensor-graph-activity"] =
   "variables": [],
   "units": [
     {
-      "url": "/shared/sensor-graph-activity/units/Distance",
-      "activity": "/shared/sensor-graph-activity",
-      "name": "Distance",
-      "abbreviation": "m",
-      "pluralName": "Distance"
-    },
-    {
       "url": "/shared/sensor-graph-activity/units/Time",
       "activity": "/shared/sensor-graph-activity",
       "name": "Time",
       "abbreviation": "s",
       "pluralName": "Time"
+    },
+    {
+      "url": "/shared/sensor-graph-activity/units/Distance",
+      "activity": "/shared/sensor-graph-activity",
+      "name": "Distance",
+      "abbreviation": "m",
+      "pluralName": "Distance"
     }
   ]
 };

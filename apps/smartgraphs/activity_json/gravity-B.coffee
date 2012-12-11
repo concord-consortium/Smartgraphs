@@ -1,39 +1,39 @@
 Smartgraphs.activityDocs ||= {}
-Smartgraphs.activityDocs["/shared/gravity"] =
+Smartgraphs.activityDocs["/shared/gravity-B"] =
 
-  _id:                 "gravity.df6"
+  _id:                 "gravity-B.df6"
   _rev:                1
   data_format_version: 6
 
   activity:
 
     title: "Was Galileo Right?"
-    url:   "/shared/gravity"
+    url:   "/shared/gravity-B"
     owner: "shared"
 
     pages: [
-      "/shared/gravity/page/1"
-      "/shared/gravity/page/2"
-      "/shared/gravity/page/3"
-      "/shared/gravity/page/4"
-      "/shared/gravity/page/5"
-      "/shared/gravity/page/6"
-      "/shared/gravity/page/7"
-      "/shared/gravity/page/8"
-      "/shared/gravity/page/9"
-      "/shared/gravity/page/10"
-      "/shared/gravity/page/11"
-      "/shared/gravity/page/12"
-      "/shared/gravity/page/13"
-      "/shared/gravity/page/14"
+      "/shared/gravity-B/page/1"
+      "/shared/gravity-B/page/2"
+      "/shared/gravity-B/page/3"
+      "/shared/gravity-B/page/4"
+      "/shared/gravity-B/page/5"
+      "/shared/gravity-B/page/6"
+      "/shared/gravity-B/page/7"
+      "/shared/gravity-B/page/8"
+      "/shared/gravity-B/page/9"
+      "/shared/gravity-B/page/10"
+      "/shared/gravity-B/page/11"
+      "/shared/gravity-B/page/12"
+      "/shared/gravity-B/page/13"
+      "/shared/gravity-B/page/14"
     ]
 
 
   pages: [
     {
       name:      "Introduction"
-      url:       "/shared/gravity/page/1"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/1"
+      activity:  "/shared/gravity-B"
       index:     1
       introText:
         '''
@@ -44,15 +44,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         dropped an iron cannon ball and a wooden ball from the Leaning Tower of Pisa to test his hypothesis.</p>
         '''
       steps:     [
-        "/shared/gravity/page/1/step/1"
+        "/shared/gravity-B/page/1/step/1"
       ]
-      firstStep: "/shared/gravity/page/1/step/1"
+      firstStep: "/shared/gravity-B/page/1/step/1"
     }
 
     {
       name:      "Predict the Graphs (Light Ball)"
-      url:       "/shared/gravity/page/2"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/2"
+      activity:  "/shared/gravity-B"
       index:     2
       introText:
         '''
@@ -65,17 +65,17 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         should be at least five times heavier than the light ball.)</p>
         '''
       steps:     [
-        "/shared/gravity/page/2/step/1"
-        "/shared/gravity/page/2/step/2"
-        "/shared/gravity/page/2/step/3"
+        "/shared/gravity-B/page/2/step/1"
+        "/shared/gravity-B/page/2/step/2"
+        "/shared/gravity-B/page/2/step/3"
       ]
-      firstStep: "/shared/gravity/page/2/step/1"
+      firstStep: "/shared/gravity-B/page/2/step/1"
     }
 
     {
       name:      "Look at the Data (Light Ball)"
-      url:       "/shared/gravity/page/3"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/3"
+      activity:  "/shared/gravity-B"
       index:     3
       introText:
         '''
@@ -85,15 +85,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         Every second, 20 data samples were collected.</p>
         '''
       steps:     [
-        "/shared/gravity/page/3/step/1"
+        "/shared/gravity-B/page/3/step/1"
       ]
-      firstStep: "/shared/gravity/page/3/step/1"
+      firstStep: "/shared/gravity-B/page/3/step/1"
     }
 
     {
       name:      "Reflect on Predictions (Light Ball)"
-      url:       "/shared/gravity/page/4"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/4"
+      activity:  "/shared/gravity-B"
       index:     4
       introText:
         '''
@@ -103,31 +103,31 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         ball.</p>
         '''
       steps:     [
-        "/shared/gravity/page/4/step/1"
+        "/shared/gravity-B/page/4/step/1"
       ]
-      firstStep: "/shared/gravity/page/4/step/1"
+      firstStep: "/shared/gravity-B/page/4/step/1"
     }
 
     {
       name:      "Predict the Graphs (Heavy Ball)"
-      url:       "/shared/gravity/page/5"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/5"
+      activity:  "/shared/gravity-B"
       index:     5
       introText:
         '''
         <h1>Predict the Graphs (Heavy Ball)</h1>
         '''
       steps:     [
-        "/shared/gravity/page/5/step/1"
-        "/shared/gravity/page/5/step/2"
+        "/shared/gravity-B/page/5/step/1"
+        "/shared/gravity-B/page/5/step/2"
       ]
-      firstStep: "/shared/gravity/page/5/step/1"
+      firstStep: "/shared/gravity-B/page/5/step/1"
     }
 
     {
       name:      "Look at the Data (Heavy Ball)"
-      url:       "/shared/gravity/page/6"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/6"
+      activity:  "/shared/gravity-B"
       index:     6
       introText:
         '''
@@ -137,15 +137,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         Every second, 20 data samples were collected.</p>
         '''
       steps:     [
-        "/shared/gravity/page/6/step/1"
+        "/shared/gravity-B/page/6/step/1"
       ]
-      firstStep: "/shared/gravity/page/6/step/1"
+      firstStep: "/shared/gravity-B/page/6/step/1"
     }
 
     {
       name:      "Reflect on Prediction (Heavy Ball)"
-      url:       "/shared/gravity/page/7"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/7"
+      activity:  "/shared/gravity-B"
       index:     7
       introText:
         '''
@@ -155,15 +155,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         ball.</p>
         '''
       steps:     [
-        "/shared/gravity/page/7/step/1"
+        "/shared/gravity-B/page/7/step/1"
       ]
-      firstStep: "/shared/gravity/page/7/step/1"
+      firstStep: "/shared/gravity-B/page/7/step/1"
     }
 
     {
       name:      "Compare the Data"
-      url:       "/shared/gravity/page/8"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/8"
+      activity:  "/shared/gravity-B"
       index:     8
       introText:
         '''
@@ -172,16 +172,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         <p>Look at the actual data for the light ball and the heavy ball.</p>
         '''
       steps:     [
-        "/shared/gravity/page/8/step/1"
-        "/shared/gravity/page/8/step/2"
+        "/shared/gravity-B/page/8/step/1"
+        "/shared/gravity-B/page/8/step/2"
       ]
-      firstStep: "/shared/gravity/page/8/step/1"
+      firstStep: "/shared/gravity-B/page/8/step/1"
     }
 
     {
       name:      "Identify the Interval (Light Ball)"
-      url:       "/shared/gravity/page/9"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/9"
+      activity:  "/shared/gravity-B"
       index:     9
       introText:
         '''
@@ -191,21 +191,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         ball was falling.</p>
         '''
       steps:     [
-        "/shared/gravity/page/9/step/p1"
-        "/shared/gravity/page/9/step/p1-incorrect-left"
-        "/shared/gravity/page/9/step/p1-incorrect-right"
-        "/shared/gravity/page/9/step/p2"
-        "/shared/gravity/page/9/step/p2-incorrect-left"
-        "/shared/gravity/page/9/step/p2-incorrect-right"
-        "/shared/gravity/page/9/step/done"
+        "/shared/gravity-B/page/9/step/p1"
+        "/shared/gravity-B/page/9/step/p1-incorrect-left"
+        "/shared/gravity-B/page/9/step/p1-incorrect-right"
+        "/shared/gravity-B/page/9/step/p2"
+        "/shared/gravity-B/page/9/step/p2-incorrect-left"
+        "/shared/gravity-B/page/9/step/p2-incorrect-right"
+        "/shared/gravity-B/page/9/step/done"
       ]
-      firstStep: "/shared/gravity/page/9/step/p1"
+      firstStep: "/shared/gravity-B/page/9/step/p1"
     }
 
     {
       name:      "Find the Slope (Light Ball)"
-      url:       "/shared/gravity/page/10"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/10"
+      activity:  "/shared/gravity-B"
       index:     10
       introText:
         '''
@@ -237,33 +237,24 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       ]
 
       steps:     [
-        "/shared/gravity/page/10/step/p1"
-        "/shared/gravity/page/10/step/p1-incorrect"
-        "/shared/gravity/page/10/step/p2"
-        "/shared/gravity/page/10/step/p2-incorrect"
-        "/shared/gravity/page/10/step/p2-same-as-p1"
-        "/shared/gravity/page/10/step/slope-initial"
-        "/shared/gravity/page/10/step/slope-initial-hint"
-        "/shared/gravity/page/10/step/velocity"
-        "/shared/gravity/page/10/step/velocity-hint"
-        "/shared/gravity/page/10/step/velocity-giveaway"
-        "/shared/gravity/page/10/step/time-velocity-incorrect"
-        "/shared/gravity/page/10/step/time-velocity-correct"
-        "/shared/gravity/page/10/step/time-hint"
-        "/shared/gravity/page/10/step/time-giveaway"
-        "/shared/gravity/page/10/step/slope-final-time-incorrect"
-        "/shared/gravity/page/10/step/slope-final-time-correct"
-        "/shared/gravity/page/10/step/slope-final-giveaway"
-        "/shared/gravity/page/10/step/slope-correct"
+        "/shared/gravity-B/page/10/step/p1"
+        "/shared/gravity-B/page/10/step/p1-incorrect"
+        "/shared/gravity-B/page/10/step/p2"
+        "/shared/gravity-B/page/10/step/p2-incorrect"
+        "/shared/gravity-B/page/10/step/p2-same-as-p1"
+        "/shared/gravity-B/page/10/step/slope-initial"
+        "/shared/gravity-B/page/10/step/slope-initial-hint"
+        "/shared/gravity-B/page/10/step/slope-final-giveaway"
+        "/shared/gravity-B/page/10/step/slope-correct"
       ]
-      firstStep: "/shared/gravity/page/10/step/p1"
+      firstStep: "/shared/gravity-B/page/10/step/p1"
     }
 
 
     {
       name:      "Identify the Interval (Heavy Ball)"
-      url:       "/shared/gravity/page/11"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/11"
+      activity:  "/shared/gravity-B"
       index:     11
       introText:
         '''
@@ -273,22 +264,22 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         ball was falling.</p>
         '''
       steps:     [
-        "/shared/gravity/page/11/step/p1"
-        "/shared/gravity/page/11/step/p1-incorrect-left"
-        "/shared/gravity/page/11/step/p1-incorrect-right"
-        "/shared/gravity/page/11/step/p2"
-        "/shared/gravity/page/11/step/p2-incorrect-left"
-        "/shared/gravity/page/11/step/p2-incorrect-right"
-        "/shared/gravity/page/11/step/done"
+        "/shared/gravity-B/page/11/step/p1"
+        "/shared/gravity-B/page/11/step/p1-incorrect-left"
+        "/shared/gravity-B/page/11/step/p1-incorrect-right"
+        "/shared/gravity-B/page/11/step/p2"
+        "/shared/gravity-B/page/11/step/p2-incorrect-left"
+        "/shared/gravity-B/page/11/step/p2-incorrect-right"
+        "/shared/gravity-B/page/11/step/done"
       ]
-      firstStep: "/shared/gravity/page/11/step/p1"
+      firstStep: "/shared/gravity-B/page/11/step/p1"
     }
 
 
     {
       name:      "Find the Slope (Heavy Ball)"
-      url:       "/shared/gravity/page/12"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/12"
+      activity:  "/shared/gravity-B"
       index:     12
       introText:
         '''
@@ -320,33 +311,24 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       ]
 
       steps:     [
-        "/shared/gravity/page/12/step/p1"
-        "/shared/gravity/page/12/step/p1-incorrect"
-        "/shared/gravity/page/12/step/p2"
-        "/shared/gravity/page/12/step/p2-incorrect"
-        "/shared/gravity/page/12/step/p2-same-as-p1"
-        "/shared/gravity/page/12/step/slope-initial"
-        "/shared/gravity/page/12/step/slope-initial-hint"
-        "/shared/gravity/page/12/step/velocity"
-        "/shared/gravity/page/12/step/velocity-hint"
-        "/shared/gravity/page/12/step/velocity-giveaway"
-        "/shared/gravity/page/12/step/time-velocity-incorrect"
-        "/shared/gravity/page/12/step/time-velocity-correct"
-        "/shared/gravity/page/12/step/time-hint"
-        "/shared/gravity/page/12/step/time-giveaway"
-        "/shared/gravity/page/12/step/slope-final-time-incorrect"
-        "/shared/gravity/page/12/step/slope-final-time-correct"
-        "/shared/gravity/page/12/step/slope-final-giveaway"
-        "/shared/gravity/page/12/step/slope-correct"
+        "/shared/gravity-B/page/12/step/p1"
+        "/shared/gravity-B/page/12/step/p1-incorrect"
+        "/shared/gravity-B/page/12/step/p2"
+        "/shared/gravity-B/page/12/step/p2-incorrect"
+        "/shared/gravity-B/page/12/step/p2-same-as-p1"
+        "/shared/gravity-B/page/12/step/slope-initial"
+        "/shared/gravity-B/page/12/step/slope-initial-hint"
+        "/shared/gravity-B/page/12/step/slope-final-giveaway"
+        "/shared/gravity-B/page/12/step/slope-correct"
       ]
-      firstStep: "/shared/gravity/page/12/step/p1"
+      firstStep: "/shared/gravity-B/page/12/step/p1"
     }
 
 
     {
       name:      "Compare the Accelerations"
-      url:       "/shared/gravity/page/13"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/13"
+      activity:  "/shared/gravity-B"
       index:     13
       introText:
         '''
@@ -358,16 +340,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
 
       steps:     [
-        "/shared/gravity/page/13/step/1"
-        "/shared/gravity/page/13/step/2"
+        "/shared/gravity-B/page/13/step/1"
+        "/shared/gravity-B/page/13/step/2"
       ]
-      firstStep: "/shared/gravity/page/13/step/1"
+      firstStep: "/shared/gravity-B/page/13/step/1"
     }
 
     {
       name:      "Conclusion"
-      url:       "/shared/gravity/page/14"
-      activity:  "/shared/gravity"
+      url:       "/shared/gravity-B/page/14"
+      activity:  "/shared/gravity-B"
       index:     14
       introText:
         '''
@@ -382,17 +364,17 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         phenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>
         '''
       steps:     [
-        "/shared/gravity/page/14/step/1"
-        "/shared/gravity/page/14/step/2"
+        "/shared/gravity-B/page/14/step/1"
+        "/shared/gravity-B/page/14/step/2"
       ]
-      firstStep: "/shared/gravity/page/14/step/1"
+      firstStep: "/shared/gravity-B/page/14/step/1"
     }
   ]
 
   steps: [
     {
-      url:          "/shared/gravity/page/1/step/1"
-      activityPage: "/shared/gravity/page/1"
+      url:          "/shared/gravity-B/page/1/step/1"
+      activityPage: "/shared/gravity-B/page/1"
 
       beforeText:
         '''
@@ -416,8 +398,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
 
     {
-      url:          "/shared/gravity/page/2/step/1"
-      activityPage: "/shared/gravity/page/2"
+      url:          "/shared/gravity-B/page/2/step/1"
+      activityPage: "/shared/gravity-B/page/2"
 
       beforeText:
         '''
@@ -432,16 +414,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Predicted Position vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        []
           annotations: ["light-ball-position"]
 
         bottom:
           type:        "graph"
           title:       "Predicted Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        []
           annotations: []
 
@@ -457,13 +439,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       submissibilityCriterion: [">=", ["sketchLength", "light-ball-position"], 0.2]
 
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/2/step/2"
+      defaultBranch: "/shared/gravity-B/page/2/step/2"
     }
 
 
     {
-      url:          "/shared/gravity/page/2/step/2"
-      activityPage: "/shared/gravity/page/2"
+      url:          "/shared/gravity-B/page/2/step/2"
+      activityPage: "/shared/gravity-B/page/2"
 
       beforeText:
         '''
@@ -476,16 +458,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Predicted Position vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        []
           annotations: ["light-ball-position"]
 
         bottom:
           type:        "graph"
           title:       "Predicted Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        []
           annotations: ["light-ball-velocity"]
 
@@ -501,13 +483,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       submissibilityCriterion: [">=", ["sketchLength", "light-ball-velocity"], 0.2]
 
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/2/step/3"
+      defaultBranch: "/shared/gravity-B/page/2/step/3"
     }
 
 
     {
-      url:          "/shared/gravity/page/2/step/3"
-      activityPage: "/shared/gravity/page/2"
+      url:          "/shared/gravity-B/page/2/step/3"
+      activityPage: "/shared/gravity-B/page/2"
 
       beforeText:
         '''
@@ -522,16 +504,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Predicted Position vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        []
           annotations: ["light-ball-position"]
 
         bottom:
           type:        "graph"
           title:       "Predicted Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        []
           annotations: ["light-ball-velocity"]
 
@@ -542,8 +524,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
 
     {
-      url:          "/shared/gravity/page/3/step/1"
-      activityPage: "/shared/gravity/page/3"
+      url:          "/shared/gravity-B/page/3/step/1"
+      activityPage: "/shared/gravity-B/page/3"
 
       beforeText:
         '''
@@ -554,16 +536,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Actual Position vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        ["light-ball-position"]
           annotations: []
 
         bottom:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: []
 
@@ -574,8 +556,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/4/step/1"
-      activityPage: "/shared/gravity/page/4"
+      url:          "/shared/gravity-B/page/4/step/1"
+      activityPage: "/shared/gravity-B/page/4"
 
       beforeText:
         '''
@@ -587,16 +569,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Position vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        ["light-ball-position"]
           annotations: ["light-ball-position"]
 
         bottom:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-velocity"]
 
@@ -608,8 +590,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/5/step/1"
-      activityPage: "/shared/gravity/page/5"
+      url:          "/shared/gravity-B/page/5/step/1"
+      activityPage: "/shared/gravity-B/page/5"
 
       beforeText:
         '''
@@ -622,16 +604,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Predicted Position vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        []
           annotations: ["heavy-ball-position"]
 
         bottom:
           type:        "graph"
           title:       "Predicted Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        []
           annotations: []
 
@@ -646,13 +628,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       submitButtonTitle:       "OK"
       submissibilityDependsOn: ["annotation", "heavy-ball-position"]
       submissibilityCriterion: [">=", ["sketchLength", "heavy-ball-position"], 0.2]
-      defaultBranch:           "/shared/gravity/page/5/step/2"
+      defaultBranch:           "/shared/gravity-B/page/5/step/2"
     }
 
 
     {
-      url:          "/shared/gravity/page/5/step/2"
-      activityPage: "/shared/gravity/page/5"
+      url:          "/shared/gravity-B/page/5/step/2"
+      activityPage: "/shared/gravity-B/page/5"
 
       beforeText:
         '''
@@ -665,16 +647,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Predicted Position vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        []
           annotations: ["heavy-ball-position"]
 
         bottom:
           type:        "graph"
           title:       "Predicted Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        []
           annotations: ["heavy-ball-velocity"]
 
@@ -694,8 +676,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/6/step/1"
-      activityPage: "/shared/gravity/page/6"
+      url:          "/shared/gravity-B/page/6/step/1"
+      activityPage: "/shared/gravity-B/page/6"
 
       beforeText:
         '''
@@ -706,16 +688,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Actual Position vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        ["heavy-ball-position"]
           annotations: []
 
         bottom:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: []
 
@@ -726,8 +708,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/7/step/1"
-      activityPage: "/shared/gravity/page/7"
+      url:          "/shared/gravity-B/page/7/step/1"
+      activityPage: "/shared/gravity-B/page/7"
 
       beforeText:
         '''
@@ -738,16 +720,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Position vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/position"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/position"
           data:        ["heavy-ball-position"]
           annotations: ["heavy-ball-position"]
 
         bottom:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-velocity"]
 
@@ -759,8 +741,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/8/step/1"
-      activityPage: "/shared/gravity/page/8"
+      url:          "/shared/gravity-B/page/8/step/1"
+      activityPage: "/shared/gravity-B/page/8"
 
       beforeText:
         '''
@@ -772,29 +754,29 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: []
 
         bottom:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: []
 
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/8/step/2"
+      defaultBranch: "/shared/gravity-B/page/8/step/2"
     }
 
 
     {
-      url:          "/shared/gravity/page/8/step/2"
-      activityPage: "/shared/gravity/page/8"
+      url:          "/shared/gravity-B/page/8/step/2"
+      activityPage: "/shared/gravity-B/page/8"
 
       beforeText:
         '''
@@ -806,16 +788,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: []
 
         bottom:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: []
 
@@ -841,8 +823,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/9/step/p1"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity-B/page/9/step/p1"
+      activityPage: "/shared/gravity-B/page/9"
 
       beforeText:
         '''
@@ -854,8 +836,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-label", "light-ball-point-1"]
 
@@ -877,21 +859,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/9/step/p2"
+          step:      "/shared/gravity-B/page/9/step/p2"
         }
 
         {
           criterion: [">", ["coord", "x", "light-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/9/step/p1-incorrect-right"
+          step:      "/shared/gravity-B/page/9/step/p1-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/9/step/p1-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/9/step/p1-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/9/step/p1-incorrect-left"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity-B/page/9/step/p1-incorrect-left"
+      activityPage: "/shared/gravity-B/page/9"
 
       beforeText:
         '''
@@ -906,8 +888,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-label", "light-ball-point-1"]
 
@@ -929,21 +911,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/9/step/p2"
+          step:      "/shared/gravity-B/page/9/step/p2"
         }
 
         {
           criterion: [">", ["coord", "x", "light-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/9/step/p1-incorrect-right"
+          step:      "/shared/gravity-B/page/9/step/p1-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/9/step/p1-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/9/step/p1-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/9/step/p1-incorrect-right"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity-B/page/9/step/p1-incorrect-right"
+      activityPage: "/shared/gravity-B/page/9"
 
       beforeText:
         '''
@@ -957,8 +939,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-label", "light-ball-point-1"]
 
@@ -980,21 +962,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/9/step/p2"
+          step:      "/shared/gravity-B/page/9/step/p2"
         }
 
         {
           criterion: [">", ["coord", "x", "light-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/9/step/p1-incorrect-right"
+          step:      "/shared/gravity-B/page/9/step/p1-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/9/step/p1-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/9/step/p1-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/9/step/p2"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity-B/page/9/step/p2"
+      activityPage: "/shared/gravity-B/page/9"
 
       beforeText:
         '''
@@ -1008,8 +990,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
 
@@ -1031,21 +1013,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-2"], 0.85]
-          step:      "/shared/gravity/page/9/step/done"
+          step:      "/shared/gravity-B/page/9/step/done"
         }
 
         {
           criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/9/step/p2-incorrect-right"
+          step:      "/shared/gravity-B/page/9/step/p2-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/9/step/p2-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/9/step/p2-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/9/step/p2-incorrect-left"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity-B/page/9/step/p2-incorrect-left"
+      activityPage: "/shared/gravity-B/page/9"
 
       beforeText:
         '''
@@ -1058,8 +1040,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
 
@@ -1081,22 +1063,22 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-2"], 0.85]
-          step:      "/shared/gravity/page/9/step/done"
+          step:      "/shared/gravity-B/page/9/step/done"
         }
 
         {
           criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/9/step/p2-incorrect-right"
+          step:      "/shared/gravity-B/page/9/step/p2-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/9/step/p2-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/9/step/p2-incorrect-left"
     }
 
 
 
     {
-      url:          "/shared/gravity/page/9/step/p2-incorrect-right"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity-B/page/9/step/p2-incorrect-right"
+      activityPage: "/shared/gravity-B/page/9"
 
       beforeText:
         '''
@@ -1110,8 +1092,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
 
@@ -1133,21 +1115,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-2"], 0.85]
-          step:      "/shared/gravity/page/9/step/done"
+          step:      "/shared/gravity-B/page/9/step/done"
         }
 
         {
           criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/9/step/p2-incorrect-right"
+          step:      "/shared/gravity-B/page/9/step/p2-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/9/step/p2-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/9/step/p2-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/9/step/done"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity-B/page/9/step/done"
+      activityPage: "/shared/gravity-B/page/9"
 
       beforeText:
         '''
@@ -1159,8 +1141,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-label", "light-ball-motion-segment", "light-ball-point-1", "light-ball-point-2"]
 
@@ -1176,8 +1158,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/10/step/p1"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/p1"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1189,8 +1171,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-point-1", "light-ball-motion-segment"]
 
@@ -1212,16 +1194,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: [">=", ["coord", "x", "light-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/10/step/p2"
+          step:      "/shared/gravity-B/page/10/step/p2"
         }
       ]
-      defaultBranch: "/shared/gravity/page/10/step/p1-incorrect"
+      defaultBranch: "/shared/gravity-B/page/10/step/p1-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/10/step/p1-incorrect"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/p1-incorrect"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1233,8 +1215,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-point-1", "light-ball-motion-segment"]
 
@@ -1255,15 +1237,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       responseBranches: [
         criterion: [">=", ["coord", "x", "light-ball-point-1"], 0.45]
-        step:      "/shared/gravity/page/10/step/p2"
+        step:      "/shared/gravity-B/page/10/step/p2"
       ]
-      defaultBranch: "/shared/gravity/page/10/step/p1-incorrect"
+      defaultBranch: "/shared/gravity-B/page/10/step/p1-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/10/step/p2"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/p2"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1275,8 +1257,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-motion-segment"]
 
@@ -1298,21 +1280,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-2"], ["coord", "x", "light-ball-point-1"]]
-          step:      "/shared/gravity/page/10/step/p2-same-as-p1"
+          step:      "/shared/gravity-B/page/10/step/p2-same-as-p1"
         }
 
         {
           criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/10/step/slope-initial"
+          step:      "/shared/gravity-B/page/10/step/slope-initial"
         }
       ]
-      defaultBranch: "/shared/gravity/page/10/step/p2-incorrect"
+      defaultBranch: "/shared/gravity-B/page/10/step/p2-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/10/step/p2-incorrect"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/p2-incorrect"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1324,8 +1306,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-motion-segment"]
 
@@ -1347,21 +1329,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-2"], ["coord", "x", "light-ball-point-1"]]
-          step:      "/shared/gravity/page/10/step/p2-same-as-p1"
+          step:      "/shared/gravity-B/page/10/step/p2-same-as-p1"
         }
 
         {
           criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/10/step/slope-initial"
+          step:      "/shared/gravity-B/page/10/step/slope-initial"
         }
       ]
-      defaultBranch: "/shared/gravity/page/10/step/p2-incorrect"
+      defaultBranch: "/shared/gravity-B/page/10/step/p2-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/10/step/p2-same-as-p1"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/p2-same-as-p1"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1376,8 +1358,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-motion-segment"]
 
@@ -1399,21 +1381,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "light-ball-point-2"], ["coord", "x", "light-ball-point-1"]]
-          step:      "/shared/gravity/page/10/step/p2-same-as-p1"
+          step:      "/shared/gravity-B/page/10/step/p2-same-as-p1"
         }
 
         {
           criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/10/step/slope-initial"
+          step:      "/shared/gravity-B/page/10/step/slope-initial"
         }
       ]
-      defaultBranch: "/shared/gravity/page/10/step/p2-incorrect"
+      defaultBranch: "/shared/gravity-B/page/10/step/p2-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/10/step/slope-initial"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/slope-initial"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1427,8 +1409,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line"]
 
@@ -1448,15 +1430,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       responseBranches: [
         criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/slope-correct"
+        step:      "/shared/gravity-B/page/10/step/slope-correct"
       ]
-      defaultBranch: "/shared/gravity/page/10/step/slope-initial-hint"
+      defaultBranch: "/shared/gravity-B/page/10/step/slope-initial-hint"
     }
 
 
     {
-      url:          "/shared/gravity/page/10/step/slope-initial-hint"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/slope-initial-hint"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1471,8 +1453,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line"]
 
@@ -1487,349 +1469,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       responseBranches: [
         criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/slope-correct"
+        step:      "/shared/gravity-B/page/10/step/slope-correct"
       ]
-      defaultBranch: "/shared/gravity/page/10/step/velocity"
+      defaultBranch: "/shared/gravity-B/page/10/step/slope-final-giveaway"
     }
 
 
     {
-      url:          "/shared/gravity/page/10/step/velocity"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>Incorrect. What was the change in the velocity of the ball, in m/s?</p>
-
-        <p>Hint: Look at the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:                   "graph"
-          title:                  "Velocity vs. Time (Light Ball)"
-          xAxis:                  "/shared/gravity/axes/time"
-          yAxis:                  "/shared/gravity/axes/velocity"
-          data:                   ["light-ball-velocity"]
-          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line"]
-          highlightedAnnotations: ["light-ball-rise-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-velocity"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/time-velocity-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/10/step/velocity-hint"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/velocity-hint"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>Incorrect. What was the change in the velocity of the ball, in m/s?</p>
-
-
-        <p>Hint: Look at the table and the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow"]
-
-        bottom:
-          type:                   "table"
-          data:                   ["light-ball-velocity"]
-          annotations:            ["light-ball-point-1", "light-ball-point-2"]
-          highlightedAnnotations: ["light-ball-rise-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-velocity"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/time-velocity-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/10/step/velocity-giveaway"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/velocity-giveaway"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>Incorrect. The change in the velocity of the ball was %@ m/s - %@ m/s, or %@ m/s</p>
-        '''
-
-      substitutedExpressions: ["final-velocity-as-string", "initial-velocity-as-string", "delta-velocity-as-string"]
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
-
-      submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/10/step/time-velocity-incorrect"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/time-velocity-correct"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>Correct! What is the change in time between the points you selected, in seconds?</p>
-
-        <p>Hint: Look at the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:                   "graph"
-          title:                  "Velocity vs. Time (Light Ball)"
-          xAxis:                  "/shared/gravity/axes/time"
-          yAxis:                  "/shared/gravity/axes/velocity"
-          data:                   ["light-ball-velocity"]
-          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow"]
-          highlightedAnnotations: ["light-ball-run-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/slope-final-time-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/10/step/time-hint"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/time-velocity-incorrect"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>What is the change in time between the points you selected, in seconds?</p>
-
-        <p>Hint: Look at the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:                   "graph"
-          title:                  "Velocity vs. Time (Light Ball)"
-          xAxis:                  "/shared/gravity/axes/time"
-          yAxis:                  "/shared/gravity/axes/velocity"
-          data:                   ["light-ball-velocity"]
-          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow"]
-          highlightedAnnotations: ["light-ball-run-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/slope-final-time-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/10/step/time-hint"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/time-hint"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>Incorrect. What is the change in time between the points you selected, in seconds?</p>
-
-        <p>Hint: Look at the table and the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
-
-        bottom:
-          type:                   "table"
-          data:                   ["light-ball-velocity"]
-          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
-          highlightedAnnotations: ["light-ball-run-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/slope-final-time-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/10/step/time-giveaway"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/time-giveaway"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>Incorrect. The change in time between the points is %@ s - %@ s, or %@ s.</p>
-        '''
-
-      substitutedExpressions: ["final-time-as-string", "initial-time-as-string", "delta-time-as-string"]
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
-
-      submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/10/step/slope-final-time-incorrect"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/slope-final-time-correct"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>Correct! If the change in velocity is %@ m/s during a change in time of %@ s, then what is the slope of the velocity-time graph, in m/s<sup>2</sup>?</p>
-        '''
-
-      substitutedExpressions: ["delta-velocity-as-string", "delta-time-as-string"]
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
-
-        bottom:
-          type:                   "table"
-          data:                   ["light-ball-velocity"]
-          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/slope-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/10/step/slope-final-giveaway"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/slope-final-time-incorrect"
-      activityPage: "/shared/gravity/page/10"
-
-      beforeText:
-        '''
-        <p>If the change in velocity is %@ m/s during a change in time of %@ s, then what is the slope of the velocity-time graph, in m/s<sup>2</sup>?</p>
-        '''
-
-      substitutedExpressions: ["delta-velocity-as-string", "delta-time-as-string"]
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
-
-        bottom:
-          type:                   "table"
-          data:                   ["light-ball-velocity"]
-          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/10/step/slope-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/10/step/slope-final-giveaway"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/10/step/slope-final-giveaway"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/slope-final-giveaway"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1843,15 +1491,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line"]
 
         bottom:
           type:        "table"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
 
       isFinalStep:            true
       hideSubmitButton:       true
@@ -1860,8 +1508,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/10/step/slope-correct"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity-B/page/10/step/slope-correct"
+      activityPage: "/shared/gravity-B/page/10"
 
       beforeText:
         '''
@@ -1875,8 +1523,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: ["light-ball-point-1", "light-ball-point-2"]
 
@@ -1892,8 +1540,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/11/step/p1"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity-B/page/11/step/p1"
+      activityPage: "/shared/gravity-B/page/11"
 
       beforeText:
         '''
@@ -1905,8 +1553,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-label", "heavy-ball-point-1"]
 
@@ -1928,21 +1576,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/11/step/p2"
+          step:      "/shared/gravity-B/page/11/step/p2"
         }
 
         {
           criterion: [">", ["coord", "x", "heavy-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/11/step/p1-incorrect-right"
+          step:      "/shared/gravity-B/page/11/step/p1-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/11/step/p1-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/11/step/p1-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/11/step/p1-incorrect-left"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity-B/page/11/step/p1-incorrect-left"
+      activityPage: "/shared/gravity-B/page/11"
 
       beforeText:
         '''
@@ -1957,8 +1605,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-label", "heavy-ball-point-1"]
 
@@ -1980,21 +1628,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/11/step/p2"
+          step:      "/shared/gravity-B/page/11/step/p2"
         }
 
         {
           criterion: [">", ["coord", "x", "heavy-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/11/step/p1-incorrect-right"
+          step:      "/shared/gravity-B/page/11/step/p1-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/11/step/p1-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/11/step/p1-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/11/step/p1-incorrect-right"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity-B/page/11/step/p1-incorrect-right"
+      activityPage: "/shared/gravity-B/page/11"
 
       beforeText:
         '''
@@ -2008,8 +1656,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-label", "heavy-ball-point-1"]
 
@@ -2031,21 +1679,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/11/step/p2"
+          step:      "/shared/gravity-B/page/11/step/p2"
         }
 
         {
           criterion: [">", ["coord", "x", "heavy-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/11/step/p1-incorrect-right"
+          step:      "/shared/gravity-B/page/11/step/p1-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/11/step/p1-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/11/step/p1-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/11/step/p2"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity-B/page/11/step/p2"
+      activityPage: "/shared/gravity-B/page/11"
 
       beforeText:
         '''
@@ -2059,8 +1707,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
 
@@ -2082,21 +1730,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-2"], 0.9]
-          step:      "/shared/gravity/page/11/step/done"
+          step:      "/shared/gravity-B/page/11/step/done"
         }
 
         {
           criterion: [">=", ["coord", "x", "heavy-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/11/step/p2-incorrect-right"
+          step:      "/shared/gravity-B/page/11/step/p2-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/11/step/p2-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/11/step/p2-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/11/step/p2-incorrect-left"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity-B/page/11/step/p2-incorrect-left"
+      activityPage: "/shared/gravity-B/page/11"
 
       beforeText:
         '''
@@ -2109,8 +1757,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
 
@@ -2132,22 +1780,22 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-2"], 0.9]
-          step:      "/shared/gravity/page/11/step/done"
+          step:      "/shared/gravity-B/page/11/step/done"
         }
 
         {
           criterion: [">=", ["coord", "x", "heavy-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/11/step/p2-incorrect-right"
+          step:      "/shared/gravity-B/page/11/step/p2-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/11/step/p2-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/11/step/p2-incorrect-left"
     }
 
 
 
     {
-      url:          "/shared/gravity/page/11/step/p2-incorrect-right"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity-B/page/11/step/p2-incorrect-right"
+      activityPage: "/shared/gravity-B/page/11"
 
       beforeText:
         '''
@@ -2161,8 +1809,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
 
@@ -2184,21 +1832,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-2"], 0.9]
-          step:      "/shared/gravity/page/11/step/done"
+          step:      "/shared/gravity-B/page/11/step/done"
         }
 
         {
           criterion: [">=", ["coord", "x", "heavy-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/11/step/p2-incorrect-right"
+          step:      "/shared/gravity-B/page/11/step/p2-incorrect-right"
         }
       ]
-      defaultBranch: "/shared/gravity/page/11/step/p2-incorrect-left"
+      defaultBranch: "/shared/gravity-B/page/11/step/p2-incorrect-left"
     }
 
 
     {
-      url:          "/shared/gravity/page/11/step/done"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity-B/page/11/step/done"
+      activityPage: "/shared/gravity-B/page/11"
 
       beforeText:
         '''
@@ -2210,8 +1858,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-label", "heavy-ball-motion-segment", "heavy-ball-point-1", "heavy-ball-point-2"]
 
@@ -2227,8 +1875,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/12/step/p1"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/p1"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2240,8 +1888,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-point-1", "heavy-ball-motion-segment"]
 
@@ -2263,16 +1911,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: [">=", ["coord", "x", "heavy-ball-point-1"], 0.45]
-          step:      "/shared/gravity/page/12/step/p2"
+          step:      "/shared/gravity-B/page/12/step/p2"
         }
       ]
-      defaultBranch: "/shared/gravity/page/12/step/p1-incorrect"
+      defaultBranch: "/shared/gravity-B/page/12/step/p1-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/12/step/p1-incorrect"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/p1-incorrect"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2284,8 +1932,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-point-1", "heavy-ball-motion-segment"]
 
@@ -2306,15 +1954,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       responseBranches: [
         criterion: [">=", ["coord", "x", "heavy-ball-point-1"], 0.45]
-        step:      "/shared/gravity/page/12/step/p2"
+        step:      "/shared/gravity-B/page/12/step/p2"
       ]
-      defaultBranch: "/shared/gravity/page/12/step/p1-incorrect"
+      defaultBranch: "/shared/gravity-B/page/12/step/p1-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/12/step/p2"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/p2"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2326,8 +1974,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-motion-segment"]
 
@@ -2349,21 +1997,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-2"], ["coord", "x", "heavy-ball-point-1"]]
-          step:      "/shared/gravity/page/12/step/p2-same-as-p1"
+          step:      "/shared/gravity-B/page/12/step/p2-same-as-p1"
         }
 
         {
           criterion: [">=", ["coord", "x", "heavy-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/12/step/slope-initial"
+          step:      "/shared/gravity-B/page/12/step/slope-initial"
         }
       ]
-      defaultBranch: "/shared/gravity/page/12/step/p2-incorrect"
+      defaultBranch: "/shared/gravity-B/page/12/step/p2-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/12/step/p2-incorrect"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/p2-incorrect"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2375,8 +2023,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-motion-segment"]
 
@@ -2398,21 +2046,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-2"], ["coord", "x", "heavy-ball-point-1"]]
-          step:      "/shared/gravity/page/12/step/p2-same-as-p1"
+          step:      "/shared/gravity-B/page/12/step/p2-same-as-p1"
         }
 
         {
           criterion: [">=", ["coord", "x", "heavy-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/12/step/slope-initial"
+          step:      "/shared/gravity-B/page/12/step/slope-initial"
         }
       ]
-      defaultBranch: "/shared/gravity/page/12/step/p2-incorrect"
+      defaultBranch: "/shared/gravity-B/page/12/step/p2-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/12/step/p2-same-as-p1"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/p2-same-as-p1"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2427,8 +2075,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-motion-segment"]
 
@@ -2450,21 +2098,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseBranches: [
         {
           criterion: ["=", ["coord", "x", "heavy-ball-point-2"], ["coord", "x", "heavy-ball-point-1"]]
-          step:      "/shared/gravity/page/12/step/p2-same-as-p1"
+          step:      "/shared/gravity-B/page/12/step/p2-same-as-p1"
         }
 
         {
           criterion: [">=", ["coord", "x", "heavy-ball-point-2"], 0.45]
-          step:      "/shared/gravity/page/12/step/slope-initial"
+          step:      "/shared/gravity-B/page/12/step/slope-initial"
         }
       ]
-      defaultBranch: "/shared/gravity/page/12/step/p2-incorrect"
+      defaultBranch: "/shared/gravity-B/page/12/step/p2-incorrect"
     }
 
 
     {
-      url:          "/shared/gravity/page/12/step/slope-initial"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/slope-initial"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2478,8 +2126,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line"]
 
@@ -2499,15 +2147,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       responseBranches: [
         criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/slope-correct"
+        step:      "/shared/gravity-B/page/12/step/slope-correct"
       ]
-      defaultBranch: "/shared/gravity/page/12/step/slope-initial-hint"
+      defaultBranch: "/shared/gravity-B/page/12/step/slope-initial-hint"
     }
 
 
     {
-      url:          "/shared/gravity/page/12/step/slope-initial-hint"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/slope-initial-hint"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2522,8 +2170,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line"]
 
@@ -2538,349 +2186,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       responseBranches: [
         criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/slope-correct"
+        step:      "/shared/gravity-B/page/12/step/slope-correct"
       ]
-      defaultBranch: "/shared/gravity/page/12/step/velocity"
+      defaultBranch: "/shared/gravity-B/page/12/step/slope-final-giveaway"
     }
 
 
     {
-      url:          "/shared/gravity/page/12/step/velocity"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>Incorrect. What was the change in the velocity of the ball, in m/s?</p>
-
-        <p>Hint: Look at the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:                   "graph"
-          title:                  "Velocity vs. Time (Heavy Ball)"
-          xAxis:                  "/shared/gravity/axes/time"
-          yAxis:                  "/shared/gravity/axes/velocity"
-          data:                   ["heavy-ball-velocity"]
-          annotations:            ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line"]
-          highlightedAnnotations: ["heavy-ball-rise-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-velocity"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/time-velocity-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/12/step/velocity-hint"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/velocity-hint"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>Incorrect. What was the change in the velocity of the ball, in m/s?</p>
-
-
-        <p>Hint: Look at the table and the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow"]
-
-        bottom:
-          type:                   "table"
-          data:                   ["heavy-ball-velocity"]
-          annotations:            ["heavy-ball-point-1", "heavy-ball-point-2"]
-          highlightedAnnotations: ["heavy-ball-rise-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-velocity"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/time-velocity-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/12/step/velocity-giveaway"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/velocity-giveaway"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>Incorrect. The change in the velocity of the ball was %@ m/s - %@ m/s, or %@ m/s</p>
-        '''
-
-      substitutedExpressions: ["final-velocity-as-string", "initial-velocity-as-string", "delta-velocity-as-string"]
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
-
-      submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/12/step/time-velocity-incorrect"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/time-velocity-correct"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>Correct! What is the change in time between the points you selected, in seconds?</p>
-
-        <p>Hint: Look at the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:                   "graph"
-          title:                  "Velocity vs. Time (Heavy Ball)"
-          xAxis:                  "/shared/gravity/axes/time"
-          yAxis:                  "/shared/gravity/axes/velocity"
-          data:                   ["heavy-ball-velocity"]
-          annotations:            ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow"]
-          highlightedAnnotations: ["heavy-ball-run-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/slope-final-time-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/12/step/time-hint"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/time-velocity-incorrect"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>What is the change in time between the points you selected, in seconds?</p>
-
-        <p>Hint: Look at the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:                   "graph"
-          title:                  "Velocity vs. Time (Heavy Ball)"
-          xAxis:                  "/shared/gravity/axes/time"
-          yAxis:                  "/shared/gravity/axes/velocity"
-          data:                   ["heavy-ball-velocity"]
-          annotations:            ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow"]
-          highlightedAnnotations: ["heavy-ball-run-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/slope-final-time-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/12/step/time-hint"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/time-hint"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>Incorrect. What is the change in time between the points you selected, in seconds?</p>
-
-        <p>Hint: Look at the table and the graph.</p>
-        '''
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow", "heavy-ball-run-arrow"]
-
-        bottom:
-          type:                   "table"
-          data:                   ["heavy-ball-velocity"]
-          annotations:            ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
-          highlightedAnnotations: ["heavy-ball-run-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/slope-final-time-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/12/step/time-giveaway"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/time-giveaway"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>Incorrect. The change in time between the points is %@ s - %@ s, or %@ s.</p>
-        '''
-
-      substitutedExpressions: ["final-time-as-string", "initial-time-as-string", "delta-time-as-string"]
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow", "heavy-ball-run-arrow"]
-
-        bottom:
-          type:        "table"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
-
-      submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/12/step/slope-final-time-incorrect"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/slope-final-time-correct"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>Correct! If the change in velocity is %@ m/s during a change in time of %@ s, then what is the slope of the velocity-time graph, in m/s<sup>2</sup>?</p>
-        '''
-
-      substitutedExpressions: ["delta-velocity-as-string", "delta-time-as-string"]
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow", "heavy-ball-run-arrow"]
-
-        bottom:
-          type:                   "table"
-          data:                   ["heavy-ball-velocity"]
-          annotations:            ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/slope-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/12/step/slope-final-giveaway"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/slope-final-time-incorrect"
-      activityPage: "/shared/gravity/page/12"
-
-      beforeText:
-        '''
-        <p>If the change in velocity is %@ m/s during a change in time of %@ s, then what is the slope of the velocity-time graph, in m/s<sup>2</sup>?</p>
-        '''
-
-      substitutedExpressions: ["delta-velocity-as-string", "delta-time-as-string"]
-
-      paneConfig:   "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow", "heavy-ball-run-arrow"]
-
-        bottom:
-          type:                   "table"
-          data:                   ["heavy-ball-velocity"]
-          annotations:            ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
-
-      responseTemplate: "/components/response-template/numeric"
-      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
-      submitButtonTitle: "Check My Answer"
-
-      responseBranches: [
-        criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
-        step:      "/shared/gravity/page/12/step/slope-correct"
-      ]
-      defaultBranch: "/shared/gravity/page/12/step/slope-final-giveaway"
-    }
-
-
-    {
-      url:          "/shared/gravity/page/12/step/slope-final-giveaway"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/slope-final-giveaway"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2894,15 +2208,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line", "heavy-ball-rise-arrow", "heavy-ball-run-arrow"]
+          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-slope-line"]
 
         bottom:
           type:        "table"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+          annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
 
       isFinalStep:            true
       hideSubmitButton:       true
@@ -2911,8 +2225,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/12/step/slope-correct"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity-B/page/12/step/slope-correct"
+      activityPage: "/shared/gravity-B/page/12"
 
       beforeText:
         '''
@@ -2926,8 +2240,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
 
@@ -2943,8 +2257,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
 
     {
-      url:          "/shared/gravity/page/13/step/1"
-      activityPage: "/shared/gravity/page/13"
+      url:          "/shared/gravity-B/page/13/step/1"
+      activityPage: "/shared/gravity-B/page/13"
 
       beforeText:
         '''
@@ -2962,29 +2276,29 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: []
 
         bottom:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: []
 
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/13/step/2"
+      defaultBranch: "/shared/gravity-B/page/13/step/2"
     }
 
 
     {
-      url:          "/shared/gravity/page/13/step/2"
-      activityPage: "/shared/gravity/page/13"
+      url:          "/shared/gravity-B/page/13/step/2"
+      activityPage: "/shared/gravity-B/page/13"
 
       beforeText:
         '''
@@ -3002,16 +2316,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         top:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: []
 
         bottom:
           type:        "graph"
           title:       "Actual Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
+          xAxis:       "/shared/gravity-B/axes/time"
+          yAxis:       "/shared/gravity-B/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: []
 
@@ -3022,8 +2336,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
 
     {
-      url:          "/shared/gravity/page/14/step/1"
-      activityPage: "/shared/gravity/page/14"
+      url:          "/shared/gravity-B/page/14/step/1"
+      activityPage: "/shared/gravity-B/page/14"
 
       beforeText:
         '''
@@ -3041,12 +2355,12 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/14/step/2"
+      defaultBranch: "/shared/gravity-B/page/14/step/2"
     }
 
     {
-      url:          "/shared/gravity/page/14/step/2"
-      activityPage: "/shared/gravity/page/14"
+      url:          "/shared/gravity-B/page/14/step/2"
+      activityPage: "/shared/gravity-B/page/14"
 
       beforeText:
         '''
@@ -3086,7 +2400,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
   axes: [
     {
-      url:    "/shared/gravity/axes/time"
+      url:    "/shared/gravity-B/axes/time"
       units:  "/builtins/units/seconds"
       min:    0
       max:    1.0
@@ -3094,7 +2408,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       label:  "Time"
     }
     {
-      url:    "/shared/gravity/axes/position"
+      url:    "/shared/gravity-B/axes/position"
       units:  "/builtins/units/meters"
       min:    0
       max:    2.4
@@ -3102,7 +2416,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       label:  "Position"
     }
     {
-      url:    "/shared/gravity/axes/velocity"
+      url:    "/shared/gravity-B/axes/velocity"
       units:  "/builtins/units/meters-per-second"
       min:    -6
       max:    2
@@ -3116,9 +2430,9 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "UnorderedDataPoints"
       records: [
         {
-          url:         "/shared/gravity/datadefs/light-ball-position"
+          url:         "/shared/gravity-B/datadefs/light-ball-position"
           name:        "light-ball-position"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           xUnits:      "/builtins/units/seconds"
           xLabel:      "Time"
           xShortLabel: "Time"
@@ -3129,9 +2443,9 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         }
 
         {
-          url:         "/shared/gravity/datadefs/heavy-ball-position"
+          url:         "/shared/gravity-B/datadefs/heavy-ball-position"
           name:        "heavy-ball-position"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           xUnits:      "/builtins/units/seconds"
           xLabel:      "Time"
           xShortLabel: "Time"
@@ -3146,30 +2460,30 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "FirstOrderDifference"
       records: [
         {
-          url:          "/shared/gravity/datadefs/light-ball-velocity"
+          url:          "/shared/gravity-B/datadefs/light-ball-velocity"
           name:         "light-ball-velocity"
-          activity:     "/shared/gravity"
+          activity:     "/shared/gravity-B"
           xUnits:       "/builtins/units/seconds"
           xLabel:       "Time"
           xShortLabel:  "Time"
           yUnits:       "/builtins/units/meters-per-second"
           yLabel:       "Velocity"
           yShortLabel:  "Vel"
-          source:       "/shared/gravity/datadefs/light-ball-position"
+          source:       "/shared/gravity-B/datadefs/light-ball-position"
           windowLength: 4
         }
 
         {
-          url:          "/shared/gravity/datadefs/heavy-ball-velocity"
+          url:          "/shared/gravity-B/datadefs/heavy-ball-velocity"
           name:         "heavy-ball-velocity"
-          activity:     "/shared/gravity"
+          activity:     "/shared/gravity-B"
           xUnits:       "/builtins/units/seconds"
           xLabel:       "Time"
           xShortLabel:  "Time"
           yUnits:       "/builtins/units/meters-per-second"
           yLabel:       "Velocity"
           yShortLabel:  "Vel"
-          source:       "/shared/gravity/datadefs/heavy-ball-position"
+          source:       "/shared/gravity-B/datadefs/heavy-ball-position"
           windowLength: 4
         }
       ]
@@ -3178,26 +2492,26 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
   tags: [
     {
-      url:      "/shared/gravity/tag/light-ball-point-1"
-      activity: "/shared/gravity",
+      url:      "/shared/gravity-B/tag/light-ball-point-1"
+      activity: "/shared/gravity-B",
       name:     "light-ball-point-1"
     }
 
     {
-      url:      "/shared/gravity/tag/light-ball-point-2"
-      activity: "/shared/gravity",
+      url:      "/shared/gravity-B/tag/light-ball-point-2"
+      activity: "/shared/gravity-B",
       name:     "light-ball-point-2"
     }
 
     {
-      url:      "/shared/gravity/tag/heavy-ball-point-1"
-      activity: "/shared/gravity",
+      url:      "/shared/gravity-B/tag/heavy-ball-point-1"
+      activity: "/shared/gravity-B",
       name:     "heavy-ball-point-1"
     }
 
     {
-      url:      "/shared/gravity/tag/heavy-ball-point-2"
-      activity: "/shared/gravity",
+      url:      "/shared/gravity-B/tag/heavy-ball-point-2"
+      activity: "/shared/gravity-B",
       name:     "heavy-ball-point-2"
     }
   ]
@@ -3207,38 +2521,38 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "HighlightedPoint",
       records: [
         {
-          url:         "/shared/gravity/anotation/light-ball-point-1"
+          url:         "/shared/gravity-B/anotation/light-ball-point-1"
           name:        "light-ball-point-1"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           datadefName: "light-ball-velocity"
-          tag:         "/shared/gravity/tag/light-ball-point-1"
+          tag:         "/shared/gravity-B/tag/light-ball-point-1"
           color:       "#1f77b4"
         }
 
         {
-          url:         "/shared/gravity/annotation/light-ball-point-2"
+          url:         "/shared/gravity-B/annotation/light-ball-point-2"
           name:        "light-ball-point-2"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           datadefName: "light-ball-velocity"
-          tag:         "/shared/gravity/tag/light-ball-point-2"
+          tag:         "/shared/gravity-B/tag/light-ball-point-2"
           color:       "#ff7f0e"
         }
 
         {
-          url:         "/shared/gravity/annotation/heavy-ball-point-1"
+          url:         "/shared/gravity-B/annotation/heavy-ball-point-1"
           name:        "heavy-ball-point-1"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           datadefName: "heavy-ball-velocity"
-          tag:         "/shared/gravity/tag/heavy-ball-point-1"
+          tag:         "/shared/gravity-B/tag/heavy-ball-point-1"
           color:       "#1f77b4"
         }
 
         {
-          url:         "/shared/gravity/annotation/heavy-ball-point-2"
+          url:         "/shared/gravity-B/annotation/heavy-ball-point-2"
           name:        "heavy-ball-point-2"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           datadefName: "heavy-ball-velocity"
-          tag:         "/shared/gravity/tag/heavy-ball-point-2"
+          tag:         "/shared/gravity-B/tag/heavy-ball-point-2"
           color:       "#ff7f0e"
         }
 
@@ -3249,18 +2563,18 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "SegmentOverlay"
       records: [
         {
-          url:         "/shared/gravity/annotation/light-ball-motion-segment"
+          url:         "/shared/gravity-B/annotation/light-ball-motion-segment"
           name:        "light-ball-motion-segment"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           datadefName: "light-ball-velocity"
           x1Record:    0.45
           x2Record:    0.85
         }
 
         {
-          url:         "/shared/gravity/annotation/heavy-ball-motion-segment"
+          url:         "/shared/gravity-B/annotation/heavy-ball-motion-segment"
           name:        "heavy-ball-motion-segment"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           datadefName: "heavy-ball-velocity"
           x1Record:    0.45
           x2Record:    0.9
@@ -3273,20 +2587,20 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "LineThroughPoints"
       records: [
         {
-          url:      "/shared/gravity/annotation/light-ball-slope-line"
+          url:      "/shared/gravity-B/annotation/light-ball-slope-line"
           name:     "light-ball-slope-line"
-          activity: "/shared/gravity"
-          p1Tag:    "/shared/gravity/tag/light-ball-point-1"
-          p2Tag:    "/shared/gravity/tag/light-ball-point-2"
+          activity: "/shared/gravity-B"
+          p1Tag:    "/shared/gravity-B/tag/light-ball-point-1"
+          p2Tag:    "/shared/gravity-B/tag/light-ball-point-2"
           color:    "#1f77b4"
         }
 
         {
-          url:      "/shared/gravity/annotation/heavy-ball-slope-line"
+          url:      "/shared/gravity-B/annotation/heavy-ball-slope-line"
           name:     "heavy-ball-slope-line"
-          activity: "/shared/gravity"
-          p1Tag:    "/shared/gravity/tag/heavy-ball-point-1"
-          p2Tag:    "/shared/gravity/tag/heavy-ball-point-2"
+          activity: "/shared/gravity-B"
+          p1Tag:    "/shared/gravity-B/tag/heavy-ball-point-1"
+          p2Tag:    "/shared/gravity-B/tag/heavy-ball-point-2"
           color:    "#1f77b4"
         }
       ]
@@ -3296,21 +2610,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "RiseArrow"
       records: [
         {
-          url:      "/shared/gravity/annotation/light-ball-rise-arrow"
+          url:      "/shared/gravity-B/annotation/light-ball-rise-arrow"
           name:     "light-ball-rise-arrow"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           color:    "#cccccc"
-          p1Tag:    "/shared/gravity/tag/light-ball-point-1"
-          p2Tag:    "/shared/gravity/tag/light-ball-point-2"
+          p1Tag:    "/shared/gravity-B/tag/light-ball-point-1"
+          p2Tag:    "/shared/gravity-B/tag/light-ball-point-2"
         }
 
         {
-          url:      "/shared/gravity/annotation/heavy-ball-rise-arrow"
+          url:      "/shared/gravity-B/annotation/heavy-ball-rise-arrow"
           name:     "heavy-ball-rise-arrow"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           color:    "#cccccc"
-          p1Tag:    "/shared/gravity/tag/heavy-ball-point-1"
-          p2Tag:    "/shared/gravity/tag/heavy-ball-point-2"
+          p1Tag:    "/shared/gravity-B/tag/heavy-ball-point-1"
+          p2Tag:    "/shared/gravity-B/tag/heavy-ball-point-2"
         }
       ]
     }
@@ -3319,21 +2633,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "RunArrow"
       records: [
         {
-          url:      "/shared/gravity/annotation/light-ball-run-arrow"
+          url:      "/shared/gravity-B/annotation/light-ball-run-arrow"
           name:     "light-ball-run-arrow"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           color:    "#cccccc"
-          p1Tag:    "/shared/gravity/tag/light-ball-point-1"
-          p2Tag:    "/shared/gravity/tag/light-ball-point-2"
+          p1Tag:    "/shared/gravity-B/tag/light-ball-point-1"
+          p2Tag:    "/shared/gravity-B/tag/light-ball-point-2"
         }
 
         {
-          url:      "/shared/gravity/annotation/heavy-ball-run-arrow"
+          url:      "/shared/gravity-B/annotation/heavy-ball-run-arrow"
           name:     "heavy-ball-run-arrow"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           color:    "#cccccc"
-          p1Tag:    "/shared/gravity/tag/heavy-ball-point-1"
-          p2Tag:    "/shared/gravity/tag/heavy-ball-point-2"
+          p1Tag:    "/shared/gravity-B/tag/heavy-ball-point-1"
+          p2Tag:    "/shared/gravity-B/tag/heavy-ball-point-2"
         }
       ]
     }
@@ -3342,23 +2656,23 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "RiseBracket"
       records: [
         {
-          url:         "/shared/gravity/annotation/light-ball-rise-bracket"
+          url:         "/shared/gravity-B/annotation/light-ball-rise-bracket"
           name:        "light-ball-rise-bracket"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           color:       "#cccccc"
           datadefName: "light-ball-velocity"
-          p1Tag:       "/shared/gravity/tag/light-ball-point-1"
-          p2Tag:       "/shared/gravity/tag/light-ball-point-2"
+          p1Tag:       "/shared/gravity-B/tag/light-ball-point-1"
+          p2Tag:       "/shared/gravity-B/tag/light-ball-point-2"
         }
 
         {
-          url:         "/shared/gravity/annotation/heavy-ball-rise-bracket"
+          url:         "/shared/gravity-B/annotation/heavy-ball-rise-bracket"
           name:        "heavy-ball-rise-bracket"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           color:       "#cccccc"
           datadefName: "heavy-ball-velocity"
-          p1Tag:       "/shared/gravity/tag/heavy-ball-point-1"
-          p2Tag:       "/shared/gravity/tag/heavy-ball-point-2"
+          p1Tag:       "/shared/gravity-B/tag/heavy-ball-point-1"
+          p2Tag:       "/shared/gravity-B/tag/heavy-ball-point-2"
         }
       ]
     }
@@ -3367,23 +2681,23 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "RunBracket"
       records: [
         {
-          url:         "/shared/gravity/annotation/light-ball-run-bracket"
+          url:         "/shared/gravity-B/annotation/light-ball-run-bracket"
           name:        "light-ball-run-bracket"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           color:       "#cccccc"
           datadefName: "light-ball-velocity"
-          p1Tag:       "/shared/gravity/tag/light-ball-point-1"
-          p2Tag:       "/shared/gravity/tag/light-ball-point-2"
+          p1Tag:       "/shared/gravity-B/tag/light-ball-point-1"
+          p2Tag:       "/shared/gravity-B/tag/light-ball-point-2"
         }
 
         {
-          url:         "/shared/gravity/annotation/heavy-ball-run-bracket"
+          url:         "/shared/gravity-B/annotation/heavy-ball-run-bracket"
           name:        "heavy-ball-run-bracket"
-          activity:    "/shared/gravity"
+          activity:    "/shared/gravity-B"
           color:       "#cccccc"
           datadefName: "heavy-ball-velocity"
-          p1Tag:       "/shared/gravity/tag/heavy-ball-point-1"
-          p2Tag:       "/shared/gravity/tag/heavy-ball-point-2"
+          p1Tag:       "/shared/gravity-B/tag/heavy-ball-point-1"
+          p2Tag:       "/shared/gravity-B/tag/heavy-ball-point-2"
         }
       ]
     }
@@ -3392,33 +2706,33 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "FreehandSketch"
       records: [
         {
-          url:      "/shared/gravity/annotation/light-ball-position"
+          url:      "/shared/gravity-B/annotation/light-ball-position"
           name:     "light-ball-position"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           color:    "#CC0000"
           points:   []
         }
 
         {
-          url:      "/shared/gravity/annotation/light-ball-velocity"
+          url:      "/shared/gravity-B/annotation/light-ball-velocity"
           name:     "light-ball-velocity"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           color:    "#CC0000"
           points:   []
         }
 
         {
-          url:      "/shared/gravity/annotation/heavy-ball-position"
+          url:      "/shared/gravity-B/annotation/heavy-ball-position"
           name:     "heavy-ball-position"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           color:    "#CC0000"
           points:   []
         }
 
         {
-          url:      "/shared/gravity/annotation/heavy-ball-velocity"
+          url:      "/shared/gravity-B/annotation/heavy-ball-velocity"
           name:     "heavy-ball-velocity"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           color:    "#CC0000"
           points:   []
         }
@@ -3429,16 +2743,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       type: "Label"
       records: [
         {
-          url:      "/shared/gravity/annotation/light-ball-label"
+          url:      "/shared/gravity-B/annotation/light-ball-label"
           name:     "light-ball-label"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           text:     "Fastest point"
         }
 
         {
-          url:      "/shared/gravity/annotation/heavy-ball-label"
+          url:      "/shared/gravity-B/annotation/heavy-ball-label"
           name:     "heavy-ball-label"
-          activity: "/shared/gravity"
+          activity: "/shared/gravity-B"
           text:     "Fastest point"
         }
       ]
