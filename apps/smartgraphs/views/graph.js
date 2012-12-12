@@ -1361,6 +1361,9 @@ Smartgraphs.GraphView = SC.View.extend(
       maxHeight: 0,
       initialTopPos: 0,
       initialLeftPos: 0,
+      arrObservers : [],
+
+      graphController: SC.outlet('parentView.graphController'),
 
       childViews: 'legendHeadingView'.w(),
 
@@ -1373,6 +1376,35 @@ Smartgraphs.GraphView = SC.View.extend(
       },
 
       initialize: function (legendElements) {
+        var graphControllerObject = this.get('graphController');
+        var legendTitle, legendType;
+        if (!(legendElements instanceof Array)) {
+          legendTitle = legendElements.title;
+          legendType = legendElements.type;
+          legendElements = legendElements.datadefs;
+        }
+        var noOfElements = legendElements.length;
+        var arrLegendElements = [];
+        var datadef, datadefName = "";
+        for (var i = 0; i < noOfElements; i++) {
+          var legendElementObject = null;
+          datadef = graphControllerObject.getDatadef(legendElements[i]);
+          datadefName = legendElements[i];
+          var datadefColor = datadef.get('color');
+          if (legendType === 'name' || legendType === undefined) {
+            legendElementObject = { color: datadefColor, text: legendElements[i] };
+          }
+          else if (legendType === 'AvgSumOfDeviation') {
+            var datadefDeviationValue = datadef.get('deviationValue');
+            if (datadefDeviationValue === null) {
+              this.set('isVisible', false);
+            }
+            legendElementObject = { color: datadefColor, text: datadefDeviationValue };
+            this.set('defaultValue', false);
+          }
+          arrLegendElements.push(legendElementObject);
+        }
+        legendElements = arrLegendElements;
         // to remove the legend elements
         var nLength = this.childViews.length;
         var index = 1;
@@ -1380,31 +1412,66 @@ Smartgraphs.GraphView = SC.View.extend(
           this.childViews[index].removeFromParent();
           nLength--;
         }
-
+        // Remove observer of datadef's deviationValue within Legend
+        if (legendType === "AvgSumOfDeviation")
+        {
+          for (var p = this.arrObservers.length - 1; p >= 0; p--) {
+            datadef = this.arrObservers[p].datadef;
+            var textViewObject = this.arrObservers[p].textViewObject;
+            datadef.removeObserver('deviationValue', textViewObject, textViewObject.updateText);
+            this.arrObservers.pop();
+          }
+        }
         var legendHeadingHeight = this.legendHeadingView.layout.height;
         var len = legendElements.length;
         // View shouldn't be visible when there are no legends.
         if (len === 0) {
+          this.set('maxHeight', 0);
+          this.set('defaultValue', false);
           this.set('isVisible', NO);
           return;
         }
         else {
-          this.set('isVisible', YES);
+          if (legendType !== "AvgSumOfDeviation")
+          {
+            this.set('isVisible', YES);
+          }
+        }
+        if (legendTitle !== undefined) {
+          this.legendHeadingView.set('value', legendTitle);
         }
         var topOffset = legendHeadingHeight + this.topPadding;
         var newChild = null;
-        for (var i = 0; i < len; i++) {
-          newChild = this.legendElement.create({ color: legendElements[i].color, text: legendElements[i].text });
+        for (var m = 0; m < len; m++) {
+          newChild = this.legendElement.create({ color: legendElements[m].color, text: legendElements[m].text });
           newChild.set('layout', { left: this.leftPadding });
           newChild.updatePosition(topOffset);
           this.appendChild(newChild);
           topOffset += newChild.layout.height + this.verticalElementSpacing;
+
+          // Add observer to datadef's deviationValue within Legend
+          if (legendType === "AvgSumOfDeviation")
+          {
+            datadef = graphControllerObject.getDatadef(datadefName);
+            var textView = newChild.textView;
+            datadef.addObserver('deviationValue', textView, textView.updateText);
+            var observerObject = { datadef: datadef, textViewObject: textView };
+            this.arrObservers.push(observerObject);
+          }
         }
         if (len > 0) {
           var maxHeight = topOffset - this.verticalElementSpacing + this.bottomPadding;
           this.set('maxHeight', maxHeight);
         }
       },
+
+      updateInitialPosition: function () {
+        if (this.maxHeight === 0) {
+          var position = this.getLegendPosition();
+          this.set('initialTopPos', position.top);
+          this.set('initialLeftPos', position.left);
+        }
+      }.observes('maxHeight'),
 
       didLayoutChange: function () {
         var layout = { top: this.initialTopPos, left: this.initialLeftPos, width: this.maxWidth, height: this.maxHeight, zIndex: 2 };
@@ -1424,9 +1491,8 @@ Smartgraphs.GraphView = SC.View.extend(
 
       getLegendPosition: function () {
         var parentFrame = this.getPath('parentView.frame');
-        var layout = this.layout;
-        var topBound = parentFrame.height - layout.height;
-        var leftBound = parentFrame.width - layout.width;
+        var topBound = parentFrame.height - this.maxHeight;
+        var leftBound = parentFrame.width - this.maxWidth;
         var position = { top: topBound, left: leftBound };
         return position;
       },
@@ -1618,7 +1684,17 @@ Smartgraphs.GraphView = SC.View.extend(
           shouldResizeWidth: YES,
           textAlign: SC.ALIGN_CENTER,
           value: SC.outlet('parentView.text'),
-          autoResizeText: SC.outlet('parentView.text')
+          autoResizeText: SC.outlet('parentView.text'),
+
+          updateText: function (datadef) {
+            this.set('value', datadef.get('deviationValue'));
+            var legendView = this.parentView.parentView;
+            if (datadef.get('deviationValue') !== null && datadef.get('deviationValue') >= 0) {
+              if (!legendView.get('isVisible')) {
+                legendView.set('isVisible', true);
+              }
+            }
+          }
         })
       })
     })

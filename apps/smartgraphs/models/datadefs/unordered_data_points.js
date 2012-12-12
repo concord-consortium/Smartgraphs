@@ -61,6 +61,52 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
 
   clearPoints: function () {
     this.set('points', []);
-  }
+  },
 
+  /**
+    Returns a deviation value of this dataset from the reference Scatter Plot.
+
+    @returns {Number}
+  */
+  calculateDeviationValue: function () {
+    var referencePoints;
+    var referenceDatadefName = this.get('referenceDatadefName');
+    if (referenceDatadefName !== undefined && referenceDatadefName !== "") {
+      var referenceDatadef = Smartgraphs.activityObjectsController.findDatadef(referenceDatadefName);
+      referencePoints = referenceDatadef.get('points');
+    }
+    else {
+      return;
+    }
+    var points = this.get('points');
+
+    if (points.length >= 2) {
+      var sumOfSqaures = 0, deviation = 0, constant = 0;
+
+      var y2 = points[1][1];
+      var y1 = points[0][1];
+      var x2 = points[1][0];
+      var x1 = points[0][0];
+
+      var slope = (y2 - y1) / (x2 - x1);
+      var len = referencePoints.length;
+      for (var j = 0; j < len; j++) {
+        var xRef = referencePoints[j][0];
+        var yRef = referencePoints[j][1];
+        if (slope === 0) {
+          deviation = yRef;
+        }
+        else if (slope === Infinity || slope === (-Infinity)) {
+          deviation = Infinity;
+        }
+        else {
+          constant = y2 - slope * x2;
+          deviation = (xRef * slope + constant) - yRef;
+        }
+        sumOfSqaures += Math.pow(deviation, 2);
+      }
+      sumOfSqaures = (Math.round(sumOfSqaures * 100) / 100).toFixed(2);
+      this.set('deviationValue', sumOfSqaures);
+    }
+  }.observes('*points.[]')
 });

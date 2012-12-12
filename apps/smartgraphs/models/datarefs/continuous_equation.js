@@ -41,7 +41,7 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
 
         // outside of drawable y?
         if (y < graphBounds.yMin || y > graphBounds.yMax) {
-          yPrev = y > graphBounds.yMax ? graphBounds.yMax : graphBounds.yMin;    
+          yPrev = y > graphBounds.yMax ? graphBounds.yMax : graphBounds.yMin;
           xPrev = fnInverse(yPrev);
           if (isContinue) {
             continue;
@@ -50,7 +50,7 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
         }
         else {
           // bottom clipping:
-          if (isContinue && x !== graphBounds.xMin) {
+          if (isContinue && x !== graphBounds.xMin && xPrev !== x) {
             datarefPoints.pushObject([xPrev, yPrev]);
           }
           isContinue = false;

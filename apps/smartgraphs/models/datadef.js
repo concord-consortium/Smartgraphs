@@ -53,6 +53,12 @@ Smartgraphs.Datadef = SC.Record.extend(
   name: SC.Record.attr(String),
 
   /**
+   * Deviation of this datadef from reference ScatterPlot.
+   * @property {Number|null}
+   */
+  deviationValue: null,
+
+  /**
     The Activity this datadef is part of.
 
     @property {Smartgraphs.Activity}
@@ -72,6 +78,13 @@ Smartgraphs.Datadef = SC.Record.extend(
     @property {Smartgraphs.Unit}
   */
   yUnits: SC.Record.toOne('Smartgraphs.Unit'),
+
+  /**
+    Color used to represent this datadef.
+
+    @property {String|null}
+  */
+  color: SC.Record.attr(String),
 
   /**
     x-value of currently selected point, or null if no point is selected. Transient.

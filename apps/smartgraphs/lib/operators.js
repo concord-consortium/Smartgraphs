@@ -388,6 +388,12 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     return b;
   }).args(2);
 
+  def('deviationValue', function (datadefName) {
+    var datadef = Smartgraphs.activityObjectsController.findDatadef(datadefName);
+    var deviationValue = datadef.get('deviationValue');
+    return deviationValue;
+  }).args(1);
+  
   def('pointMoved', function (datadefName, pointNumber) {
     var graphingTool = Smartgraphs.graphingTool;
     if (graphingTool.get('pointMoved'))

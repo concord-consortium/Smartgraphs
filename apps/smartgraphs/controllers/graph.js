@@ -500,12 +500,18 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       A hash with config options
   */
   setupGraph: function (config) {
-    var dataSpecs = config.data || [],
+    // config.data Array contains either String or Array.
+    // Depending on the content, dataset's name is fetched.
+
+    // Giving a copy of config.data to dataspecs, so that the actual
+    // config.data does not get affected while re-ordering the
+    // datadefs for active datadef.
+    var dataSpecs = config.data ? config.data.concat([]) : [],
         self      = this,
         datarefNames = config.datarefs || [],
-        legendTexts = config.legends || [],
+        legendDetails = config.legends || undefined,
         activeDatadefs = config.activeDatadefs || [];
-    
+
     if (dataSpecs.length === 1 && activeDatadefs.length === 1) {
       this.getDatadef(activeDatadefs[0]).set('isActive', true);
     }
@@ -513,19 +519,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       // datadefs are re-ordered, keeping active datadefs at the end so that they are above inactive datadefs.
       var activeDatadefLength = activeDatadefs.length;
       var tempArray = [];
-      var dataSpec = "";
       if (activeDatadefLength > 0) {
         for (var i = 0; i < dataSpecs.length; i++) {
+          var datadefName = "";
           if (SC.typeOf(dataSpecs[i]) === SC.T_STRING) {
-            dataSpec = dataSpecs[i];
+            datadefName = dataSpecs[i];
           }
           else {
-            dataSpec = dataSpecs[i][0];
+            datadefName = dataSpecs[i][0];
           }
-          this.getDatadef(dataSpec).set('isActive', false);
+          this.getDatadef(datadefName).set('isActive', false);
           for (var j = 0; j < activeDatadefs.length; j++) {
-            if (dataSpec === activeDatadefs[j]) {
-              this.getDatadef(dataSpec).set('isActive', true);
+            if (datadefName === activeDatadefs[j]) {
+              this.getDatadef(datadefName).set('isActive', true);
               dataSpecs.splice(i, 1);
               i--;
               break;
@@ -589,25 +595,26 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       }
       rep = datadef.getNewRepresentation(options);
       self.addDataRepresentation(rep);
-
-      /* Generates and sets arrLegends array, which is binded in the GraphView so that
-         it can be displayed. */
-      if (legendTexts.length > 0) {
-        for (var i = 0; i < legendTexts.length; i++) {
-          if (legendTexts[i] === datadef.get('name')) {
-            var Obj = { color: rep.color, text: legendTexts[i] };
-            arrLegendElements.push(Obj);
-          }
-        }
-      }
     });
+
     var dataReps = this.get('dataRepresentations') || [];
     for (var k = 0; k < dataReps.length; k++) {
       var rep = dataReps[k];
       rep.addObserver('graphableObjects', this, this.graphableObjectsDidChange);
     }
-    if (legendTexts.length > 0) {
-      this.set('arrLegends', arrLegendElements);
+
+    if (legendDetails !== undefined) {
+      var referenceDatadef = legendDetails.referenceDatadef; 
+      if (referenceDatadef !== undefined) {
+        var len = legendDetails.datadefs.length;
+        for (var m = 0; m < len; m++) {
+          var datadef = legendDetails.datadefs[m];
+          if (datadef !== referenceDatadef) {
+            this.getDatadef(datadef).set('referenceDatadefName', referenceDatadef);
+          }
+        }
+      }
+      this.set('arrLegends', legendDetails);
     }
 
     if (datarefNames) {
@@ -669,21 +676,40 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       The DataRepresentation we are requesting a color for
   */
   getColorForDataRepresentation: function (rep) {
+    var datadef = this.getDatadef(rep.get('name'));
+    if (datadef) {
+      var datadefColor = datadef.get('color');
+      if (datadefColor) {
+        return datadefColor;
+      }
+    }
+
     var defaultColor = rep.get('defaultColor'),
         used = this.get('dataRepresentations').getEach('color'),
         colors,
         i, len;
 
     if (defaultColor && !used.contains(defaultColor)) {
+      if (datadef) {
+        datadef.set('color', defaultColor);
+      }
       return defaultColor;
     }
 
     colors = this.get('colors');
     for (i = 0, len = colors.get('length'); i < len; i++) {
-      if ( !used.contains(colors.objectAt(i)) ) return colors.objectAt(i);
+      if (!used.contains(colors.objectAt(i))) {
+        if (datadef) {
+          datadef.set('color', colors.objectAt(i));
+        }
+        return colors.objectAt(i);
+      }
     }
 
     // just default to the first color if none available
+    if (datadef) {
+      datadef.set('color', colors.objectAt(0));
+    }
     return colors.objectAt(0);
   },
 
