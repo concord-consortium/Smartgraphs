@@ -18,8 +18,8 @@ Smartgraphs.mainPage = SC.Page.design({
     topToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_TOP,
       
-      childViews: ['title', 'runButton', 'saveButton', 'savingMessage', 'editButton'],
       
+      childViews: ['title', 'runButton', 'saveButton', 'aboutButton', 'savingMessage', 'editButton'],
       title: SC.LabelView.design({
         layout: { centerY: 0, height: 24, left: 8, width: 600 },
         controlSize: SC.LARGE_CONTROL_SIZE,
@@ -28,7 +28,7 @@ Smartgraphs.mainPage = SC.Page.design({
       }),
       
       editButton: SC.ButtonView.design({
-        layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        layout: { right: 120, centerY: 0, height: 24, width: 80 },
         isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowEditButton',
         title: 'Edit',
         action: 'openAuthorView'
