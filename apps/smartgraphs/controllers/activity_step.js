@@ -50,9 +50,15 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     this.executeCommands(this.get('startCommands'));
     this.processSubstitutions(this.get('substitutedExpressions'));
 
-    // submit GA event:
+    // Submit GA step change event:
     Smartgraphs.sendGaEvent('Step Change', "(" + this.get('url') + ")");
-    
+
+    // Submit GA activity completed event if relevant:
+    if (Smartgraphs.activityPagesController.isLastPage() && this.get('isTerminalStep')) { // Test for is-this-last-step
+        // console.log('=> Send Activity Completed to GA');
+        Smartgraphs.sendGaEvent('Activity Completed', "(" + this.get('url') + ")");
+    }
+
     // does the step goes "straight through"?
     if (this.get('shouldFinishImmediately')) {
       Smartgraphs.statechart.sendAction('submitStep');
@@ -241,6 +247,22 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (defaultBranch) {
       Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
     }
-  }
+  },
+
+  /**
+    Calculates when the current step is the last step of an activity.
+
+    Although the 'isFinalStep' attribute would seem to do this for us, it is used to activate the 'Next page'
+    button immediately, so in an actual terminal step it is often left out (i.e. isFinalStep is null or undefined).
+    Instead, we look for the absence of submissibilityCriterion, defaultBranch, and responseBranches - if they're
+    all null, there isn't anywhere to go.
+  */
+  isTerminalStep: function () {
+      if ((!this.get('submissibilityCriterion') || this.get('isFinalStep')) && !this.get('defaultBranch') && !this.get('responseBranches')) {
+          return true;
+      } else {
+          return false;
+      }
+  }.property('submissibilityCriterion', 'defaultBranch', 'responseBranches').cacheable()
 
 }) ;
