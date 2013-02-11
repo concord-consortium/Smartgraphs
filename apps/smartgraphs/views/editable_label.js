@@ -96,6 +96,14 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     });
   },
 
+  destroy: function () {
+    this.bindings.forEach(function (binding) {
+      binding.disconnect();
+    });
+    this.bindings = null;
+    sc_super();
+  },
+
   renderCallback: function (raphaelCanvas, attrs, adjustTextFieldView) {
     var ret = raphaelCanvas.text().attr(attrs);
     adjustTextFieldView();
@@ -173,7 +181,10 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
 
     if (pane.get('childViews').contains(this.textFieldView)) {
       pane.removeChild(this.textFieldView);
+      $('body').unbind('mousedown', this.mousedownHandler).unbind('touchstart', this.mousedownHandler);
+      this.textFieldView.resignFirstResponder();
     }
+    this.destroy();
   },
 
   adjustMetrics: function () {
@@ -231,8 +242,10 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
   },
 
   commitEditing: function () {
+    $('body').unbind('mousedown', this.mousedownHandler).unbind('touchstart', this.mousedownHandler);
     this.set('text', this.textFieldView.get('value'));
     this.set('isEditing', NO);
+    this.textFieldView.resignFirstResponder();
   }
 
 });

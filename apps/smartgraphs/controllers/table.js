@@ -245,7 +245,14 @@ Smartgraphs.TableController = SC.ArrayController.extend(Smartgraphs.AnnotationSu
   },
 
   dataPointSelected: function (dataRepresentation, x, y) {
-    Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
+    var activityViewController = Smartgraphs.activityViewController;
+    var graphController = activityViewController.graphControllerForPane('top') || activityViewController.graphControllerForPane('bottom');
+    if (graphController) {
+      graphController.dataPointSelected(dataRepresentation, x, y);
+    }
+    else {
+      Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
+    }
   }
 
 });

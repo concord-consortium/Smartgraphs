@@ -79,7 +79,27 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
   */
   hasEditedFirstTime: NO,
 
+  /**
+    Makes a label editable/non-editable depending upon this property.
+
+    @property {Boolean}
+  */
+  isEditable: NO,
+
+  /**
+    Whether to display this annotation in front of all the annotations, axes, graph title and data views.
+
+    @property {Boolean}
+  */
+  isTopAnnotation: true,
+
   labelSet: null,
+
+  /*
+   * View associated with this annotation.
+   */
+
+  view: null,
 
   isRemovalEnabled: function () {
     if (this.get('labelSet')) {

@@ -45,35 +45,22 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
     }
   },
 
+  removeLabel: function (context, args) {
+    var labelName = Smartgraphs.taggingTool.labelName;
+    if (labelName === args.label.get('name')) {
+      Smartgraphs.statechart.sendAction('disableSubmission');
+    }
+  },
+
   mouseDownAtPoint: function (context, args) {
     var datadefName = Smartgraphs.taggingTool.get('datadefName');
-    var graphController = context;
-    var rep = graphController.getDataRepresentation(datadefName);
-    if (rep) {
-      if (rep.get('lineStyle') === "connected" && rep.get('pointStyle') === "none") {
-        var linePoints = rep.getPath('line.points');
-        if (linePoints) {
-          var pointsetPoint = null;
-          var lineSnapDistance = rep.getPath('datadef.lineSnapDistance');
-          var minDistance = lineSnapDistance;
-          // Loop to get nearest datadef point from click within lineSnapDistance
-          for (var i = linePoints.get('length') - 1; i >= 0; i--) {
-            var linePoint = { x: linePoints[i][0], y: linePoints[i][1] };
-            var distance = Math.sqrt(Math.pow(linePoint.x - args.x, 2) + Math.pow(linePoint.y - args.y, 2));
-            if (distance < lineSnapDistance) {
-              if (distance < minDistance) {
-                minDistance = distance;
-                pointsetPoint = linePoint;
-              }
-            }
-          }
-          if (pointsetPoint) {
-            rep.showSinglePoint(pointsetPoint.x, pointsetPoint.y);
-            Smartgraphs.taggingTool.setPoint(pointsetPoint.x, pointsetPoint.y);
-            Smartgraphs.statechart.sendAction('enableSubmission');
-          }
-        }
-      }
+    var dataRepresentation = context.getDataRepresentation(datadefName);
+    var pointsetPoint = dataRepresentation.getNearestPoint(args);
+    if (pointsetPoint) {
+      var rep = context.getDataRepresentation(datadefName);
+      rep.showSinglePoint(pointsetPoint.x, pointsetPoint.y);
+      Smartgraphs.taggingTool.setPoint(pointsetPoint.x, pointsetPoint.y);
+      Smartgraphs.statechart.sendAction('enableSubmission');
     }
   }
 });

@@ -32,8 +32,9 @@ describe("label tool plugin to graph controller", function () {
 
     describe("after label tool is started", function () {
 
-      beforeEach( function () {
-        controller.labelToolStartTool();
+      beforeEach(function () {
+        var args = { annotationName: "label", markOnDataPoints: false, datadefName: "datadef" };
+        controller.labelToolStartTool(args);
       });
 
       it("should be in a substate of the LABEL_TOOL.ON state", function () {

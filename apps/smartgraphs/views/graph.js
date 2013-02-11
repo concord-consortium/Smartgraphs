@@ -36,7 +36,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
   padding: { top: 15, right: 15, bottom: 45, left: 45 },
 
-  childViews: 'titleView tooltipView graphCanvasView legendView'.w(),
+  childViews: 'titleView tooltipView graphCanvasView topAnnotationsHolder legendView'.w(),
 
   init: function () {
     sc_super();
@@ -163,6 +163,9 @@ Smartgraphs.GraphView = SC.View.extend(
       if (item.get('isOverlayAnnotation')) {
         this.get('overlayAnnotationsHolder').appendChild(view);
       }
+      else if (item.get('isTopAnnotation')) {
+        this.get('topAnnotationsHolder').appendChild(view);
+      }
       else {
         this.get('annotationsHolder').appendChild(view);
       }
@@ -212,6 +215,9 @@ Smartgraphs.GraphView = SC.View.extend(
           else if (itemType === 'annotation') {
             if (item.get('isOverlayAnnotation')) {
               this.get('overlayAnnotationsHolder').appendChild(view);
+            }
+            else if (item.get('isTopAnnotation')) {
+              this.get('topAnnotationsHolder').appendChild(view);
             }
             else {
               this.get('annotationsHolder').appendChild(view);
@@ -379,7 +385,116 @@ Smartgraphs.GraphView = SC.View.extend(
       graphController.updateToolTip(point, coords);
       return;
     }
+  }),
 
+  topAnnotationsHolder: RaphaelViews.RaphaelCanvasView.design({
+
+    layout: { zIndex: 1 },
+
+    graphView: SC.outlet('parentView'),
+    requestedCursorStyleBinding: '.graphView.requestedCursorStyle',
+
+    init: function () {
+      sc_super();
+
+      var cursor = SC.Cursor.create();
+      cursor.bind('cursorStyle', this, 'requestedCursorStyle');
+      this.set('cursor', cursor);
+    },
+    didCreateLayer: function () {
+      sc_super();
+      var self = this;
+      /* "this.childNodes && evt.target === this.childNodes[0]"
+       * The above condition is to check whether the events are fired on 'topAnnotationsHolder' or its children.
+       * If the events are fired on 'topAnnotationsHolder', they are to be propagated to the layers beneath it.
+      */
+      this.$().mousemove(function (evt) {
+        if (self.checkDescendent(evt.target, this)) {
+          return YES;
+        }
+        else {
+          self.handleEvent(evt);
+        }
+      });
+
+      this.$().mousedown(function (evt) {
+        if (self.checkDescendent(evt.target, this)) {
+          var label = self.getActiveLabel();
+          if (label) {
+            var activeLabelElement = label.get('layer');
+            if (!self.checkDescendent(evt.target, activeLabelElement)) {
+              label.commitEditing();
+            }
+          }
+          return YES;
+        }
+        else {
+          self.handleEvent(evt);
+        }
+      });
+
+      this.$().mouseup(function (evt) {
+        if (self.checkDescendent(evt.target, this)) {
+          return YES;
+        }
+        else {
+          self.handleEvent(evt);
+        }
+      });
+    },
+
+    checkDescendent: function (element, descendent) {
+      var arrDescendents = $(element).parentsUntil("#" + descendent.id);
+      var noOfDescendents = arrDescendents.length;
+      var lastDescendent = arrDescendents[noOfDescendents - 1];
+      if (lastDescendent && lastDescendent.tagName !== 'HTML') {
+        return true;
+      }
+      return false;
+    },
+
+    getActiveLabel: function () {
+      var topAnnotationsHolder = this;
+      var topAnnotationChildViews = topAnnotationsHolder.get('childViews');
+
+      for (var i = 0; i < topAnnotationChildViews.length; i++) {
+        var childLabel = topAnnotationChildViews[i];
+        if (childLabel.kindOf(Smartgraphs.LabelSetView)) {
+          return childLabel.get('activeLabel');
+        }
+        else if (childLabel.kindOf(Smartgraphs.LabelView)) {
+          if (childLabel.get('isEditing')) {
+            return childLabel;
+          }
+        }
+      }
+    },
+
+    handleEvent: function (evt) {
+      // Stop propagation. If we let the mousemove event bubble, the SproutCore root responder will think we were the
+      // "last hovered" view, which screws up its calculation of hover.
+      evt.stopPropagation();
+
+      // Find the element UNDER us at the location of the mouse event
+      this.$().hide();
+      var el = document.elementFromPoint(evt.clientX, evt.clientY);     // should work in IE!
+
+      // Also hide the 'overlayAnnotationHolder' to propagate the events through it.
+      if(SC.View.views[el.parentNode.id] === this.get('graphView').overlayAnnotationsHolder) {
+        $(el).hide();
+        var el2 = document.elementFromPoint(evt.clientX, evt.clientY);     // should work in IE!
+        $(el).show();
+        el = el2;
+      }
+      this.$().show();
+      // Set the event target to be the element beneath us. Because 'event' is a jQuery-normalized event, 'target' is a
+      // normal R/W property
+      evt.target = el;
+
+      // NOW let SproutCore think the event happened directly to the element below us. It will handle forwarding
+      // mouseDown, mouseMoved, mouseExited, mouseEntered events to the SC.Views beneath us.
+      SC.Event.handle.call(document, evt);
+    }
   }),
 
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
@@ -922,6 +1037,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
         graphCanvasView: SC.outlet('parentView.graphCanvasView'),
         graphView: SC.outlet('parentView.graphView'),
+        topAnnotationsHolder: SC.outlet('graphView.topAnnotationsHolder'),
 
         didCreateLayer: function () {
           // cache these rather than lookup the jquery object (graphView.$()) per mouse event
@@ -973,10 +1089,21 @@ Smartgraphs.GraphView = SC.View.extend(
         },
 
         _mouseDownOrTouchStart: function (evt) {
+          this._graphController = this._graphView.get('graphController');
+
+          /*
+           * In IE9, events are fired directly on inputAreaView instead of topAnnotationsHolder.
+           * So the loss of focus from label's textarea is checked here.
+           */
+          var topAnnotationsHolder = this.getPath('topAnnotationsHolder');
+          var label = topAnnotationsHolder.getActiveLabel();
+          if (label) {
+            label.commitEditing();
+            return;
+          }
           var coords = this.coordsForEvent(evt),
               point = this._graphView.pointForCoordinates(coords.x, coords.y);
 
-          this._graphController = this._graphView.get('graphController');
           return this._graphController.inputAreaMouseDown(point.x, point.y);
         },
 

@@ -804,8 +804,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('requestedCursorStyle', 'default');
   },
 
-  labelToolStartTool: function (annotationName) {
-    this.sendAction('labelToolStartTool', this, annotationName);
+  labelToolStartTool: function (args) {
+    this.sendAction('labelToolStartTool', this, args);
   },
 
   labelToolAddLabelsStarting: function () {
@@ -817,6 +817,9 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
 
   labelViewRemoveLabel: function (label) {
+    if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
+      Smartgraphs.statechart.sendAction('removeLabel', this, { label: label });
+    }
     return !!this.sendAction('removeLabel', this, { label: label });
   },
 

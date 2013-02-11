@@ -52,7 +52,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   yOffsetBinding: '*item.yOffset',
 
   isRemovalEnabledBinding: '*item.isRemovalEnabled',
-
+  isEditableBinding: '*item.isEditable',
+  
   // graphScale isn't a real property, just a token we use to invalidate (xCoord, yCoord)
   xCoord: function () {
     return this.get('graphView').coordinatesForPoint(this.get('x'), 0).x;
@@ -76,6 +77,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   anchorYCoord: null,
 
   labelTextView: SC.outlet('labelBodyView.labelTextView'),
+
+  isEditingBinding: '.labelTextView.isEditing',
 
   didRemoveFromGraphView: function () {
     this.get('labelTextView').didRemoveFromGraphView();
@@ -101,6 +104,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   didCreateLayer: function () {
     sc_super();
     this.$().css('cursor', 'default');
+    this.get('item').set('view', this);
   },
 
   viewDidResize: function () {
@@ -428,7 +432,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       return NO;
     },
 
-    doubleClick: function(evt) {
+    doubleClick: function (evt) {
       this.labelTextView.beginEditing();
       return YES;
     },
@@ -445,7 +449,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     startDrag: function (evt) {
       this.setPath('parentLabelView.isBodyDragging', YES);
-
+      if (this.labelTextView.textFieldView.get('value') || this.labelTextView.textFieldView.get('value') === "") {
+        this.labelTextView.set('text', this.labelTextView.textFieldView.get('value'));
+      }
       this._isDragging = YES;
       this._dragX = evt.pageX;
       this._dragY = evt.pageY;
@@ -477,7 +483,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
     labelTextView: Smartgraphs.EditableLabelView.design({
-      isEditable: YES,
+      labelView:     SC.outlet('parentView.parentLabelView'),
+      isEditableBinding: '.labelView.isEditable',
       fontSize: 14
     }),
 
@@ -610,7 +617,15 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   }),
 
   remove: function () {
-    if (this.get('isRemovalEnabled')) this.get('controller').labelViewRemoveLabel(this.get('item'));
-  }
+    if (this.get('isRemovalEnabled')) {
+      this.get('controller').labelViewRemoveLabel(this.get('item'));
+    }
+  },
 
+  commitEditing: function () {
+    var labelTextView = this.get('labelTextView');
+    if (this.get('isEditing')) {
+      labelTextView.commitEditing();
+    }
+  }
 });

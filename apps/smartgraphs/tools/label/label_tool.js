@@ -29,9 +29,17 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
 
   setup: function (args) {
     var controller = this.graphControllerForPane(args.pane),
-        annotationName = args.labelName || args.labelSetName;
+        annotationName = args.labelName || args.labelSetName,
+        datadefName = args.datadefName,
+        markOnDataPoints = args.markOnDataPoints,
+        allowCoordinatesChange = args.allowCoordinatesChange;
 
-    controller.labelToolStartTool(annotationName);
+    controller.labelToolStartTool({ 
+      annotationName: annotationName,
+      markOnDataPoints: markOnDataPoints,
+      datadefName: datadefName,
+      allowCoordinatesChange: allowCoordinatesChange
+    });
   },
 
   appendLabel: function (state, label) {

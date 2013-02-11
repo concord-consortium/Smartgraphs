@@ -69,8 +69,10 @@ describe("Smartgraphs.GraphController", function () {
       });
 
       it("should set the annotationName property of the LABEL_TOOL state", function () {
-        statechart.sendAction('labelToolStartTool', controller, 'the label name');
+        statechart.sendAction('labelToolStartTool', controller, {annotationName: 'the label name', markOnDataPoints: true, datadefName: 'datadef name'});
         expect(statechart.getState('LABEL_TOOL').get('annotationName')).toEqual('the label name');
+        expect(statechart.getState('LABEL_TOOL').get('markOnDataPoints')).toEqual(true);
+        expect(statechart.getState('LABEL_TOOL').get('datadefName')).toEqual('datadef name');
       });
     });
 

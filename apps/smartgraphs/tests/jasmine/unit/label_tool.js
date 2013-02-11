@@ -49,7 +49,7 @@ describe("Smartgraphs.labelTool", function () {
       spyOn(labelTool, 'graphControllerForPane').andReturn(graphController);
       spyOn(graphController, 'labelToolStartTool');
 
-      labelTool.setup({labelName: 'the label name', pane: 'top'});
+      labelTool.setup({ labelName: 'the label name', pane: 'top', markOnDataPoints: true, datadefName: 'datadef name'});
     });
 
     it("should translate the 'pane' parameter to a graph controller", function () {
@@ -57,7 +57,7 @@ describe("Smartgraphs.labelTool", function () {
     });
 
     it("should ask the relevant graph controller to start the label tool", function () {
-      expect(graphController.labelToolStartTool).toHaveBeenCalledWith('the label name');
+      expect(graphController.labelToolStartTool).toHaveBeenCalledWith({ annotationName: 'the label name', markOnDataPoints: true, datadefName: 'datadef name'});
     });
 
   });
