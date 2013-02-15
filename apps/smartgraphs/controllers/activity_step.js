@@ -56,7 +56,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     // Submit GA activity completed event if relevant:
     if (Smartgraphs.activityPagesController.isLastPage() && this.get('isTerminalStep')) { // Test for is-this-last-step
         // console.log('=> Send Activity Completed to GA');
-        Smartgraphs.sendGaEvent('Activity Completed', "(" + this.get('url') + ")");
+        Smartgraphs.sendGaEvent('Activity Completed', Smartgraphs.activityController.get('title'));
     }
 
     // does the step goes "straight through"?
