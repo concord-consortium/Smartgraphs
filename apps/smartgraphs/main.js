@@ -52,12 +52,15 @@ Smartgraphs.preloadFixtures = function () {
 
 //
 // Send Google Analytics Data.
+// TODO: The two arguments this takes are used as Action and Label; we should also
+// support a Value (integer) as an optional third argument.
 Smartgraphs.sendGaEvent = function(key,value) {
   var hash_key = "" + key + " = " + value;
   if (typeof Smartgraphs.sendGAEvent_last_hash_key === 'undefined') {
     Smartgraphs.sendGAEvent_last_hash_key = "";
   } 
   if (Smartgraphs.sendGAEvent_last_hash_key === hash_key) { 
+    // Don't send duplicate event
     return;
   }
   Smartgraphs.sendGAEvent_last_hash_key = hash_key;
