@@ -90,6 +90,16 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
         this.mouseUp(evt);
       },
 
+      keyDown: function (evt) {
+        sc_super();
+        // keyCode 13 represents 'Enter' key
+        if (evt.keyCode === 13) {
+          if (labelView.get('isEditing')) {
+            labelView.commitEditing();
+          }
+        }
+      },
+
       willLoseFirstResponder: function () {
         labelView.textFieldViewLostFocus();
       }
@@ -97,6 +107,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
   },
 
   destroy: function () {
+    this.set('isEditing', NO);
     this.bindings.forEach(function (binding) {
       binding.disconnect();
     });

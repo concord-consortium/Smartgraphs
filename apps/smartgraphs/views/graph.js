@@ -32,6 +32,9 @@ Smartgraphs.GraphView = SC.View.extend(
   annotationsHolder: SC.outlet('graphCanvasView.annotationsHolder'),
   overlayAnnotationsHolder: SC.outlet('graphCanvasView.overlayAnnotationsHolder'),
 
+  // Array of label's layout.
+  arrLabelsLayout: [],
+
   mouseOverInputArea: false,
 
   padding: { top: 15, right: 15, bottom: 45, left: 45 },
@@ -42,6 +45,7 @@ Smartgraphs.GraphView = SC.View.extend(
     sc_super();
     this.padding = SC.copy(this.padding);
     this._viewsByClassAndItem = {};
+    this.set('arrLabelsLayout', []);
   },
 
   animate: function () {

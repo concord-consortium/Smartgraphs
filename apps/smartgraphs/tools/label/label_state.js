@@ -147,6 +147,8 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
           label.set('y', args.y);
           label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
           label.set('createdByLabelTool', YES);
+          // Tell label to re-check the position
+          label.set('isPositionUpdateRequired', null);
 
           Smartgraphs.labelTool.appendLabel(this, label);
           this.gotoState('ADDED');
@@ -176,6 +178,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
 
             label.set('x', args.x);
             label.set('y', args.y);
+            label.set('isPositionUpdateRequired', YES);
           }
         },
         mouseDownAtPoint: function (context, args) {
@@ -193,6 +196,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
           if (point) {
             label.set('x', point.x);
             label.set('y', point.y);
+            label.set('isPositionUpdateRequired', YES);
           }
         },
         removeLabel: function (context, args) {

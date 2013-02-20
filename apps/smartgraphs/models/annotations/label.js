@@ -46,7 +46,7 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
 
     @property {Number}
   */
-  xOffset: SC.Record.attr(Number, { defaultValue: -100 }),
+  xOffset: SC.Record.attr(Number, { defaultValue: 30 }),
 
   /**
     y-position of the lower left corner of the label, relative to the point the label is annotating.
@@ -54,7 +54,7 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
 
     @property {Number}
   */
-  yOffset: SC.Record.attr(Number, { defaultValue: -40}),
+  yOffset: SC.Record.attr(Number, { defaultValue: 30}),
 
   /**
     Whether to draw an 'x' (or other marker) at the target point. Should be NO if we are pointing right at a clearly
@@ -94,6 +94,18 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
   isTopAnnotation: true,
 
   labelSet: null,
+
+  /**
+    Minimum distance of the anchor from the target point.
+
+    @property {Number}
+  */
+  minDistanceFromPoint: 50,
+
+  /**
+   * Set this variable when automatic position of the label is to be decided.
+   */
+  isPositionUpdateRequired: null,
 
   /*
    * View associated with this annotation.
