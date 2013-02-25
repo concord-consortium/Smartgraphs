@@ -376,6 +376,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         { "name": "animation",
           "setup": {
             "pane": "top",
+            "hideGraph": true,
             "duration": 9000, // ms
             "channelWidth": 70,
             "staticImages": [{
