@@ -28,6 +28,13 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   markOnDataPoints: false,
 
   /**
+    Maximum number of labels allowed in labelset.
+
+    @property {Number}
+  */
+  maxNoOfLabels: null,
+
+  /**
     Name of the dataset associated with this tool.
 
     @property {String}
@@ -41,6 +48,13 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   annotation: null,
 
   /**
+    The graphpane to which the tool is assigned
+    
+    @property {String} 
+   */
+  pane: null,
+
+  /**
     Whether to allow label annotation to shift with change in coordinates.
 
     @property {Boolean}
@@ -49,12 +63,25 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
 
   initialSubstate: 'OFF',
 
+  closeLabelIfInEditing: function () {
+    var graphView = Smartgraphs.labelTool.graphViewForPane(this.get('pane'));
+    var topAnnotationsHolder = graphView.getPath('topAnnotationsHolder');
+    var label = topAnnotationsHolder.getActiveLabel();
+    if (label) {
+      label.commitEditing();
+      return YES;
+    }
+    return NO;
+  },
+
   OFF: SC.State.design({
     labelToolStartTool: function (context, args) {
       var parentState = this.get('parentState');
       parentState.set('annotationName', args.annotationName);
       parentState.set('markOnDataPoints', args.markOnDataPoints);
+      parentState.set('maxNoOfLabels', args.maxNoOfLabels);
       parentState.set('datadefName', args.datadefName);
+      parentState.set('pane', args.pane);
       if (args.allowCoordinatesChange) {
         parentState.set('allowCoordinatesChange', args.allowCoordinatesChange);
       }
@@ -91,6 +118,9 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     // EVENT HANDLERS
 
     mouseDownAtPoint: function (context, args) {
+      var toolRoot = this.get('toolRoot');
+      toolRoot.closeLabelIfInEditing();
+
       if (!this.parentState.markOnDataPoints) {
         this.get('statechart').sendAction('addLabel', this, {x: args.x, y: args.y, shouldMarkTargetPoint: YES});
       }
@@ -106,6 +136,8 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     },
 
     dataPointSelected: function (context, args) {
+      var toolRoot = this.get('toolRoot');
+      toolRoot.closeLabelIfInEditing();
       this.get('statechart').sendAction('addLabel', this, {x: args.x, y: args.y, shouldMarkTargetPoint: NO});
       return YES;
     },
@@ -167,6 +199,8 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
           this.getPath('toolRoot.annotation').set('isEditable', NO);
         },
         dataPointSelected: function (context, args) {
+          var toolRoot = this.get('toolRoot');
+          toolRoot.closeLabelIfInEditing();
           var allowCoordinatesChange = this.getPath('toolRoot.allowCoordinatesChange');
           if (!allowCoordinatesChange) {
             return;
@@ -182,6 +216,8 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
           }
         },
         mouseDownAtPoint: function (context, args) {
+          var toolRoot = this.get('toolRoot');
+          toolRoot.closeLabelIfInEditing();
           var allowCoordinatesChange = this.getPath('toolRoot.allowCoordinatesChange');
           if (!allowCoordinatesChange) {
             return;
@@ -213,36 +249,66 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
 
     LABEL_MANY: SC.State.design({
       toolRoot: SC.outlet('parentState.toolRoot'),
+      initialSubstate: 'ADDING',
       enterState: function () {
         var labelSet = this.getPath('toolRoot.annotation');
         labelSet.enableRemoval();
         Smartgraphs.labelTool.appendLabelSet(this, labelSet);
-        Smartgraphs.labelTool.addLabelsStarting(this);
       },
 
       exitState: function () {
         var labelSet = this.getPath('toolRoot.annotation');
         labelSet.disableRemoval();
+        var arrLabels = labelSet.get('labels');
+        for (var i = 0; i < arrLabels.length(); i++)
+        {
+          arrLabels.objectAt(i).set('isEditable', NO);
+        }
         Smartgraphs.labelTool.addLabelsFinished(this);
       },
 
-      addLabel: function (context, args) {
-        var labelSet = this.getPath('toolRoot.annotation');
+      ADDING: SC.State.design({
+        toolRoot: SC.outlet('parentState.toolRoot'),
+        enterState: function () {
+          Smartgraphs.labelTool.addLabelsStarting(this);
+        },
 
-        var label = labelSet.createChildLabel();
-        label.set('x', args.x);
-        label.set('y', args.y);
-        label.set('createdByLabelTool', YES);
-        label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
-        label.set('isEditable', YES);
+        addLabel: function (context, args) {
+          var toolRoot = this.get('toolRoot');
+          toolRoot.closeLabelIfInEditing();
 
-        return YES;
-      },
+          var labelSet = this.getPath('toolRoot.annotation');
+          var label = labelSet.createChildLabel();
+          label.set('x', args.x);
+          label.set('y', args.y);
+          label.set('createdByLabelTool', YES);
+          label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
+          label.set('isEditable', YES);
+
+          var nMaxNoOfLabels = this.getPath('toolRoot.maxNoOfLabels');
+          if (nMaxNoOfLabels) {
+            var nTotalLabels = labelSet.getPath('labels.length');
+            if (nTotalLabels === nMaxNoOfLabels) {
+              this.gotoState('MAX_LABELS_ADDED');
+            }
+          }
+          return YES;
+        }
+      }),
+
+      MAX_LABELS_ADDED: SC.State.design({
+        enterState: function () {
+          Smartgraphs.labelTool.addLabelsFinished(this);
+        }
+      }),
 
       removeLabel: function (context, args) {
         var labelSet = this.getPath('toolRoot.annotation');
-
         labelSet.removeLabel(args.label);
+        var addingState = this.getSubstate('ADDING');
+        if (!addingState.get('isCurrentState')) {
+          this.gotoState('ADDING');
+        }
         return YES;
       }
     })

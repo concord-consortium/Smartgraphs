@@ -416,7 +416,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
   topAnnotationsHolder: RaphaelViews.RaphaelCanvasView.design({
 
-    layout: { zIndex: 1 },
+    layout: { zIndex: 50 },
 
     graphView: SC.outlet('parentView'),
     requestedCursorStyleBinding: '.graphView.requestedCursorStyle',
@@ -1504,7 +1504,8 @@ Smartgraphs.GraphView = SC.View.extend(
       defaultValue: false,
       classNames: ['legendView'],
       tagName: 'div',
-      layout: { top: 0, left: 0, width: 0, height: 0, zIndex: 2 },
+      // Currently z-index of label's text field is set to 100 by sproutcore. So to keep legend always on top, it's z-index is set to 200. 
+      layout: { top: 0, left: 0, width: 0, height: 0, zIndex: 200 },
       verticalElementSpacing: 5,
       topPadding: 8,
       bottomPadding: 8,
@@ -1628,7 +1629,7 @@ Smartgraphs.GraphView = SC.View.extend(
       }.observes('maxHeight'),
 
       didLayoutChange: function () {
-        var layout = { top: this.initialTopPos, left: this.initialLeftPos, width: this.maxWidth, height: this.maxHeight, zIndex: 2 };
+        var layout = { top: this.initialTopPos, left: this.initialLeftPos, width: this.maxWidth, height: this.maxHeight, zIndex: 200 };
         this.set('layout', layout);
         if (!this.defaultValue) {
           var position = this.getLegendPosition();

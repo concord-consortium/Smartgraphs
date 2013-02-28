@@ -57,7 +57,13 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
   isRemovalEnabledBinding: '*item.isRemovalEnabled',
   isEditableBinding: '*item.isEditable',
-  
+
+  calculatedTextWidthBinding: '*item.calculatedTextWidth',
+  calculatedTextHeightBinding: '*item.calculatedTextHeight',
+
+  maxTextFieldWidthBinding: '*item.maxTextFieldWidth',
+  maxCharactersBinding: '*item.maxCharacters',
+
   // graphScale isn't a real property, just a token we use to invalidate (xCoord, yCoord)
   xCoord: function () {
     return this.get('graphView').coordinatesForPoint(this.get('x'), 0).x;
@@ -836,7 +842,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           raphaelPath,
           arrowP;
 
-      if (SC.none(xCoord) || SC.none(yCoord) || SC.none(anchorXCoord) || SC.none(anchorYCoord)) {
+      if (length < startRadius || SC.none(xCoord) || SC.none(yCoord) || SC.none(anchorXCoord) || SC.none(anchorYCoord)) {
         pathString = 'M 0 0';
       }
       else {
@@ -982,7 +988,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
     doubleClick: function (evt) {
-      this.labelTextView.beginEditing();
+      if (!this.getPath('labelTextView.isEditing')) {
+        this.labelTextView.beginEditing();
+      }
       return YES;
     },
 
@@ -1020,13 +1028,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       parentOfLabel.appendChild(labelView);
 
       this.setPath('parentLabelView.isBodyDragging', YES);
-      if (this.labelTextView.textFieldView.get('value') || this.labelTextView.textFieldView.get('value') === "") {
-        var self = this;
-        // Wrapping this in the run loop so that we get updated height and width before starting the drag.
-        SC.run(function () {
-          self.labelTextView.set('text', self.labelTextView.textFieldView.get('value'));
-        });
-      }
+
       this._isDragging = YES;
       this._dragX = evt.pageX;
       this._dragY = evt.pageY;

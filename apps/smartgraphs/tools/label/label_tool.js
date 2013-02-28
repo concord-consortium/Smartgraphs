@@ -32,13 +32,16 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
         annotationName = args.labelName || args.labelSetName,
         datadefName = args.datadefName,
         markOnDataPoints = args.markOnDataPoints,
+        maxNoOfLabels = args.maxNoOfLabels,
         allowCoordinatesChange = args.allowCoordinatesChange;
 
     controller.labelToolStartTool({ 
       annotationName: annotationName,
       markOnDataPoints: markOnDataPoints,
       datadefName: datadefName,
-      allowCoordinatesChange: allowCoordinatesChange
+      maxNoOfLabels: maxNoOfLabels,
+      allowCoordinatesChange: allowCoordinatesChange,
+      pane: args.pane
     });
   },
 
@@ -62,6 +65,10 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
   addLabelsFinished: function (state) {
     var controller = this.graphControllerForState(state);
     if (controller && controller.labelToolAddLabelsFinished) controller.labelToolAddLabelsFinished();
-  }
+  },
+
+  graphViewForPane: function (pane) {
+    return Smartgraphs.activityPage.getPath(Smartgraphs.activityViewController.firstOrSecondFor(pane) + 'GraphPane.graphView');
+  },
 
 });

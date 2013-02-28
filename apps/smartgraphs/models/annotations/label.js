@@ -101,7 +101,22 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
     @property {Number}
   */
   minDistanceFromPoint: 50,
+  /**
+    Maximum characters allowed.
 
+    @property {Number}
+  */
+  maxCharacters: 80,
+
+  /**
+    Maximum allowed width (in pixels) of the text area.
+
+    @property {Number}
+  */
+  maxTextFieldWidth: 140,
+
+  calculatedTextWidth: 0,
+  calculatedTextHeight: 0,
   /**
    * Set this variable when automatic position of the label is to be decided.
    */

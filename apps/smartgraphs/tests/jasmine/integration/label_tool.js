@@ -12,13 +12,17 @@ describe("label tool plugin to graph controller", function () {
   var store,
       controller,
       statechart,
-      labelToolState;
+      labelToolState,
+      graphView,
+      topAnnotationsHolder;
 
   beforeEach( function () {
     controller = Smartgraphs.GraphController.create();
     controller.clear();
     statechart = controller.get('statechart');
     labelToolState = statechart.getState('LABEL_TOOL');
+    topAnnotationsHolder = { getActiveLabel: function () { return null }};
+    graphView = {getPath: function (property) { return property === 'topAnnotationsHolder' ? topAnnotationsHolder : null }};
   });
 
   describe("the controller's statechart", function () {
@@ -53,7 +57,9 @@ describe("label tool plugin to graph controller", function () {
         url: 'label'
       });
       spyOn(Smartgraphs.labelTool, 'getAnnotation').andReturn(label);
-      controller.labelToolStartTool('the label name');
+      spyOn(Smartgraphs.labelTool, 'graphViewForPane').andReturn(graphView);
+      var args = { annotationName: "the label name", markOnDataPoints: false, datadefName: "datadef", pane: "top" };
+      controller.labelToolStartTool(args);
     });
 
     it("should set the annotation property of the label tool state to be the label", function () {
@@ -220,7 +226,9 @@ describe("label tool plugin to graph controller", function () {
         url: 'labelset'
       });
       spyOn(Smartgraphs.labelTool, 'getAnnotation').andReturn(labelset);
-      controller.labelToolStartTool('the label name');
+      spyOn(Smartgraphs.labelTool, 'graphViewForPane').andReturn(graphView);
+      var args = { annotationName: "the label name", markOnDataPoints: false, datadefName: "datadef", pane: "top" };
+      controller.labelToolStartTool(args);
     });
 
     it("should set the annotation property of the label tool state to be the label set", function () {
