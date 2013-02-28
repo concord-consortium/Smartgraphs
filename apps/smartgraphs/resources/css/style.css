@@ -323,6 +323,7 @@ body.sc-theme {
 /* hides most of the SVG graph when this classname is applied to a parent */
 .hideGraph svg g,
 .hideGraph svg text,
-.hideGraph svg path {
+.hideGraph svg path,
+.hideGraph .rvml rvml\:shape {
   visibility: hidden;
 }
