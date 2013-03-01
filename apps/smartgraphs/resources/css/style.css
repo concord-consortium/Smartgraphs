@@ -297,3 +297,33 @@ body.sc-theme {
 .sc-view.sg-overflow-fix {
   overflow: visible;
 }
+
+.toolTipLabel
+{
+  background-color: #EFEDDD;
+  border: 1px solid #000000;
+}
+
+.pane-label
+{
+  pointer-events: none;
+}
+
+.legendView
+{
+  opacity: 0.9;
+  filter: alpha(opacity = 90);
+}
+
+.legendColorBoxView,.legendView
+{
+  border-radius: 5px;
+}
+
+/* hides most of the SVG graph when this classname is applied to a parent */
+.hideGraph svg g,
+.hideGraph svg text,
+.hideGraph svg path,
+.hideGraph .rvml rvml\:shape {
+  visibility: hidden;
+}

@@ -99,6 +99,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.set('duration',           args.duration        || this.get('defaultDuration'));      // duration of 0 makes no sense
     this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // channelWidth of 0 makes no sense
     this.set('playCount', 0);
+    this.set('hideGraph',          args.hideGraph       || NO ); // default to not hiding the graph
 
     staticImageHashes.forEach(function (hash) {
       var instances = hash.instances || [],
@@ -185,7 +186,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     controller = this.graphControllerForPane(pane);
 
     animationInfo = this.makeAnimationInfoObject();
-    this.copyPropertiesTo(animationInfo, ['channelWidth', 'backgroundImageURL', 'duration', 'loop', 'animations', 'staticImages']);
+    this.copyPropertiesTo(animationInfo, ['channelWidth', 'backgroundImageURL', 'duration', 'loop', 'animations', 'staticImages', 'hideGraph']);
     controller.set('animationInfo', animationInfo);
 
     for (pane in linkedAnimationsByPane) {

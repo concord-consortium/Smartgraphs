@@ -23,6 +23,7 @@ Smartgraphs.GraphView = SC.View.extend(
   animationInfoBinding: '*graphController.animationInfo',
   showAnimationBinding: '*animationInfo.hasAnimation',
   channelWidthBinding: '*animationInfo.channelWidth',
+  hideGraphBinding: '*animationInfo.hideGraph',
 
   inputAreaView:     SC.outlet('graphCanvasView.axesView.inputAreaView'),
   xAxisView:         SC.outlet('graphCanvasView.axesView.xAxisView'),
@@ -51,6 +52,28 @@ Smartgraphs.GraphView = SC.View.extend(
 
   reset: function () {
     this.get('graphCanvasView').reset();
+  },
+
+  // Replaces the Sproutcore render() in order to add/remove the 'hideGraph' class when necessary
+  // See https://www.pivotaltracker.com/story/show/44392071
+  render: function (context, firstTime) {
+    var renderer = this.renderer;
+    // This is the part which is different from sc_super()
+    if (this.get('hideGraph')) {
+      context.setClass('hideGraph', YES);
+    } else {
+      context.setClass('hideGraph', NO);
+    }
+    // end changes
+    if (this.createRenderer && renderer) {
+      if (firstTime) {
+        renderer.render(context);
+      } else {
+        renderer.update();
+      }
+    } else {
+      if (firstTime) this.renderChildViews(context, firstTime);
+    }
   },
 
   // adjust left border depending on whether we show the animation or not.
