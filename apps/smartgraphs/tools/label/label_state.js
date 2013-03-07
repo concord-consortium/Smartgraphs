@@ -66,7 +66,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   closeLabelIfInEditing: function () {
     var graphView = Smartgraphs.labelTool.graphViewForPane(this.get('pane'));
     var topAnnotationsHolder = graphView.getPath('topAnnotationsHolder');
-    var label = topAnnotationsHolder.getActiveLabel();
+    var label = topAnnotationsHolder.getLabelInEditMode();
     if (label) {
       label.commitEditing();
       return YES;
@@ -174,11 +174,13 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
 
         addLabel: function (context, args) {
           var label = this.getPath('toolRoot.annotation');
-
+          var allowCoordinatesChange = this.getPath('toolRoot.allowCoordinatesChange');
           label.set('x', args.x);
           label.set('y', args.y);
           label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
           label.set('createdByLabelTool', YES);
+          label.set('allowCoordinatesChange', allowCoordinatesChange);
+
           // Tell label to re-check the position
           label.set('isPositionUpdateRequired', null);
 
@@ -253,6 +255,11 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
       enterState: function () {
         var labelSet = this.getPath('toolRoot.annotation');
         labelSet.enableRemoval();
+        var arrLabels = labelSet.get('labels');
+        var allowCoordinatesChange = this.getPath('toolRoot.allowCoordinatesChange');
+        for (var i = 0; i < arrLabels.length(); i++) {
+          arrLabels.objectAt(i).set('allowCoordinatesChange', allowCoordinatesChange);
+        }
         Smartgraphs.labelTool.appendLabelSet(this, labelSet);
       },
 
@@ -260,9 +267,9 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
         var labelSet = this.getPath('toolRoot.annotation');
         labelSet.disableRemoval();
         var arrLabels = labelSet.get('labels');
-        for (var i = 0; i < arrLabels.length(); i++)
-        {
+        for (var i = 0; i < arrLabels.length(); i++) {
           arrLabels.objectAt(i).set('isEditable', NO);
+          arrLabels.objectAt(i).set('allowCoordinatesChange', NO);
         }
         Smartgraphs.labelTool.addLabelsFinished(this);
       },
@@ -276,7 +283,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
         addLabel: function (context, args) {
           var toolRoot = this.get('toolRoot');
           toolRoot.closeLabelIfInEditing();
-
+          var allowCoordinatesChange = this.getPath('toolRoot.allowCoordinatesChange');
           var labelSet = this.getPath('toolRoot.annotation');
           var label = labelSet.createChildLabel();
           label.set('x', args.x);
@@ -284,6 +291,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
           label.set('createdByLabelTool', YES);
           label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
           label.set('isEditable', YES);
+          label.set('allowCoordinatesChange', allowCoordinatesChange);
 
           var nMaxNoOfLabels = this.getPath('toolRoot.maxNoOfLabels');
           if (nMaxNoOfLabels) {

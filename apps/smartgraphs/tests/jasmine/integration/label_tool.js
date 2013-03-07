@@ -21,7 +21,7 @@ describe("label tool plugin to graph controller", function () {
     controller.clear();
     statechart = controller.get('statechart');
     labelToolState = statechart.getState('LABEL_TOOL');
-    topAnnotationsHolder = { getActiveLabel: function () { return null }};
+    topAnnotationsHolder = { getLabelInEditMode: function () { return null }};
     graphView = {getPath: function (property) { return property === 'topAnnotationsHolder' ? topAnnotationsHolder : null }};
   });
 

@@ -497,6 +497,170 @@ describe("LabelView behavior", function () {
 
       }
 
+      describe("when not allowed to drag the label arrowhead", function () {
+        var leftX,
+            topY,
+            yOffset;
+
+        function fireEvent(el, eventName, x, y) {
+          var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
+          SC.Event.trigger(el, eventName, evt);
+        }
+
+        beforeEach(function () {
+          var offset, target;
+
+          target = labelView.get('targetPointView');
+          offset = $(target.get('layer')).offset();
+          leftX  = offset.left;
+          topY   = offset.top;
+
+          SC.run(function () {
+            labelRecord.set('allowCoordinatesChange', NO);
+          });
+
+          yOffset = labelRecord.get('yOffset');
+
+          // start by clearing any possible stale drag state
+          fireEvent(target.get('layer'), 'mouseup', 0, 0);
+          // Using '-yOffset' as arrowhead view has the height equal to the negative value of the yOffset.
+          fireEvent(target.get('layer'), 'mousedown', 0, -yOffset);
+        });
+
+        it("should not highlight the labelBodyView", function () {
+          expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).not.toEqual(labelView.get('highlightedStroke'));
+        });
+
+        it("should not highlight the connectingLineView", function () {
+          expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).not.toEqual(labelView.get('highlightedStroke'));
+        });
+
+        it("should also  not highlight the arrow", function () {
+          expect(labelView.getPath('targetPointView.layer').raphael.attr().fill).not.toEqual(labelView.get('highlightedStroke'));
+        });
+      });
+
+      describe("dragging the label arrowhead", function () {
+        var leftX,
+            topY;
+
+        function fireEvent(el, eventName, x, y) {
+          var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
+          SC.Event.trigger(el, eventName, evt);
+        }
+
+        describe("when the user mouses down on the label arrowhead", function () {
+
+          var target,
+              xOffset,
+              yOffset,
+              initialX,
+              initialY,
+              dx,
+              dy;
+
+          beforeEach(function () {
+            var offset;
+
+            target = labelView.get('targetPointView');
+            offset = $(target.get('layer')).offset();
+            leftX  = offset.left;
+            topY   = offset.top;
+
+            SC.run(function () {
+              labelRecord.set('allowCoordinatesChange', YES);
+            });
+
+            xOffset = labelRecord.get('xOffset');
+            yOffset = labelRecord.get('yOffset');
+
+            initialX = labelRecord.get('x');
+            initialY = labelRecord.get('y');
+
+            // start by clearing any possible stale drag state
+            fireEvent(target.get('layer'), 'mouseup', 0, 0);
+            // Using '-yOffset' as arrowhead view has the height equal to the negative value of the yOffset.
+            fireEvent(target.get('layer'), 'mousedown', 0, -yOffset);
+          });
+
+          it("should highlight the labelBodyView", function () {
+            expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
+          });
+
+          it("should highlight the connectingLineView", function () {
+            expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
+          });
+
+          it("should also highlight the arrow", function () {
+            expect(labelView.getPath('targetPointView.layer').raphael.attr().fill).toEqual(labelView.get('highlightedStroke'));
+          });
+
+          describe("and the mouse is released at the same point", function () {
+
+            beforeEach(function () {
+              fireEvent(target.get('layer'), 'mouseup', 0, 20);
+            });
+
+            it("should unhighlight the labelBodyView", function () {
+              expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
+            });
+
+            it("should unhighlight the connectingLineView", function () {
+              expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
+            });
+
+            it("should not affect (xOffset, yOffset) of the label record", function () {
+              expect(labelRecord.get('xOffset').toFixed(2)).toEqual(xOffset.toFixed(2));
+              expect(labelRecord.get('yOffset').toFixed(2)).toEqual(yOffset.toFixed(2));
+            });
+
+            it("should not affect (x, y) of the label record", function () {
+              expect(labelRecord.get('x').toFixed(2)).toEqual(initialX.toFixed(2));
+              expect(labelRecord.get('y').toFixed(2)).toEqual(initialY.toFixed(2));
+            });
+          });
+
+          describe("and the mouse is moved by (10, 5)", function () {
+
+            beforeEach(function () {
+              fireEvent(target.get('layer'), 'mousemove', 10, 25);
+              xOffset = -20;
+              yOffset = -25;
+              dx = labelRecord.get('x') - initialX;
+              dy = labelRecord.get('y') - initialY;
+            });
+
+            it("should update (xOffset, yOffset) of the label record to (-20, -25)", function () {
+              expect(labelRecord.get('xOffset').toFixed(2)).toEqual((xOffset).toFixed(2));
+              expect(labelRecord.get('yOffset').toFixed(2)).toEqual((yOffset).toFixed(2));
+            });
+
+            it("should update the x value of the label record by a nonzero amount", function () {
+              expect(dx).toBeNonzero();
+            });
+
+            it("should update the y value of the label record by a nonzero amount", function () {
+              expect(dy).toBeNonzero();
+            });
+
+            describe("and the mouse is released after moving by (10, 5)", function () {
+
+              beforeEach(function () {
+                fireEvent(target.get('layer'), 'mouseup', 10, 25);
+              });
+
+              it("should unhighlight the labelBodyView", function () {
+                expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
+              });
+
+              it("should unhighlight the connectingLineView", function () {
+                expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
+              });
+            });
+          });
+        });
+      });
+
       describe("dragging the label", function () {
 
         var leftX,

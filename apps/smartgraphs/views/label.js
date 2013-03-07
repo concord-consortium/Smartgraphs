@@ -41,6 +41,11 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   shouldMarkTargetPointBindingDefault: SC.Binding.oneWay(),
 
   isBodyDragging: NO,
+  isArrowDragging: NO,
+
+  isHighlighted: function () {
+    return this.get('isBodyDragging') || this.get('isArrowDragging');
+  }.property('isBodyDragging', 'isArrowDragging'),
 
   markerStyle: 'arrow', // 'arrow', 'x', or 'none'
   markerSize:  10,
@@ -54,6 +59,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   minDistanceFromPointBinding: '*item.minDistanceFromPoint',
 
   isPositionUpdateRequiredBinding: '*item.isPositionUpdateRequired',
+  allowCoordinatesChangeBinding: '*item.allowCoordinatesChange',
 
   isRemovalEnabledBinding: '*item.isRemovalEnabled',
   isEditableBinding: '*item.isEditable',
@@ -63,6 +69,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
   maxTextFieldWidthBinding: '*item.maxTextFieldWidth',
   maxCharactersBinding: '*item.maxCharacters',
+
+  moveToTopPending:         NO,   // Set this property to move label to top in the labelSet. Label is moved to top on mouse-up
 
   // graphScale isn't a real property, just a token we use to invalidate (xCoord, yCoord)
   xCoord: function () {
@@ -275,12 +283,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           break;
         }
       }
-      
       if (j === arrSortedLayout.length) {
         arrSortedLayout.push(position);
       }
     }
-    
     return arrSortedLayout;
   },
 
@@ -292,7 +298,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     var originalPos = jQuery.extend({}, objPos);
 
     this.checkConnectingLineLength(objPos);
-    this.avoidAxes(objPos);
     this.getLabelBodyWithinGraphBounds(objPos);
     if (!this.checkOverlapWithOtherLabels(arrLabelsLayout, objPos) && this.giveScore(arrLabelsLayout, objPos) === 0) {
       return objPos;
@@ -307,7 +312,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       for (j = 0; j < priorityPositionList.length; j++) {
         objPos = this.getNewPostionLayout(labelPosRelative, objPos, priorityPositionList[j]);
         this.checkConnectingLineLength(objPos);
-        this.avoidAxes(objPos);
         this.getLabelBodyWithinGraphBounds(objPos);
         if (!this.checkOverlapWithOtherLabels(arrLabelsLayout, objPos) && this.giveScore(arrLabelsLayout, objPos) === 0) {
           return objPos;
@@ -327,7 +331,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       }
 
       // Threshold is based on allowing some criterias. 14 => Allow small length of line, allow axis overlap and allow 1/4th area overlap.
-      var threshold = 14;
+      var threshold = 6;
       var nDirectionChange = 0;
       var prevScore = score;
       var step = 3;
@@ -400,31 +404,28 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     var minDistance = this.get('minDistanceFromPoint');
 
     if (!this.isLabelWithinGraph(position)) {
-      score += 128;
+      score += 64;
     }
     if (bDetailed) {
       var overlapArea = this.getOverlapArea(arrLabelsLayout, position);
       var labelArea = position.width * position.height;
       if (overlapArea > labelArea * 3 / 4) {
-        score += 64;
-      }
-      else if (overlapArea > labelArea / 2) {
         score += 32;
       }
-      else if (overlapArea > labelArea / 4) {
+      else if (overlapArea > labelArea / 2) {
         score += 16;
       }
-      else if (overlapArea > 0) {
+      else if (overlapArea > labelArea / 4) {
         score += 8;
+      }
+      else if (overlapArea > 0) {
+        score += 4;
       }
     }
     else {
       if (this.checkOverlapWithOtherLabels(arrLabelsLayout, position)) {
-        score += 8;
+        score += 4;
       }
-    }
-    if (!this.isLabelWithinAxes(position)) {
-      score += 4;
     }
     if (Math.round(this.getConnectingLineLength(position)) < minDistance) {
       score += 2;
@@ -448,50 +449,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     }
     return area;
   },
-
-  // Check overlapping with axes
-  avoidAxes: function (rect) {
-    var graphView = this.get('graphView');
-    var strokeWidth = this.get('labelBodyView').strokeWidth();
-    var xAxis = graphView.get('xAxis');
-    var yAxis = graphView.get('yAxis');
-
-    var topLeft = graphView.coordinatesForPoint(xAxis.get('min'), yAxis.get('max'));
-    var bottomRight = graphView.coordinatesForPoint(xAxis.get('max'), yAxis.get('min'));
-
-    var left = topLeft.x + 2 * strokeWidth;
-    var bottom = bottomRight.y;
-
-    if (rect.left < left) {
-      rect.left = left;
-      rect.right = rect.left + rect.width;
-    }
-
-    if (rect.bottom > bottom) {
-      rect.bottom = bottom;
-      rect.top = rect.bottom - rect.height;
-    }
-  },
-
-  isLabelWithinAxes: function (rect) {
-    var graphView = this.get('graphView');
-    var strokeWidth = this.get('labelBodyView').strokeWidth();
-    var xAxis = graphView.get('xAxis');
-    var yAxis = graphView.get('yAxis');
-
-    var topLeft = graphView.coordinatesForPoint(xAxis.get('min'), yAxis.get('max'));
-    var bottomRight = graphView.coordinatesForPoint(xAxis.get('max'), yAxis.get('min'));
-
-    var left = topLeft.x + 2 * strokeWidth;
-    var bottom = bottomRight.y;
-
-    if ((rect.left < left) || (rect.bottom > bottom)) {
-      return false;
-    }
-
-    return true;
-  },
-
 
   // Check connecting line's length
   checkConnectingLineLength: function (rect) {
@@ -539,8 +496,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
   getLabelBodyWithinGraphBounds: function (rect) {
     var graphView = this.get('graphView');
-    var strokeWidth = this.get('labelBodyView').strokeWidth();
-    var padding = graphView.get('padding');
     var xAxis = graphView.get('xAxis');
     var yAxis = graphView.get('yAxis');
 
@@ -548,10 +503,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     var bottomRight = graphView.coordinatesForPoint(xAxis.get('max'), yAxis.get('min'));
 
     var bounds = {};
-    bounds.left = topLeft.x - padding.left;
-    bounds.right = bottomRight.x + padding.right - 2 * strokeWidth;
-    bounds.top = topLeft.y - padding.top;
-    bounds.bottom = bottomRight.y + padding.bottom - 2 * strokeWidth;
+    bounds.left = topLeft.x;
+    bounds.right = bottomRight.x;
+    bounds.top = topLeft.y;
+    bounds.bottom = bottomRight.y;
 
     if (rect.left < bounds.left) {
       rect.left = bounds.left;
@@ -571,11 +526,26 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       rect.top = rect.bottom - rect.height;
     }
   },
+  // Checks and limits the label within bounds while in edit mode. 
+  limitWithinBounds: function () {
+    var left = this.get('bodyXCoord'),
+        top = this.get('bodyYCoord'),
+        width = this.get('labelBodyWidth'),
+        height = this.get('labelBodyHeight'),
+        objPos = { left: left, right: left + width, top: top, bottom: top + height, width: width, height: height };
+    if (left && top && width && height) {
+      if (!this.isLabelWithinGraph(objPos)) {
+        this.getLabelBodyWithinGraphBounds(objPos);
+        this.beginPropertyChanges();
+        this.set('xOffset', objPos.left - this.get('xCoord'));
+        this.set('yOffset', objPos.bottom - this.get('yCoord'));
+        this.endPropertyChanges();
+      }
+    }
+  }.observes('labelBodyWidth', 'labelBodyHeight'),
 
   isLabelWithinGraph: function (rect) {
     var graphView = this.get('graphView');
-    var strokeWidth = this.get('labelBodyView').strokeWidth();
-    var padding = graphView.get('padding');
     var xAxis = graphView.get('xAxis');
     var yAxis = graphView.get('yAxis');
 
@@ -583,10 +553,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     var bottomRight = graphView.coordinatesForPoint(xAxis.get('max'), yAxis.get('min'));
 
     var bounds = {};
-    bounds.left = topLeft.x - padding.left;
-    bounds.right = bottomRight.x + padding.right - 2 * strokeWidth;
-    bounds.top = topLeft.y - padding.top;
-    bounds.bottom = bottomRight.y + padding.bottom - 2 * strokeWidth;
+    bounds.left = topLeft.x;
+    bounds.right = bottomRight.x;
+    bounds.top = topLeft.y;
+    bounds.bottom = bottomRight.y;
 
     if ((rect.left < bounds.left) || (rect.right > bounds.right) || (rect.top < bounds.top) || (rect.bottom > bounds.bottom)) {
       return false;
@@ -655,6 +625,13 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     sc_super();
     this.$().css('cursor', 'default');
     this.get('item').set('view', this);
+    var labelElement = this.get('layer');
+    if (labelElement.getAttribute('class')) {
+      labelElement.setAttribute('class', labelElement.getAttribute('class') + ' labelView');
+    }
+    else {
+      labelElement.setAttribute('class', 'labelView');
+    }
   },
 
   viewDidResize: function () {
@@ -663,6 +640,63 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
   notifyGraphScaleChange: function () {
     this.notifyPropertyChange('graphScale');
+  },
+
+  bringLabelOnTop: function () {
+    var parentOfLabel = this.get('parentView');
+    // If the label is child of LabelSet, bring LabelSet on the top.
+    if (parentOfLabel.kindOf(Smartgraphs.LabelSetView)) {
+      var topAnnotationsHolder = parentOfLabel.get('parentView');
+      topAnnotationsHolder.appendChild(parentOfLabel);
+      var labels = parentOfLabel.getPath('item.labels');
+      for (var i = 0; i < labels.length(); i++) {
+        var label = labels.objectAt(i);
+        if (this.getPath('item.url') === label.get('url')) {
+          // If label is already at top then no need to move it
+          if (i != labels.length() - 1) {
+            this.set('moveToTopPending', YES);
+          }
+          break;
+        }
+      }
+    }
+  // To temporarily bring the label on top. Actual moving on top is deferred until mouse-up
+  // is encountered to avoid highlighting issues
+    parentOfLabel.appendChild(this);
+  },
+
+  updateLabelPositionInRecords: function () {
+    // Bring label on top if it was pending
+    if (this.get('moveToTopPending')) {
+      this.set('moveToTopPending', NO);
+      var parentOfLabel = this.get('parentView');
+      // If the label is child of LabelSet, bring LabelSet on the top.
+      if (parentOfLabel.kindOf(Smartgraphs.LabelSetView)) {
+        var labels = parentOfLabel.getPath('item.labels');
+        var label = this.get('item');
+        labels.removeObject(label);
+        labels.pushObject(label);
+      }
+    }
+  },
+
+  mouseEntered: function (evt) {
+    var bArrowDragging = false;
+    if (this.get('isArrowDragging')) {
+      bArrowDragging = true;
+    }
+    else {
+      var labelInArrowDragMode = this.getPath('graphView.topAnnotationsHolder').getLabelInArrowDragMode();
+      if (labelInArrowDragMode) {
+        bArrowDragging = true;
+      }
+    }
+    if (bArrowDragging) {
+      this.$().css('cursor', 'move');
+    }
+    else {
+      this.$().css('cursor', 'default');
+    }
   },
 
   childViews: 'targetPointView connectingLineView labelBodyView'.w(),
@@ -678,6 +712,16 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     strokeBinding:       '.labelView.stroke',
     markerStyleBinding:  '.labelView.markerStyle',
     markerSizeBinding:   '.labelView.markerSize',
+    didCreateLayer: function () {
+      sc_super();
+      var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
+      if (allowCoordinatesChange) {
+        this.$().css('cursor', 'move');
+      }
+      else {
+        this.$().css('cursor', 'default');
+      }
+    },
 
     // Using a computed property for 'isVisible' here
     // because the following locks up the jasmine test for some reason:
@@ -687,7 +731,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     shouldMarkTargetPointBinding: '.labelView.shouldMarkTargetPoint',
     defaultFillBinding:           '.labelView.stroke',
     highlightedFillBinding:       '.labelView.highlightedStroke',
-    isHighlightedBinding:         '.labelView.isBodyDragging',
+    isHighlightedBinding:         '.labelView.isHighlighted',
 
     fill: function () {
       return this.get('isHighlighted') ? this.get('highlightedFill') : this.get('defaultFill');
@@ -703,7 +747,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       return this.get('shouldMarkTargetPoint');
     }.property('shouldMarkTargetPoint').cacheable(),
 
-    renderCallback: function(raphaelCanvas, pathString, stroke) {
+    renderCallback: function (raphaelCanvas, pathString, stroke) {
       return raphaelCanvas.path(pathString).attr({ stroke: stroke });
     },
 
@@ -788,6 +832,136 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       elements.push('M', x , y);
       elements.push('L', x + diameter, y + diameter);
       return elements.join(' ');
+    },
+    mouseDown: function (evt) {
+      this.startDrag(evt);
+      return YES;
+    },
+
+    touchStart: function (evt) {
+      this.startDrag(evt);
+      return YES;
+    },
+
+    mouseUp: function (evt)  { return this._mouseUpOrTouchEnd(evt); },
+    touchEnd: function (evt) { return this._mouseUpOrTouchEnd(evt); },
+
+    _mouseUpOrTouchEnd: function (evt) {
+      var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
+      if (allowCoordinatesChange === undefined || !allowCoordinatesChange) {
+        return YES;
+      }
+      this.endDrag(evt);
+      return NO;
+    },
+
+    mouseDragged: function (evt) {
+      this.drag(evt);
+      return YES;
+    },
+
+    touchesDragged: function (evt) {
+      this.drag(evt);
+      return YES;
+    },
+    
+    startDrag: function (evt) {
+      var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
+      if (allowCoordinatesChange === undefined || !allowCoordinatesChange) {
+        return YES;
+      }
+      this.setPath('labelView.isArrowDragging', YES);
+
+      var labelView = this.get('labelView');
+      labelView.bringLabelOnTop();
+
+      this._initialLabelPosition = {
+        offsetPointX: labelView.get('bodyXCoord'),
+        offsetPointY: labelView.get('bodyYCoord') + labelView.get('labelBodyHeight')
+      };
+      return YES;
+    },
+
+    setCursorStyle: function (cursorStyle) {
+      var previousCursorStyle = this.getPath('labelView.graphView.requestedCursorStyle');
+      if (previousCursorStyle !== cursorStyle) {
+        this.setPath('labelView.graphView.requestedCursorStyle', cursorStyle);
+      }
+    },
+
+    drag: function (evt) {
+      var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
+      if (allowCoordinatesChange === undefined || !allowCoordinatesChange) {
+        return YES;
+      }
+      var previousCursorStyle = this.getPath('labelView.graphView.requestedCursorStyle');
+      if (previousCursorStyle != 'move') {
+        this.set('previousCursorStyle', previousCursorStyle);
+      }
+      this.setCursorStyle('move');
+      this.setPath('labelView.isArrowDragging', YES);
+      /* Making coordsForEvent of graph view to work here ..... */
+      var graphView = this.getPath('labelView.graphView');
+      var graphOffset = graphView.$().offset(),
+          xAxis = graphView.get('xAxis'),
+          yAxis = graphView.get('yAxis'),
+          inputAreaTopLeft = graphView.coordinatesForPoint(xAxis.get('min'), yAxis.get('max')),
+          inputAreaBottomRight = graphView.coordinatesForPoint(xAxis.get('max'), yAxis.get('min')),
+          bounds = {xLeft: inputAreaTopLeft.x, yTop: inputAreaTopLeft.y, xRight: inputAreaBottomRight.x, yBottom: inputAreaBottomRight.y},
+          x           = evt.pageX - graphOffset.left,
+          y           = evt.pageY - graphOffset.top,
+          fraction;
+
+          // clip the event to the inputArea boundaries. Simple clipping seems to work fine
+      x = (x < bounds.xLeft) ? bounds.xLeft : (x > bounds.xRight)  ? bounds.xRight  : x;
+      y = (y < bounds.yTop)  ? bounds.yTop  : (y > bounds.yBottom) ? bounds.yBottom : y;
+      var logicalPoint = graphView.pointForCoordinates(x, y);
+
+      var labelView = this.get('labelView');
+      var initialPos = this._initialLabelPosition;
+
+      labelView.beginPropertyChanges();
+      labelView.set('x', logicalPoint.x);
+      labelView.set('y', logicalPoint.y);
+      labelView.set('xOffset', initialPos.offsetPointX - labelView.get('xCoord'));
+      labelView.set('yOffset', initialPos.offsetPointY - labelView.get('yCoord'));
+      labelView.endPropertyChanges();
+    },
+
+    mouseEntered: function () {
+      var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
+      if (allowCoordinatesChange === undefined || !allowCoordinatesChange) {
+        return YES;
+      }
+      var previousCursorStyle = this.getPath('labelView.graphView.requestedCursorStyle');
+      if (!this.getPath('labelView.isArrowDragging') && previousCursorStyle != 'move') {
+        this.set('previousCursorStyle', previousCursorStyle);
+      }
+      this.setCursorStyle('move');
+    },
+
+    mouseExited: function () {
+      var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
+      if (allowCoordinatesChange === undefined || !allowCoordinatesChange) {
+        return YES;
+      }
+      if (!this.getPath('labelView.isArrowDragging')) {
+        var previousCursorStyle = this.get('previousCursorStyle');
+        if (previousCursorStyle) {
+          this.setCursorStyle(this.get('previousCursorStyle'));
+        }
+      }
+    },
+    endDrag: function (evt) {
+      if (this.getPath('labelView.isArrowDragging')) {
+        var previousCursorStyle = this.get('previousCursorStyle');
+        if (previousCursorStyle) {
+          this.setCursorStyle(this.get('previousCursorStyle'));
+        }
+      }
+      this.get('labelView').updateLabelPositionInRecords();
+      this.setPath('labelView.isArrowDragging', NO);
+      return YES;
     }
   }),
 
@@ -802,7 +976,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     defaultStrokeBinding:     '.labelView.stroke',
     highlightedStrokeBinding: '.labelView.highlightedStroke',
-    isHighlightedBinding:     '.labelView.isBodyDragging',
+    isHighlightedBinding:     '.labelView.isHighlighted',
     xCoordBinding:            '.labelView.xCoord',
     yCoordBinding:            '.labelView.yCoord',
     anchorXCoordBinding:      '.labelView.anchorXCoord',
@@ -897,9 +1071,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     topMargin:                12,
     rightMargin:              SC.platform.touch ? 30 : 20,
     bottomMargin:             12,
-    isHighlightedBinding:     '.parentLabelView.isBodyDragging',
-
-    moveToTopPending:         NO,   // Set this property to move label to top in the labelSet. Label is moved to top on mouse-up
+    isHighlightedBinding:     '.parentLabelView.isHighlighted',
 
     width: function () {
       var textWidth = this.get('textWidth');
@@ -971,7 +1143,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     mouseUp: function (evt)  { return this._mouseUpOrTouchEnd(evt); },
     touchEnd: function (evt) { return this._mouseUpOrTouchEnd(evt); },
 
-    _mouseUpOrTouchEnd: function(evt) {
+    _mouseUpOrTouchEnd: function (evt) {
       this.endDrag(evt);
       var now      = new Date().getTime(),// ms
           interval = 202,                 // ms
@@ -980,6 +1152,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       if (typeof this.lastUp != 'undefined' && this.lastUp) {
         interval  = now - this.lastUp;
         if (interval < maxTime) {
+          // reset 'lastUp' after detecting a doubleClick
+          this.lastUp = 0;
           return this.doubleClick(evt);
         }
       }
@@ -1005,41 +1179,26 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
     startDrag: function (evt) {
-      var parentOfLabel = this.getPath('labelView.parentView');
-      // If the label is child of LabelSet, bring LabelSet on the top.
-      if (parentOfLabel.kindOf(Smartgraphs.LabelSetView)) {
-        var topAnnotationsHolder = parentOfLabel.get('parentView');
-        topAnnotationsHolder.appendChild(parentOfLabel);
-        var labels = parentOfLabel.getPath('item.labels');
-        for (var i = 0; i < labels.length(); i++) {
-          var label = labels.objectAt(i);
-          if (this.getPath('labelView.item.url') === label.get('url')) {
-            // If label is already at top then no need to move it
-            if (i != labels.length() - 1) {
-              this.set('moveToTopPending', YES);
-            }
-            break;
-          }
-        }
-      }
-      // To temporarily bring the label on top. Actual moving on top is deferred until mouse-up
-      // is encountered to avoid highlighting issues
       var labelView = this.get('labelView');
-      parentOfLabel.appendChild(labelView);
-
+      labelView.bringLabelOnTop();
       this.setPath('parentLabelView.isBodyDragging', YES);
 
       this._isDragging = YES;
       this._dragX = evt.pageX;
       this._dragY = evt.pageY;
       var graphView = this.getPath('graphView');
+      var xAxis = graphView.get('xAxis');
+      var yAxis = graphView.get('yAxis');
+      var inputAreaTopLeft = graphView.coordinatesForPoint(xAxis.get('min'), yAxis.get('max'));
+      var inputAreaBottomRight = graphView.coordinatesForPoint(xAxis.get('max'), yAxis.get('min'));
+      var frameWidth = inputAreaBottomRight.x - inputAreaTopLeft.x;
+      var frameHeight = inputAreaBottomRight.y - inputAreaTopLeft.y;
 
-      var frameWidth = graphView.$().width();
-      var frameHeight = graphView.$().height();
+      var labelTop = this.get('bodyYCoord') - inputAreaTopLeft.y;
+      var labelLeft = this.get('bodyXCoord') - inputAreaTopLeft.x;
       var labelWidth = this.width();
       var labelHeight = this.height();
-      var labelTop = this.get('bodyYCoord');
-      var labelLeft = this.get('bodyXCoord');
+
       var xOffset = this.get('xOffset');
       var yOffset = this.get('yOffset');
       var widthBound = frameWidth - labelWidth;
@@ -1073,19 +1232,19 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           currXOffset, currYOffset;
 
       currXOffset = xOffset + evt.pageX - this._dragX;
-      if (evt.pageX < info.xMIN) {
+      if (evt.pageX < info.xMIN || currXOffset < info.minXOffset) {
         currXOffset = info.minXOffset;
       }
-      if (evt.pageX > info.xMAX) {
+      if (evt.pageX > info.xMAX || currXOffset > info.maxXOffset) {
         currXOffset = info.maxXOffset;
       }
       
 
       currYOffset = yOffset + evt.pageY - this._dragY;
-      if (evt.pageY < info.yMIN) {
+      if (evt.pageY < info.yMIN || currYOffset < info.minYOffset) {
         currYOffset = info.minYOffset;
       }
-      if (evt.pageY > info.yMAX) {
+      if (evt.pageY > info.yMAX || currYOffset > info.maxYOffset) {
         currYOffset = info.maxYOffset;
       }
 
@@ -1102,21 +1261,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       this.drag(evt);
       this.setPath('parentLabelView.isBodyDragging', NO);
       this._isDragging = NO;
+      this.get('labelView').updateLabelPositionInRecords();
+      this.$().css('cursor', ''); // Parent's cursor style will be inherited.
 
-      this.$().css('cursor', 'default');
-
-      // Bring label on top if it was pending
-      if (this.get('moveToTopPending')) {
-        this.set('moveToTopPending', NO);
-        var parentOfLabel = this.getPath('labelView.parentView');
-        // If the label is child of LabelSet, bring LabelSet on the top.
-        if (parentOfLabel.kindOf(Smartgraphs.LabelSetView)) {
-          var labels = parentOfLabel.getPath('item.labels');
-          var label = this.getPath('parentLabelView.item');
-          labels.removeObject(label);
-          labels.pushObject(label);
-        }
-      }
       return YES;
     },
 
@@ -1229,7 +1376,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       
       touchEnd: function (evt) {
         var offset = this.get('graphCanvasView').$().offset();
-        
+
         this.set('isHighlighted', NO);
         
         if (   Math.abs(evt.pageX - this.get('centerX') - offset.left) < 50 &&

@@ -128,6 +128,13 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
 
   view: null,
 
+  /**
+    Whether to allow label arrowhead dragging.
+
+    @property {Boolean}
+  */
+  allowCoordinatesChange: NO,
+
   isRemovalEnabled: function () {
     if (this.get('labelSet')) {
       return this.getPath('labelSet.isRemovalEnabled');

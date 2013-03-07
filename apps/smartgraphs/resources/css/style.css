@@ -327,3 +327,13 @@ body.sc-theme {
 .hideGraph .rvml rvml\:shape {
   visibility: hidden;
 }
+
+.topAnnotationsHolder
+{
+  pointer-events: none;
+}
+
+.labelView
+{
+  pointer-events: all;
+}

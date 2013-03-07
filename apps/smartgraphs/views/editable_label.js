@@ -20,6 +20,9 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
   textFieldView:       null,  // defined on init
   fontSize:            12,
 
+  prevLayer: null,
+  createFreshLayer: NO,
+
   displayProperties:   'displayText textColor x y raphTextY isEditing width height'.w(),
 
   labelBodyView:       SC.outlet('parentView'),
@@ -134,6 +137,45 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     return { beforeText : text.substring(0, index), afterText: text.substring(index, text.length) };
   },
 
+  didCreateLayer: function () {
+    sc_super();
+
+    var prevLayer = this.get('prevLayer');
+    if (prevLayer) {
+      var layer = this.get('layer');
+      if (layer === prevLayer) {
+        this.set('createFreshLayer', YES);
+      }
+    }
+    else {
+      this.set('prevLayer', this.get('layer'));
+    }
+  },
+
+  destroyLayer: function () {
+    sc_super();
+
+    this.set('prevLayer', null);
+  },
+
+  updateLayer: function () {
+    if (this.get('createFreshLayer')) {
+      this.set('createFreshLayer', NO);
+
+      var raphaelContext = RaphaelViews.RaphaelContext();
+      raphaelContext.isTopLevel = NO;
+
+      this.prepareRaphaelContext(raphaelContext, YES);
+      this.set('layer', raphaelContext.populateCanvas(this.get('raphaelCanvas')));
+
+      // now notify the view and its child views..
+      this._notifyDidCreateLayer();
+    }
+    else {
+      sc_super();
+    }
+  },
+
   init: function () {
     var labelView = this;
     sc_super();
@@ -148,6 +190,23 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
       init: function () {
         sc_super();
         this.set('maxLength', maxCharacters);
+      },
+
+      didCreateLayer : function () {
+        sc_super();
+
+        var view = this.$().find('textarea')[0];
+        var self = this;
+        // Handling the paste and cut events of the context menu
+        // We cannot handle the delete of context menu as there isn't any event for that.
+        view.onpaste = view.oncut = function () {
+          // Using timer so that we get the updated text.
+          setTimeout(function () {
+            self.fieldValueDidChange();
+            labelView.updateLayer();
+          }, 1);
+          return true;
+        };
       },
 
       // For some reason, SC.TextFieldView doesn't implement touchStart and touchEnd. In this particular case,
@@ -200,8 +259,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
         return { width: w, height: h };
       },
 
-      fieldValueDidChange: function () {
-        sc_super();
+      updateText: function (textField) {
         if (!labelView.get('isEditing')) {
           return;
         }
@@ -210,9 +268,9 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
 
         var maxWidth = labelView.get('maxTextFieldWidth');
 
-        var textArea = this.$input()[0];
+        var textArea = textField.$input()[0];
         $(textArea).css('overflow', 'hidden');
-        var newLayout = this.getTextLayout(textArea);
+        var newLayout = textField.getTextLayout(textArea);
         var calculatedTextWidth = 0;
         var calculatedTextHeight;
         if (newLayout.width > (maxWidth)) {
@@ -229,6 +287,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
         labelView.set('calculatedTextHeight', calculatedTextHeight);
         labelView.set('calculatedTextWidth', calculatedTextWidth);
         labelView.endPropertyChanges();
+      },
+
+      fieldValueDidChange: function () {
+        sc_super();
+
+        this.updateText(this);
       },
 
       willLoseFirstResponder: function () {
@@ -248,7 +312,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
 
   renderCallback: function (raphaelCanvas, attrs, adjustTextFieldView) {
     var ret = raphaelCanvas.text().attr(attrs);
-    adjustTextFieldView();
+    adjustTextFieldView(true);
     return ret;
   },
 
@@ -276,18 +340,19 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
         textFieldView       = this.textFieldView,
         pane            = this.get('pane'),
 
-        adjustTextFieldView = function () {
+        adjustTextFieldView = function (firstTime) {
           var offset;
 
           if (isEditing) {
-           // textFieldView.set('value', self.get('text'));
             offset = graphCanvasView.$().offset();
-            textFieldView.set('layout', {
-              top:    offset.top + y,
-              left:   offset.left + x,
-              width:  width,
-              height: height
-            });
+            if (!firstTime || offset.left !== 0) { // Sometimes resizing gives offset values as 0 which is not valid.
+              textFieldView.set('layout', {
+                top:    offset.top + y,
+                left:   offset.left + x,
+                width:  width,
+                height: height
+              });
+            }
             SC.run();
             pane.appendChild(textFieldView);
             textFieldView.becomeFirstResponder();
@@ -315,7 +380,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     else {
       raphaelText = this.get('raphaelObject');
       raphaelText.attr(attrs);
-      adjustTextFieldView();
+      adjustTextFieldView(false);
     }
   },
 
@@ -380,11 +445,9 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     var labelViewLayer = this.getPath('labelView.layer');
 
     if (evt.target !== this.textFieldView.$().find('textarea')[0] &&
-         evt.target !== labelViewLayer &&
-         !$.contains(labelViewLayer, evt.target)) {
-      $('body').unbind('mousedown', this.mousedownHandler).unbind('touchstart', this.mousedownHandler);
-      this.textFieldView.resignFirstResponder(); // see if this works better than jQuery's blur or focusout...
-      
+        evt.target !== labelViewLayer &&
+        !$.contains(labelViewLayer, evt.target)) {
+      this.commitEditing();
       var topAnnotationsHolder = this.getPath('graphView.topAnnotationsHolder');
       var topAnnotationChildViews = topAnnotationsHolder.get('childViews');
       var stopEvent = true;

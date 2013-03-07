@@ -428,9 +428,38 @@ Smartgraphs.GraphView = SC.View.extend(
       cursor.bind('cursorStyle', this, 'requestedCursorStyle');
       this.set('cursor', cursor);
     },
+
+    viewDidResize: function () {
+      sc_super();
+      var topAnnotationChildViews = this.get('childViews');
+      for (var i = 0; i < topAnnotationChildViews.length; i++) {
+        var child = topAnnotationChildViews[i];
+        if (child.kindOf(Smartgraphs.LabelSetView)) {
+          var childLabels = child.get('childViews');
+          var noOfLabels = childLabels.length; 
+          for (var j = 0; j < noOfLabels; j++) {
+            var label = childLabels[j];
+            label.get('labelTextView').updateLayer();
+          }
+        }
+        else if (child.kindOf(Smartgraphs.LabelView)) {
+          if (child.get('isEditing')) {
+            child.get('labelTextView').updateLayer();
+          }
+        }
+      }
+    },
+
     didCreateLayer: function () {
       sc_super();
       var self = this;
+      var view = this.$();
+      if (view.attr('class')) {
+        view.attr('class', view.attr('class') + ' topAnnotationsHolder');
+      }
+      else {
+        view.attr('class', 'topAnnotationsHolder');
+      }
       /* "this.childNodes && evt.target === this.childNodes[0]"
        * The above condition is to check whether the events are fired on 'topAnnotationsHolder' or its children.
        * If the events are fired on 'topAnnotationsHolder', they are to be propagated to the layers beneath it.
@@ -446,10 +475,10 @@ Smartgraphs.GraphView = SC.View.extend(
 
       this.$().mousedown(function (evt) {
         if (self.checkDescendent(evt.target, this)) {
-          var label = self.getActiveLabel();
+          var label = self.getLabelInEditMode();
           if (label) {
-            var activeLabelElement = label.get('layer');
-            if (!self.checkDescendent(evt.target, activeLabelElement)) {
+            var labelElementInEditMode = label.get('layer');
+            if (!self.checkDescendent(evt.target, labelElementInEditMode)) {
               label.commitEditing();
             }
           }
@@ -480,14 +509,31 @@ Smartgraphs.GraphView = SC.View.extend(
       return false;
     },
 
-    getActiveLabel: function () {
+    getLabelInArrowDragMode: function () {
       var topAnnotationsHolder = this;
       var topAnnotationChildViews = topAnnotationsHolder.get('childViews');
 
       for (var i = 0; i < topAnnotationChildViews.length; i++) {
         var childLabel = topAnnotationChildViews[i];
         if (childLabel.kindOf(Smartgraphs.LabelSetView)) {
-          return childLabel.get('activeLabel');
+          return childLabel.get('labelInArrowDragMode');
+        }
+        else if (childLabel.kindOf(Smartgraphs.LabelView)) {
+          if (childLabel.get('isArrowDragging')) {
+            return childLabel;
+          }
+        }
+      }
+    },
+
+    getLabelInEditMode: function () {
+      var topAnnotationsHolder = this;
+      var topAnnotationChildViews = topAnnotationsHolder.get('childViews');
+
+      for (var i = 0; i < topAnnotationChildViews.length; i++) {
+        var childLabel = topAnnotationChildViews[i];
+        if (childLabel.kindOf(Smartgraphs.LabelSetView)) {
+          return childLabel.get('labelInEditMode');
         }
         else if (childLabel.kindOf(Smartgraphs.LabelView)) {
           if (childLabel.get('isEditing')) {
@@ -1123,7 +1169,7 @@ Smartgraphs.GraphView = SC.View.extend(
            * So the loss of focus from label's textarea is checked here.
            */
           var topAnnotationsHolder = this.getPath('topAnnotationsHolder');
-          var label = topAnnotationsHolder.getActiveLabel();
+          var label = topAnnotationsHolder.getLabelInEditMode();
           if (label) {
             label.commitEditing();
             return;
