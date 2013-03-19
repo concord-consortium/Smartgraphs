@@ -337,11 +337,13 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
         isEditing       = this.get('isEditing'),
 
         graphCanvasView = this.get('graphCanvasView'),
-        textFieldView       = this.textFieldView,
+        textFieldView   = this.get('textFieldView'),
         pane            = this.get('pane'),
 
         adjustTextFieldView = function (firstTime) {
           var offset;
+
+          if (!pane) return;
 
           if (isEditing) {
             offset = graphCanvasView.$().offset();
