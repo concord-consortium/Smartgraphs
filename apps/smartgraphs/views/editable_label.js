@@ -325,14 +325,14 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
         text            = this.get('displayText'),
         self = this,
 
-    attrs = {
-      x:             x,
-      y:             raphTextY,
-      fill:          this.get('textColor'),
-      text:          text ? text : " ",     // Add a space when no text is there as IE8 shows undefined for blank text.
-      'font-size':   this.get('fontSize'),
-      'text-anchor': 'start'
-    },
+        attrs = {
+          x:             x,
+          y:             raphTextY,
+          fill:          this.get('textColor'),
+          text:          text ? text : " ",     // Add a space when no text is there as IE8 shows undefined for blank text.
+          'font-size':   this.get('fontSize'),
+          'text-anchor': 'start'
+        },
 
         isEditing       = this.get('isEditing'),
 
