@@ -59,11 +59,12 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
         x = this.getPath('content.x'),
         y = this.getPath('content.y'),
         datadefName = this.get('datadefName'),
-        color;
+        color,
+        modifier;
 
-    // Using color from dataRepresentation to retain the color on selection.
-    if (modifiers[[x, y, datadefName]]) {
-      this.set('overrideColor', this.dataRepresentation.color);
+    modifier = modifiers[[x, y, datadefName]];
+    if (modifier) {
+      this.set('overrideColor', modifier.get('color'));
     }
     else {
       this.set('overrideColor', null);
