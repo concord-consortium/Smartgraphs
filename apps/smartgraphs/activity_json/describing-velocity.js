@@ -570,7 +570,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "students-segment-labels", "segment-0-3s"],
           "activeDatadefs": ["position-data"]
-     }, 
+     },
         "bottom": {
           "type": "table",
           "data": "position-data",
