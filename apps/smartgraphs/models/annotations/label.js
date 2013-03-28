@@ -80,11 +80,13 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
   hasEditedFirstTime: NO,
 
   /**
-    Makes a label editable/non-editable depending upon this property.
+    Transient property that indicates whether the label is editable. In the future, there may be
+    authorable support for telling Smartgraphs to set this property to true during certain activity
+    steps and false during others. Right now, it's true by default.
 
     @property {Boolean}
   */
-  isEditable: NO,
+  isEditable: YES,
 
   /**
     Whether to display this annotation in front of all the annotations, axes, graph title and data views.

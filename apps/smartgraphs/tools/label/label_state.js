@@ -198,7 +198,8 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
           label.set('isEditable', YES);
         },
         exitState: function () {
-          this.getPath('toolRoot.annotation').set('isEditable', NO);
+          // For the time being, SG never marks label text non-editable.
+          //this.getPath('toolRoot.annotation').set('isEditable', NO);
         },
         dataPointSelected: function (context, args) {
           var toolRoot = this.get('toolRoot');
@@ -268,7 +269,8 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
         labelSet.disableRemoval();
         var arrLabels = labelSet.get('labels');
         for (var i = 0; i < arrLabels.length(); i++) {
-          arrLabels.objectAt(i).set('isEditable', NO);
+          // For the time being, SG never marks label text non-editable.
+          // arrLabels.objectAt(i).set('isEditable', NO);
           arrLabels.objectAt(i).set('allowCoordinatesChange', NO);
         }
         Smartgraphs.labelTool.addLabelsFinished(this);
