@@ -49,8 +49,8 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
 
   /**
     The graphpane to which the tool is assigned
-    
-    @property {String} 
+
+    @property {String}
    */
   pane: null,
 
