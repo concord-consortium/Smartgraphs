@@ -81,8 +81,24 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     return ret;
   }.property(),
 
+  /**
+    Returns the URL for a given image file name, assuming that the image file name is included as a
+    static asset in the Smartgraphs build. Need to do this at runtime because sc_static is replaced
+    with a full URL at build time (and there isn't an obvious hook to do the replacement at build
+    time when the sc_static replacement is made.)
+  */
+  getImageURL: function(imageName) {
+    // don't substitute absolute urls
+    if (imageName.charAt(0) === '/') return imageName;
+
+    var f = sc_static("finish.png"), // has to actually exist
+        match = f.match(/^(.*)finish.png(.*)$/);
+    return match.length > 1 ? match[1] + imageName + match[2] : null;
+  },
+
   setup: function (args) {
-    args = args || {};
+    args = args || {},
+           self = this;
 
     var pane = Smartgraphs.activityViewController.validPaneFor(args.pane),
         animationHashes        = args.animations       || [],
@@ -95,7 +111,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     if (!pane) return;
 
     this.set('loop', args.loop === undefined ? this.get('defaultLoop') : args.loop);
-    this.set('backgroundImageURL', args.backgroundImage || this.get('defaultBackgroundImageURL'));
+    this.set('backgroundImageURL', this.getImageURL(
+                                   args.backgroundImage || this.get('defaultBackgroundImageURL')));
     this.set('duration',           args.duration        || this.get('defaultDuration'));      // duration of 0 makes no sense
     this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // channelWidth of 0 makes no sense
     this.set('playCount', 0);
@@ -109,7 +126,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
       // flatten out the nested authored json into a single record object
       for (i = 0; i < instances.length; i++) {
         instance         = instances[i];
-        instance.image   = hash.image    || '';
+        instance.image   = self.getImageURL(hash.image || '');
         instance.xOffset = hash.xOffset  || 0;
         instance.yOffset = hash.yOffset  || 0;
         instance.width   = hash.width    || 70;
@@ -123,7 +140,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.set('animations', animationHashes.map(function (hash) {
       return {
         datadefName:        hash.data,
-        foregroundImageURL: hash.image   || '',
+        foregroundImageURL: self.getImageURL(hash.image || ''),
         xOffset:            hash.xOffset || 0,
         yOffset:            hash.yOffset || 0,
         width:              hash.width   || 70,
