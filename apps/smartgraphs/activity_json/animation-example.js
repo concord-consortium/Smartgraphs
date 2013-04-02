@@ -74,18 +74,18 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
             "pane": "top",
             "duration": 3000,   // ms
             "channelWidth": 70, // same as the default
-            "backgroundImage": sc_static('images/road'),
+            "backgroundImage": "road.png",
             "loop": true,
             "animations": [{
                 "data": "position-data2",
-                "image": sc_static('images/car'),
+                "image": "car.png",
                 "width": 70,
                 "height": 30,
                 "xOffset": 0,
                 "yOffset": 0
               }, {
                 "data": "position-data",
-                "image": "circle",
+                "image": "circle.png",
                 "xOffset": -10,
                 "yOffset": 0
             }]
