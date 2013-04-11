@@ -720,7 +720,7 @@ Smartgraphs.GraphView = SC.View.extend(
         }
 
         pt = points[0]; // [x, y]
-        y = pt[1] / (logicalBounds.yMax - logicalBounds.yMin);
+        y = (pt[1] - logicalBounds.yMin) / (logicalBounds.yMax - logicalBounds.yMin);
         raphaelForImage.attr({ y: screenBounds.yTop + (screenBounds.plotHeight*(1-y)) + yOffset });
         animationTime = ms;
       }
@@ -761,7 +761,7 @@ Smartgraphs.GraphView = SC.View.extend(
           scaledXPercentage = (xPercentage - startingXPercentage) / (1 - startingXFrac);
           if (scaledXPercentage >= 100) scaledXPercentage = 100;
 
-          yFrac = pt[1] * yScale;         // the fractional distance along y-axis at which the icon should display
+          yFrac = (pt[1] - logicalBounds.yMin) * yScale;         // the fractional distance along y-axis at which the icon should display
 
           keyframes[parseInt(scaledXPercentage, 10)+'%'] = {
             y: screenBounds.yTop + (screenBounds.plotHeight * (1-yFrac)) + yOffset
@@ -965,7 +965,7 @@ Smartgraphs.GraphView = SC.View.extend(
             raphaelForImage = imagesByDatadefName[datadefName],
             firstDataView   = dataViews.objectAt(0),
             points          = firstDataView.getPath('item.points'),
-            y               = points[0][1] / (logicalBounds.yMax - logicalBounds.yMin),
+            y               = (points[0][1] - logicalBounds.yMin) / (logicalBounds.yMax - logicalBounds.yMin),
             yOffset         = animationSpec.yOffset || 0;
 
         dataViews.forEach( function (dataView) {
@@ -1432,7 +1432,7 @@ Smartgraphs.GraphView = SC.View.extend(
             requestedImage = requestedStaticImagesByURL[url][i];
             actualImage    = staticImagesByURL[url][i];
 
-            yFrac = requestedImage.y / (logicalBounds.yMax - logicalBounds.yMin);
+            yFrac = (requestedImage.y - logicalBounds.yMin) / (logicalBounds.yMax - logicalBounds.yMin);
 
             actualImage.attr({
               x: this.get('frame').x + 10  + requestedImage.xOffset,
@@ -1500,7 +1500,7 @@ Smartgraphs.GraphView = SC.View.extend(
             dataView = dataViewsByDatadefName[datadefName][0];        // pick one of the data views we're animating
             if (dataView) {
               points        = dataView.getPath('item.points');
-              y             = points[0][1] / (logicalBounds.yMax - logicalBounds.yMin);
+              y             = (points[0][1] - logicalBounds.yMin) / (logicalBounds.yMax - logicalBounds.yMin);
 
               animationSpec = animationSpecsByDatadefName[datadefName];
               imageWidth    = animationSpec.width  || 70;
