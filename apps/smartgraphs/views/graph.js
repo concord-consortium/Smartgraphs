@@ -327,11 +327,15 @@ Smartgraphs.GraphView = SC.View.extend(
   },
 
   titleView: SC.LabelView.design({
-    isVisible: 'YES',
+    hideGraphBinding: '.parentView.hideGraph',
     valueBinding: '.parentView*graphController.title',
     classNames: 'pane-label',
     layout: { width: 400, centerX: 0, height: 20, top: 20, zIndex: 1 },
     textAlign: SC.ALIGN_CENTER,
+    
+    isVisible: function () {
+      return !this.get('hideGraph');
+    }.property('hideGraph').cacheable(),
 
     mouseDown : function (evt) {
       this.handleEvent(evt);
