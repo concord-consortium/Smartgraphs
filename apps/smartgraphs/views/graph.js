@@ -332,7 +332,7 @@ Smartgraphs.GraphView = SC.View.extend(
     classNames: 'pane-label',
     layout: { width: 400, centerX: 0, height: 20, top: 20, zIndex: 1 },
     textAlign: SC.ALIGN_CENTER,
-    
+
     isVisible: function () {
       return !this.get('hideGraph');
     }.property('hideGraph').cacheable(),
@@ -354,7 +354,7 @@ Smartgraphs.GraphView = SC.View.extend(
       SC.Event.handle.call(document, evt);
     }
   }),
- 
+
   tooltipView: SC.View.extend({
     displayProperties: ['coords', 'mouseOverInputArea'],
     coordsBinding: '.parentView*graphController.tooltipCoords',
@@ -397,7 +397,7 @@ Smartgraphs.GraphView = SC.View.extend(
       else {
         context.push("<div></div>");
         return;
-      }        
+      }
     },
 
     mouseMoved: function (evt) {
@@ -440,7 +440,7 @@ Smartgraphs.GraphView = SC.View.extend(
         var child = topAnnotationChildViews[i];
         if (child.kindOf(Smartgraphs.LabelSetView)) {
           var childLabels = child.get('childViews');
-          var noOfLabels = childLabels.length; 
+          var noOfLabels = childLabels.length;
           for (var j = 0; j < noOfLabels; j++) {
             var label = childLabels[j];
             label.get('labelTextView').updateLayer();
@@ -596,12 +596,12 @@ Smartgraphs.GraphView = SC.View.extend(
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
 
     childViews: 'axesView dataHolder annotationsHolder overlayAnnotationsHolder animationView'.w(),
-  
+
     _checkInputAreaScreenBounds: function (x, y) {
       var graphAreaOffset = this.get("graphView").$().offset();
       var padding = this.get("graphView").get("padding");
       var bounds = this._getScreenBounds();
-      
+
       if ((x >= graphAreaOffset.left + padding.left && x <= graphAreaOffset.left + bounds.plotWidth + padding.left) &&
           (y >= graphAreaOffset.top + padding.top  && y <= graphAreaOffset.top + bounds.plotHeight + padding.top)) {
         return true;
@@ -610,11 +610,11 @@ Smartgraphs.GraphView = SC.View.extend(
         return false;
       }
     },
-    
+
     mouseMoved: function (evt) {
       this._mouseMoved(evt);
     },
-  
+
     _mouseMoved: function (evt) {
       var graphView = this.get("graphView");
       var graphController = graphView.get('graphController');
@@ -626,25 +626,25 @@ Smartgraphs.GraphView = SC.View.extend(
         graphView.set("mouseOverInputArea", false);
       }
     },
-    
+
     mouseExited: function (evt) {
       var graphView = this.get("graphView");
       graphView.set("mouseOverInputArea", false);
     },
-  
+
     touchStart: function (evt) {
       this._mouseDownOrTouchStart(evt);
     },
     mouseDown: function (evt) {
       this._mouseDownOrTouchStart(evt);
     },
-  
+
     _mouseDownOrTouchStart: function (evt) {
       if (this._checkInputAreaScreenBounds(evt.pageX, evt.pageY)) {
         this.get('axesView').get('inputAreaView').mouseDown(evt);
       }
     },
-    
+
     _animationIsPaused: NO,
 
     _getScreenBounds: function () {
@@ -1005,20 +1005,20 @@ Smartgraphs.GraphView = SC.View.extend(
       paddingBinding: '.graphView.padding',
 
       childViews: 'inputAreaView xAxisView yAxisView gridView'.w(),
-      
+
       touchStart: function (evt) {
         this._mouseDownOrTouchStart(evt);
       },
-      
+
       mouseDown:  function (evt) {
         this._mouseDownOrTouchStart(evt);
       },
-      
+
       _mouseDownOrTouchStart: function (evt)
       {
         this.get('axesView').get('inputAreaView').mouseDown(evt);
       },
-      
+
       gridView: RaphaelViews.RaphaelView.design({
 
         gridStroke: '#C2CCE0',
@@ -1039,7 +1039,7 @@ Smartgraphs.GraphView = SC.View.extend(
           var graphView  = this.get('graphView');
           var xAxis      = graphView.get('xAxis');
           var yAxis      = graphView.get('yAxis');
-         
+
          //return if xAxis and yAxis is undefined
           if (!xAxis || !yAxis) {
             return;
@@ -1048,7 +1048,7 @@ Smartgraphs.GraphView = SC.View.extend(
           if (!(this.get("graphView").get("graphController").showGraphGrid)) {
             return;
           }
-         
+
           var logicalBounds = graphView.graphCanvasView._getLogicalBounds();
           var nXSteps = xAxis.get("nSteps");
           var nYSteps = yAxis.get("nSteps");
@@ -1157,7 +1157,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
           return { x: x, y: y };
         },
-        
+
         touchStart: function (evt) {
           this._mouseDownOrTouchStart(evt);
         },
@@ -1213,7 +1213,7 @@ Smartgraphs.GraphView = SC.View.extend(
           if (graphController.tooltipCoords.width + coords.x >= bounds.xRight - padding.right) {
             coords.x = bounds.xRight - graphController.tooltipCoords.width - padding.right;
           }
-          
+
           var toolTipPoint = graphController.get('toolTipPoint');
           var pointOverride = graphController.get('toolTipVisibilityOverrideOnPointHover');
           if (pointOverride && toolTipPoint !== null) {
@@ -1228,7 +1228,7 @@ Smartgraphs.GraphView = SC.View.extend(
         touchEnd: function (evt) {
           this._mouseUpOrTouchEnd(evt);
         },
-        
+
         mouseUp: function (evt) {
           this._mouseUpOrTouchEnd(evt);
         },
@@ -1240,13 +1240,13 @@ Smartgraphs.GraphView = SC.View.extend(
           var graphController = this._graphView.get('graphController');
           return graphController.inputAreaMouseUp(point.x, point.y);
         },
-        
-        
+
+
         mouseExited: function () {
           var graphController = this._graphView.get('graphController');
           this._graphView.set("mouseOverInputArea", false);
         }
-        
+
       }),
 
       xAxisView: Smartgraphs.AxisView.design({
@@ -1269,7 +1269,7 @@ Smartgraphs.GraphView = SC.View.extend(
     }),
 
     // Holds the annotation views. Should be later in the DOM (and thus "in front of") the data views
-    // Mouse events are propagated because line annotation are above the points. 
+    // Mouse events are propagated because line annotation are above the points.
     annotationsHolder: RaphaelViews.RaphaelView.design({
     }),
 
@@ -1554,7 +1554,7 @@ Smartgraphs.GraphView = SC.View.extend(
       defaultValue: false,
       classNames: ['legendView'],
       tagName: 'div',
-      // Currently z-index of label's text field is set to 100 by sproutcore. So to keep legend always on top, it's z-index is set to 200. 
+      // Currently z-index of label's text field is set to 100 by sproutcore. So to keep legend always on top, it's z-index is set to 200.
       layout: { top: 0, left: 0, width: 0, height: 0, zIndex: 200 },
       verticalElementSpacing: 5,
       topPadding: 8,
@@ -1754,7 +1754,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       mouseDragged: function (evt) {
         return this._mouseDraggedOrTouchesDragged(evt);
-      }, 
+      },
 
       touchesDragged : function (evt) {
         return this._mouseDraggedOrTouchesDragged(evt);
@@ -1818,7 +1818,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       _mouseUpOrTouchEnd: function (evt) {
        // apply one more time to set final position
-        this.mouseDragged(evt); 
+        this.mouseDragged(evt);
         this._mouseDownInfo = null; // cleanup info
         return YES; // handled!
       },
