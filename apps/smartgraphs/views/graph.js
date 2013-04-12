@@ -755,7 +755,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       for (idx=0, len=points.length; idx<len; ++idx) {
         pt = points[idx];
-        xFrac = pt[0] * xScale;             // the fractional progress along x-axis
+        xFrac = (pt[0] - logicalBounds.xMin) * xScale;  // the fractional progress along x-axis
         xPercentage = xFrac * 100;
 
         // only insert keyframes for points to the right of the x-value we're restarting the animation at
