@@ -109,15 +109,15 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     @property {Smartgraphs.Datadef[]}
 
     A list of all the Datadefs added to this graph
- 
+
   */
   datadefList: null,
-  
+
   /**
     @property {Smartgraphs.Dataref[]}
 
     A list of all the Datadefs added to this graph.
- 
+
   */
   datarefList: null,
 
@@ -143,55 +143,55 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   title: null,
 
   /**
-   
+
    @property Bool
-   
+
    Whether to show the grid line or not
-   
+
    */
-  
+
   showGraphGrid : null,
-  
+
   /**
    @property Bool
-   
+
    Whether to show the tooltip  or not
-   
+
   */
-  
+
   showToolTipCoords : null,
-  
+
   /**
    @property Bool
-   
+
    Override tooltip visibility according to state of the tool
-   
+
   */
-  
+
   toolTipVisibilityOverrideFromToolState: true,
-  
+
   /**
   @property Bool
-  
+
   Override tooltip visibility according to point hover
-  
+
  */
   toolTipVisibilityOverrideOnPointHover: true,
   /**
   @property Point
-  
+
   Store the point value for point hover
-  
+
  */
   toolTipPoint: null,
   /**
-   
+
    @property Object
-   
+
    Layout of the Tooltip
-   
+
    */
-  
+
   tooltipCoords : { x: 0, y: 0, top: 0, left: 0, coordOffset: 5, width: 100},
 
   /**
@@ -241,7 +241,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     this.get('datadefList').pushObject(datadef);
   },
-  
+
   /**
     Add a dataref to this controller.
 
@@ -583,6 +583,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
         options = dataSpec[1];
       }
 
+      options.xMin = xMin;
+      options.xMax = xMax;
+      options.yMin = yMin;
+      options.yMax = yMax;
       datadef = self.getDatadef(datadefName);
       if (options === undefined) {
         options = [];
@@ -724,7 +728,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   unDimRepresentations: function () {
     this.get('dataRepresentations').setEach('isDimmed', NO);
   },
-  
+
   updateToolTip: function (point, coords) {
     var newPoint = Smartgraphs.Point.create();
     newPoint.set('x', point.x);
@@ -776,7 +780,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     var statechart = this.get('statechart');
     return statechart.sendAction.apply(statechart, arguments);
   },
-  
+
   graphingToolStartTool: function (args) {
     this.sendAction('graphingToolStartTool', this, args);
   },

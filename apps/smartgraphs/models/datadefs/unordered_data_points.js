@@ -40,7 +40,9 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
   getNewRepresentation: function (options) {
     var sampleset = Smartgraphs.TrivialSampleset.create({
       xMin: !options || SC.none(options.xMin) ? -Infinity : options.xMin,
-      xMax: !options || SC.none(options.xMax) ?  Infinity : options.xMax
+      xMax: !options || SC.none(options.xMax) ?  Infinity : options.xMax,
+      yMin: !options || SC.none(options.yMin) ? -Infinity : options.yMin,
+      yMax: !options || SC.none(options.yMax) ?  Infinity : options.yMax
     });
     sampleset.set('datadef', this);
     return sampleset.getNewRepresentation(options);
