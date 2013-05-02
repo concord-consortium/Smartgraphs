@@ -585,8 +585,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
       options.xMin = xMin;
       options.xMax = xMax;
-      options.yMin = yMin;
-      options.yMax = yMax;
       datadef = self.getDatadef(datadefName);
       if (options === undefined) {
         options = [];

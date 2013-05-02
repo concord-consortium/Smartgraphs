@@ -22,8 +22,6 @@ Smartgraphs.TrivialSampleset = Smartgraphs.Sampleset.extend(
 
   xMin: -Infinity,
   xMax: Infinity,
-  yMin: -Infinity,
-  yMax: Infinity,
 
   didSetDatadef: function () {
     var datadef = this.get('datadef');
@@ -36,7 +34,7 @@ Smartgraphs.TrivialSampleset = Smartgraphs.Sampleset.extend(
     var sourcePoints = this.getPath('datadef.points') || [],
 
         points = sourcePoints.filter( function (pair) {
-          return this.get('xMin') <= pair[0] && pair[0] <= this.get('xMax') && this.get('yMin') <= pair[1] && pair[1] <= this.get('yMax');
+          return this.get('xMin') <= pair[0] && pair[0] <= this.get('xMax');
         }, this).map( function (pair) {
           return pair.copy();
         });
