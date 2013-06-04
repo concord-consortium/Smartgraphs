@@ -241,7 +241,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     }
     else {
       var circle = context.raphael();
-      circle.attr({ cx: coords.x, cy: coords.y, r: radius, fill: color, 'stroke-width': strokeWidth });
+      circle.attr({ cx: coords.x, cy: coords.y, r: radius, fill: color, 'stroke-width': strokeWidth, 'clip-rect': graphView.get('clipRect') });
     }
   }
 

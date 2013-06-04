@@ -296,6 +296,17 @@ Smartgraphs.GraphView = SC.View.extend(
     };
   },
 
+  // A string specifying, in SVG format, the clipping rectangle of the graphable area
+  clipRect: function() {
+    var frame = this.get('frame'),
+        padding = this.get('padding'),
+        height = frame.height,
+        width  = frame.width;
+        plotWidth = width - padding.left - padding.right,
+        plotHeight = height - padding.top - padding.bottom;
+
+    return padding.left + ',' + padding.top + ',' + plotWidth + ',' + plotHeight;
+  }.property(),
 
   pointForCoordinates: function (x, y) {
     var xAxis = this.get('xAxis');

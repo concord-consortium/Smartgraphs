@@ -67,6 +67,7 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
 
     pathStr = str.join('') || 'M0 0';         // Raphael won't make path go away in IE if path string = ''
     attrs = {
+      'clip-rect':      graphView.get('clipRect'),
       'stroke':         this.get('color'),
       'stroke-width':   this.get('strokeWidth'),
       'stroke-opacity': this.get('isHiddenForAnimation') ? 0 : this.get('strokeOpacity')
