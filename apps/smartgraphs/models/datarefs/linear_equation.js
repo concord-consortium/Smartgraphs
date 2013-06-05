@@ -32,7 +32,7 @@ Smartgraphs.LinearEquation = Smartgraphs.ContinuousEquation.extend(
       return null;
     }
   },
-  
+
   getInverseExpressionFunction: function () {
     var expressionForm = this.get('expressionForm');
     var params = this.get('params');

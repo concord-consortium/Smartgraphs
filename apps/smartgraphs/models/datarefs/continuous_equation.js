@@ -21,7 +21,7 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
   getExpressionFunction: function () {
     throw "This method must be inherited as it is an abstract method.";
   },
-  
+
   getInverseExpressionFunction: function () {
     throw "This method must be inherited as it is an abstract method.";
   },
@@ -58,7 +58,7 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
         // add the data point as normal.
         datarefPoints.pushObject([x, y]);
       }
-      
+
       if (x - stepInterval !== graphBounds.xMax) {
         // right side clipping:
         if (x > graphBounds.xMax) {
