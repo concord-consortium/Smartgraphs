@@ -678,16 +678,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       The DataRepresentation we are requesting a color for
   */
   getColorForDataRepresentation: function (rep) {
-    var datadef = this.getDatadef(rep.get('name'));
+    var datadef = this.getDatadef(rep.get('name')),
+        used = this.get('dataRepresentations').getEach('color');
+
     if (datadef) {
       var datadefColor = datadef.get('color');
-      if (datadefColor) {
+      // Cannot re-use dataset colors already being used by a dataset
+      // in this page.
+      if (datadefColor && !used.contains(datadefColor)) {
         return datadefColor;
       }
     }
 
     var defaultColor = rep.get('defaultColor'),
-        used = this.get('dataRepresentations').getEach('color'),
         colors,
         i, len;
 
