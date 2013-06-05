@@ -5,9 +5,6 @@ sc_require('models/datarefs/continuous_equation');
 
 /** @class
 
-  The LinearEquation data definition class defines a dataset that is described by an unordered set of (x, y)
-  pairs.
-
   @extends Smartgraphs.ContinuousEquation
 */
 Smartgraphs.LinearEquation = Smartgraphs.ContinuousEquation.extend(

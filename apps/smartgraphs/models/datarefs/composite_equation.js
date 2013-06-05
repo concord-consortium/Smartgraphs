@@ -4,9 +4,6 @@ sc_require('models/dataref');
 
 /** @class
 
-  The CompositeEquation data definition class defines a dataset that is described by an unordered set of (x, y)
-  pairs.
-
   @extends Smartgraphs.Dataref
 */
 Smartgraphs.CompositeEquation = Smartgraphs.Dataref.extend({
