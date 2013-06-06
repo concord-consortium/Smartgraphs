@@ -24,6 +24,14 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
   },
 
   getPoints: function(xMin, xMax, yMin, yMax) {
+    if (yMin == null) {
+      yMin = -Infinity;
+    }
+
+    if (yMax == null) {
+      yMax = Infinity;
+    }
+
     var fn = this.getExpressionFunction();
     var points = [];
 

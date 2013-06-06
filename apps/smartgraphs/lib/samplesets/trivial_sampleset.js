@@ -7,6 +7,9 @@
 
 sc_require('lib/sampleset');
 
+
+// TODO: rename to something like 'ObservingSampleSet'?
+
 /** @class
 
   A TrivialSampleset contains all points from the datadef whose x-value lies between xMin and xMax
