@@ -66,7 +66,7 @@ Smartgraphs.sendGaEvent = function(key,value) {
     return;
   }
   Smartgraphs.sendGAEvent_last_hash_key = hash_key;
-  if (!!_gaq && window.location.hostname !== 'localhost') {
+  if (typeof _gaq !== 'undefined' && window.location.hostname !== 'localhost') {
     _gaq.push(["_trackEvent", "SmartGraphs Activities", key, value]);
     console.log("sent analytics %s", hash_key);
   }
