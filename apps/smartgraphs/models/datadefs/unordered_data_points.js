@@ -28,6 +28,16 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
   */
   points: SC.Record.attr(Array, { defaultValue: [] }),
 
+  getNewSampleset: function(options) {
+    var sampleset = Smartgraphs.TrivialSampleset.create({
+      xMin: !options || SC.none(options.xMin) ? -Infinity : options.xMin,
+      xMax: !options || SC.none(options.xMax) ?  Infinity : options.xMax
+    });
+    sampleset.set('datadef', this);
+
+    return sampleset;
+  },
+
   /**
     Returns a DataRepresentation to represent this data. The default behavior is to create a new TrivialSampleset and
     return a DataRepresentation requested from the TrivialSampleSet by passing the options hash to it.
@@ -37,12 +47,8 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
 
     @returns {Smartgraphs.DataRepresentation}
   */
-  getNewRepresentation: function (options) {
-    var sampleset = Smartgraphs.TrivialSampleset.create({
-      xMin: !options || SC.none(options.xMin) ? -Infinity : options.xMin,
-      xMax: !options || SC.none(options.xMax) ?  Infinity : options.xMax
-    });
-    sampleset.set('datadef', this);
+  getNewRepresentation: function(options) {
+    var sampleset = this.getNewSampleset(options);
     return sampleset.getNewRepresentation(options);
   },
 
