@@ -69,7 +69,7 @@ describe "Dataref, ", ->
 
   describe "Smartgraphs.CompositeEquation with y = log(x) + sin(x) expression", ->
       compositeEquation = Smartgraphs.CompositeEquation.create()
-      compositeEquation.graphBounds = { xMin: 0, yMin: 0, xMax: 2, yMax: 10 }
+      compositeEquation.graphBounds = { xMin: 0.5, yMin: 0, xMax: 2.2, yMax: 1 }
       compositeEquation.datadefName = 'datadef-1'
 
       describe "having xPrecision of 0.5", ->
@@ -84,4 +84,9 @@ describe "Dataref, ", ->
 
         it "should generate proper dataset points", ->
           linePoints = compositeEquation.points
-          expect(linePoints).toEqualPairs [0.5, -0.21372164195574228], [1, 0.8414709848078965], [1.5, 1.4029600947122187], [2, 1.6024446073856269], [2.5, 1.5147628759781115]
+          expect(linePoints).toEqualPairs(
+            [0.5, -0.21372164195574228],
+            [1, 0.8414709848078965],
+            [1.5, 1.4029600947122187],
+            [2, 1.6024446073856269]
+          )
