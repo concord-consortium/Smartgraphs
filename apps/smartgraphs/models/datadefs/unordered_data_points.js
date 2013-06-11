@@ -38,20 +38,6 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
     return sampleset;
   },
 
-  /**
-    Returns a DataRepresentation to represent this data. The default behavior is to create a new TrivialSampleset and
-    return a DataRepresentation requested from the TrivialSampleSet by passing the options hash to it.
-
-    @param options {Object}
-      Hash of options to be respected when returning the DataRepresentations (the options are not yet well defined.)
-
-    @returns {Smartgraphs.DataRepresentation}
-  */
-  getNewRepresentation: function(options) {
-    var sampleset = this.getNewSampleset(options);
-    return sampleset.getNewRepresentation(options);
-  },
-
   addPoint: function (x, y) {
     this.get('points').pushObject([x, y]);
     this.set('latestX', x);

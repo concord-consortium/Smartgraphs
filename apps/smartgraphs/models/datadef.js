@@ -127,7 +127,7 @@ Smartgraphs.Datadef = SC.Record.extend(
     @property {Number|null}
   */
   dragValueX: null,
-  
+
   /**
     Y-value of the data point which is being dragged . Transient.
 
@@ -141,16 +141,22 @@ Smartgraphs.Datadef = SC.Record.extend(
    */
   isActive : false,
 
+  getNewSampleset: function() {
+    throw new Error("This is an abstract method that should be overridden.");
+  },
+
   /**
-    Return a new DataRepresentation tied to an appropriate SampleSet for objects of this Datadef class. Options will
-    eventually allow you to customize the DataRepresentation and reuse SampleSets.
+    Returns a DataRepresentation tied to an appropriate Sampleset for this data.
+
+    @param options {Object}
+      Hash of options to be respected when returning the DataRepresentations (the options are not yet well defined.)
 
     @returns {Smartgraphs.DataRepresentation}
   */
-  getNewRepresentation: function () {
-    throw "This Datadef class needs to override getNewRepresentation()";
+  getNewRepresentation: function(options) {
+    var sampleset = this.getNewSampleset(options);
+    return sampleset.getNewRepresentation(options);
   }
-
 });
 
 // FIXME this is duplicated from Smartgraphs.Annotation
