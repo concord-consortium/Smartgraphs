@@ -84,9 +84,14 @@
           compositeEquation.xInterval = 0.5;
           return compositeEquation.params = {};
         });
+        it("should filter out Infinity", function() {
+          var linePoints;
+          linePoints = compositeEquation.getPoints(0, 0.5, 0, 1);
+          return expect(linePoints).toEqualPairs([0.5, -0.21372164195574228]);
+        });
         return it("should generate proper dataset points", function() {
           var linePoints;
-          linePoints = compositeEquation.getPoints(0.5, 2.2, 0, 1);
+          linePoints = compositeEquation.getPoints(0, 2.2, 0, 1);
           return expect(linePoints).toEqualPairs([0.5, -0.21372164195574228], [1, 0.8414709848078965], [1.5, 1.4029600947122187], [2, 1.6024446073856269]);
         });
       });

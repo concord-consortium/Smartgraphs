@@ -61,8 +61,12 @@ describe "Dataref, ", ->
           compositeEquation.xInterval = 0.5
           compositeEquation.params = {}
 
+        it "should filter out Infinity", ->
+          linePoints = compositeEquation.getPoints(0, 0.5, 0, 1)
+          expect(linePoints).toEqualPairs [0.5, -0.21372164195574228]
+
         it "should generate proper dataset points", ->
-          linePoints = compositeEquation.getPoints(0.5, 2.2, 0, 1)
+          linePoints = compositeEquation.getPoints(0, 2.2, 0, 1)
           expect(linePoints).toEqualPairs(
             [0.5, -0.21372164195574228],
             [1, 0.8414709848078965],

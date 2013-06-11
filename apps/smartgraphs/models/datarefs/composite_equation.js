@@ -20,7 +20,10 @@ Smartgraphs.CompositeEquation = Smartgraphs.Dataref.extend({
 
     for (x = xMin, i = 0; x <= xMax; x = xMin + xInterval * ++i) {
       y = fn(x);
-      points.push([x, y]);
+
+      if (isFinite(y) && !isNaN(y)) {
+        points.push([x, y]);
+      }
     }
 
     return points;
