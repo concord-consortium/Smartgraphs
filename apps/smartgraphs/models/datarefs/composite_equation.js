@@ -8,16 +8,9 @@ sc_require('models/dataref');
 */
 Smartgraphs.CompositeEquation = Smartgraphs.Dataref.extend({
 
-  initialise: function() {
-    sc_super();
-    this.set('stepInterval', this.get('xInterval'));
-    this.populatePoints();
-  },
-
-  populatePoints: function() {
-    var datarefPoints = this.get('points'),
-        stepInterval = this.get('stepInterval'),
-        graphBounds = this.get('graphBounds'),
+  getPoints: function(xMin, xMax) {
+    var points = [],
+        xInterval = this.get('xInterval'),
         x,
         y,
         expression = this.get('expression'),
@@ -25,12 +18,12 @@ Smartgraphs.CompositeEquation = Smartgraphs.Dataref.extend({
         fn = new Function('x', "with (Math) { " + expression + "; } return y;"),
         i;
 
-    for (x = graphBounds.xMin, i = 0; x <= graphBounds.xMax; x = graphBounds.xMin + stepInterval * ++i) {
+    for (x = xMin, i = 0; x <= xMax; x = xMin + xInterval * ++i) {
       y = fn(x);
-      datarefPoints.pushObject([x, y]);
+      points.push([x, y]);
     }
 
-    this.setDatadefPoints(datarefPoints);
+    return points;
   }
 
 });

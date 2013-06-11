@@ -11,8 +11,8 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
 
   initialise: function () {
     sc_super();
-    this.set('stepInterval', this.get('xInterval'));
-    this.populatePoints();
+    this.set('xInterval', this.get('xInterval'));
+    this.setDatadefPoints(this.getPoints());
   },
 
   getExpressionFunction: function () {
@@ -23,22 +23,24 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
     throw "This method must be inherited as it is an abstract method.";
   },
 
-  populatePoints: function () {
+  getPoints: function(xMin, xMax, yMin, yMax) {
     var fn = this.getExpressionFunction();
+    var points = [];
+
+    // Why would fn not be defined? And if it wasn't, what should happen?
     if (fn) {
-      var stepInterval = this.get('stepInterval');
-      var graphBounds = this.get('graphBounds');
+      var xInterval = this.get('xInterval');
       var isContinue = true;
-      var datarefPoints = this.get('points');
+
       var fnInverse = this.getInverseExpressionFunction();
       var x, y, xPrev, yPrev;
 
-      for (x = graphBounds.xMin; x <= graphBounds.xMax; x += stepInterval) {
+      for (x = xMin; x <= xMax; x += xInterval) {
         y = fn(x);
 
         // outside of drawable y?
-        if (y < graphBounds.yMin || y > graphBounds.yMax) {
-          yPrev = y > graphBounds.yMax ? graphBounds.yMax : graphBounds.yMin;
+        if (y < yMin || y > yMax) {
+          yPrev = y > yMax ? yMax : yMin;
           xPrev = fnInverse(yPrev);
           if (isContinue) {
             continue;
@@ -47,28 +49,29 @@ Smartgraphs.ContinuousEquation = Smartgraphs.Dataref.extend(
         }
         else {
           // bottom clipping:
-          if (isContinue && x !== graphBounds.xMin && xPrev !== x) {
-            datarefPoints.pushObject([xPrev, yPrev]);
+          if (isContinue && x !== xMin && xPrev !== x) {
+            points.push([xPrev, yPrev]);
           }
           isContinue = false;
         }
         // add the data point as normal.
-        datarefPoints.pushObject([x, y]);
+        points.push([x, y]);
       }
 
-      if (x - stepInterval !== graphBounds.xMax) {
+      if (x - xInterval !== xMax) {
         // right side clipping:
-        if (x > graphBounds.xMax) {
-          x = graphBounds.xMax;
+        if (x > xMax) {
+          x = xMax;
           y = fn(x);
-          datarefPoints.pushObject([x, y]);
+          points.push([x, y]);
         }
         // top clipping:
         else {
-          datarefPoints.pushObject([xPrev, yPrev]);
+          points.push([xPrev, yPrev]);
         }
       }
-      this.setDatadefPoints(datarefPoints);
+
+      return points;
     }
   }
 });

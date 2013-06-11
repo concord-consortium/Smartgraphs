@@ -44,18 +44,11 @@ Smartgraphs.Dataref = SC.Record.extend(
   expressionForm: SC.Record.attr(String),
 
   /**
-    The graphBounds of the graph pane.
-
-    @property {Object}
-  */
-  graphBounds : {xMin: null, yMin: null, xMax: null, yMax: null},
-
-  /**
-    The stepInterval to populate points.
+    The x-distance between successive points.
 
     @property {Number}
   */
-  stepInterval : SC.Record.attr(Number),
+  xInterval : SC.Record.attr(Number),
 
   /**
 
@@ -63,21 +56,13 @@ Smartgraphs.Dataref = SC.Record.extend(
   */
   points : SC.Record.attr(Array),
 
-  initialise: function () {
-    this.set('datadefName', this.get('datadefName'));
-    this.set('points', []);
+  populateDatadef: function(xMin, xMax, yMin, yMax) {
+    this.setDatadefPoints(this.getPoints(xMin, xMax, yMin, yMax));
   },
 
-  setDatadefPoints: function (datarefPoints) {
+  setDatadefPoints: function(points) {
     var datadef = this.getDatadef();
-    datadef.set('points', datarefPoints);
-  },
-
-  /**
-    Sets the bounds of the graph pane.
-  */
-  setGraphBounds: function (bounds) {
-    this.set('graphBounds', bounds);
+    datadef.set('points', points);
   },
 
   /**
@@ -89,27 +74,20 @@ Smartgraphs.Dataref = SC.Record.extend(
   },
 
   /**
-    Clears all the points.
-  */
-  clearPoints: function () {
-    this.set('points', []);
-  },
-
-  /**
     Abstract Method need to implement in inherited classes.
   */
-  populatePoints: function () {
+  getPoints: function () {
     throw "This method must be inherited as it is an abstract method.";
   },
 
-  /** 
+  /**
     Abstract Method need to implement in inherited classes.
   */
   getExpressionFunction: function () {
     throw "This method must be inherited as it is an abstract method.";
   },
 
-  /** 
+  /**
     Abstract Method need to implement in inherited classes.
   */
   getInverseExpressionFunction: function () {

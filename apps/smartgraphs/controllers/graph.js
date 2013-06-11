@@ -622,8 +622,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     if (datarefNames) {
       datarefNames.forEach(function (datarefName) {
         var dataref = self.getDataref(datarefName);
-        dataref.setGraphBounds({xMin: xMin, yMin: yMin, xMax: xMax, yMax: yMax});
-        dataref.initialise();
+        dataref.populateDatadef(xMin, xMax, yMin, yMax);
       });
     }
 
