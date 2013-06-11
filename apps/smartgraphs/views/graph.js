@@ -301,11 +301,11 @@ Smartgraphs.GraphView = SC.View.extend(
     var frame = this.get('frame'),
         padding = this.get('padding'),
         height = frame.height,
-        width  = frame.width;
+        width  = frame.width,
         plotWidth = width - padding.left - padding.right,
         plotHeight = height - padding.top - padding.bottom;
 
-    return padding.left + ',' + padding.top + ',' + plotWidth + ',' + plotHeight;
+    return [padding.left, padding.top, plotWidth, plotHeight];
   }.property(),
 
   pointForCoordinates: function (x, y) {
