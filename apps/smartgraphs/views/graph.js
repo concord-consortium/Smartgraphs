@@ -1,9 +1,12 @@
+/*global console, Smartgraphs, RaphaelViews, NO, YES, SC, sc_static, sc_super*/
+/*jshint unused: false, indent: false*/
+
 // ==========================================================================
 // Project:   Smartgraphs.GraphView
 // Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews NO YES SC console sc_static sc_super*/
+
 
 /** @class
 
@@ -804,9 +807,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
           points                 = firstDataView.getPath('item.points') || [],
           yOffset                = animationSpecsByDatadefName[datadefName].yOffset,
-          clipRect               = raphaelForDataView.attrs['clip-rect'],
-          currentX               = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
-          currentXFrac           = currentX / screenBounds.plotWidth,
 
           imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
           raphaelForImage        = imagesByDatadefName[datadefName],
@@ -831,11 +831,16 @@ Smartgraphs.GraphView = SC.View.extend(
         callback:              this.getPath('animationInfo.loop') ? startAnimationLoop : gotoAnimationFinishedState
       };
 
+      // Update current progress
+      if (dataViews[0].get('currentXFrac') == null) {
+        dataViews[0].set('currentXFrac', 0);
+      }
+
       // Calculate the first set of keyframes. This takes into account any
       // progress already made on animating the graph. The keyframes will
       // be regenerated in startAnimationLoop() if we're restarting animation
       // so that the next loop has a "full" set of keyframes.
-      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, currentXFrac, loopParameters.callback);
+      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, dataViews[0].get('currentXFrac'), loopParameters.callback);
 
       dataViews.setEach('isHiddenForAnimation', NO);
 
@@ -862,9 +867,6 @@ Smartgraphs.GraphView = SC.View.extend(
           firstDataView           = dataViews.objectAt(0),
           raphaelForFirstDataView = firstDataView.get('layer') && firstDataView.get('layer').raphael,
           points                  = firstDataView.getPath('item.points') || [],
-          clipRect                = raphaelForFirstDataView.attrs['clip-rect'],
-          currentX                = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
-          currentXFrac            = currentX / screenBounds.plotWidth,
           ms                      = this.getPath('animationInfo.duration'),
           loop                    = this.getPath('animationInfo.loop'),
           self                    = this,
@@ -880,7 +882,7 @@ Smartgraphs.GraphView = SC.View.extend(
       }
 
       if (animationIsRestarting) {
-        animationTime = parseInt(ms - (raphaelForGraph.attrs['clip-rect'][2]/screenBounds.plotWidth)*ms, 10);
+        animationTime = (1-dataViews[0].get('currentXFrac'))*ms;
         animationIsRestarting = NO;
       }
       else {
@@ -945,6 +947,9 @@ Smartgraphs.GraphView = SC.View.extend(
         dataViews.forEach( function (dataView) {
           dataView.get('layer').raphael.stop();
         });
+
+        // Update fractional progress by reading the clip-rect as Raphael animation left it.
+        dataViews[0].set('currentXFrac', dataViews[0].get('layer').raphael.attrs['clip-rect'][2] / self._getScreenBounds().plotWidth);
         raphaelForImage.stop();
       });
 
@@ -988,6 +993,8 @@ Smartgraphs.GraphView = SC.View.extend(
           var raphaelForGraph = dataView.get('layer').raphael;
           raphaelForGraph.attr(graphResetAttributes);
         });
+
+        dataViews[0].set('currentXFrac', 0);
 
         if (raphaelForImage) {
           raphaelForImage.attr({
