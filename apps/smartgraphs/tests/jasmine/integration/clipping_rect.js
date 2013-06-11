@@ -107,15 +107,15 @@ describe("ConnectedLineView with a clipping rectangle", function () {
 
         it("should have a clipping rectangle", function () {
           expect(clipRect).toBeDefined();
-          expect(clipRect.split(',').length).toEqual(4);
+          expect(clipRect.length).toEqual(4);
         });
 
         it("should have the same clipping rectangle as the graphView clipping rectangle", function () {
           clipRectFromView = graphView.get('clipRect');
-          expect(clipRect.split(',')[0]).toEqual(clipRectFromView.split(',')[0]);
-          expect(clipRect.split(',')[1]).toEqual(clipRectFromView.split(',')[1]);
-          expect(clipRect.split(',')[2]).toEqual(clipRectFromView.split(',')[2]);
-          expect(clipRect.split(',')[3]).toEqual(clipRectFromView.split(',')[3]);
+          expect(clipRect[0]).toEqual(clipRectFromView[0]);
+          expect(clipRect[1]).toEqual(clipRectFromView[1]);
+          expect(clipRect[2]).toEqual(clipRectFromView[2]);
+          expect(clipRect[3]).toEqual(clipRectFromView[3]);
         });
 
         it("should also include points where the Y value is < yMin or > yMax", function () {
