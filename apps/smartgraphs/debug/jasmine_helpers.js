@@ -21,8 +21,19 @@ window.defineJasmineHelpers = function() {
         return typeof this.actual !== 'undefined' && this.actual.get('length') === 0;
       },
 
+      // Optionally accepts { epsilon: <some number> } as first arg. A pair is considered to match
+      // the target pair if both elements of the pair are within epsilon of the corresponding
+      // elements of the target pair.
       toEqualPairs: function() {
-        var i, len, pairs = arguments;
+        var i, len, pairs, epsilon;
+
+        if (arguments[0].epsilon != null) {
+          epsilon = arguments[0].epsilon;
+          pairs = Array.prototype.slice.call(arguments, 1);
+        } else {
+          epsilon = 0;
+          pairs = arguments;
+        }
 
         if ((len = pairs.length) !== this.actual.length) {
           return false;
@@ -31,7 +42,7 @@ window.defineJasmineHelpers = function() {
           if (pairs[i].length !== 2 || this.actual[i].length !== 2) {
             return false;
           }
-          if (pairs[i][0] !== this.actual[i][0] || pairs[i][1] !== this.actual[i][1]) {
+          if (Math.abs(pairs[i][0] - this.actual[i][0]) > epsilon || Math.abs(pairs[i][1] - this.actual[i][1]) > epsilon) {
             return false;
           }
         }
