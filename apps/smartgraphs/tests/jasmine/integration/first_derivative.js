@@ -131,4 +131,66 @@ describe("FirstDerivative datadef", function () {
       });
     });
   });
+
+  describe("when the source data is a datadef", function() {
+
+    runBeforeEach(function() {
+      setSource('datadef', store.createRecord(Smartgraphs.UnorderedDataPoints, {
+        url: 'source-expression',
+        activity: 'activity',
+        name: 'source-data',
+        points: [[0,0], [1,1], [2,2], [3,4], [4,6]]
+      }));
+    });
+
+    describe("the derivative datadef, when sourceIsPiecewiseLinear is false", function() {
+      it("should sample the data at the midpoints", function() {
+
+        var derivative = store.createRecord(Smartgraphs.FirstDerivative, {
+          url: 'derivative2',
+          sourceType: 'datadef',
+          source: 'source-data',
+          sourceIsPiecewiseLinear: false
+        });
+
+        var sampleset = derivative.getNewSampleset({
+          xMin: 1,
+          xMax: 4
+        });
+
+        expect(sampleset.get('points')).toEqualPairs(
+          [1.5, 1],
+          [2.5, 2],
+          [3.5, 2]
+        );
+      });
+    });
+
+    describe("the derivative datadef, when sourceIsPiecewiseLinear is true", function() {
+      it("should compute both forward-looking and backward-looking differences at each source data point", function() {
+
+        var derivative = store.createRecord(Smartgraphs.FirstDerivative, {
+          url: 'derivative2',
+          sourceType: 'datadef',
+          source: 'source-data',
+          sourceIsPiecewiseLinear: true
+        });
+
+        var sampleset = derivative.getNewSampleset({
+          xMin: 0,
+          xMax: 4
+        });
+
+        expect(sampleset.get('points')).toEqualPairs(
+          [0, 1],
+          [1, 1],
+          [2, 1],
+          [2, 2],
+          [3, 2],
+          [4, 2]
+        );
+      });
+    });
+
+  });
 });
