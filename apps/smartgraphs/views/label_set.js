@@ -17,7 +17,6 @@ Smartgraphs.LabelSetView = RaphaelViews.RaphaelCollectionView.extend({
   contentBinding: '.item.labels',
 
   didCreateLayer: function () {
-    sc_super();
     this.get('item').set('view', this);
   },
 

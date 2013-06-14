@@ -622,7 +622,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   },
 
   didCreateLayer: function () {
-    sc_super();
     this.$().css('cursor', 'default');
     this.get('item').set('view', this);
     var labelElement = this.get('layer');
@@ -713,7 +712,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     markerStyleBinding:  '.labelView.markerStyle',
     markerSizeBinding:   '.labelView.markerSize',
     didCreateLayer: function () {
-      sc_super();
       var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
       if (allowCoordinatesChange) {
         this.$().css('cursor', 'move');

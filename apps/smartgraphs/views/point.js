@@ -95,7 +95,6 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   },
 
   didCreateLayer: function () {
-    sc_super();
     var self = this;
     this.$().mousedown(function (evt) {
       self.handlePropogation(evt);

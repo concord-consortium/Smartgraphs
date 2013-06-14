@@ -138,8 +138,6 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
   },
 
   didCreateLayer: function () {
-    sc_super();
-
     var prevLayer = this.get('prevLayer');
     if (prevLayer) {
       var layer = this.get('layer');
