@@ -364,7 +364,7 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   def("playCount", function () {
     return Smartgraphs.animationTool.get('playCount');
   }).args(0).dependsOn('Smartgraphs.animationTool.playCount');
-  
+
   def('lineCount', function () {
     return Smartgraphs.graphingTool.get('lineCount');
   }).dependsOn('Smartgraphs.graphingTool.lineCount');
@@ -393,7 +393,7 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     var deviationValue = datadef.get('deviationValue');
     return deviationValue;
   }).args(1);
-  
+
   def('pointMoved', function (datadefName, pointNumber) {
     var graphingTool = Smartgraphs.graphingTool;
     if (graphingTool.get('pointMoved'))

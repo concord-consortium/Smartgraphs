@@ -100,7 +100,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
         if (textWidth > (this.get('maxTextFieldWidth'))) {
           maxCharacters = i;
           var textParts = this.getTextPartsOnLineBreak(text, maxCharacters);
-          
+
           arrWrappedText[counter] = textParts.beforeText;
           text = textParts.afterText;
           counter++;
@@ -460,7 +460,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
             stopEvent = false;
           }
         }
-        
+
       }
       if (stopEvent) {
         if (evt.originalEvent.stopPropagation) {

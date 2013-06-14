@@ -28,7 +28,7 @@ Smartgraphs.LabelSetView = RaphaelViews.RaphaelCollectionView.extend({
 
   labelInEditMode: function () {
     var childLabels = this.get('childViews');
-    var noOfLabels = childLabels.length; 
+    var noOfLabels = childLabels.length;
     for (var i = 0; i < noOfLabels; i++) {
       var label = childLabels[i];
       if (label.get('isEditing')) {
@@ -40,7 +40,7 @@ Smartgraphs.LabelSetView = RaphaelViews.RaphaelCollectionView.extend({
 
   labelInArrowDragMode: function () {
     var childLabels = this.get('childViews');
-    var noOfLabels = childLabels.length; 
+    var noOfLabels = childLabels.length;
     for (var i = 0; i < noOfLabels; i++) {
       var label = childLabels[i];
       if (label.get('isArrowDragging')) {

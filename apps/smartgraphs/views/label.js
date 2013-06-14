@@ -276,7 +276,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       var dy = yCoord - (position.top + position.height / 2);
       var distance = Math.sqrt(dx * dx + dy * dy);
       distObj[position] = distance;
-      
+
       for (var j = 0; j < arrSortedLayout.length; j++) {
         if (distObj[arrSortedLayout] > distance) {
           arrSortedLayout = arrSortedLayout.splice(j, 0, position);
@@ -526,7 +526,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       rect.top = rect.bottom - rect.height;
     }
   },
-  // Checks and limits the label within bounds while in edit mode. 
+  // Checks and limits the label within bounds while in edit mode.
   limitWithinBounds: function () {
     var left = this.get('bodyXCoord'),
         top = this.get('bodyYCoord'),
@@ -862,7 +862,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       this.drag(evt);
       return YES;
     },
-    
+
     startDrag: function (evt) {
       var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
       if (allowCoordinatesChange === undefined || !allowCoordinatesChange) {
@@ -1236,7 +1236,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       if (evt.pageX > info.xMAX || currXOffset > info.maxXOffset) {
         currXOffset = info.maxXOffset;
       }
-      
+
 
       currYOffset = yOffset + evt.pageY - this._dragY;
       if (evt.pageY < info.yMIN || currYOffset < info.minYOffset) {
@@ -1285,17 +1285,17 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       bodyYCoordBinding: '.labelBodyView.bodyYCoord',
 
       isRemovalEnabledBinding: '.labelView.isRemovalEnabled',
-      
+
       radius: SC.platform.touch ? 10 : 6,
 
       centerX: function () {
         return this.get('bodyXCoord') + this.get('width') - 4 - this.get('radius') || 0;
       }.property(),
-      
+
       centerY: function () {
         return this.get('bodyYCoord') + 4 + this.get('radius') || 0;
       }.property(),
-      
+
       isVisible: function () {
         return this.get('isRemovalEnabled');
       }.property('isRemovalEnabled'),
@@ -1314,7 +1314,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       xStroke: function () {
         return this.get('isHighlighted') ? this.get('highlightedXStroke') : this.get('notHighlightedXStroke');
       }.property('isHighlighted', 'highlightedXStroke', 'notHighlightedXStroke').cacheable(),
-      
+
       xStrokeWidth: SC.platform.touch ? 3 : 2,
 
       renderCallback: function (raphaelCanvas, circleAttrs, xAttrs) {
@@ -1353,7 +1353,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
         this.set('centerX', centerX);
         this.set('centerY', centerY);
-        
+
         if (firstTime) {
           context.callback(this, this.renderCallback, circleAttrs, xAttrs);
         }
@@ -1371,12 +1371,12 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         this.set('isHighlighted', YES);
         return YES;
       },
-      
+
       touchEnd: function (evt) {
         var offset = this.get('graphCanvasView').$().offset();
 
         this.set('isHighlighted', NO);
-        
+
         if (   Math.abs(evt.pageX - this.get('centerX') - offset.left) < 50 &&
                Math.abs(evt.pageY - this.get('centerY') - offset.top)  < 50)
         {
