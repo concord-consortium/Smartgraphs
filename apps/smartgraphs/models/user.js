@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('models/session');
+
 /** @class
 
   (Document your Model here)
