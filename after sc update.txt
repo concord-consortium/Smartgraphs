@@ -1,0 +1,40 @@
+
+page 1
+image width, height are set to zero
+
+
+page 2
+road is missing
+
+page 3
+Can't see what you're typing when typing in label
+
+all pages
+pink line under button
+
+
+on android:
+
+text field behavior is much better:
+
+ * now the onscreen keyboard only comes up when you tap on the textarea
+ * "next" button is visible/tappable when keyboard is visible
+ * next button correctly enables as soon as you type
+
+can't drag label bodies (at least not very well; labels highlight blue and move to foreground when tapped)
+
+* bottom bar still pushes up too far when keyboard appears
+
+
+on ipad:
+
+text field behavior is better:
+  * next button becomes enabled as soon as you begin typing
+  * however, to *see* the next button requires splitting the keyboard
+
+labels work reasonably well
+
+just as in desktop, can't see label text when entering
+
+prediction graph works okay
+
