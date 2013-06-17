@@ -63,7 +63,7 @@ body.sc-theme {
 }
 
 /* toolbar messages ('saving...' etc) */
-.sc-theme .sc-view.ace.pig.sc-toolbar-view .sc-label-view.toolbar-message {
+.sc-theme .sc-view.ace.sc-toolbar-view .sc-label-view.toolbar-message {
   font-size: 14px;
   line-height: 1.0;
   color: #cc0000;
