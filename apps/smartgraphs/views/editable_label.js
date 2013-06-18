@@ -346,7 +346,9 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
                 top:    offset.top + y,
                 left:   offset.left + x,
                 width:  width,
-                height: height
+                height: height,
+                // Required to make sure textFieldView stays above the graph's topAnnotationsHolder
+                zIndex: 3
               });
             }
             SC.run();
