@@ -183,7 +183,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
       isTextArea: YES,
       maxLength: maxCharacters,
 
-      continuouslyUpdatesValue: YES,
+      applyImmediately: YES,
 
       init: function () {
         sc_super();
