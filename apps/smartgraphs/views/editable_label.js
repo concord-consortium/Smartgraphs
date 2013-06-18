@@ -190,23 +190,6 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
         this.set('maxLength', maxCharacters);
       },
 
-      didCreateLayer : function () {
-        sc_super();
-
-        var view = this.$().find('textarea')[0];
-        var self = this;
-        // Handling the paste and cut events of the context menu
-        // We cannot handle the delete of context menu as there isn't any event for that.
-        view.onpaste = view.oncut = function () {
-          // Using timer so that we get the updated text.
-          setTimeout(function () {
-            self.fieldValueDidChange();
-            labelView.updateLayer();
-          }, 1);
-          return true;
-        };
-      },
-
       // For some reason, SC.TextFieldView doesn't implement touchStart and touchEnd. In this particular case,
       // the result is that the Mobile Safari keyboard does not show up in response to touches. The touchStart and
       // touchEnd implementations below seem to fix this.
