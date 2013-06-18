@@ -107,18 +107,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       valueDidChange: function () {
         var values = this.getPath('parentView.parentView.values');
         if (values) values.replace(this.get('fieldIndex'), 1, this.get('value'));
-      }.observes('value'),
-
-      /**
-        SC.TextFieldView sets this property to NO to work around an (old?) WebKit bug, but not having a placeholder
-        attribute confuses Mobile Safari, at least in iOS5. (Symptom is that, if you tap to edit the textarea, then
-        the hint text becomes part of your response.)
-
-        It's important to feature-detect placeholder support because IE does not respect the 'placeholder' attribute.
-        SC.TextFieldView therefore makes the textarea *content* equal to the hint text, and removes it when the user
-        starts typing.
-      */
-      _supportsPlaceHolder: Smartgraphs.support.placeholder
+      }.observes('value')
     });
   },
 

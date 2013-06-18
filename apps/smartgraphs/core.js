@@ -48,14 +48,6 @@ Smartgraphs = SC.Application.create(
     return ret;
   },
 
-  // FEATURE DETECTION
-  support: SC.Object.create({
-    placeholder: function () {
-        var el = document.createElement('textarea');
-        return typeof el.placeholder !== 'undefined';
-    }()
-  }),
-
   // DEBUG SETTINGS
   trace:          YES,           // whether to trace firstResponder changes and app actions
   logDataSource:  YES,           // whether the data source should log
