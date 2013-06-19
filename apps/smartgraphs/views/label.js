@@ -4,6 +4,7 @@
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*global Smartgraphs, RaphaelViews, console*/
+/*jshint indent: false*/
 
 sc_require('views/editable_label');
 
@@ -16,9 +17,10 @@ sc_require('views/editable_label');
 Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelView.prototype */ {
 
-  // The 'item', 'graphView', and 'controller' will be set for us (overwriting the below) if we are added directly
-  // to the graphView. If we are the exampleView of a LabelSet collection view, on the other hand, we need to find the
-  // properties as shown below. Note that these values, once set, should be cached.
+  // The 'item', 'graphView', and 'controller' will be set for us (overwriting the below) if we are
+  // added directly to the graphView. If we are the exampleView of a LabelSet collection view, on
+  // the other hand, we need to find the properties as shown below. Note that these values, once
+  // set, should be cached.
   item: function () {
     return this.get('content');
   }.property().cacheable(),
@@ -197,8 +199,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
   getAnchorPosition: function (point, centreOfLabel) {
     var height  = this.get('labelBodyHeight'),
-        width   = this.get('labelBodyWidth'),
-        anchorX = 0, anchorY = 0;
+        width   = this.get('labelBodyWidth');
 
     var slope = (point.y - centreOfLabel.y) / (point.x - centreOfLabel.x);
 
@@ -483,8 +484,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   getConnectingLineLength: function (rect) {
     var xCoord  = this.get('xCoord'),
         yCoord  = this.get('yCoord'),
-        xOffset = rect.left - xCoord,
-        yOffset = rect.bottom - yCoord,
         centreOfLabel = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
     var newAnchorPosition = this.getAnchorPosition({ x: xCoord, y: yCoord }, centreOfLabel);
     var anchorPos = this.getAnchorCoords(newAnchorPosition, centreOfLabel, rect.width, rect.height),
@@ -680,7 +679,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     }
   },
 
-  mouseEntered: function (evt) {
+  mouseEntered: function () {
     var bArrowDragging = false;
     if (this.get('isArrowDragging')) {
       bArrowDragging = true;
@@ -751,9 +750,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
     render: function (context, firstTime) {
-      var xCoord     = this.get('xCoord'),
-          yCoord     = this.get('yCoord'),
-          fill       = this.get('fill'),
+      var fill = this.get('fill'),
           pathString,
           raphaelPath;
 
@@ -776,10 +773,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     *  Render the marker at this.xCoord, this.yCoord.
     */
     markPath: function() {
-      if( this.get('markerStyle') == 'arrow') {
+      if( this.get('markerStyle') === 'arrow') {
         return this.arrowMark();
       }
-      if (this.get('markerStyle') == 'x') {
+      if (this.get('markerStyle') === 'x') {
         return this.xMark();
       }
       // TODO: should we note that no marker was specified?
@@ -864,7 +861,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       return YES;
     },
 
-    startDrag: function (evt) {
+    startDrag: function () {
       var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
       if (allowCoordinatesChange === undefined || !allowCoordinatesChange) {
         return YES;
@@ -894,7 +891,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         return YES;
       }
       var previousCursorStyle = this.getPath('labelView.graphView.requestedCursorStyle');
-      if (previousCursorStyle != 'move') {
+      if (previousCursorStyle !== 'move') {
         this.set('previousCursorStyle', previousCursorStyle);
       }
       this.setCursorStyle('move');
@@ -907,11 +904,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           inputAreaTopLeft = graphView.coordinatesForPoint(xAxis.get('min'), yAxis.get('max')),
           inputAreaBottomRight = graphView.coordinatesForPoint(xAxis.get('max'), yAxis.get('min')),
           bounds = {xLeft: inputAreaTopLeft.x, yTop: inputAreaTopLeft.y, xRight: inputAreaBottomRight.x, yBottom: inputAreaBottomRight.y},
-          x           = evt.pageX - graphOffset.left,
-          y           = evt.pageY - graphOffset.top,
-          fraction;
+          x = evt.pageX - graphOffset.left,
+          y = evt.pageY - graphOffset.top;
 
-          // clip the event to the inputArea boundaries. Simple clipping seems to work fine
+      // clip the event to the inputArea boundaries. Simple clipping seems to work fine
       x = (x < bounds.xLeft) ? bounds.xLeft : (x > bounds.xRight)  ? bounds.xRight  : x;
       y = (y < bounds.yTop)  ? bounds.yTop  : (y > bounds.yBottom) ? bounds.yBottom : y;
       var logicalPoint = graphView.pointForCoordinates(x, y);
@@ -933,7 +929,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         return YES;
       }
       var previousCursorStyle = this.getPath('labelView.graphView.requestedCursorStyle');
-      if (!this.getPath('labelView.isArrowDragging') && previousCursorStyle != 'move') {
+      if (!this.getPath('labelView.isArrowDragging') && previousCursorStyle !== 'move') {
         this.set('previousCursorStyle', previousCursorStyle);
       }
       this.setCursorStyle('move');
@@ -951,7 +947,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         }
       }
     },
-    endDrag: function (evt) {
+
+    endDrag: function () {
       if (this.getPath('labelView.isArrowDragging')) {
         var previousCursorStyle = this.get('previousCursorStyle');
         if (previousCursorStyle) {
@@ -1012,8 +1009,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           startX,
           startY,
           pathString,
-          raphaelPath,
-          arrowP;
+          raphaelPath;
 
       if (length < startRadius || SC.none(xCoord) || SC.none(yCoord) || SC.none(anchorXCoord) || SC.none(anchorYCoord)) {
         pathString = 'M 0 0';
@@ -1148,7 +1144,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           interval = 202,                 // ms
           maxTime  = 200;                 // ms
 
-      if (typeof this.lastUp != 'undefined' && this.lastUp) {
+      if (typeof this.lastUp !== 'undefined' && this.lastUp) {
         interval  = now - this.lastUp;
         if (interval < maxTime) {
           // reset 'lastUp' after detecting a doubleClick
@@ -1160,7 +1156,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       return NO;
     },
 
-    doubleClick: function (evt) {
+    doubleClick: function () {
       if (!this.getPath('labelTextView.isEditing')) {
         this.labelTextView.beginEditing();
       }
