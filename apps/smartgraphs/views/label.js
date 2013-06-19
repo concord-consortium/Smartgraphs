@@ -70,7 +70,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   maxTextFieldWidthBinding: '*item.maxTextFieldWidth',
   maxCharactersBinding: '*item.maxCharacters',
 
-  moveToTopPending:         NO,   // Set this property to move label to top in the labelSet. Label is moved to top on mouse-up
+  // Set this property to move label to top in the labelSet. Label is moved to top on mouse-up.
+  moveToTopPending: NO,
 
   // graphScale isn't a real property, just a token we use to invalidate (xCoord, yCoord)
   xCoord: function () {
