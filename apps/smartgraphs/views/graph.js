@@ -1032,9 +1032,8 @@ Smartgraphs.GraphView = SC.View.extend(
         this._mouseDownOrTouchStart(evt);
       },
 
-      _mouseDownOrTouchStart: function (evt)
-      {
-        this.get('axesView').get('inputAreaView').mouseDown(evt);
+      _mouseDownOrTouchStart: function (evt) {
+        this.get('inputAreaView').mouseDown(evt);
       },
 
       gridView: RaphaelViews.RaphaelView.design({
