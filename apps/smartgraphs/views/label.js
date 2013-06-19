@@ -3,7 +3,7 @@
 // Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews*/
+/*global Smartgraphs, RaphaelViews, console*/
 
 sc_require('views/editable_label');
 
@@ -653,7 +653,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         var label = labels.objectAt(i);
         if (this.getPath('item.url') === label.get('url')) {
           // If label is already at top then no need to move it
-          if (i != labels.length() - 1) {
+          if (i !== labels.length() - 1) {
             this.set('moveToTopPending', YES);
           }
           break;
