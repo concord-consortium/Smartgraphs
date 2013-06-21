@@ -72,9 +72,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   maxTextFieldWidthBinding: '*item.maxTextFieldWidth',
   maxCharactersBinding: '*item.maxCharacters',
 
-  // Set this property to move label to top in the labelSet. Label is moved to top on mouse-up.
-  moveToTopPending: NO,
-
   // graphScale isn't a real property, just a token we use to invalidate (xCoord, yCoord)
   xCoord: function () {
     return this.get('graphView').coordinatesForPoint(this.get('x'), 0).x;
@@ -638,42 +635,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     this.notifyPropertyChange('graphScale');
   },
 
-  bringLabelOnTop: function () {
-    var parentOfLabel = this.get('parentView');
-    // If the label is child of LabelSet, bring LabelSet on the top.
-    if (parentOfLabel.kindOf(Smartgraphs.LabelSetView)) {
-      var topAnnotationsHolder = parentOfLabel.get('parentView');
-      topAnnotationsHolder.appendChild(parentOfLabel);
-      var labels = parentOfLabel.getPath('item.labels');
-      for (var i = 0; i < labels.length(); i++) {
-        var label = labels.objectAt(i);
-        if (this.getPath('item.url') === label.get('url')) {
-          // If label is already at top then no need to move it
-          if (i !== labels.length() - 1) {
-            this.set('moveToTopPending', YES);
-          }
-          break;
-        }
-      }
-    }
-  // To temporarily bring the label on top. Actual moving on top is deferred until mouse-up
-  // is encountered to avoid highlighting issues
-    parentOfLabel.appendChild(this);
-  },
-
-  updateLabelPositionInRecords: function () {
-    // Bring label on top if it was pending
-    if (this.get('moveToTopPending')) {
-      this.set('moveToTopPending', NO);
-      var parentOfLabel = this.get('parentView');
-      // If the label is child of LabelSet, bring LabelSet on the top.
-      if (parentOfLabel.kindOf(Smartgraphs.LabelSetView)) {
-        var labels = parentOfLabel.getPath('item.labels');
-        var label = this.get('item');
-        labels.removeObject(label);
-        labels.pushObject(label);
-      }
-    }
+  moveToFront: function() {
+    this.get('parentView').moveViewToFront(this);
   },
 
   mouseEntered: function () {
@@ -868,7 +831,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       this.setPath('labelView.isArrowDragging', YES);
 
       var labelView = this.get('labelView');
-      labelView.bringLabelOnTop();
+      labelView.moveToFront();
 
       this._initialLabelPosition = {
         offsetPointX: labelView.get('bodyXCoord'),
@@ -954,7 +917,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           this.setCursorStyle(this.get('previousCursorStyle'));
         }
       }
-      this.get('labelView').updateLabelPositionInRecords();
       this.setPath('labelView.isArrowDragging', NO);
       return YES;
     }
@@ -1173,7 +1135,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     startDrag: function (evt) {
       var labelView = this.get('labelView');
-      labelView.bringLabelOnTop();
+      labelView.moveToFront();
       this.setPath('parentLabelView.isBodyDragging', YES);
 
       this._isDragging = YES;
@@ -1254,7 +1216,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       this.drag(evt);
       this.setPath('parentLabelView.isBodyDragging', NO);
       this._isDragging = NO;
-      this.get('labelView').updateLabelPositionInRecords();
       this.$().css('cursor', ''); // Parent's cursor style will be inherited.
 
       return YES;
