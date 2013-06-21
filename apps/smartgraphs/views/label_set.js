@@ -5,11 +5,13 @@
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 
+sc_require('mixins/rearrangeable_parent_view');
+
 /** @class
 
   @extends RaphaelViews.RaphaelCollectionView
 */
-Smartgraphs.LabelSetView = RaphaelViews.RaphaelCollectionView.extend({
+Smartgraphs.LabelSetView = RaphaelViews.RaphaelCollectionView.extend(Smartgraphs.RearrangeableParentView, {
 
   exampleView: Smartgraphs.LabelView,
   // unfortunately, the current CollectionViewFastPath implementation confuses labels

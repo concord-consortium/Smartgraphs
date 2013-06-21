@@ -7,6 +7,7 @@
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 
+sc_require('mixins/rearrangeable_parent_view');
 
 /** @class
 
@@ -432,7 +433,7 @@ Smartgraphs.GraphView = SC.View.extend(
     }
   }),
 
-  topAnnotationsHolder: RaphaelViews.RaphaelCanvasView.design({
+  topAnnotationsHolder: RaphaelViews.RaphaelCanvasView.extend(Smartgraphs.RearrangeableParentView, {
 
     layout: { zIndex: 2 },
 
