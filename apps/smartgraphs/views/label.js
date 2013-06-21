@@ -84,9 +84,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     return this.get('graphView').coordinatesForPoint(0, this.get('y')).y;
   }.property('y', 'graphScale'),
 
-  defaultWidth: 100,
-  defaultHeight: 45,
-
   labelBodyWidthBinding:  '.labelBodyView.width',
   labelBodyHeightBinding: '.labelBodyView.height',
   cornerRadius: 4,
