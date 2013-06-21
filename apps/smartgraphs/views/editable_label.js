@@ -157,6 +157,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
   },
 
   updateLayer: function () {
+    console.time('editableLabelView updateLayer');
     if (this.get('createFreshLayer')) {
       this.set('createFreshLayer', NO);
 
@@ -172,6 +173,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     else {
       sc_super();
     }
+    console.timeEnd('editableLabelView updateLayer');
   },
 
   init: function () {
@@ -288,7 +290,9 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
   },
 
   renderCallback: function (raphaelCanvas, attrs, adjustTextFieldView) {
+    console.time("editableLabelView renderCallback attr " + SC.guidFor(this));
     var ret = raphaelCanvas.text().attr(attrs);
+    console.timeEnd("editableLabelView renderCallback attr " + SC.guidFor(this));
     adjustTextFieldView(true);
     return ret;
   },
@@ -360,7 +364,9 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     }
     else {
       raphaelText = this.get('raphaelObject');
+      console.time("editableLabelView render (immediate) attr " + SC.guidFor(this));
       raphaelText.attr(attrs);
+      console.timeEnd("editableLabelView render (immediate) attr " + SC.guidFor(this));
       adjustTextFieldView(false);
     }
   },

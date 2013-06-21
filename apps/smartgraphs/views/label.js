@@ -1054,10 +1054,15 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     }.property('isHighlighted', 'highlightedStrokeWidth', 'defaultStrokeWidth').cacheable(),
 
     renderCallback: function (raphaelCanvas, attrs) {
-      return raphaelCanvas.rect().attr(attrs);
+      console.log("labelBodyView( " + SC.guidFor(this) + " ) renderCallback()");
+      console.time("renderCallback");
+      var ret = raphaelCanvas.rect().attr(attrs);
+      console.timeEnd("renderCallback");
+      return ret;
     },
 
     render: function (context, firstTime) {
+      console.log("labelBodyView( " + SC.guidFor(this) + " ) render(" + (firstTime ? "true" : "false") + ")");
       var attrs = {
             x:              this.get('bodyXCoord')   || 0,
             y:              this.get('bodyYCoord')   || 0,
@@ -1077,8 +1082,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         this.renderChildViews(context, firstTime);
       }
       else {
+        console.time("labelBodyView update");
         raphaelRect = this.get('raphaelObject');
         raphaelRect.attr(attrs);
+        console.timeEnd("labelBodyView update");
       }
     },
 
@@ -1091,6 +1098,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
     touchStart: function (evt) {
+      console.log("labelBodyView( " + SC.guidFor(this) + " ).touchStart");
       this.startDrag(evt);
       return YES;
     },
@@ -1179,7 +1187,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       var xOffset = this.get('xOffset'),
           yOffset = this.get('yOffset');
 
+      console.log('drag()');
+
       if (!this._isDragging) {
+        console.log('drag() returning');
         return;
       }
 
