@@ -1,12 +1,12 @@
 [submodule "frameworks/raphael_views"]
 	path = frameworks/raphael_views
-	url = http://github.com/rklancer/RaphaelViews.git
+	url = http://github.com/concord-consortium/RaphaelViews.git
 [submodule "frameworks/sproutcore"]
 	path = frameworks/sproutcore
-	url = http://github.com/sproutcore/sproutcore.git
+	url = http://github.com/concord-consortium/sproutcore.git
 [submodule "applets"]
 	path = applets
 	url = http://github.com/stepheneb/lightweight-sensor-graphs.git
 [submodule "frameworks/jasmine-sproutcore"]
 	path = frameworks/jasmine-sproutcore
-	url = https://github.com/gmoeck/jasmine-sproutcore.git
+	url = https://github.com/concord-consortium/jasmine-sproutcore.git
