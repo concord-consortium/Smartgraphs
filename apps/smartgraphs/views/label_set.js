@@ -48,5 +48,10 @@ Smartgraphs.LabelSetView = RaphaelViews.RaphaelCollectionView.extend({
       }
     }
     return null;
-  }.property()
+  }.property(),
+
+  touchStart: function() {
+    return NO;
+  }
+
 });
