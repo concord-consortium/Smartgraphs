@@ -14,3 +14,5 @@ apps/smartgraphs/activity_json/push.sh
 apps/smartgraphs/activity_json/update.sh
 apps/smartgraphs/activity_json/couch.txt
 config/config.yml
+notes/
+*.sublime-workspace
