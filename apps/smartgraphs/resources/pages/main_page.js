@@ -33,7 +33,7 @@ Smartgraphs.mainPage = SC.Page.design({
         title: 'Credits',
         action: 'showCredits'
       }),
-      
+
       editButton: SC.ButtonView.design({
         layout: { right: 120, centerY: 0, height: 24, width: 80 },
         shouldShowEditButtonBinding: 'Smartgraphs.toolbarController.shouldShowEditButton',
@@ -98,7 +98,7 @@ Smartgraphs.mainPage = SC.Page.design({
 
     bottomToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_BOTTOM,
-
+      classNames: 'bottom-toolbar'.w(),
       childViews: ['backButton', 'pageButtons', 'nextButton'],
 
       backButton: SC.ButtonView.design({

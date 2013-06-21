@@ -337,3 +337,8 @@ body.sc-theme {
 {
   pointer-events: all;
 }
+
+.bottom-toolbar
+{
+  position: fixed;
+}
