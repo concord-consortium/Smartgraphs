@@ -708,6 +708,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     strokeBinding:       '.labelView.stroke',
     markerStyleBinding:  '.labelView.markerStyle',
     markerSizeBinding:   '.labelView.markerSize',
+
     didCreateLayer: function () {
       var allowCoordinatesChange = this.getPath('labelView.allowCoordinatesChange');
       if (allowCoordinatesChange) {
@@ -826,6 +827,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       elements.push('L', x + diameter, y + diameter);
       return elements.join(' ');
     },
+
     mouseDown: function (evt) {
       this.startDrag(evt);
       return YES;
@@ -1088,7 +1090,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     strokeWidth: function () {
       return this.get('isHighlighted') ? this.get('highlightedStrokeWidth') : this.get('defaultStrokeWidth');
     }.property('isHighlighted', 'highlightedStrokeWidth', 'defaultStrokeWidth').cacheable(),
-
 
     renderCallback: function (raphaelCanvas, attrs) {
       return raphaelCanvas.rect().attr(attrs);
