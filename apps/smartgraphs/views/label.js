@@ -995,7 +995,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
   labelBodyView: RaphaelViews.RaphaelView.design({
 
-    childViews: 'labelTextView removeButtonView'.w(),
+    childViews: 'labelTextView touchShieldView removeButtonView'.w(),
 
     parentLabelView: SC.outlet('parentView'),
     labelView:     SC.outlet('parentLabelView'),
@@ -1236,6 +1236,47 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       labelView:     SC.outlet('parentView.parentLabelView'),
       isEditableBinding: '.labelView.isEditable',
       fontSize: 14
+    }),
+
+    touchShieldView: RaphaelViews.RaphaelView.design({
+
+      bodyXCoordBinding:   '.parentView.bodyXCoord',
+      bodyYCoordBinding:   '.parentView.bodyYCoord',
+      widthBinding:        '.parentView.width',
+      heightBinding:       '.parentView.height',
+      cornerRadiusBinding: '.parentView.cornerRadius',
+      strokeWidthBinding:  '.parentView.strokeWidth',
+
+      displayProperties:   'bodyXCoord bodyYCoord width height cornerRadius strokeWidth'.w(),
+
+      renderCallback: function (raphaelCanvas, attrs) {
+        return raphaelCanvas.rect().attr(attrs);
+      },
+
+      render: function (context, firstTime) {
+        var attrs = {
+              x:              this.get('bodyXCoord')   || 0,
+              y:              this.get('bodyYCoord')   || 0,
+              width:          this.get('width')        || 0,
+              height:         this.get('height')       || 0,
+              r:              this.get('cornerRadius') || 0,
+              stroke:         this.get('stroke'),
+              'stroke-width': this.get('strokeWidth')  || 1,
+              fill:           this.get('fill'),
+              'stroke-opacity': 0,
+              'fill-opacity': 0
+            },
+
+            raphaelRect;
+
+        if (firstTime) {
+          context.callback(this, this.renderCallback, attrs);
+        }
+        else {
+          raphaelRect = this.get('raphaelObject');
+          raphaelRect.attr(attrs);
+        }
+      },
     }),
 
     removeButtonView: RaphaelViews.RaphaelView.design({
