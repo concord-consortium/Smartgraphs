@@ -995,7 +995,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
   labelBodyView: RaphaelViews.RaphaelView.design({
 
-    childViews: 'labelTextView removeButtonView'.w(),
+    childViews: 'labelTextView touchShieldView removeButtonView'.w(),
 
     parentLabelView: SC.outlet('parentView'),
     labelView:     SC.outlet('parentLabelView'),
@@ -1225,6 +1225,63 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       labelView:     SC.outlet('parentView.parentLabelView'),
       isEditableBinding: '.labelView.isEditable',
       fontSize: 14
+    }),
+
+    // Transparent rectangle with the same dimensions as the labelBodyView, placed in front of the
+    // labelTextView.
+    //
+    // This is necessary because touchmove/touchend/touchcancel are sent to the DOM element that
+    // originally received touchstart. When a touched element is removed from the DOM, the
+    // subsequent touch events cannot bubble to the document where the Sproutcore root responder can
+    // see them.
+    //
+    // And, indeed, the element of a labelView which receives the touchstart will ofthn be the
+    // <tspan> element within the <text> element that makes up the labelTextView's layer. However,
+    // when labelTextView renders an update to its layer, it uses Raphael's 'attr' method, which
+    // "tunes" the resulting text element in a method that removes existing <tspan>s and creates new
+    // ones. Therefore, without the touchShieldView, when dragging a labelView, the first touchmove
+    // causes the labelTextView to update its position using Raphael's attr, and subsequent
+    // touchmove events are lost.
+
+    touchShieldView: RaphaelViews.RaphaelView.design({
+
+      bodyXCoordBinding:   '.parentView.bodyXCoord',
+      bodyYCoordBinding:   '.parentView.bodyYCoord',
+      widthBinding:        '.parentView.width',
+      heightBinding:       '.parentView.height',
+      cornerRadiusBinding: '.parentView.cornerRadius',
+      strokeWidthBinding:  '.parentView.strokeWidth',
+
+      displayProperties:   'bodyXCoord bodyYCoord width height cornerRadius strokeWidth'.w(),
+
+      renderCallback: function (raphaelCanvas, attrs) {
+        return raphaelCanvas.rect().attr(attrs);
+      },
+
+      render: function (context, firstTime) {
+        var attrs = {
+              x:              this.get('bodyXCoord')   || 0,
+              y:              this.get('bodyYCoord')   || 0,
+              width:          this.get('width')        || 0,
+              height:         this.get('height')       || 0,
+              r:              this.get('cornerRadius') || 0,
+              stroke:         this.get('stroke'),
+              'stroke-width': this.get('strokeWidth')  || 1,
+              fill:           this.get('fill'),
+              'stroke-opacity': 0,
+              'fill-opacity': 0
+            },
+
+            raphaelRect;
+
+        if (firstTime) {
+          context.callback(this, this.renderCallback, attrs);
+        }
+        else {
+          raphaelRect = this.get('raphaelObject');
+          raphaelRect.attr(attrs);
+        }
+      }
     }),
 
     removeButtonView: RaphaelViews.RaphaelView.design({
