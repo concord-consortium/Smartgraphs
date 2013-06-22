@@ -137,18 +137,18 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     return { beforeText : text.substring(0, index), afterText: text.substring(index, text.length) };
   },
 
-  didCreateLayer: function () {
-    var prevLayer = this.get('prevLayer');
-    if (prevLayer) {
-      var layer = this.get('layer');
-      if (layer === prevLayer) {
-        this.set('createFreshLayer', YES);
-      }
-    }
-    else {
-      this.set('prevLayer', this.get('layer'));
-    }
-  },
+  // didCreateLayer: function () {
+  //   var prevLayer = this.get('prevLayer');
+  //   if (prevLayer) {
+  //     var layer = this.get('layer');
+  //     if (layer === prevLayer) {
+  //       this.set('createFreshLayer', YES);
+  //     }
+  //   }
+  //   else {
+  //     this.set('prevLayer', this.get('layer'));
+  //   }
+  // },
 
   destroyLayer: function () {
     sc_super();
@@ -156,25 +156,27 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     this.set('prevLayer', null);
   },
 
-  updateLayer: function () {
-    console.time('editableLabelView updateLayer');
-    if (this.get('createFreshLayer')) {
-      this.set('createFreshLayer', NO);
+  // CHECK: what was the purpose of this?
 
-      var raphaelContext = RaphaelViews.RaphaelContext();
-      raphaelContext.isTopLevel = NO;
+  // updateLayer: function () {
+  //   console.time('editableLabelView updateLayer');
+  //   if (this.get('createFreshLayer')) {
+  //     this.set('createFreshLayer', NO);
 
-      this.prepareRaphaelContext(raphaelContext, YES);
-      this.set('layer', raphaelContext.populateCanvas(this.get('raphaelCanvas')));
+  //     var raphaelContext = RaphaelViews.RaphaelContext();
+  //     raphaelContext.isTopLevel = NO;
 
-      // now notify the view and its child views..
-      this._notifyDidCreateLayer();
-    }
-    else {
-      sc_super();
-    }
-    console.timeEnd('editableLabelView updateLayer');
-  },
+  //     this.prepareRaphaelContext(raphaelContext, YES);
+  //     this.set('layer', raphaelContext.populateCanvas(this.get('raphaelCanvas')));
+
+  //     // now notify the view and its child views..
+  //     this._notifyDidCreateLayer();
+  //   }
+  //   else {
+  //     sc_super();
+  //   }
+  //   console.timeEnd('editableLabelView updateLayer');
+  // },
 
   init: function () {
     var labelView = this;
@@ -197,12 +199,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
       // touchEnd implementations below seem to fix this.
       touchStart: function (evt) {
         sc_super();
-        this.mouseDown(evt);
+        return this.mouseDown(evt);
       },
 
       touchEnd: function (evt) {
         sc_super();
-        this.mouseUp(evt);
+        return this.mouseUp(evt);
       },
 
       keyDown: function (evt) {
