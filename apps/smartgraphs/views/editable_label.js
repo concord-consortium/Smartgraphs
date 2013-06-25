@@ -336,17 +336,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
             }
             SC.run();
             pane.appendChild(textFieldView);
+            // Note that in touch browsers, SC refuses to set a TextFieldView to be firstResponder unless its
+            // 'focused' property is true. The confusing result of this is that, at least in Mobile Safari, a
+            // random other view ends up receiving the keyDown events (if that view is the SourceListView, the
+            // symptom is that whitespace and return characters cannot be entered into the textarea.)
+            textFieldView.set('focused', true);
             textFieldView.becomeFirstResponder();
-
-            // Perhaps because Mobile Safari won't bring up the keyboard in response to a script-initiated focus(),
-            // unless the code executes in response to a touch on the textarea, TextFieldView.becomeFirstResponder
-            // returns without trying to focus when running on touch browsers.
-            //
-            // HOWEVER, this code path only ever seems to execute in response to a user-initiated touch. Therefore,
-            // go ahead and use focus() event in touch browsers. This forces the keyboard to come up.
-            if (SC.platform.touch) {
-              textFieldView.$().find('textarea').focus();
-            }
           }
           else if (pane.get('childViews').contains(textFieldView)) {
             pane.removeChild(textFieldView);
