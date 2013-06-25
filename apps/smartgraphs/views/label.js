@@ -1299,7 +1299,16 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
       isRemovalEnabledBinding: '.labelView.isRemovalEnabled',
 
-      radius: SC.platform.touch ? 10 : 6,
+      // Make the remove button bigger on touch platforms, for ease of tapping.
+      //
+      // Note that SC's touch platform detection is iffy. In particular, in Mobile Safari,
+      // SC.platform.touch is initially set to false, but after document.ready (which happens after
+      // this class definition executes) SC's simulateTouchEvents' is called (yes, in Mobile Safari)
+      // and this sets SC.platform.touch to true. The easiest way to get the 'correct' value without
+      // second-guessing SC is to treat it as a volatile computed property.
+      radius: function() {
+        return SC.platform.touch ? 10 : 6;
+      }.property(),
 
       centerX: function () {
         return this.get('bodyXCoord') + this.get('width') - 4 - this.get('radius') || 0;
