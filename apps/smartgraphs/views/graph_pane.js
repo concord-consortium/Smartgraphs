@@ -89,7 +89,15 @@ Smartgraphs.GraphPane = SC.View.extend(
 
       title: 'Start',
       action: 'startControlWasClicked',
-      target: SC.outlet('parentView.graphController.statechart')
+      target: SC.outlet('parentView.graphController.statechart'),
+
+      init: function() {
+        sc_super();
+        // Increased the touch boundary for small tablets, very bad on the Nexus 7.
+        if (SC.platform.touch) {
+          this.set('touchBoundary', { left: 50, right: 50, top: 50, bottom: 50 });
+        }
+      }
     }),
 
     stopControl: SC.ButtonView.design({
@@ -100,7 +108,15 @@ Smartgraphs.GraphPane = SC.View.extend(
 
       title: 'Stop',
       action: 'stopControlWasClicked',
-      target: SC.outlet('parentView.graphController.statechart')
+      target: SC.outlet('parentView.graphController.statechart'),
+
+      init: function() {
+        sc_super();
+        // Increased the touch boundary for the Nexus 7.
+        if (SC.platform.touch) {
+          this.set('touchBoundary', { left: 50, right: 50, top: 50, bottom: 50 });
+        }
+      }
     }),
 
     clearControl: SC.ButtonView.design({
@@ -111,7 +127,14 @@ Smartgraphs.GraphPane = SC.View.extend(
 
       title: 'Reset',
       action: 'clearControlWasClicked',
-      target: SC.outlet('parentView.graphController.statechart')
+      target: SC.outlet('parentView.graphController.statechart'),
+      init: function() {
+        sc_super();
+        // Increased the touch boundary for the Nexus 7.
+        if (SC.platform.touch) {
+          this.set('touchBoundary', { left: 50, right: 50, top: 50, bottom: 50 });
+        }
+      }
     })
   })
 
