@@ -149,9 +149,14 @@ Smartgraphs.TableController = SC.ArrayController.extend(Smartgraphs.AnnotationSu
     rep = datadef.getNewRepresentation(options);
     if (config.xLabel !== undefined) {
       this.set('xLabel', config.xLabel);
+    } else {
+      this.set('xLabel', datadef.get('xLabel'));
     }
+
     if (config.yLabel !== undefined) {
       this.set('yLabel', config.yLabel);
+    } else {
+      this.set('yLabel', datadef.get('yLabel'));
     }
     this.set('datadef', datadef);
     this.set('dataRepresentation', rep);
