@@ -7,7 +7,7 @@
 /*jshint unused: false*/
 
 // set to YES before building a production release
-window.isProduction = NO;
+window.isProduction = YES;
 
 /** @namespace
 
