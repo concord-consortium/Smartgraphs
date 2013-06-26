@@ -1,9 +1,10 @@
 // ==========================================================================
 // Project:   Smartgraphs
-// Copyright: ©2011 Concord Consortium
+// Copyright: ©2013 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs */
+/*global Smartgraphs:true*/
+/*jshint unused: false*/
 
 /** @namespace
 
@@ -54,6 +55,6 @@ Smartgraphs = SC.Application.create(
   showOutline:    typeof window.showOutline    !== 'undefined' ? window.showOutline    : YES,
   showEditButton: typeof window.showEditButton !== 'undefined' ? window.showEditButton : YES
 
-}) ;
+});
 
 SC.CONTEXT_MENU_ENABLED = YES;
