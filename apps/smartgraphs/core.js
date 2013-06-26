@@ -6,6 +6,9 @@
 /*global Smartgraphs:true*/
 /*jshint unused: false*/
 
+// set to YES before building a production release
+window.isProduction = NO;
+
 /** @namespace
 
   Smaht Graphs. Wicked Smaht Graphs!
@@ -49,11 +52,20 @@ Smartgraphs = SC.Application.create(
     return ret;
   },
 
-  // DEBUG SETTINGS
-  trace:          YES,           // whether to trace firstResponder changes and app actions
-  logDataSource:  YES,           // whether the data source should log
-  showOutline:    typeof window.showOutline    !== 'undefined' ? window.showOutline    : YES,
-  showEditButton: typeof window.showEditButton !== 'undefined' ? window.showEditButton : YES
+  // DEBUG AND ACTIVITY NAVIGATION SETTINGS
+
+  // whether to trace statechart actions
+  trace:          ! window.isProduction,
+
+  // whether to log data source contents and actions (somewhat obsolete atm)
+  logDataSource:  ! window.isProduction,
+
+  // hide the navigable activity outline in production and show in development, unless overridden
+  showOutline:    typeof window.showOutline === 'undefined' ? (! window.isProduction) : window.showOutline,
+
+  // hide the "Edit" button by default in production, show by default in dev, unless overridden
+  // (Edit button allows navigation of the activity using the outline)
+  showEditButton: typeof window.showEditButton === 'undefined' ? (! window.isProduction) : window.showEditButton
 
 });
 
