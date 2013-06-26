@@ -256,7 +256,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   },
 
   /**
-    Called on entry to ANIMATION_STOPPED state.
+    Called on entry to ANIMATION_STOPPED and ANIMATION_CLEARED states.
   */
   stopAnimating: function () {
     if (!this._mainPane || !this._isAnimating) return NO;

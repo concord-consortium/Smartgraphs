@@ -60,6 +60,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
       owner: SC.outlet('statechart.owner'),
 
       enterState: function () {
+        Smartgraphs.animationTool.stopAnimating();
         Smartgraphs.animationTool.clearAnimation();
         this.get('owner').highlightStartControl();
       },
