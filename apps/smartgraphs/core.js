@@ -49,10 +49,10 @@ Smartgraphs = SC.Application.create(
   },
 
   // DEBUG SETTINGS
-  trace:          YES,           // whether to trace firstResponder changes and app actions
-  logDataSource:  YES,           // whether the data source should log
-  showOutline:    typeof window.showOutline    !== 'undefined' ? window.showOutline    : YES,
-  showEditButton: typeof window.showEditButton !== 'undefined' ? window.showEditButton : YES
+  trace:          NO,           // whether to trace firstResponder changes and app actions
+  logDataSource:  NO,           // whether the data source should log
+  showOutline:    NO, //typeof window.showOutline    !== 'undefined' ? window.showOutline    : YES,
+  showEditButton: NO  //typeof window.showEditButton !== 'undefined' ? window.showEditButton : YES
 
 }) ;
 
