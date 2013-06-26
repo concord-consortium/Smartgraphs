@@ -29,6 +29,9 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
     this.set('tagName', args.tag);
     this.set('labelName', args.labelName);
 
+    var datadef = Smartgraphs.activityObjectsController.findDatadef(this.get('datadefName'));
+    if (datadef) datadef.set('isActive', YES);
+
     Smartgraphs.statechart.gotoState(this.get('state'));
   },
 
