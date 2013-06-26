@@ -183,6 +183,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   makeAnimationInfoObject: function () {
     return SC.Object.create({
       hasAnimation:       YES,
+      isFinished:         NO,
       duration:           null,
       loop:               null,
       channelWidth:       null,
@@ -204,6 +205,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
 
     animationInfo = this.makeAnimationInfoObject();
     this.copyPropertiesTo(animationInfo, ['channelWidth', 'backgroundImageURL', 'duration', 'loop', 'animations', 'staticImages', 'hideGraph']);
+    this.set('animationInfo', animationInfo);
     controller.set('animationInfo', animationInfo);
 
     for (pane in linkedAnimationsByPane) {
@@ -251,6 +253,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     if (!this._mainPane || this._isAnimating) return NO;
     this._isAnimating = YES;
     this.notifyPropertyChange('isAnimating');
+    this.setPath('animationInfo.isFinished', NO);
 
     this.get('allAnimatedGraphs').invoke('animate');
   },
@@ -262,6 +265,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     if (!this._mainPane || !this._isAnimating) return NO;
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
+    this.setPath('animationInfo.isFinished', NO);
 
     this.get('allAnimatedGraphs').invoke('stop');
   },
@@ -272,8 +276,16 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   clearAnimation: function () {
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
+    this.setPath('animationInfo.isFinished', NO);
 
     this.get('allAnimatedGraphs').invoke('reset');
+  },
+
+  /**
+    Called on entry to ANIMATION_FINISHED state.
+  */
+  markAnimationFinished: function () {
+    this.setPath('animationInfo.isFinished', YES);
   }
 
 });

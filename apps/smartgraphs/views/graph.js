@@ -1468,6 +1468,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       _renderDataImages: function (raphaelCanvas) {
         var animations             = this.get('animations') || [],
+            animationIsFinished    = this.getPath('animationInfo.isFinished'),
             dataViews              = this.getPath('parentView.dataHolder.childViews') || [],
             imagesByDatadefName    = this.get('imagesByDatadefName') || {},
             dataViewsByDatadefName = {},
@@ -1482,6 +1483,7 @@ Smartgraphs.GraphView = SC.View.extend(
             xOffset,
             yOffset,
             dataView,
+            point,
             points,
             y;
 
@@ -1522,7 +1524,8 @@ Smartgraphs.GraphView = SC.View.extend(
             dataView = dataViewsByDatadefName[datadefName][0];        // pick one of the data views we're animating
             if (dataView) {
               points        = dataView.getPath('item.points');
-              y             = (points[0][1] - logicalBounds.yMin) / (logicalBounds.yMax - logicalBounds.yMin);
+              point         = animationIsFinished ? points[points.length - 1] : points[0];
+              y             = (point[1] - logicalBounds.yMin) / (logicalBounds.yMax - logicalBounds.yMin);
 
               animationSpec = animationSpecsByDatadefName[datadefName];
               imageWidth    = animationSpec.width  || 70;

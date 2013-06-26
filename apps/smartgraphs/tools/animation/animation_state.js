@@ -129,15 +129,13 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
       enterState: function () {
         this.get('owner').highlightClearControl();
         Smartgraphs.animationTool.incrementProperty('playCount');
+        Smartgraphs.animationTool.markAnimationFinished();
       },
 
       clearControlWasClicked: function () {
         this.gotoState('ANIMATION_CLEARED');
-      },
-
-      graphViewDidResize: function() {
-        this.gotoState('ANIMATION_CLEARED');
       }
+
     })
 
   })
