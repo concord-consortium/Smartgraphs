@@ -441,7 +441,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         { "name": "label",
           "setup": {
             "pane": "top",
-            "labelSetName": "students-segment-labels"
+            "labelSetName": "students-segment-labels",
+            "maxNoOfLabels": 3
           }
         },
         { "name": "animation",
