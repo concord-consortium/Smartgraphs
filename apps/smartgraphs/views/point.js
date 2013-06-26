@@ -37,7 +37,12 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
 
   hoveredRadius:    6,
   notHoveredRadius: 4, // SC.platform.touch ?  : 4,
-  strokeWidth:      SC.platform.touch ? 20 : 10,
+
+  // This has to remain a volatile computed property for now because SC.platform.touch is initially NO
+  // on Mobile Safari, but is later changed to YES.
+  strokeWidth: function() {
+    return SC.platform.touch ? 20 : 10;
+  }.property(),
 
   isEnabled: YES,
   isHovered: NO,
@@ -163,6 +168,10 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   },
 
   mouseDragged: function (evt) {
+    return this._mouseDragged(evt);
+  },
+
+  touchesDragged: function(evt) {
     return this._mouseDragged(evt);
   },
 
