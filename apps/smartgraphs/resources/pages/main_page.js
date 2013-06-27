@@ -53,10 +53,9 @@ Smartgraphs.mainPage = SC.Page.design({
     }),
 
     container: SC.SplitView.design({
-      // this minimum width & height should not overflow on a 1024x768 screen even in a browsing setup with lots of
-      // extraneous on-screen chrome (say, in FF or IE running in Windows XP)
-
-      layout: { top: 32, bottom: 33, minWidth: 960, minHeight: 502 },
+      // min-width of 768 is portait mode on an iPad. min-height of ~500 accounts for IE8 with various
+      // toolbars taking up the vertical space on a 1024x768 screen.
+      layout: { top: 32, bottom: 33, minWidth: 768, minHeight: 502 },
       classNames: ['sg-overflow-fix'],      // fix the problem IE8 has with min-height and overflow: hidden
       defaultThickness: 200,
       topLeftMaxThickness: 300,
