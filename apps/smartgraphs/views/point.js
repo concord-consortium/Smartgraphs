@@ -75,8 +75,10 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     }
   }.observes('modifiers'),
 
-  // Bypassing events on inactive datasets
-  handlePropogation: function (evt) {
+  // Bypasses events on inactive datasets.
+  // FIXME / Refactoring note: This code originated in the graphView's overlayAnnotationsHolder but appears to have been
+  // copy/pasted 3 times into different contexts.
+  handleEvent: function (evt) {
     if (!this.dataRepresentation.datadef.isActive) {
       // Stop propagation. If we let the mousemove event bubble, the SproutCore root responder will think we were the
       // "last hovered" view, which screws up its calculation of hover (i.e., mouseEntered and mouseExited) events for
@@ -101,19 +103,19 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   didCreateLayer: function () {
     var self = this;
     this.$().mousedown(function (evt) {
-      self.handlePropogation(evt);
+      self.handleEvent(evt);
     });
     this.$().mouseup(function (evt) {
-      self.handlePropogation(evt);
+      self.handleEvent(evt);
     });
     this.$().mouseenter(function (evt) {
-      self.handlePropogation(evt);
+      self.handleEvent(evt);
     });
     this.$().mouseleave(function (evt) {
-      self.handlePropogation(evt);
+      self.handleEvent(evt);
     });
     this.$().mousemove(function (evt) {
-      self.handlePropogation(evt);
+      self.handleEvent(evt);
     });
   },
 
