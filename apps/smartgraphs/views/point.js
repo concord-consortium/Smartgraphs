@@ -197,6 +197,10 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     return this._mouseUp(evt);
   },
 
+  touchEnd: function (evt) {
+    return this._mouseUp(evt);
+  },
+
   _mouseUp: function (evt) {
     if (!this.dataRepresentation.datadef.isActive) {
       return;
