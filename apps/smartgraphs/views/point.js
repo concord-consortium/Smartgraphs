@@ -1,9 +1,9 @@
 // ==========================================================================
 // Project:   Smartgraphs.PointView
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2013 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews*/
+/*global Smartgraphs, RaphaelViews*/
 
 /** @class
 
@@ -64,7 +64,6 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
         x = this.getPath('content.x'),
         y = this.getPath('content.y'),
         datadefName = this.get('datadefName'),
-        color,
         modifier;
 
     modifier = modifiers[[x, y, datadefName]];
