@@ -40,7 +40,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
 
   // This has to remain a volatile computed property for now because SC.platform.touch is initially NO
   // on Mobile Safari, but is later changed to YES.
-  strokeWidth: function() {
+  targetRadius: function() {
     return SC.platform.touch ? 20 : 10;
   }.property(),
 
@@ -227,8 +227,15 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     return YES;
   },
 
-  renderCallback: function (raphaelCanvas, x, y, radius, color, strokeWidth) {
-    return raphaelCanvas.circle(x, y, radius).attr({ fill: color, 'stroke-width': strokeWidth, 'stroke-opacity': 0 });
+  renderCallback: function (raphaelCanvas, x, y, radius, color, targetRadius, clipRect) {
+    // browser bug (or weird corner of svg spec): strokeWidth can't be more than 4x the circle radius or there
+    // is a gap between the fill and the stroke.
+    // https://code.google.com/p/chromium/issues/detail?id=239860
+    // Therefore, we can't reliably use stroke-width to make the touchable area of the circle larger.
+    return raphaelCanvas.set().push(
+      raphaelCanvas.circle(x, y, radius).attr({ fill: color, 'stroke-width': 0, 'clip-rect': clipRect }),
+      raphaelCanvas.circle(x, y, targetRadius).attr({ fill: 'black', 'fill-opacity': 0.2, 'stroke-width': 0 })
+    );
   },
 
   render: function (context, firstTime) {
@@ -241,20 +248,21 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
 
     var color = this.get('color'),
         radius = this.get('radius'),
-        strokeWidth = this.get('strokeWidth');
-
-    // get the x and y values, and translate to our coordinate system
-    var x = this.getPath('content.x'),
-        y = this.getPath('content.y');
-
-    var coords = graphView.coordinatesForPoint(x, y);
+        targetRadius = this.get('targetRadius'),
+        x = this.getPath('content.x'),
+        y = this.getPath('content.y'),
+        coords = graphView.coordinatesForPoint(x, y),
+        clipRect = graphView.get('clipRect'),
+        visibleCircle;
 
     if (firstTime) {
-      context.callback(this, this.renderCallback, coords.x, coords.y, radius, color, strokeWidth);
+      context.callback(this, this.renderCallback, coords.x, coords.y, radius, color, targetRadius, clipRect);
     }
     else {
-      var circle = context.raphael();
-      circle.attr({ cx: coords.x, cy: coords.y, r: radius, fill: color, 'stroke-width': strokeWidth, 'clip-rect': graphView.get('clipRect') });
+      raphaelObject = this.get('raphaelObject');
+      raphaelObject.attr({ cx: coords.x, cy: coords.y, 'clip-rect': clipRect });
+      visibleCircle = context.raphael().items[0];
+      visibleCircle.attr({ r: radius, fill: color });
     }
   }
 
