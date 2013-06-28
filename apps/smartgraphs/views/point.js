@@ -234,7 +234,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     // Therefore, we can't reliably use stroke-width to make the touchable area of the circle larger.
     return raphaelCanvas.set().push(
       raphaelCanvas.circle(x, y, radius).attr({ fill: color, 'stroke-width': 0, 'clip-rect': clipRect }),
-      raphaelCanvas.circle(x, y, targetRadius).attr({ fill: 'black', 'fill-opacity': 0.2, 'stroke-width': 0 })
+      raphaelCanvas.circle(x, y, targetRadius).attr({ fill: 'black', 'fill-opacity': 0, 'stroke-width': 0 })
     );
   },
 
