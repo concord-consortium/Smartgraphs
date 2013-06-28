@@ -304,11 +304,6 @@ body.sc-theme {
   border: 1px solid #000000;
 }
 
-.pane-label
-{
-  pointer-events: none;
-}
-
 .legendView
 {
   opacity: 0.9;
