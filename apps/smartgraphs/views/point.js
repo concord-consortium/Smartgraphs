@@ -260,9 +260,9 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     }
     else {
       raphaelObject = this.get('raphaelObject');
-      raphaelObject.attr({ cx: coords.x, cy: coords.y, 'clip-rect': clipRect });
+      raphaelObject.attr({ cx: coords.x, cy: coords.y });
       visibleCircle = context.raphael().items[0];
-      visibleCircle.attr({ r: radius, fill: color });
+      visibleCircle.attr({ r: radius, fill: color, 'clip-rect': clipRect });
     }
   }
 
