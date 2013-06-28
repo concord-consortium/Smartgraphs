@@ -70,3 +70,7 @@ Smartgraphs = SC.Application.create(
 });
 
 SC.CONTEXT_MENU_ENABLED = YES;
+
+if (! window.isProduction) {
+  SC.ExceptionHandler = null;
+}
