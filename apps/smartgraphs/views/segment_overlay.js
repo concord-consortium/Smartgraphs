@@ -31,7 +31,7 @@ Smartgraphs.SegmentOverlayView = RaphaelViews.RaphaelView.extend(
   strokeWidth: 14,
   strokeOpacity: 0.3,
 
-  displayProperties: 'points.[] item.datadefName item.xMin item.xMax stroke strokeWidth strokeOpacity'.w(),
+  displayProperties: 'points.[] item.datadefName item.xMin item.xMax color strokeWidth strokeOpacity'.w(),
 
   renderCallback: function(raphaelCanvas, attrs) {
     return raphaelCanvas.path(attrs.path).attr(attrs);
