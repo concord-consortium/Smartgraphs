@@ -101,7 +101,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
                 isDefaultBinding: 'Smartgraphs.activityViewController.enableSubmitButton',
 
                 titleDidChange: function () {
-                  var metrics = SC.metricsForString(this.get('title'), 'label', ['sc-button-label', 'text-wrapper']);
+                  var metrics = SC.metricsForString(this.get('title'), this.getPath('parentView.layer'), ['sc-button-label', 'text-wrapper']);
                   this.adjust('width', metrics.width + 48);
                 }.observes('title'),
 
