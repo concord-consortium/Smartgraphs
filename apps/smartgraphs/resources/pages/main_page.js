@@ -15,6 +15,26 @@ Smartgraphs.mainPage = SC.Page.design({
 
     childViews: 'topToolbar container bottomToolbar'.w(),
 
+    // Like a StaticContentView, allow the MainPane to become the touch responder and to respond to
+    // touchend even while doing nothing with the touch. This prevents the root responder from
+    // calling evt.preventDefault on the touch, which in turn causes the browser to blur any
+    // textarea that has focus. At least in Chrome 27 for Android, this prevents the keyboard from
+    // unexpectedly popping up when there is a stray touch on a view that does not have any touch
+    // handlers in its parent view hierarchy (this can be a problem when the keyboard has been
+    // dismissed but the text area has focus. The browser treats the touch as a cue to continue
+    // editing the text area, unless the touch's handler or default action removes focus from the
+    // textarea.)
+
+    touchStart: function(evt){
+      evt.allowDefault();
+      return YES;
+    },
+
+    touchEnd: function(evt){
+      evt.allowDefault();
+      return YES;
+    },
+
     topToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_TOP,
 
