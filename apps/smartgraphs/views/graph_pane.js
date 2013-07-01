@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('mixins/defocusing_button_behavior');
+
 /** @class
 
   (Document Your View Here)
@@ -81,7 +83,7 @@ Smartgraphs.GraphPane = SC.View.extend(
 
     childViews: 'startControl stopControl clearControl'.w(),
 
-    startControl: SC.ButtonView.design({
+    startControl: SC.ButtonView.design(Smartgraphs.DefocusingButtonBehavior, {
       layout: { centerX: -110, bottom: 10, width: 80, height: 24 },
       isVisibleBinding: '.parentView*graphController.startControlIsVisible',
       isEnabledBinding: '.parentView*graphController.startControlIsEnabled',
@@ -100,7 +102,7 @@ Smartgraphs.GraphPane = SC.View.extend(
       }
     }),
 
-    stopControl: SC.ButtonView.design({
+    stopControl: SC.ButtonView.design(Smartgraphs.DefocusingButtonBehavior, {
       layout: { centerX: 0, bottom: 10, width: 80, height: 24 },
       isVisibleBinding: '.parentView*graphController.stopControlIsVisible',
       isEnabledBinding: '.parentView*graphController.stopControlIsEnabled',
@@ -119,7 +121,7 @@ Smartgraphs.GraphPane = SC.View.extend(
       }
     }),
 
-    clearControl: SC.ButtonView.design({
+    clearControl: SC.ButtonView.design(Smartgraphs.DefocusingButtonBehavior, {
       layout: { centerX: 110, bottom: 10, width: 80, height: 24 },
       isVisibleBinding: '.parentView*graphController.clearControlIsVisible',
       isEnabledBinding: '.parentView*graphController.clearControlIsEnabled',
