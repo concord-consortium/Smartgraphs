@@ -77,7 +77,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
         axis      = this.get('axis'),
         axisLabel = axis && axis.get('label'),
         unitName  = axis && axis.getPath('units.pluralName'),
-        labelText = unitName ? "%@ (%@)".fmt(axisLabel, unitName) : axisLabel,
+        labelText = unitName ? "%@ (%@) →".fmt(axisLabel, unitName) : axisLabel,
         raphaelCanvas,
         x,
         y,
