@@ -30,7 +30,15 @@ Smartgraphs.GraphPane = SC.View.extend(
 
     displayProperties: ['backgroundImageURL', 'channelWidth'],
 
+    didCreateLayer: function() {
+      this._updateChannelStyle();
+    },
+
     didUpdateLayer: function() {
+      this._updateChannelStyle();
+    },
+
+    _updateChannelStyle: function() {
       this._setBackgroundImage(this.get('backgroundImageURL'));
       this.adjust('width', this.get('channelWidth'));
     },
