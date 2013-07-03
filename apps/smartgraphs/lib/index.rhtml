@@ -29,11 +29,11 @@
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"  >
 
     <% if config.touch_enabled %>
-    <% if config.precomposed_icon %>
-    <link rel="apple-touch-icon-precomposed" href="<%= sc_static(config.precomposed_icon) %>"  >
-    <% elsif config.icon %>
-    <link rel="apple-touch-icon" href="<%= sc_static(config.icon) %>"  >
-    <% end %>
+    <link rel="apple-touch-icon" href="<%= sc_static('icon-57.png') %>" />
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= sc_static('icon-72.png') %>" />
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= sc_static('icon-114.png') %>" />
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= sc_static('icon-120.png') %>" />
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= sc_static('icon-144.png') %>" />
     <% if config.startup_image_portrait %>
     <link rel="apple-touch-startup-image" media="screen and (orientation:portrait)" href="<%= sc_static(config.startup_image_portrait) %>"  >
     <% end %>
