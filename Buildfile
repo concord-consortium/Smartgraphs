@@ -11,7 +11,8 @@ config :all, :required => [:sproutcore]
 config :smartgraphs,
   :required => ['sproutcore/statechart', 'raphael_views/raphael_views', 'raphael_views/g_raphael'],
   :load_fixtures => true,
-  :layout => 'lib/index.rhtml'
+  :layout => 'lib/index.rhtml',
+  :title => 'SmartGraphs'
 config 'raphael_views/raphael_views',
   :required => 'raphael_views/raphael'
 config 'raphael_views/g_raphael',
