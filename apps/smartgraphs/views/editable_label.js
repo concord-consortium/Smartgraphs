@@ -288,9 +288,33 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
   },
 
   renderCallback: function (raphaelCanvas, attrs, adjustTextFieldView) {
+    // Raphael won't render text correctly if we set its content when we're detached from the DOM.
+    // Normally this isn't a problem because the render method gets called in "update" (firstTime =
+    // NO) mode after appending but before the user sees anything, and this causes the text to
+    // render correctly. However, in a few cases (specifically, after manually entering text in
+    // Mobile Safari) the renderCallback is called on a fragment after the displayText has been set,
+    // so that the render "update" path is never called after the label is appended to the DOM.
+    //
+    // Therefore, set a flag when we set the text while not appended, and clear the flag after
+    // updating the text while appended. If the flag is not cleared by the time we append to the DOM,
+    // we know we need to force a call to the render method.
+
+    if ( ! $.contains(document.documentElement, raphaelCanvas.canvas) ) {
+      this._raphaelTextLastUpdatedWhileFragment = YES;
+      // Don't flash the incorrectly rendered text; it'll be updated later
+      attrs.text = " ";
+      // invokeNext was insufficient
+      this.invokeLater(this.forceLayerUpdate);
+    }
+
     var ret = raphaelCanvas.text().attr(attrs);
+
     adjustTextFieldView(true);
     return ret;
+  },
+
+  forceLayerUpdate: function() {
+    this.set('layerNeedsUpdate', this.get('layerNeedsUpdate') || this._raphaelTextLastUpdatedWhileFragment);
   },
 
   render: function (context, firstTime) {
@@ -355,6 +379,11 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     }
     else {
       raphaelText = this.get('raphaelObject');
+
+      if ( $.contains(document.documentElement, raphaelText.node) ) {
+        this._raphaelTextLastUpdatedWhileFragment = NO;
+      }
+
       raphaelText.attr(attrs);
       adjustTextFieldView(false);
     }
