@@ -53,6 +53,17 @@ Smartgraphs.TableItemView = SC.ListItemView.extend(
     // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
     // also handle it
     return NO;
+  },
+
+  // Bugfix. We update points on mousemove by creating a new point object. (Not sure if that's for a good reason.)
+  // Sproutcore's default ListItemView implementation now includes a delayed call to updateLayerLocation.
+  // The delayed call of updateLayerLocation on the removed point inadvertently removes the DOM node of the
+  // listItemView corresponding to the new point which took it place.
+  updateLayerLocation: function() {
+    if (!this.get('parentView')) {
+      return;
+    }
+    sc_super();
   }
 
 });
