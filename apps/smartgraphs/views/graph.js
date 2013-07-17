@@ -1858,7 +1858,7 @@ Smartgraphs.GraphView = SC.View.extend(
           shouldResizeWidth: YES,
           textAlign: SC.ALIGN_CENTER,
           value: SC.outlet('parentView.text'),
-          autoResizeText: SC.outlet('parentView.text'),
+          autoResizeText: SC.outlet('value'),
 
           updateText: function (datadef) {
             this.set('value', datadef.get('deviationValue'));
