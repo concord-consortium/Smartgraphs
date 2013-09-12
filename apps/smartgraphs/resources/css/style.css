@@ -172,6 +172,12 @@ body.sc-theme {
   margin: 10px;
 }
 
+/* Making the intro/instructions block scroll if long enough */
+.text-wrapper.scroll-please {
+  padding: 20px 20px 0 20px;
+  overflow-y: auto;
+}
+
 .sc-view.hint {
   color: #666666;
   font-style: italic;
