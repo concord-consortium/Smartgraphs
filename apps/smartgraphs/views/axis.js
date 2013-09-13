@@ -91,7 +91,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
       rotation = 0;
     }
     else {
-      x = padding.left - 30;
+      x = padding.left - 30; // Magic number - this needs to change if the values in the max are > 3 digits
       y = (padding.top + frame.height - padding.bottom) / 2;
       rotation = 270;
     }
