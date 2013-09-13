@@ -49,6 +49,11 @@ Smartgraphs.GraphView = SC.View.extend(
 
   init: function () {
     sc_super();
+    // console.log('====> y-axis max is ' + this.yAxis.max + '.');
+    console.log('====> padding.left is ' + this.padding.left + 'px.');
+    // If the max for the axis is > 100000, we want more padding on the left, 10px per digit
+    // If the max is > 1000, we want to move the label out, 10px per digit (magic number)
+    // Should that happen here?
     this.padding = SC.copy(this.padding);
     this._viewsByClassAndItem = {};
     this.set('arrLabelsLayout', []);
