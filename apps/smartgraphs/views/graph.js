@@ -91,6 +91,7 @@ Smartgraphs.GraphView = SC.View.extend(
       }
       // Set the new padding value
       this.padding.left = this.padding.left + targetPadding;
+      // console.log('====> At render, padding.left set to ' + this.padding.left);
     }
     // end changes
     if (this.createRenderer && renderer) {
@@ -108,8 +109,8 @@ Smartgraphs.GraphView = SC.View.extend(
   showAnimationDidChange: function () {
     var showAnimation = this.get('showAnimation'),
         channelWidth  = this.get('channelWidth');
-
     this.padding.left = this.padding.left + (showAnimation ? channelWidth : 0);
+    // console.log('====> After animation adjustment, padding.left is now ' + this.padding.left + '.');
     this.replaceLayer();
   }.observes('showAnimation'),
 

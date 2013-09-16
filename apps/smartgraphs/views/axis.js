@@ -81,7 +81,8 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
         raphaelCanvas,
         x,
         y,
-        rotation;
+        rotation,
+        tickLabelWidth, tickLabelNumber;
 
     if (!axis) return;
 
@@ -91,7 +92,15 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
       rotation = 0;
     }
     else {
-      x = padding.left - 30; // Magic number - this needs to change if the values in the max are > 3 digits
+      tickLabelWidth = 30;
+      tickLabelNumber = axis.get('min') + (axis.get('max') - axis.get('min')/2);
+      tickLabelNumber = tickLabelNumber/100;
+      while (tickLabelNumber > 1) {
+        // Move the label 10 for each digit in the midpoint label over 3
+        tickLabelWidth = tickLabelWidth + 6;
+        tickLabelNumber = tickLabelNumber/10;
+      }
+      x = padding.left - tickLabelWidth;
       y = (padding.top + frame.height - padding.bottom) / 2;
       rotation = 270;
     }
