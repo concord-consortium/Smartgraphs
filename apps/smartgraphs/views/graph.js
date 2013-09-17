@@ -76,6 +76,23 @@ Smartgraphs.GraphView = SC.View.extend(
     } else {
       context.setClass('hideGraph', NO);
     }
+    if (this.yAxis) {
+      // If the max for the axis is > 100000, we want more padding on the left, 6px per digit
+      // Adjust padding to ensure there's enough space for axis values on left side.
+      var targetPadding = 0,
+          topLabel = this.yAxis.get('max');
+          // botLabel = this.yAxis.get('min'),
+          // midLabel = botLabel + (topLabel - botLabel)/2;
+      topLabel = topLabel/100;
+      while (topLabel > 1) {
+        // Increment padding by 10 for each digit in max label over 3
+        targetPadding = targetPadding + 6;
+        topLabel = topLabel/10;
+      }
+      // Set the new padding value
+      this.padding.left = this.padding.left + targetPadding;
+      // console.log('====> At render, padding.left set to ' + this.padding.left);
+    }
     // end changes
     if (this.createRenderer && renderer) {
       if (firstTime) {
@@ -92,8 +109,8 @@ Smartgraphs.GraphView = SC.View.extend(
   showAnimationDidChange: function () {
     var showAnimation = this.get('showAnimation'),
         channelWidth  = this.get('channelWidth');
-
     this.padding.left = this.padding.left + (showAnimation ? channelWidth : 0);
+    // console.log('====> After animation adjustment, padding.left is now ' + this.padding.left + '.');
     this.replaceLayer();
   }.observes('showAnimation'),
 
