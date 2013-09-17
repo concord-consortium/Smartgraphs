@@ -26,19 +26,12 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       layout: { left: 0, width: 0.45 },       // need to specify 0.5 rather than '50%'
       childViews: 'instructionsView'.w(),
 
-      instructionsView: SC.View.design({
+      instructionsView: SC.ScrollView.design({
         classNames: 'smartgraph-pane',
-        childViews: 'textWrapper'.w(),
 
-        // provide padding and style rules for the intro text and dialog
-        textWrapper: SC.View.design({
-          layout: {
-            top: 20,
-            right: 20,
-            left: 20
-          },
-
-          classNames: 'text-wrapper'.w(),
+        contentView: SC.View.design({
+          hasLayout: NO,
+          classNames: 'text-wrapper scroll-please'.w(), // scroll-please
 
           childViews: 'introText activityStepWrapper'.w(),
 
