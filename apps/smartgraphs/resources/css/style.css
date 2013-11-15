@@ -336,3 +336,15 @@ body.sc-theme {
 {
   position: fixed;
 }
+
+/* Fix superscripts and subscripts which are broken by the idiotic YUI reset embedded in Sproutcore */
+/* https://www.pivotaltracker.com/story/show/60809930 */
+sup {
+	vertical-align: super;
+}
+sub {
+	vertical-align: sub;
+}
+
+
+
