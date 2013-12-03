@@ -78,7 +78,7 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
     var self = this;
 
     Smartgraphs.sensorTool.applet = new sensorAppletInterface.GoIO({
-      codebase: '/jnlp',
+      codebase: 'http://lab.concord.org/jnlp',
       sensorDefinitions: [sensorAppletInterface.sensorDefinitions['goMotion']],
       listenerPath: 'Smartgraphs.sensorTool.applet'
     });
