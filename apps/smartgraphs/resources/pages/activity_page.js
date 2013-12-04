@@ -26,33 +26,26 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       layout: { left: 0, width: 0.45 },       // need to specify 0.5 rather than '50%'
       childViews: 'instructionsView'.w(),
 
-      instructionsView: SC.View.design({
-        classNames: 'smartgraph-pane',
-        childViews: 'textWrapper'.w(),
+      instructionsView: SC.ScrollView.design({
+        classNames: 'smartgraph-pane text-wrapper'.w(),
+        hasLayout: NO,
 
-        // provide padding and style rules for the intro text and dialog
-        textWrapper: SC.View.design({
-          layout: {
-            top: 20,
-            right: 20,
-            left: 20
-          },
-
-          classNames: 'text-wrapper'.w(),
-
+        contentView: SC.StaticContentView.design({
+          useStaticLayout: YES,
           childViews: 'introText activityStepWrapper'.w(),
 
           introText: SC.StaticContentView.design({
+            useStaticLayout: YES,
             contentBinding: 'Smartgraphs.activityPageController.introText',
             isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText')
           }),
 
-          activityStepWrapper: SC.View.design({
+          activityStepWrapper: SC.StaticContentView.design({
             useStaticLayout: YES,
 
             childViews: 'activityStepDialog buttonsView'.w(),
 
-            activityStepDialog: SC.View.design({
+            activityStepDialog: SC.StaticContentView.design({
               useStaticLayout: YES,
               isVisibleBinding: 'Smartgraphs.activityStepController.dialogTextHasContent',
 
@@ -60,6 +53,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
               classNames: 'dialog-text'.w(),
 
               beforeText: SC.StaticContentView.design({
+                useStaticLayout: YES,
                 contentBinding: 'Smartgraphs.activityStepController.beforeText',
                 isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.beforeText')
               }),
@@ -73,6 +67,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
               }),
 
               afterText: SC.StaticContentView.design({
+                useStaticLayout: YES,
                 contentBinding: 'Smartgraphs.activityStepController.afterText',
                 isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.afterText')
               })
