@@ -71,6 +71,10 @@ Smartgraphs = SC.Application.create(
 
 SC.CONTEXT_MENU_ENABLED = YES;
 
+// Patch SC.platform.touch, which is incorrectly false in Mobile Safari 7. Among other issues, the
+// incorrect value causes buggy behavior in SC.ScrollView.
+SC.platform.touch = SC.platform.touch || 'ontouchstart' in document.documentElement;
+
 if (! window.isProduction) {
   SC.ExceptionHandler = null;
 }
