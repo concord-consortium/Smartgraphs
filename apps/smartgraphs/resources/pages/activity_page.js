@@ -29,11 +29,12 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       instructionsView: SC.ScrollView.design({
         classNames: 'smartgraph-pane text-wrapper'.w(),
         hasLayout: NO,
+        hasHorizontalScroller: NO,
 
-        contentView: SC.StaticContentView.design({
+        contentView: SC.View.design({
           classNames: 'text-content',
-
           useStaticLayout: YES,
+
           childViews: 'introText activityStepWrapper'.w(),
 
           introText: SC.StaticContentView.design({
@@ -42,12 +43,12 @@ Smartgraphs.activityPageDef = SC.Page.extend({
             isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText')
           }),
 
-          activityStepWrapper: SC.StaticContentView.design({
+          activityStepWrapper: SC.View.design({
             useStaticLayout: YES,
 
             childViews: 'activityStepDialog buttonsView'.w(),
 
-            activityStepDialog: SC.StaticContentView.design({
+            activityStepDialog: SC.View.design({
               useStaticLayout: YES,
               isVisibleBinding: 'Smartgraphs.activityStepController.dialogTextHasContent',
 
