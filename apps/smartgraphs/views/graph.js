@@ -365,7 +365,8 @@ Smartgraphs.GraphView = SC.View.extend(
       var graphController = this.get("owner").graphController || null;
       var mouseOverInputArea = this.get('mouseOverInputArea');
       var pointOverride = this.get('pointOverride');
-      var showTooltip = false;
+      var coords = this.get('coords');
+
       if (!graphController || !graphController.get("showToolTipCoords")) {
         return;
       }
@@ -375,29 +376,23 @@ Smartgraphs.GraphView = SC.View.extend(
         return;
       }
 
-      if (pointOverride) {
-        showTooltip = true;
-      }
-      else if (!graphController.get('toolTipVisibilityOverrideFromToolState')) {
+      if (!pointOverride && !graphController.get('toolTipVisibilityOverrideFromToolState')) {
         context.push("<div></div>");
         return;
-      }
-      else {
-        showTooltip = true;
       }
 
-      if (showTooltip) {
-        var coords = this.get('coords');
-        var strHtml = "";
-        strHtml += "<div class='toolTipLabel' style='width:" + coords.width + "px; text-align:center; padding: 5px; position: absolute; top:" + (coords.top + coords.coordOffset) + "px; left: " + (coords.left + coords.coordOffset) + "px; z-index: 10000;'>" +
-           coords.x + ",&nbsp;" + coords.y +
-           "</div>";
-        context.push(strHtml);
-      }
-      else {
-        context.push("<div></div>");
-        return;
-      }
+      context.push([
+        "<div class='toolTipLabel' ",
+        "  style='width: " + coords.width + "px; ",
+        "  text-align: center; ",
+        "  padding: 5px; ",
+        "  position: absolute; ",
+        "  top: " + (coords.top + coords.coordOffset) + "px; ",
+        "  left: " + (coords.left + coords.coordOffset) + "px; ",
+        "  z-index: 10000;'>",
+          coords.x, ",&nbsp;", coords.y,
+        "</div>"
+      ].join(''));
     },
 
     mouseMoved: function (evt) {
