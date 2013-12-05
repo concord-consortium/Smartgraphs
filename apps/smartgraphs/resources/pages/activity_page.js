@@ -31,6 +31,8 @@ Smartgraphs.activityPageDef = SC.Page.extend({
         hasLayout: NO,
 
         contentView: SC.StaticContentView.design({
+          classNames: 'text-content',
+
           useStaticLayout: YES,
           childViews: 'introText activityStepWrapper'.w(),
 
