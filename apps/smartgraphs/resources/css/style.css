@@ -172,8 +172,8 @@ body.sc-theme {
   margin: 10px;
 }
 
-.text-wrapper .sc-container-view {
-  margin: 20px 20px 0 20px;
+.text-content {
+  padding: 20px 20px 0 20px;
 }
 
 .sc-view.hint {
