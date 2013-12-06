@@ -359,40 +359,37 @@ Smartgraphs.GraphView = SC.View.extend(
     displayProperties: ['coords', 'mouseOverInputArea'],
     coordsBinding: '.parentView*graphController.tooltipCoords',
     mouseOverInputAreaBinding: '.parentView.mouseOverInputArea',
-    pointOverrideBinding: '.parentView*graphController.toolTipVisibilityOverrideOnPointHover',
 
     render: function (context, firstTime) {
-      var graphController = this.get("owner").graphController || null;
-      var mouseOverInputArea = this.get('mouseOverInputArea');
-      var pointOverride = this.get('pointOverride');
+      var graphController = this.get("owner").graphController;
+
+      if (!graphController) {
+        return;
+      }
+
       var coords = this.get('coords');
+      var mouseOverInputArea = this.get('mouseOverInputArea');
+      var showToolTipCoords = graphController.get('showToolTipCoords');
+      var overrideVisibility =
+        (graphController.get('toolTipVisibilityOverrideOnPointHover') ||
+         graphController.get('toolTipVisibilityOverrideFromToolState'));
 
-      if (!graphController || !graphController.get("showToolTipCoords")) {
-        return;
+      if (showToolTipCoords && mouseOverInputArea && overrideVisibility) {
+        context.push([
+          "<div class='toolTipLabel' ",
+          "  style='width: " + coords.width + "px; ",
+          "  text-align: center; ",
+          "  padding: 5px; ",
+          "  position: absolute; ",
+          "  top: " + (coords.top + coords.coordOffset) + "px; ",
+          "  left: " + (coords.left + coords.coordOffset) + "px; ",
+          "  z-index: 10000;'>",
+            coords.x, ",&nbsp;", coords.y,
+          "</div>"
+        ].join(''));
+      } else {
+        context.push('<div></div>');
       }
-
-      if (!mouseOverInputArea) {
-        context.push("<div></div>");
-        return;
-      }
-
-      if (!pointOverride && !graphController.get('toolTipVisibilityOverrideFromToolState')) {
-        context.push("<div></div>");
-        return;
-      }
-
-      context.push([
-        "<div class='toolTipLabel' ",
-        "  style='width: " + coords.width + "px; ",
-        "  text-align: center; ",
-        "  padding: 5px; ",
-        "  position: absolute; ",
-        "  top: " + (coords.top + coords.coordOffset) + "px; ",
-        "  left: " + (coords.left + coords.coordOffset) + "px; ",
-        "  z-index: 10000;'>",
-          coords.x, ",&nbsp;", coords.y,
-        "</div>"
-      ].join(''));
     }
   }),
 
