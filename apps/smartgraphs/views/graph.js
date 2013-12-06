@@ -393,23 +393,6 @@ Smartgraphs.GraphView = SC.View.extend(
           coords.x, ",&nbsp;", coords.y,
         "</div>"
       ].join(''));
-    },
-
-    mouseMoved: function (evt) {
-      var graphCanvasView = this.parentView.graphCanvasView;
-      var graphController = this.parentView.graphController;
-
-      var coords = graphCanvasView.axesView.inputAreaView.coordsForEvent(evt),
-          point = this.parentView.pointForCoordinates(coords.x, coords.y);
-
-      var bounds = graphCanvasView._getScreenBounds();
-
-      var padding = this.parentView.get("padding");
-      if ((graphController.tooltipCoords.width + coords.x) >= (bounds.xRight - padding.right)) {
-        coords.x = bounds.xRight - graphController.tooltipCoords.width - padding.right;
-      }
-      graphController.updateToolTip(point, coords);
-      return;
     }
   }),
 
