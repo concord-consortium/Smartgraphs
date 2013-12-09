@@ -149,21 +149,28 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   showGraphGrid : null,
 
   /**
-   @property Bool
+   @property Boolean
 
    The 'showToolTipCoords' property from the activity step's graph configuration.
   */
   showToolTipCoords : null,
 
   /**
-    @property {Point | null}
+   @property Boolean
+
+   May be set to true to temporarily stop showing the tooltip with the current coordintes.
+  */
+  disableToolTipCoords: false,
+
+  /**
+    @property {Smartgraphs.Point | null}
 
     The point that is currently hovered, if any. Otherwise, null.
   */
   currentlyHoveredPoint: null,
 
   /**
-    @property {Point | null}
+    @property {Smartgraphs.Point | null}
 
     The point that is currently being dragged, if any. Otherwise, null.
   */

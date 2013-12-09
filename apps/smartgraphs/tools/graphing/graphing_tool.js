@@ -30,7 +30,7 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
     graphController.graphingToolStartTool({ annotationName: args.annotationName, shape: args.shape, datadefName: args.data});
     this.set('annotationName', args.annotationName);
     this.set('datadefName', args.data);
-    
+
     this.getAnnotation(args.annotationName).set("isOverlayAnnotation", true);
     var graphView = this.graphViewForPane(args.pane);
     graphView._updateAllViews();
@@ -39,7 +39,7 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
   appendSketch: function (state, sketch) {
     this.graphControllerForState(state).addAnnotation(sketch);
   },
-  
+
   appendRepresentation: function (state, rep) {
     this.graphControllerForState(state).addDatadef(rep);
   },
@@ -72,9 +72,9 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
     return Smartgraphs.activityPage.getPath(Smartgraphs.activityViewController.firstOrSecondFor(pane) + 'GraphPane.graphView');
   },
 
-  showToolTip: function (bShow) {
+  showToolTip: function (show) {
     var graphController = this.graphControllerForPane(this.get('graphPane'));
-    graphController.set('toolTipVisibilityOverrideFromToolState', bShow);
+    graphController.set('disableToolTipCoords', ! show);
   },
 
   coordinatesForPoint: function (x, y) {
@@ -177,36 +177,36 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
       y1 = graphLogicalBounds.yMin;
       x2 = x1;
       y2 = graphLogicalBounds.yMax;
-      
+
       return [[x1, y1], [x2, y2]];
     }
-    
+
     m = (point2[1] - point1[1]) / (point2[0] - point1[0]);
     c = point2[1] - m * point2[0];
-    
+
     if (m === 0) {
       x1 = graphLogicalBounds.xMin;
       y1 = point1[1];
       x2 = graphLogicalBounds.xMax;
       y2 = y1;
-      
+
       return [[x1, y1], [x2, y2]];
     }
-    
+
     var pointArr;
-    
+
     x1 = graphLogicalBounds.xMin;
     y1 = m * x1 + c;
     pointArr = this.getLinePointWithinLogicalBounds([x1, y1], m, c);
     x1 = pointArr[0];
     y1 = pointArr[1];
-    
+
     y2 = m > 0 ? graphLogicalBounds.yMax : graphLogicalBounds.yMin;
     x2 = (y2 - c) / m;
     pointArr = this.getLinePointWithinLogicalBounds([x2, y2], m, c);
     x2 = pointArr[0];
     y2 = pointArr[1];
-    
+
     return [[x1, y1], [x2, y2]];
   }
 });
