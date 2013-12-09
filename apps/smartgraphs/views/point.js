@@ -112,7 +112,6 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     var point = graphView.pointForCoordinates(coords.x, coords.y);
     this.get('datadef').set('dragValueX', this.getPath('content.x'));
     this.get('datadef').set('dragValueY', this.getPath('content.y'));
-    this.get('controller').dataPointDown(this.get('dataRepresentation'), point.x, point.y);
     return YES;
   },
 

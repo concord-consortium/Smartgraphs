@@ -827,13 +827,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   },
 
-  dataPointDown: function (dataRepresentation, x, y) {
-    if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
-      Smartgraphs.statechart.sendAction('dataPointDown', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
-    }
-    this.sendAction('dataPointDown', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
-  },
-
   dataPointDragged: function (dataRepresentation, x, y) {
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
