@@ -109,7 +109,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     @property {Smartgraphs.Datadef[]}
 
     A list of all the Datadefs added to this graph
-
   */
   datadefList: null,
 
@@ -117,7 +116,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     @property {Smartgraphs.Dataref[]}
 
     A list of all the Datadefs added to this graph.
-
   */
   datarefList: null,
 
@@ -143,13 +141,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   title: null,
 
   /**
-
    @property Bool
 
    Whether to show the grid line or not
-
-   */
-
+  */
   showGraphGrid : null,
 
   /**
@@ -157,7 +152,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
    The 'showToolTipCoords' property from the activity step's graph configuration.
   */
-
   showToolTipCoords : null,
 
   /**
@@ -168,13 +162,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   currentlyHoveredPoint: null,
 
   /**
-
    @property Object
 
-   Layout of the Tooltip
-
-   */
-
+   Layout of the toolTipPoint
+  */
   tooltipCoords : { x: 0, y: 0, top: 0, left: 0, coordOffset: 5, width: 100},
 
   /**
