@@ -209,7 +209,8 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
         y = this.getPath('content.y'),
         coords = graphView.coordinatesForPoint(x, y),
         clipRect = graphView.get('clipRect'),
-        visibleCircle;
+        visibleCircle,
+        raphaelObject;
 
     if (firstTime) {
       context.callback(this, this.renderCallback, coords.x, coords.y, radius, color, targetRadius, clipRect);
