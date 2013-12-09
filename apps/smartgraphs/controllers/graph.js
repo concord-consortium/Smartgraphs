@@ -153,7 +153,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
    The 'showToolTipCoords' property from the activity step's graph configuration.
   */
-  showToolTipCoords : null,
+  toolTipCoordsRequested : false,
 
   /**
    @property Boolean
@@ -230,7 +230,27 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   showInControlsPanel: null,
 
-/**
+  /**
+    @property Boolean
+
+    Whether to render a tooltip showing the coordinates of the current toolTipPoint
+  */
+  showToolTipCoords: function() {
+    return this.get('toolTipCoordsRequested') && ! this.get('disableToolTipCoords');
+  }.property('toolTipCoordsRequested', 'disableToolTipCoords').cacheable(),
+
+  /**
+    @property {Smartgraphs.Point}
+
+    The point whose coordinates should be displayed in a tooltip, if 'showToolTipCoords' is true.
+
+    The toolTipPoint's x and y properties may be null, in which case there is no point to show.
+  */
+  toolTipPoint: function() {
+    return this.get('currentlyDraggedPoint') || this.get('currentlyHoveredPoint') || this.get('currentPointerLocation');
+  }.property('currentlyDraggedPoint', 'currentlyHoveredPoint').cacheable(),
+
+  /**
     Add a datadef to this controller
 
     @param {Smartgraphs.Datadef} datadef
@@ -472,7 +492,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('yAxis', null);
     this.set('showGraphGrid', null);
     this.set('showCrossHairs', null);
-    this.set('showToolTipCoords', null);
+    this.set('toolTipCoordsRequested', false);
+    this.set('disableToolTipCoords', false);
     this.set('graphableDataObjects', []);
     this.set('arrLegends', []);
     this.set('dataRepresentations', []);
@@ -541,7 +562,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('yAxis', this.getAxis(config.yAxis));
     this.set('showGraphGrid', config.showGraphGrid);
     this.set('showCrossHairs', config.showCrossHairs);
-    this.set('showToolTipCoords', config.showToolTipCoords);
+    this.set('toolTipCoordsRequested', config.showToolTipCoords);
 
     var xMax = this.getAxis(config.xAxis).get("max");
     var yMax = this.getAxis(config.yAxis).get("max");
