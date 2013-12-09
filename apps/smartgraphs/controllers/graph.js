@@ -256,14 +256,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.get('datarefList').pushObject(dataref);
   },
 
-
-  toolTipPointDidChange: function () {
-    var toolTipPoint = this.get('toolTipPoint');
-    if (toolTipPoint !== null) {
-      this.updateToolTip(toolTipPoint, null);
-    }
-  }.observes('toolTipPoint'),
-
   /**
     Removes all datadefs from the list. Sets the datadefList attribute to [] (therefore, also initializes the
     list if the value had previously been null).
@@ -555,14 +547,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     var yMax = this.getAxis(config.yAxis).get("max");
     var xMin = this.getAxis(config.xAxis).get("min");
     var yMin = this.getAxis(config.yAxis).get("min");
-    var widthMultiplier = 15;
-    var arrLegendElements = [];
-    if (parseInt(yMin, 10) < 0 || parseInt(xMin, 10) < 0) {
-      widthMultiplier = 21;
-    }
-    var iTooltipWidth = (xMax + "," + yMax).length * widthMultiplier;
-    var tooltipCoords = this.get("tooltipCoords");
-    this.set("tooltipCoords", { x: 0, y: 0, top: 0, left: 0, coordOffset: 5, width: iTooltipWidth});
 
     dataSpecs.forEach(function (dataSpec) {
       var datadefName,
@@ -728,37 +712,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
   unDimRepresentations: function () {
     this.get('dataRepresentations').setEach('isDimmed', NO);
-  },
-
-  updateToolTip: function (point, coords) {
-    var newPoint = Smartgraphs.Point.create();
-    newPoint.set('x', point.x);
-    newPoint.set('y', point.y);
-    var xRounded = newPoint.xRounded().toFixed(2);
-    var yRounded = newPoint.yRounded().toFixed(2);
-
-    var tooltipCoords = this.get("tooltipCoords");
-    if (coords === null || coords === undefined) {
-      tooltipCoords = {
-          x: xRounded,
-          y: yRounded,
-          top: tooltipCoords.top,
-          left: tooltipCoords.left,
-          coordOffset: tooltipCoords.coordOffset,
-          width: tooltipCoords.width
-        };
-    }
-    else {
-      tooltipCoords = {
-        x: xRounded,
-        y: yRounded,
-        top: coords.y,
-        left: coords.x,
-        coordOffset: tooltipCoords.coordOffset,
-        width: tooltipCoords.width
-      };
-    }
-    this.set("tooltipCoords", tooltipCoords);
   },
 
   /**
