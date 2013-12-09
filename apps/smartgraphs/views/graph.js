@@ -41,8 +41,6 @@ Smartgraphs.GraphView = SC.View.extend(
   // Array of label's layout.
   arrLabelsLayout: [],
 
-  mouseOverInputArea: false,
-
   padding: { top: 15, right: 15, bottom: 45, left: 50 },
 
   childViews: 'titleView tooltipView graphCanvasView topAnnotationsHolder legendView'.w(),
@@ -572,54 +570,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
     childViews: 'axesView dataHolder annotationsHolder overlayAnnotationsHolder animationView'.w(),
 
-    _checkInputAreaScreenBounds: function (x, y) {
-      var graphAreaOffset = this.get("graphView").$().offset();
-      var padding = this.get("graphView").get("padding");
-      var bounds = this._getScreenBounds();
-
-      if ((x >= graphAreaOffset.left + padding.left && x <= graphAreaOffset.left + bounds.plotWidth + padding.left) &&
-          (y >= graphAreaOffset.top + padding.top  && y <= graphAreaOffset.top + bounds.plotHeight + padding.top)) {
-        return true;
-      }
-      else {
-        return false;
-      }
-    },
-
-    mouseMoved: function (evt) {
-      this._mouseMoved(evt);
-    },
-
-    _mouseMoved: function (evt) {
-      var graphView = this.get("graphView");
-      var graphController = graphView.get('graphController');
-      if (this._checkInputAreaScreenBounds(evt.pageX, evt.pageY)) {
-        graphView.set("mouseOverInputArea", true);
-        this.get('axesView').get('inputAreaView').mouseMoved(evt);
-      }
-      else {
-        graphView.set("mouseOverInputArea", false);
-      }
-    },
-
-    mouseExited: function (evt) {
-      var graphView = this.get("graphView");
-      graphView.set("mouseOverInputArea", false);
-    },
-
-    touchStart: function (evt) {
-      this._mouseDownOrTouchStart(evt);
-    },
-    mouseDown: function (evt) {
-      this._mouseDownOrTouchStart(evt);
-    },
-
-    _mouseDownOrTouchStart: function (evt) {
-      if (this._checkInputAreaScreenBounds(evt.pageX, evt.pageY)) {
-        this.get('axesView').get('inputAreaView').mouseDown(evt);
-      }
-    },
-
     _animationIsPaused: NO,
 
     _getScreenBounds: function () {
@@ -1129,13 +1079,14 @@ Smartgraphs.GraphView = SC.View.extend(
               bounds      = this._screenBounds,
               x           = evt.pageX - graphOffset.left,
               y           = evt.pageY - graphOffset.top,
+              clipped     = false,
               fraction;
 
           // clip the event to the inputArea boundaries. Simple clipping seems to work fine
-          x = (x < bounds.xLeft) ? bounds.xLeft : (x > bounds.xRight)  ? bounds.xRight  : x;
-          y = (y < bounds.yTop)  ? bounds.yTop  : (y > bounds.yBottom) ? bounds.yBottom : y;
+          x = (x < bounds.xLeft) ? (clipped = true, bounds.xLeft) : (x > bounds.xRight)  ? (clipped = true, bounds.xRight)  : x;
+          y = (y < bounds.yTop)  ? (clipped = true, bounds.yTop)  : (y > bounds.yBottom) ? (clipped = true, bounds.yBottom) : y;
 
-          return { x: x, y: y };
+          return { x: x, y: y, clipped: clipped };
         },
 
         touchStart: function (evt) {
@@ -1180,29 +1131,22 @@ Smartgraphs.GraphView = SC.View.extend(
         },
 
         mouseMoved:  function (evt) {
-          this._mouseMoved(evt);
+          var coords = this.coordsForEvent(evt);
+          var point;
+
+          if ( coords.clipped ) {
+            this._graphView.setCursorLocation(null);
+            return;
+          } else {
+            point = this._graphView.pointForCoordinates(coords.x, coords.y);
+            this._graphController.setCursorLocation(point.x, point.y);
+          }
+
+          return this._graphController.inputAreaMouseMove(point.x, point.y);
         },
 
-        _mouseMoved: function (evt) {
-          var coords = this.coordsForEvent(evt),
-              point = this._graphView.pointForCoordinates(coords.x, coords.y);
-          var bounds = this.get("graphView").get("graphCanvasView")._getScreenBounds();
-          var graphController = this._graphView.get('graphController');
-
-          var padding = this.get("graphView").get("padding");
-          if (graphController.tooltipCoords.width + coords.x >= bounds.xRight - padding.right) {
-            coords.x = bounds.xRight - graphController.tooltipCoords.width - padding.right;
-          }
-
-          var toolTipPoint = graphController.get('toolTipPoint');
-          var pointOverride = graphController.get('toolTipVisibilityOverrideOnPointHover');
-          if (pointOverride && toolTipPoint !== null) {
-            graphController.updateToolTip(toolTipPoint, coords);
-          }
-          else {
-            graphController.updateToolTip(point, coords);
-          }
-          return graphController.inputAreaMouseMove(point.x, point.y);
+        mouseExited: function (evt) {
+          this._graphView.setCursorLocation(null);
         },
 
         touchEnd: function (evt) {

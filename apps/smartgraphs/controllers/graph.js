@@ -177,6 +177,18 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   currentlyDraggedPoint: null,
 
   /**
+    @property {Smartgraphs.Point}
+
+    The current position of the pointer (i.e, the position of the mouse cursor or the position of
+    the latest touch) if the current position is within the graph axes (the "input area"). If the
+    cursor strays outside of that area, the x and y properties of this property are set to null.
+
+    (The point itself is not set to null, to avoid unnecessary creation and destruction of Point
+    objects, and rebinding of observers, every time the mouse passes over the input area)
+  */
+  currentPointerLocation: Smartgraphs.Point.create(),
+
+  /**
    @property Object
 
    Layout of the toolTipPoint
@@ -774,6 +786,14 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     this.setPath('currentlyDraggedPoint.x', x);
     this.setPath('currentlyDraggedPoint.y', y);
+  },
+
+  setCursorLocation: function (x, y) {
+    if (x === null) {
+      y = null;
+    }
+    this.setPath('currentPointerLocation.x', x);
+    this.setPath('currentPointerLocation.y', y);
   },
 
   // Events
