@@ -160,7 +160,12 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
   showToolTipCoords : null,
 
+  /**
+    @property {Point | null}
 
+    The point that is currently hovered, if any. Otherwise, null.
+  */
+  currentlyHoveredPoint: null,
 
   /**
 

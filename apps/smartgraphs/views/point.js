@@ -79,6 +79,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
       return;
     }
     this.set('isHovered', YES);
+    this.setPath('controller.currentlyHoveredPoint', this.get('content'));
   },
 
   mouseExited: function () {
@@ -86,6 +87,9 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
       return;
     }
     this.set('isHovered', NO);
+    if (this.getPath('controller.currentlyHoveredPoint') === this.get('content')) {
+      this.setPath('controller.currentlyHoveredPoint', null);
+    }
   },
 
   mouseDown: function (evt) {
