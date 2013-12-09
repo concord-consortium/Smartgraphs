@@ -155,8 +155,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   /**
    @property Bool
 
-   Whether to show the tooltip  or not
-
+   The 'showToolTipCoords' property from the activity step's graph configuration.
   */
 
   showToolTipCoords : null,
