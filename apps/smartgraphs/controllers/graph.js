@@ -10,6 +10,7 @@ sc_require('tools/label/label_state');
 sc_require('tools/animation/animation_state');
 sc_require('tools/prediction/prediction_state');
 sc_require('tools/graphing/graphing_state');
+sc_require('lib/marks/point');
 
 /** @class
 
@@ -160,6 +161,13 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     The point that is currently hovered, if any. Otherwise, null.
   */
   currentlyHoveredPoint: null,
+
+  /**
+    @property {Point | null}
+
+    The point that is currently being dragged, if any. Otherwise, null.
+  */
+  currentlyDraggedPoint: null,
 
   /**
    @property Object
@@ -748,6 +756,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     return null;
   },
 
+  setCurrentlyDraggedPoint: function (x, y) {
+    if (x === null) {
+      this.set('currentlyDraggedPoint', null);
+      return;
+    }
+
+    if ( ! this.get('currentlyDraggedPoint') ) {
+      this.set('currentlyDraggedPoint', Smartgraphs.Point.create());
+    }
+    this.setPath('currentlyDraggedPoint.x', x);
+    this.setPath('currentlyDraggedPoint.y', y);
+  },
+
   // Events
 
   sendAction: function (action, context, args) {
@@ -824,6 +845,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
     }
+    this.setCurrentlyDraggedPoint(x, y);
     this.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   },
 
@@ -831,6 +853,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
     }
+    this.setCurrentlyDraggedPoint(x, y);
     this.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
   },
 
@@ -838,6 +861,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
     }
+    this.setCurrentlyDraggedPoint(null);
     this.sendAction('dataPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
   }
 
