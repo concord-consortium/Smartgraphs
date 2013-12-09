@@ -71,7 +71,8 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
       graphingTool.set('pointMoved', false);
       graphingTool.graphingFinished(this);
       graphingTool.set('lineCount', 0);
-      
+      graphingTool.showToolTip(true);
+
       var toolRoot = this.get('toolRoot');
       toolRoot.set('annotation', null);
       toolRoot.set('annotationName', null);
