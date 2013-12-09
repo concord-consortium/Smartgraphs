@@ -160,29 +160,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
   showToolTipCoords : null,
 
-  /**
-   @property Bool
 
-   Override tooltip visibility according to state of the tool
 
-  */
-
-  toolTipVisibilityOverrideFromToolState: true,
-
-  /**
-  @property Bool
-
-  Override tooltip visibility according to point hover
-
- */
-  toolTipVisibilityOverrideOnPointHover: true,
-  /**
-  @property Point
-
-  Store the point value for point hover
-
- */
-  toolTipPoint: null,
   /**
 
    @property Object
