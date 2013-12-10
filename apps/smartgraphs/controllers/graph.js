@@ -762,7 +762,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.setPath('currentlyDraggedPoint.y', y);
   },
 
-  setCursorLocation: function (x, y) {
+  setPointerLocation: function (x, y) {
     if (x === null) {
       y = null;
     }
