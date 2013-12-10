@@ -959,6 +959,7 @@ Smartgraphs.GraphView = SC.View.extend(
       },
 
       mouseEntered: function(evt) {
+        $('body').unbind('mousemove.axesView');
         $('body').bind('mousemove.axesView', $.proxy(this._mouseMoveHandler, this));
       },
 
@@ -970,6 +971,17 @@ Smartgraphs.GraphView = SC.View.extend(
       },
 
       mouseExited: function (evt) {
+        var frame = this.get('frame');
+        var offset = this.$().offset();
+
+        if (evt.clientX >= offset.left && evt.clientX <= offset.left + frame.width) {
+          if (evt.clientY >= offset.top && evt.clientY <= offset.top + frame.height) {
+            // The pointer is still in the frame; it must just have hit an axis or gridline.
+            this._mouseMoveHandler(evt);
+            return;
+          }
+        }
+
         this.get('inputAreaView')._unsetcurrentPointerCoordinates();
         this.$('body').unbind('mousemove.axesView');
       },
