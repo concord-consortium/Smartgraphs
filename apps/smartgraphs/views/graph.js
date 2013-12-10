@@ -1086,7 +1086,9 @@ Smartgraphs.GraphView = SC.View.extend(
         touchStart: function (evt) {
           this._mouseDownOrTouchStart(evt);
         },
+
         mouseDown: function (evt) {
+          this._setCurrentPointerCoordinatesFromEvt(evt);
           this._mouseDownOrTouchStart(evt);
         },
 
@@ -1114,6 +1116,7 @@ Smartgraphs.GraphView = SC.View.extend(
         },
 
         mouseDragged: function (evt) {
+          this._setCurrentPointerCoordinatesFromEvt(evt);
           this._mouseOrTouchesDragged(evt);
         },
 
@@ -1124,9 +1127,23 @@ Smartgraphs.GraphView = SC.View.extend(
           return this._graphController.inputAreaMouseDragged(point.x, point.y);
         },
 
-        mouseMoved:  function (evt) {
+        mouseEntered: function (evt) {
+          this._setCurrentPointerCoordinatesFromEvt(evt);
+        },
+
+        mouseMoved: function (evt) {
+          this._setCurrentPointerCoordinatesFromEvt(evt);
+        },
+
+        mouseExited: function (evt) {
+          this._unsetcurrentPointerCoordinates();
+        },
+
+        _setCurrentPointerCoordinatesFromEvt:  function(evt) {
           var coords = this.coordsForEvent(evt);
           var point;
+
+          this._graphView.set('currentPointerCoordinates', coords);
 
           if ( coords.clipped ) {
             this._graphController.setPointerLocation(null);
@@ -1138,9 +1155,10 @@ Smartgraphs.GraphView = SC.View.extend(
           return this._graphController.inputAreaMouseMove(point.x, point.y);
         },
 
-        mouseExited: function () {
-          this._graphController.setPointerLocation(null);
-        },
+        _unsetcurrentPointerCoordinates: function() {
+            this.set('currentPointerCoordinates', null);
+            this._graphController.setPointerLocation(null);
+          },
 
         touchEnd: function (evt) {
           this._mouseUpOrTouchEnd(evt);
