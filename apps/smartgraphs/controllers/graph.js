@@ -236,8 +236,15 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     Whether to render a tooltip showing the coordinates of the current toolTipPoint
   */
   showToolTipCoords: function() {
-    return this.get('toolTipCoordsRequested') && ! this.get('disableToolTipCoords');
-  }.property('toolTipCoordsRequested', 'disableToolTipCoords').cacheable(),
+    if ( ! this.get('toolTipCoordsRequested') ) {
+      // Never show coordinates if activity step doesn't request them.
+      return false;
+    }
+    if (this.get('currentlyDraggedPoint') || this.get('currentlyHoveredPoint')) {
+      return true;
+    }
+    return ! this.get('disableToolTipCoords');
+  }.property('toolTipCoordsRequested', 'disableToolTipCoords', 'currentlyDraggedPoint', 'currentlyHoveredPoint').cacheable(),
 
   /**
     @property {Smartgraphs.Point}
