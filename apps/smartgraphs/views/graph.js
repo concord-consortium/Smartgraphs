@@ -1136,7 +1136,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
           if ( coords.clipped ) {
             this._graphController.setPointerLocation(null);
-            return;
           } else {
             point = this._graphView.pointForCoordinates(coords.x, coords.y);
             this._graphController.setPointerLocation(point.x, point.y);
