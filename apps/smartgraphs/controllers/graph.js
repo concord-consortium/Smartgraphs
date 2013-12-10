@@ -241,8 +241,11 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       return false;
     }
     if (this.get('currentlyDraggedPoint') || this.get('currentlyHoveredPoint')) {
+      // Always show coordinates if activity requests them, and a point is being hovered or dragged.
       return true;
     }
+    // Finally, allow graphing tool, etc, to disable coordinate visibility when the user interaction
+    // no longer requires it.
     return ! this.get('disableToolTipCoords');
   }.property('toolTipCoordsRequested', 'disableToolTipCoords', 'currentlyDraggedPoint', 'currentlyHoveredPoint').cacheable(),
 
@@ -871,6 +874,16 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     this.setCurrentlyDraggedPoint(null);
     this.sendAction('dataPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
+  },
+
+  dataPointHovered: function(point) {
+    this.set('currentlyHoveredPoint', point);
+  },
+
+  dataPointUnhovered: function(point) {
+    if (this.get('currentlyHoveredPoint') === point) {
+      this.set('currentlyHoveredPoint', null);
+    }
   }
 
 });
