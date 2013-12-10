@@ -46,6 +46,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
 
   isEnabled: YES,
   isHovered: NO,
+  isDragging: NO,
   // required by CollectionFastPath
   layerIsCacheable: YES,
   isPoolable: YES,
@@ -55,8 +56,8 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   }.property('overrideColor', 'isDimmed', 'dimmedColor', 'datasetColor').cacheable(),
 
   radius: function () {
-    return (this.get('isHovered') ? this.get('hoveredRadius') : this.get('notHoveredRadius'));
-  }.property('isHovered', 'hoveredRadius', 'notHoveredRadius').cacheable(),
+    return (this.get('isHovered') || this.get('isDragging') ? this.get('hoveredRadius') : this.get('notHoveredRadius'));
+  }.property('isHovered', 'isDragging', 'hoveredRadius', 'notHoveredRadius').cacheable(),
 
   modifiersDidChange: function () {
     var modifiers = this.get('modifiers') || {},
@@ -105,11 +106,8 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     this.get('controller').dataPointSelected(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
       // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
       // also handle it
-    var graphView = this.getPath('parentView.graphView');
-    var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
-    var point = graphView.pointForCoordinates(coords.x, coords.y);
-    this.get('datadef').set('dragValueX', this.getPath('content.x'));
-    this.get('datadef').set('dragValueY', this.getPath('content.y'));
+
+    this.set('isDragging', true);
     return YES;
   },
 
@@ -150,6 +148,20 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     var graphController = this.get('controller');
     var dataRepresentation = this.get('dataRepresentation');
     graphController.dataPointUp(dataRepresentation, point.x, point.y);
+
+    this.set('isDragging', false);
+
+    // Check if we might be hovered
+    var r = this.get('targetRadius');
+    var attrs = this.get('raphaelObject').items[0].attr();
+    var dx = coords.x - attrs.cx;
+    var dy = coords.y - attrs.cy;
+    if (dx*dx + dy*dy < r*r) {
+      this.set('isHovered', true);
+      graphController.dataPointHovered(this.get('content'));
+    } else {
+      this.set('isHovered', false);
+    }
     return YES;
   },
 
@@ -194,10 +206,27 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   },
 
   contentDidChange: function() {
+    // Unfortunately, dragging a point in the graphing tool causes an entirely new set of Points
+    // to be created. Because SC.CollectionView reuses item views, our content will change when the
+    // graphing tool is in use; worse, this view may or may not continue to represent the "same"
+    // point (i.e., we might represent the dragged point, then suddenly a differnet, non-dragged
+    // point.)
+
+    // The below is really just here so we can manage as best we can. The underlying implementation
+    // should allow for mutating the currently selected point or swapping out a single element in
+    // the pointset, but that will require some work.
     if (this.get('isHovered')) {
       this.set('isHovered', false);
       this.get('controller').dataPointUnhovered(this._lastContent);
     }
+
+    // Potential issue: who says there isn't more than one point being dragged?
+    var dragX = this.getPath('datadef.dragValueX');
+    var dragY = this.getPath('datadef.dragValueY');
+    var x = this.getPath('content.x');
+    var y = this.getPath('content.y');
+    this.set('isDragging', (dragX === x && dragY === y));
+
     this._lastContent = this.get('content');
   }.observes('content')
 
