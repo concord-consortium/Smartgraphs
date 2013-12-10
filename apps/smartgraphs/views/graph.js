@@ -942,6 +942,22 @@ Smartgraphs.GraphView = SC.View.extend(
         this.get('inputAreaView').mouseDown(evt);
       },
 
+      mouseEntered: function(evt) {
+        $('body').bind('mousemove.axesView', $.proxy(this._mouseMoveHandler, this));
+      },
+
+      // The rest of the pointer-coordinate tracking is in inputAreaView, but make sure to track
+      // mouseMoved and mouseExited up here in the parent view so that we don't miss mouse moves
+      // (or get spurious mouseExiteds) as the pointer passes over the grid view and axis views
+      _mouseMoveHandler: function (evt) {
+        this.get('inputAreaView')._setCurrentPointerCoordinatesFromEvt(evt);
+      },
+
+      mouseExited: function (evt) {
+        this.get('inputAreaView')._unsetcurrentPointerCoordinates();
+        this.$('body').unbind('mousemove.axesView');
+      },
+
       gridView: RaphaelViews.RaphaelView.design({
 
         gridStroke: '#C2CCE0',
@@ -1131,14 +1147,6 @@ Smartgraphs.GraphView = SC.View.extend(
           this._setCurrentPointerCoordinatesFromEvt(evt);
         },
 
-        mouseMoved: function (evt) {
-          this._setCurrentPointerCoordinatesFromEvt(evt);
-        },
-
-        mouseExited: function (evt) {
-          this._unsetcurrentPointerCoordinates();
-        },
-
         _setCurrentPointerCoordinatesFromEvt:  function(evt) {
           var coords = this.coordsForEvent(evt);
           var point;
@@ -1147,11 +1155,11 @@ Smartgraphs.GraphView = SC.View.extend(
 
           if ( coords.clipped ) {
             this._graphController.setPointerLocation(null);
-          } else {
-            point = this._graphView.pointForCoordinates(coords.x, coords.y);
-            this._graphController.setPointerLocation(point.x, point.y);
+            return;
           }
 
+          point = this._graphView.pointForCoordinates(coords.x, coords.y);
+          this._graphController.setPointerLocation(point.x, point.y);
           return this._graphController.inputAreaMouseMove(point.x, point.y);
         },
 
