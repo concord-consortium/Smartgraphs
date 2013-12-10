@@ -360,20 +360,36 @@ Smartgraphs.GraphView = SC.View.extend(
     displayProperties: ['show', 'point.xFixed', 'point.yFixed'],
 
     render: function (context) {
+      var X_OFFSET = 5;
+      var Y_OFFSET = 5;
+
       var show = this.get('show');
       var point = this.get('point');
+      var displayHtml;
+      var width;
       var coords;
+      var right;
+      var left;
 
       if (show && point.get('x') != null) {
         coords = this.get('parentView') .coordinatesForPoint(point.get('x'), point.get('y'));
+        left = coords.x + X_OFFSET;
+
+        displayHtml = point.get('xFixed') + ",&nbsp;" + point.get('yFixed');
+        width = SC.metricsForString(displayHtml, this.get('layer'), ['toolTipLabel']).width - 10;
+
+        // Clip to the right edge (only)
+        right = this.getPath('parentView.frame.width') - this.getPath('parentView.padding.right');
+
+        if (left + width > right) {
+          left = right - width;
+        }
+
         context.push([
           "<div class='toolTipLabel' ",
-          "  style=' ",
-          "  text-align: center; ",
-          "  padding: 5px; ",
-          "  position: absolute; ",
-          "  top: " + (coords.y + 5) + "px; ",
-          "  left: " + (coords.x + 5) + "px; ",
+          "  style='width: ", (width-2), "px; ",    // -2px to account for border width
+          "  top: " + (coords.y + Y_OFFSET) + "px; ",
+          "  left: " + left + "px; ",
           "  z-index: 10000;'>",
             point.get('xFixed'), ",&nbsp;", point.get('yFixed'),
           "</div>"
