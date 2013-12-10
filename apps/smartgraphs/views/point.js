@@ -79,7 +79,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
       return;
     }
     this.set('isHovered', YES);
-    this.setPath('controller.currentlyHoveredPoint', this.get('content'));
+    this.get('controller').dataPointHovered(this.get('content'));
   },
 
   mouseExited: function () {
@@ -87,9 +87,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
       return;
     }
     this.set('isHovered', NO);
-    if (this.getPath('controller.currentlyHoveredPoint') === this.get('content')) {
-      this.setPath('controller.currentlyHoveredPoint', null);
-    }
+    this.get('controller').dataPointUnhovered(this.get('content'));
   },
 
   mouseDown: function (evt) {
@@ -193,6 +191,14 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
       visibleCircle = context.raphael().items[0];
       visibleCircle.attr({ r: radius, fill: color, 'clip-rect': clipRect });
     }
-  }
+  },
+
+  contentDidChange: function() {
+    if (this.get('isHovered')) {
+      this.set('isHovered', false);
+      this.get('controller').dataPointUnhovered(this._lastContent);
+    }
+    this._lastContent = this.get('content');
+  }.observes('content')
 
 });
