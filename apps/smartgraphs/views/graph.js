@@ -1145,7 +1145,7 @@ Smartgraphs.GraphView = SC.View.extend(
           return this._graphController.inputAreaMouseMove(point.x, point.y);
         },
 
-        mouseExited: function (evt) {
+        mouseExited: function () {
           this._graphView.setCursorLocation(null);
         },
 
@@ -1163,12 +1163,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
           var graphController = this._graphView.get('graphController');
           return graphController.inputAreaMouseUp(point.x, point.y);
-        },
-
-
-        mouseExited: function () {
-          var graphController = this._graphView.get('graphController');
-          this._graphView.set("mouseOverInputArea", false);
         }
 
       }),
