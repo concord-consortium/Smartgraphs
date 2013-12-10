@@ -1135,7 +1135,7 @@ Smartgraphs.GraphView = SC.View.extend(
           var point;
 
           if ( coords.clipped ) {
-            this._graphView.setCursorLocation(null);
+            this._graphController.setCursorLocation(null);
             return;
           } else {
             point = this._graphView.pointForCoordinates(coords.x, coords.y);
@@ -1146,7 +1146,7 @@ Smartgraphs.GraphView = SC.View.extend(
         },
 
         mouseExited: function () {
-          this._graphView.setCursorLocation(null);
+          this._graphController.setCursorLocation(null);
         },
 
         touchEnd: function (evt) {
