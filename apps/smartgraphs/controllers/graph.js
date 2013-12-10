@@ -10,6 +10,7 @@ sc_require('tools/label/label_state');
 sc_require('tools/animation/animation_state');
 sc_require('tools/prediction/prediction_state');
 sc_require('tools/graphing/graphing_state');
+sc_require('lib/marks/point');
 
 /** @class
 
@@ -109,7 +110,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     @property {Smartgraphs.Datadef[]}
 
     A list of all the Datadefs added to this graph
-
   */
   datadefList: null,
 
@@ -117,7 +117,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     @property {Smartgraphs.Dataref[]}
 
     A list of all the Datadefs added to this graph.
-
   */
   datarefList: null,
 
@@ -143,55 +142,57 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   title: null,
 
   /**
-
    @property Bool
 
    Whether to show the grid line or not
-
-   */
-
+  */
   showGraphGrid : null,
 
   /**
-   @property Bool
+   @property Boolean
 
-   Whether to show the tooltip  or not
-
+   The 'showToolTipCoords' property from the activity step's graph configuration.
   */
-
-  showToolTipCoords : null,
+  toolTipCoordsRequested : false,
 
   /**
-   @property Bool
+   @property Boolean
 
-   Override tooltip visibility according to state of the tool
-
+   May be set to true to temporarily stop showing the tooltip with the current coordintes.
   */
-
-  toolTipVisibilityOverrideFromToolState: true,
+  disableToolTipCoords: false,
 
   /**
-  @property Bool
+    @property {Smartgraphs.Point | null}
 
-  Override tooltip visibility according to point hover
+    The point that is currently hovered, if any. Otherwise, null.
+  */
+  currentlyHoveredPoint: null,
 
- */
-  toolTipVisibilityOverrideOnPointHover: true,
   /**
-  @property Point
+    @property {Smartgraphs.Point | null}
 
-  Store the point value for point hover
+    The point that is currently being dragged, if any. Otherwise, null.
+  */
+  currentlyDraggedPoint: null,
 
- */
-  toolTipPoint: null,
   /**
+    @property {Smartgraphs.Point}
 
+    The current position of the pointer (i.e, the position of the mouse cursor or the position of
+    the latest touch) if the current position is within the graph axes (the "input area"). If the
+    cursor strays outside of that area, the x and y properties of this property are set to null.
+
+    (The point itself is not set to null, to avoid unnecessary creation and destruction of Point
+    objects, and rebinding of observers, every time the mouse passes over the input area)
+  */
+  currentPointerLocation: Smartgraphs.Point.create(),
+
+  /**
    @property Object
 
-   Layout of the Tooltip
-
-   */
-
+   Layout of the toolTipPoint
+  */
   tooltipCoords : { x: 0, y: 0, top: 0, left: 0, coordOffset: 5, width: 100},
 
   /**
@@ -229,7 +230,37 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   showInControlsPanel: null,
 
-/**
+  /**
+    @property Boolean
+
+    Whether to render a tooltip showing the coordinates of the current toolTipPoint
+  */
+  showToolTipCoords: function() {
+    if ( ! this.get('toolTipCoordsRequested') ) {
+      // Never show coordinates if activity step doesn't request them.
+      return false;
+    }
+    if (this.get('currentlyDraggedPoint') || this.get('currentlyHoveredPoint')) {
+      // Always show coordinates if activity requests them, and a point is being hovered or dragged.
+      return true;
+    }
+    // Finally, allow graphing tool, etc, to disable coordinate visibility when the user interaction
+    // no longer requires it.
+    return ! this.get('disableToolTipCoords');
+  }.property('toolTipCoordsRequested', 'disableToolTipCoords', 'currentlyDraggedPoint', 'currentlyHoveredPoint').cacheable(),
+
+  /**
+    @property {Smartgraphs.Point}
+
+    The point whose coordinates should be displayed in a tooltip, if 'showToolTipCoords' is true.
+
+    The toolTipPoint's x and y properties may be null, in which case there is no point to show.
+  */
+  toolTipPoint: function() {
+    return this.get('currentlyDraggedPoint') || this.get('currentlyHoveredPoint') || this.get('currentPointerLocation');
+  }.property('currentlyDraggedPoint', 'currentlyHoveredPoint').cacheable(),
+
+  /**
     Add a datadef to this controller
 
     @param {Smartgraphs.Datadef} datadef
@@ -254,14 +285,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     this.get('datarefList').pushObject(dataref);
   },
-
-
-  toolTipPointDidChange: function () {
-    var toolTipPoint = this.get('toolTipPoint');
-    if (toolTipPoint !== null) {
-      this.updateToolTip(toolTipPoint, null);
-    }
-  }.observes('toolTipPoint'),
 
   /**
     Removes all datadefs from the list. Sets the datadefList attribute to [] (therefore, also initializes the
@@ -479,7 +502,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('yAxis', null);
     this.set('showGraphGrid', null);
     this.set('showCrossHairs', null);
-    this.set('showToolTipCoords', null);
+    this.set('toolTipCoordsRequested', false);
+    this.set('disableToolTipCoords', false);
     this.set('graphableDataObjects', []);
     this.set('arrLegends', []);
     this.set('dataRepresentations', []);
@@ -548,20 +572,12 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('yAxis', this.getAxis(config.yAxis));
     this.set('showGraphGrid', config.showGraphGrid);
     this.set('showCrossHairs', config.showCrossHairs);
-    this.set('showToolTipCoords', config.showToolTipCoords);
+    this.set('toolTipCoordsRequested', config.showToolTipCoords);
 
     var xMax = this.getAxis(config.xAxis).get("max");
     var yMax = this.getAxis(config.yAxis).get("max");
     var xMin = this.getAxis(config.xAxis).get("min");
     var yMin = this.getAxis(config.yAxis).get("min");
-    var widthMultiplier = 15;
-    var arrLegendElements = [];
-    if (parseInt(yMin, 10) < 0 || parseInt(xMin, 10) < 0) {
-      widthMultiplier = 21;
-    }
-    var iTooltipWidth = (xMax + "," + yMax).length * widthMultiplier;
-    var tooltipCoords = this.get("tooltipCoords");
-    this.set("tooltipCoords", { x: 0, y: 0, top: 0, left: 0, coordOffset: 5, width: iTooltipWidth});
 
     dataSpecs.forEach(function (dataSpec) {
       var datadefName,
@@ -729,37 +745,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.get('dataRepresentations').setEach('isDimmed', NO);
   },
 
-  updateToolTip: function (point, coords) {
-    var newPoint = Smartgraphs.Point.create();
-    newPoint.set('x', point.x);
-    newPoint.set('y', point.y);
-    var xRounded = newPoint.xRounded().toFixed(2);
-    var yRounded = newPoint.yRounded().toFixed(2);
-
-    var tooltipCoords = this.get("tooltipCoords");
-    if (coords === null || coords === undefined) {
-      tooltipCoords = {
-          x: xRounded,
-          y: yRounded,
-          top: tooltipCoords.top,
-          left: tooltipCoords.left,
-          coordOffset: tooltipCoords.coordOffset,
-          width: tooltipCoords.width
-        };
-    }
-    else {
-      tooltipCoords = {
-        x: xRounded,
-        y: yRounded,
-        top: coords.y,
-        left: coords.x,
-        coordOffset: tooltipCoords.coordOffset,
-        width: tooltipCoords.width
-      };
-    }
-    this.set("tooltipCoords", tooltipCoords);
-  },
-
   /**
 
     return DataRepresentation which represents the given datadefName.
@@ -772,6 +757,27 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       }
     }
     return null;
+  },
+
+  setCurrentlyDraggedPoint: function (x, y) {
+    if (x === null) {
+      this.set('currentlyDraggedPoint', null);
+      return;
+    }
+
+    if ( ! this.get('currentlyDraggedPoint') ) {
+      this.set('currentlyDraggedPoint', Smartgraphs.Point.create());
+    }
+    this.setPath('currentlyDraggedPoint.x', x);
+    this.setPath('currentlyDraggedPoint.y', y);
+  },
+
+  setPointerLocation: function (x, y) {
+    if (x === null) {
+      y = null;
+    }
+    this.setPath('currentPointerLocation.x', x);
+    this.setPath('currentPointerLocation.y', y);
   },
 
   // Events
@@ -850,20 +856,15 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
     }
+    this.setCurrentlyDraggedPoint(x, y);
     this.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
-  },
-
-  dataPointDown: function (dataRepresentation, x, y) {
-    if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
-      Smartgraphs.statechart.sendAction('dataPointDown', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
-    }
-    this.sendAction('dataPointDown', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
   },
 
   dataPointDragged: function (dataRepresentation, x, y) {
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
     }
+    this.setCurrentlyDraggedPoint(x, y);
     this.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
   },
 
@@ -871,7 +872,18 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
     }
+    this.setCurrentlyDraggedPoint(null);
     this.sendAction('dataPointUp', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
+  },
+
+  dataPointHovered: function(point) {
+    this.set('currentlyHoveredPoint', point);
+  },
+
+  dataPointUnhovered: function(point) {
+    if (this.get('currentlyHoveredPoint') === point) {
+      this.set('currentlyHoveredPoint', null);
+    }
   }
 
 });

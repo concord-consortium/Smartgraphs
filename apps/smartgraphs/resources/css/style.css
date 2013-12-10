@@ -301,10 +301,12 @@ body.sc-theme {
   overflow: visible;
 }
 
-.toolTipLabel
-{
+.toolTipLabel {
   background-color: #EFEDDD;
   border: 1px solid #000000;
+  text-align: center;
+  position: absolute;
+  padding: 5px 0;
 }
 
 .legendView
