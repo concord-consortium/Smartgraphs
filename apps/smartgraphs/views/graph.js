@@ -354,35 +354,28 @@ Smartgraphs.GraphView = SC.View.extend(
   }),
 
   tooltipView: SC.View.extend({
-    displayProperties: ['coords', 'mouseOverInputArea'],
-    coordsBinding: '.parentView*graphController.tooltipCoords',
-    mouseOverInputAreaBinding: '.parentView.mouseOverInputArea',
+    showBinding: '.parentView*graphController.showToolTipCoords',
+    pointBinding: '.parentView*graphController.toolTipPoint',
 
-    render: function (context, firstTime) {
-      var graphController = this.get("owner").graphController;
+    displayProperties: ['show', 'point.xFixed', 'point.yFixed'],
 
-      if (!graphController) {
-        return;
-      }
+    render: function (context) {
+      var show = this.get('show');
+      var point = this.get('point');
+      var coords;
 
-      var coords = this.get('coords');
-      var mouseOverInputArea = this.get('mouseOverInputArea');
-      var showToolTipCoords = graphController.get('showToolTipCoords');
-      var overrideVisibility =
-        (graphController.get('toolTipVisibilityOverrideOnPointHover') ||
-         graphController.get('toolTipVisibilityOverrideFromToolState'));
-
-      if (showToolTipCoords && mouseOverInputArea && overrideVisibility) {
+      if (show && point.get('x') != null) {
+        coords = this.get('parentView') .coordinatesForPoint(point.get('x'), point.get('y'));
         context.push([
           "<div class='toolTipLabel' ",
-          "  style='width: " + coords.width + "px; ",
+          "  style=' ",
           "  text-align: center; ",
           "  padding: 5px; ",
           "  position: absolute; ",
-          "  top: " + (coords.top + coords.coordOffset) + "px; ",
-          "  left: " + (coords.left + coords.coordOffset) + "px; ",
+          "  top: " + (coords.y + 5) + "px; ",
+          "  left: " + (coords.x + 5) + "px; ",
           "  z-index: 10000;'>",
-            coords.x, ",&nbsp;", coords.y,
+            point.get('xFixed'), ",&nbsp;", point.get('yFixed'),
           "</div>"
         ].join(''));
       } else {
@@ -1050,6 +1043,7 @@ Smartgraphs.GraphView = SC.View.extend(
           // cache these rather than lookup the jquery object (graphView.$()) per mouse event
           this._graphView = this.get('graphView');
           this._$graphView = this._graphView.$();
+          this._graphController = this._graphView.get('graphController');
         },
 
         renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
