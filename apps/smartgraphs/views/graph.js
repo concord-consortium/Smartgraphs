@@ -372,7 +372,7 @@ Smartgraphs.GraphView = SC.View.extend(
       var left;
 
       if (show && point.get('x') != null) {
-        coords = this.get('parentView') .coordinatesForPoint(point.get('x'), point.get('y'));
+        coords = this.get('parentView').coordinatesForPoint(point.get('x'), point.get('y'));
         left = coords.x + X_OFFSET;
 
         displayHtml = point.get('xFixed') + ",&nbsp;" + point.get('yFixed');
