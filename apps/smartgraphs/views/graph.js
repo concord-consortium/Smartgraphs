@@ -1172,7 +1172,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
           point = this._graphView.pointForCoordinates(coords.x, coords.y);
           this._graphController.setPointerLocation(point.x, point.y);
-          return this._graphController.inputAreaMouseMove(point.x, point.y);
         },
 
         _unsetcurrentPointerCoordinates: function() {

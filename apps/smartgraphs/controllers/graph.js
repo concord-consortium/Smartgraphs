@@ -848,10 +848,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     return !!this.sendAction('mouseUpAtPoint', this, {x: x, y: y});
   },
 
-  inputAreaMouseMove: function (x, y) {
-    return !!this.sendAction('mouseMoveAtPoint', this, {x: x, y: y});
-  },
-
   dataPointSelected: function (dataRepresentation, x, y) {
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
