@@ -40,8 +40,8 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
     this.graphControllerForState(state).addAnnotation(sketch);
   },
 
-  appendRepresentation: function (state, rep) {
-    this.graphControllerForState(state).addDatadef(rep);
+  appendDatadef: function (state, datadef) {
+    this.graphControllerForState(state).addDatadef(datadef);
   },
 
   hideGraphTitle: function () {
@@ -87,25 +87,82 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
     this.set('graphLogicalBounds', graphView.graphCanvasView._getLogicalBounds());
   },
 
-  plotPoint: function (point) {
-    if (!this.isPointOverlap(point)) {
-      var datadef = this.getDatadef(this.get('datadefName'));
-      datadef.addPoint(point.x, point.y);
+  plotPoint: function (x, y) {
+    var datadef = this.get('datadef');
+
+    if (!this.isPointOverlap(x, y)) {
+      datadef.addPoint(x, y);
     }
   },
 
-  isPointOverlap: function (point) {
-    var curPoint = this.coordinatesForPoint(point.x, point.y);
-    var radius = this.getPointRadius();
-    var datadef = this.getDatadef(this.get('datadefName'));
+  selectDatadefPoint: function(x, y) {
+    var datadef = this.get('datadef');
+    var points = datadef.get('points');
+
+    datadef.setDragValueXY(x, y);
+
+    for (var i = 0, len = points.get('length'); i < len; i++) {
+      if (x === points[i][0] && y === points[i][1]) {
+        this.set('pointMovedNumber', i);
+        break;
+      }
+    }
+  },
+
+  moveSelectedPoint: function(x, y) {
+    if (this.isPointOverlap(x, y)) {
+      return;
+    }
+
+    var datadef = this.get('datadef');
+    var pointMovedNumber = this.get('pointMovedNumber');
+
+    datadef.setDragValueXY(x, y);
+
+    if (pointMovedNumber !== null) {
+      datadef.replacePoint(pointMovedNumber, x, y);
+    }
+  },
+
+  deselectPoint: function() {
+    this.get('datadef').setDragValueXY(null, null);
+    this.set('pointMovedNumber', null);
+  },
+
+  updateLine: function() {
+    this.set('lineCount', 1);
+    var annotationPoints = this.getPath('annotation.points');
+    var datadefPoints = this.getPath('datadef.points');
+    var lineEndPoints = this.getLineEndPointsArray(datadefPoints[0], datadefPoints[1]);
+    annotationPoints.replace(0, 2, lineEndPoints);
+  },
+
+  coordsAreEqual: function(x1, y1, x2, y2, digits) {
+    return x1.toFixed(digits) === x2.toFixed(digits) && y1.toFixed(digits) === y2.toFixed(digits);
+  },
+
+  checkIfSelectedPointMoved: function(initialPoint) {
+    var point = this.getPath('datadef.points')[this.get('pointMovedNumber')];
+    this.set('pointMoved', ! this.coordsAreEqual(initialPoint.x, initialPoint.y, point[0], point[1], 2));
+  },
+
+  isPointOverlap: function (x, y) {
+    var datadef = this.get('datadef');
     var datadefPoints = datadef.get('points');
+
+    if (datadefPoints.get('length') === 0) {
+      return false;
+    }
+
+    var curPoint = this.coordinatesForPoint(x, y);
+    var radius = this.getPointRadius();
     var pointMovedNumber = this.get('pointMovedNumber');
     for (var i = 0; i < datadefPoints.length; i++) {
       if (i === pointMovedNumber) {
         continue;
       }
-      var datadefPoint = this.coordinatesForPoint(datadefPoints[i][0], datadefPoints[i][1]);
-      var distance = Math.sqrt(Math.pow(datadefPoint.x - curPoint.x, 2) +  Math.pow(datadefPoint.y - curPoint.y, 2));
+      var datadefCoords = this.coordinatesForPoint(datadefPoints[i][0], datadefPoints[i][1]);
+      var distance = Math.sqrt(Math.pow(datadefCoords.x - curPoint.x, 2) +  Math.pow(datadefCoords.y - curPoint.y, 2));
       if (distance < radius + radius) {
         return true;
       }
@@ -132,19 +189,6 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
         return;
       }
     }
-  },
-
-  drawLineThroughPoints: function (point1, point2) {
-    if (point1[0] > point2[0]) {
-      var point3 = point2;
-      point2 = point1;
-      point1 = point3;
-    }
-    var pointLogicalBoundsArr = this.getLineEndPointsArray(point1, point2);
-    var annotation = this.getAnnotation(this.get('annotationName'));
-    annotation.addPoint(pointLogicalBoundsArr[0][0], pointLogicalBoundsArr[0][1]);
-    annotation.addPoint(pointLogicalBoundsArr[1][0], pointLogicalBoundsArr[1][1]);
-    this.set('lineCount', this.get('lineCount') + 1);
   },
 
   getLinePointWithinLogicalBounds: function (point, m, c) {
