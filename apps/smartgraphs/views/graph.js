@@ -995,10 +995,11 @@ Smartgraphs.GraphView = SC.View.extend(
         graphView: SC.outlet('parentView.graphView'),
 
         renderCallback: function (raphaelCanvas, attrs) {
+          var set = raphaelCanvas.set();
           for (var iCounter = 0; iCounter < attrs.length; iCounter++) {
-            raphaelCanvas.path(attrs[iCounter].d).attr(attrs[iCounter]);
+            set.push(raphaelCanvas.path(attrs[iCounter].d).attr(attrs[iCounter]));
           }
-          return;
+          return set;
         },
 
         render: function (context, firstTime) {
