@@ -24,11 +24,6 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
   // Store the initial location of a dragged point so we can set pointMoved
   initialPoint: null,
 
-  // utility methods
-  setCurrentlyDraggedPoint: function(x, y) {
-    this.getPath('statechart.owner').setCurrentlyDraggedPoint(x, y);
-  },
-
   checkDatadef: function(dataRepresentation) {
     return dataRepresentation && dataRepresentation.getPath('datadef.name') === this.get('datadefName');
   },
@@ -36,18 +31,15 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
   createPoint: function(context, args) {
     Smartgraphs.graphingTool.plotPoint(args.x, args.y);
     Smartgraphs.graphingTool.selectDatadefPoint(args.x, args.y);
-    this.setCurrentlyDraggedPoint(args.x, args.y);
   },
 
   updatePoint: function(context, args) {
     Smartgraphs.graphingTool.moveSelectedPoint(args.x, args.y);
-    this.setCurrentlyDraggedPoint(args.x, args.y);
   },
 
   finishPoint: function(context, args) {
     Smartgraphs.graphingTool.moveSelectedPoint(args.x, args.y);
     Smartgraphs.graphingTool.deselectPoint();
-    this.setCurrentlyDraggedPoint(null);
   },
 
   OFF: SC.State.design({
