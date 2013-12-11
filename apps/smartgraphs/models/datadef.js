@@ -156,6 +156,11 @@ Smartgraphs.Datadef = SC.Record.extend(
   getNewRepresentation: function(options) {
     var sampleset = this.getNewSampleset(options);
     return sampleset.getNewRepresentation(options);
+  },
+
+  setDragValueXY: function(x, y) {
+    this.set('dragValueX', x);
+    this.set('dragValueY', y);
   }
 });
 
