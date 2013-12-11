@@ -24,6 +24,7 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
   setup: function (args) {
     this.set('graphPane', args.pane);
     var graphController = this.graphControllerForPane(args.pane);
+    this.set('graphController', graphController);
     var otherPane = this.otherPaneFor(args.pane);
     var tableController = this.tableControllerForPane(otherPane);
     tableController.setRoundingFunc('Fixed');
@@ -99,6 +100,7 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
     var datadef = this.get('datadef');
     var points = datadef.get('points');
 
+    this.get('graphController').setCurrentlyDraggedPoint(x, y);
     datadef.setDragValueXY(x, y);
 
     for (var i = 0, len = points.get('length'); i < len; i++) {
@@ -111,12 +113,18 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
 
   moveSelectedPoint: function(x, y) {
     if (this.isPointOverlap(x, y)) {
+      // Graph controller will have already set its currentlyDraggedPoint to (x,y). However, we
+      // won't update the point to (x, y), so we have to force graph controller to set the
+      // currentlyDraggedPoint back to what it was before.
+      var point = this.getPath('datadef.points')[this.get('pointMovedNumber')];
+      this.get('graphController').setCurrentlyDraggedPoint(point[0], point[1]);
       return;
     }
 
     var datadef = this.get('datadef');
     var pointMovedNumber = this.get('pointMovedNumber');
 
+    this.get('graphController').setCurrentlyDraggedPoint(x, y);
     datadef.setDragValueXY(x, y);
 
     if (pointMovedNumber !== null) {
@@ -125,6 +133,7 @@ Smartgraphs.graphingTool = Smartgraphs.Tool.create(
   },
 
   deselectPoint: function() {
+    this.get('graphController').setCurrentlyDraggedPoint(null);
     this.get('datadef').setDragValueXY(null, null);
     this.set('pointMovedNumber', null);
   },
