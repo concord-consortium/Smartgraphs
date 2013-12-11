@@ -606,7 +606,7 @@ Smartgraphs.GraphView = SC.View.extend(
     },
 
     mouseExited: function (evt) {
-      this.getPath('axesView.inputAreaView')._unsetcurrentPointerCoordinates();
+      this.getPath('axesView.inputAreaView')._unsetCurrentPointerCoordinates();
     },
 
     _getLogicalBounds: function () {
@@ -958,31 +958,35 @@ Smartgraphs.GraphView = SC.View.extend(
 
       childViews: 'inputAreaView xAxisView yAxisView gridView'.w(),
 
-      // Forward any events that bubble here to the input area view. This seems silly; we should
-      // just let events bubble to here and handle them here.
+      // Event listeners are here, instead of on the inputAreaView, so that the gridView doesn't
+      // obstruct events.
 
-      mouseDown:  function (evt) {
-        this.get('inputAreaView').mouseDown(evt);
-      },
-
-      mouseUp: function (evt) {
-        this.get('inputAreaView').mouseUp(evt);
+      mouseDown: function (evt) {
+        this.inputAreaView._mouseDownOrTouchStart(evt);
       },
 
       touchStart: function (evt) {
-        this.get('inputArea').touchStart(evt);
+        this.inputAreaView._mouseDownOrTouchStart(evt);
+      },
+
+      mouseDragged: function (evt) {
+        this.inputAreaView._mouseOrTouchesDragged(evt);
       },
 
       touchesDragged: function (evt) {
-        this.get('inputArea').touchesDragged(evt);
+        this.inputAreaView._mouseOrTouchesDragged(evt);
+      },
+
+      mouseUp: function (evt) {
+        this.inputAreaView._mouseUpOrTouchEnd(evt);
       },
 
       touchEnd: function (evt) {
-        this.get('inputArea').touchEnd(evt);
+        this.inputAreaView._touchEndOrTouchCancel(evt);
       },
 
       touchCancel: function (evt) {
-        this.get('inputArea').touchCancel(evt);
+        this.inputAreaView._touchEndOrTouchCancel(evt);
       },
 
       gridView: RaphaelViews.RaphaelView.design({
@@ -1127,18 +1131,6 @@ Smartgraphs.GraphView = SC.View.extend(
           return { x: x, y: y, clipped: clipped };
         },
 
-        mouseEntered: function (evt) {
-          this._setCurrentPointerCoordinatesFromEvt(evt);
-        },
-
-        touchStart: function (evt) {
-          this._mouseDownOrTouchStart(evt);
-        },
-
-        mouseDown: function (evt) {
-          this._mouseDownOrTouchStart(evt);
-        },
-
         _mouseDownOrTouchStart: function (evt) {
           this._setCurrentPointerCoordinatesFromEvt(evt);
           this._graphController = this._graphView.get('graphController');
@@ -1159,29 +1151,17 @@ Smartgraphs.GraphView = SC.View.extend(
           return this._graphController.inputAreaMouseDown(point.x, point.y);
         },
 
-        touchesDragged: function (evt) {
-          this._mouseOrTouchesDragged(evt);
-        },
+        _mouseOrTouchesDragged: function (evt) {
+          var coords = this.coordsForEvent(evt),
+              point = this._graphView.pointForCoordinates(coords.x, coords.y);
 
-        mouseDragged: function (evt) {
-          this._mouseOrTouchesDragged(evt);
-        },
-
-        mouseUp: function (evt) {
-          this._mouseUpOrTouchEnd(evt);
-        },
-
-        touchEnd: function (evt) {
-          this._touchEndOrTouchCancel(evt);
-        },
-
-        touchCancel: function (evt) {
-          this._touchEndOrTouchCancel(evt);
+          this._setCurrentPointerCoordinatesFromEvt(evt);
+          return this._graphController.inputAreaMouseDragged(point.x, point.y);
         },
 
         _touchEndOrTouchCancel: function (evt) {
           this._mouseUpOrTouchEnd(evt);
-          this._unsetcurrentPointerCoordinates();
+          this._unsetCurrentPointerCoordinates();
           // Although mouseup doesn't unset the current pointer location -- the mouse is stil in the
           // view until mouseExited -- we have to consider touchEnd to do so.
           this._graphController.setPointerLocation(null);
@@ -1193,14 +1173,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
           var graphController = this._graphView.get('graphController');
           return graphController.inputAreaMouseUp(point.x, point.y);
-        },
-
-        _mouseOrTouchesDragged: function (evt) {
-          var coords = this.coordsForEvent(evt),
-              point = this._graphView.pointForCoordinates(coords.x, coords.y);
-
-          this._setCurrentPointerCoordinatesFromEvt(evt);
-          return this._graphController.inputAreaMouseDragged(point.x, point.y);
         },
 
         _setCurrentPointerCoordinatesFromEvt:  function(evt) {
@@ -1218,7 +1190,7 @@ Smartgraphs.GraphView = SC.View.extend(
           this._graphController.setPointerLocation(point.x, point.y);
         },
 
-        _unsetcurrentPointerCoordinates: function() {
+        _unsetCurrentPointerCoordinates: function() {
             this.set('currentPointerCoordinates', null);
             this._graphController.setPointerLocation(null);
         }
