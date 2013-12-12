@@ -183,14 +183,17 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
 
         mouseDownAtPoint: function(context, args) {
           this.get('toolRoot').createPoint(context, args);
+          Smartgraphs.graphingTool.updateLine();
         },
 
         mouseDraggedToPoint: function(context, args) {
           this.get('toolRoot').updatePoint(context, args);
+          Smartgraphs.graphingTool.updateLine();
         },
 
         mouseUpAtPoint: function(context, args) {
           this.get('toolRoot').finishPoint(context, args);
+          Smartgraphs.graphingTool.updateLine();
           this.gotoState('SECOND_POINT_SELECTED');
         }
       }),
