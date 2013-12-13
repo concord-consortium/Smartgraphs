@@ -31,11 +31,23 @@ Smartgraphs.activityPageDef = SC.Page.extend({
         hasLayout: NO,
         hasHorizontalScroller: NO,
 
+        activityPageChanged: function() {
+          var self = this;
+          self.scrollTo(0,0);
+        }.observes('Smartgraphs.activityPageController.content'),
+
         contentView: SC.View.design({
           classNames: 'text-content',
           useStaticLayout: YES,
 
           childViews: 'introText activityStepWrapper'.w(),
+
+          activityStepChanged: function() {
+            var self = this;
+            this.invokeNext(function() {
+              self.notifyPropertyChange('frame');
+            });
+          }.observes('Smartgraphs.activityStepController.content'),
 
           introText: SC.StaticContentView.design({
             useStaticLayout: YES,
