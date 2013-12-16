@@ -35,6 +35,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     statechart.initStatechart();
     statechart.set('owner', this);
     this.set('statechart', statechart);
+    this.set('currentPointerLocation', Smartgraphs.Point.create());
   },
 
   statechartDef: SC.Statechart.design({
@@ -186,7 +187,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     (The point itself is not set to null, to avoid unnecessary creation and destruction of Point
     objects, and rebinding of observers, every time the mouse passes over the input area)
   */
-  currentPointerLocation: Smartgraphs.Point.create(),
+  currentPointerLocation: null,
 
   /**
    @property Object
