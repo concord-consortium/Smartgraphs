@@ -151,17 +151,6 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
 
     this.set('isDragging', false);
 
-    // Check if we might be hovered
-    var r = this.get('targetRadius');
-    var attrs = this.get('raphaelObject').items[0].attr();
-    var dx = coords.x - attrs.cx;
-    var dy = coords.y - attrs.cy;
-    if (dx*dx + dy*dy < r*r) {
-      this.set('isHovered', true);
-      graphController.dataPointHovered(this.get('content'));
-    } else {
-      this.set('isHovered', false);
-    }
     return YES;
   },
 
