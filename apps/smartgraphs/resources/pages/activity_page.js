@@ -104,7 +104,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
               useStaticLayout: YES,
 
               layout: {
-                height: 34
+                height: 54
               },
 
               childViews: 'submitButton'.w(),
