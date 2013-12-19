@@ -380,6 +380,15 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend({
     else {
       raphaelText = this.get('raphaelObject');
 
+      // Empirically, raphaelText can be null here. I assume that this means SC called the update
+      // path before we were appended to the DOM. It should be safe to ignore the update, because we
+      // are going to force a re-render after being appended to the DOM, via the
+      // _raphaelTextLastUpdatedWhileFragment flag.
+
+      if ( ! raphaelText ) {
+        return;
+      }
+
       if ( $.contains(document.documentElement, raphaelText.node) ) {
         this._raphaelTextLastUpdatedWhileFragment = NO;
       }
