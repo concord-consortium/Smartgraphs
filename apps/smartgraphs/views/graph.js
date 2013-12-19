@@ -41,7 +41,7 @@ Smartgraphs.GraphView = SC.View.extend(
   // Array of label's layout.
   arrLabelsLayout: [],
 
-  padding: { top: 15, right: 15, bottom: 45, left: 50 },
+  padding: { top: 15, right: 15, bottom: 45, left: 45 },
 
   childViews: 'titleView tooltipView graphCanvasView topAnnotationsHolder legendView'.w(),
 
@@ -91,7 +91,7 @@ Smartgraphs.GraphView = SC.View.extend(
     var showAnimation = this.get('showAnimation'),
         channelWidth  = this.get('channelWidth');
 
-    this.padding.left = this.padding.left + (showAnimation ? channelWidth : 0);
+    this.padding.left = 50 + (showAnimation ? channelWidth : 0);
     this.replaceLayer();
   }.observes('showAnimation'),
 
