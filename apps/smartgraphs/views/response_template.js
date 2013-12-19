@@ -100,6 +100,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
     return SC.TextFieldView.design({
       isTextArea: YES,
       hint: 'Enter your answer here...',
+      applyImmediately: true,
       fieldIndex: fieldIndex,
       value: initialValue,
       isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
@@ -107,7 +108,17 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       valueDidChange: function () {
         var values = this.getPath('parentView.parentView.values');
         if (values) values.replace(this.get('fieldIndex'), 1, this.get('value'));
-      }.observes('value')
+      }.observes('value'),
+
+      keyDown: function (evt) {
+        sc_super();
+        // 'Enter' key
+        if (evt.keyCode === 13) {
+          // aka blur?
+          this.resignFirstResponder();
+        }
+      }
+
     });
   },
 
