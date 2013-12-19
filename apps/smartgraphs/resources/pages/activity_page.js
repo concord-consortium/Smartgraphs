@@ -31,6 +31,18 @@ Smartgraphs.activityPageDef = SC.Page.extend({
         hasLayout: NO,
         hasHorizontalScroller: NO,
 
+        // Customizes the behavior of this ScrollView so that SC's touch event notifications bypass
+        // the ScrollView if the event target is a textarea or input field. This is because
+        // ScrollView's default confuses Mobile Safari such that it refuses to call up the keyboard
+        // when an descendant textarea or input element is touched.
+        //
+        // (The RootResponder sends touch events to us if we return YES to captureTouch; otherwise,
+        // it sends them directly to whatever view contains the target element of the touch.)
+        captureTouch: function(touch) {
+          var nodeName = touch.target.nodeName.toLowerCase();
+          return nodeName !== 'textarea' && nodeName !== 'input';
+        },
+
         activityPageChanged: function() {
           var self = this;
           self.scrollTo(0,0);
