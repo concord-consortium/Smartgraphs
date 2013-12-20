@@ -41,6 +41,9 @@ Smartgraphs.GraphView = SC.View.extend(
   // Array of label's layout.
   arrLabelsLayout: [],
 
+  // Interaction modality of current pointer gesture, if any; values are "touch" or "mouse"
+  interactionModality: null,
+
   padding: { top: 15, right: 15, bottom: 45, left: 45 },
 
   childViews: 'titleView tooltipView graphCanvasView topAnnotationsHolder legendView'.w(),
@@ -360,35 +363,48 @@ Smartgraphs.GraphView = SC.View.extend(
     displayProperties: ['show', 'point.xFixed', 'point.yFixed'],
 
     render: function (context) {
+      // Intended offset from mouse pointer location, if displayed at pointer location
       var X_OFFSET = 5;
       var Y_OFFSET = 5;
 
+      // Intended ofset from top-right, if displayed at top right
+      var TOP_EDGE_OFFSET = 5;
+      var RIGHT_EDGE_OFFSET = 5;
+
       var show = this.get('show');
       var point = this.get('point');
+      var modality = this.getPath('parentView.interactionModality');
       var displayHtml;
       var width;
       var coords;
-      var right;
+      var rightEdge = this.getPath('parentView.frame.width') - this.getPath('parentView.padding.right');
+      var topEdge;
       var left;
+      var top;
 
       if (show && point.get('x') != null) {
-        coords = this.get('parentView').coordinatesForPoint(point.get('x'), point.get('y'));
-        left = coords.x + X_OFFSET;
-
         displayHtml = point.get('xFixed') + ",&nbsp;" + point.get('yFixed');
         width = SC.metricsForString(displayHtml, this.get('layer'), ['toolTipLabel']).width - 10;
 
-        // Clip to the right edge (only)
-        right = this.getPath('parentView.frame.width') - this.getPath('parentView.padding.right');
+        if (modality === 'mouse') {
+          coords = this.get('parentView').coordinatesForPoint(point.get('x'), point.get('y'));
+          top = coords.y + Y_OFFSET;
+          left = coords.x + X_OFFSET;
 
-        if (left + width > right) {
-          left = right - width;
+          if (left + width > rightEdge) {
+            left = rightEdge - width;
+          }
+
+        } else if (modality === 'touch') {
+          topEdge = this.getPath('parentView.frame.x') + this.getPath('parentView.padding.top');
+          top = topEdge + TOP_EDGE_OFFSET;
+          left = rightEdge - width - RIGHT_EDGE_OFFSET;
         }
 
         context.push([
           "<div class='toolTipLabel' ",
           "  style='width: ", (width-2), "px; ",    // -2px to account for border width
-          "  top: " + (coords.y + Y_OFFSET) + "px; ",
+          "  top: " + top + "px; ",
           "  left: " + left + "px; ",
           "  z-index: 10000;'>",
             point.get('xFixed'), ",&nbsp;", point.get('yFixed'),
@@ -602,6 +618,7 @@ Smartgraphs.GraphView = SC.View.extend(
     // (or get spurious mouseExiteds) as the pointer passes over the grid view and axis views
 
     mouseMoved: function (evt) {
+      this.setPath('graphView.interactionModality', 'mouse');
       this.getPath('axesView.inputAreaView')._setCurrentPointerCoordinatesFromEvt(evt);
     },
 
@@ -962,10 +979,12 @@ Smartgraphs.GraphView = SC.View.extend(
       // obstruct events.
 
       mouseDown: function (evt) {
+        this.setPath('graphView.interactionModality', 'mouse');
         this.inputAreaView._mouseDownOrTouchStart(evt);
       },
 
       touchStart: function (touch) {
+        this.setPath('graphView.interactionModality', 'touch');
         this.inputAreaView._mouseDownOrTouchStart(touch);
       },
 

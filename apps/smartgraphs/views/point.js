@@ -17,8 +17,8 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
 
   displayProperties: 'content.x content.y isEnabled color radius'.w(),
 
-  controllerPath: 'parentView.graphView.graphController',
-  controller: SC.outlet('parentView.graphView.graphController'),
+  graphView: SC.outlet('parentView.graphView'),
+  controller: SC.outlet('graphView.graphController'),
 
   dataRepresentation: SC.outlet('parentView.dataRepresentation'),
   datadef: SC.outlet('dataRepresentation.datadef'),
@@ -76,6 +76,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   }.observes('modifiers'),
 
   mouseEntered: function () {
+    this.setPath('graphView.interactionModality', 'mouse');
     if (!this.dataRepresentation.datadef.isActive) {
       return;
     }
@@ -92,10 +93,12 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   },
 
   mouseDown: function (evt) {
+    this.setPath('graphView.interactionModality', 'mouse');
     return this._mouseDownOrTouchStart(evt);
   },
 
   touchStart: function (evt) {
+    this.setPath('graphView.interactionModality', 'touch');
     return this._mouseDownOrTouchStart(evt);
   },
 
@@ -123,7 +126,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     if (!this.dataRepresentation.datadef.isActive) {
       return;
     }
-    var graphView = this.getPath('parentView.graphView');
+    var graphView = this.get('graphView');
     var coords = graphView.graphCanvasView.axesView.inputAreaView.coordsForEvent(evt);
     var point = graphView.pointForCoordinates(coords.x, coords.y);
     this.get('controller').dataPointDragged(this.get('dataRepresentation'), point.x, point.y);
