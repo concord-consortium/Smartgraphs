@@ -77,8 +77,11 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
     }
     var self = this;
 
+    var codebase = sc_static('resources/jars/dummy.txt').match(/(.*)\/dummy.txt/)[1];
+
     Smartgraphs.sensorTool.applet = new sensorAppletInterface.GoIO({
-      codebase: '/jnlp',
+      // sensorAppletInterface automatically adds the timestamp to the end of this codebase property
+      codebase: codebase,
       sensorDefinitions: [sensorAppletInterface.sensorDefinitions['goMotion']],
       listenerPath: 'Smartgraphs.sensorTool.applet'
     });
