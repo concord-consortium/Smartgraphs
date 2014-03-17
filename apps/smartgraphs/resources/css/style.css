@@ -99,6 +99,15 @@ body.sc-theme {
   margin: 10px;
 }
 
+.text-wrapper ul, .text-wrapper ol {
+  margin-left: 2em;
+  padding-left: 1em;
+}
+
+.text-wrapper li {
+  list-style: inherit;
+}
+
 .text-wrapper h1 {
   font-size: 18px;
 }
