@@ -103,13 +103,19 @@ body.sc-theme {
   margin-left: 2em;
   padding-left: 1em;
 }
-
 .text-wrapper li {
   list-style: inherit;
 }
-
+.text-wrapper em {
+  font-style: italic;
+}
 .text-wrapper h1 {
-  font-size: 18px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.text-wrapper h2 {
+  font-size: 1.3em;
+  font-weight: bold;
 }
 
 .sc-view.json-editor .sc-view {
