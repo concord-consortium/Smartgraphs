@@ -969,7 +969,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -1052,7 +1053,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph. You should have three labels, one for each motion.</p><p><b>Click</b> or tap where you want a label. <b>Double-click</b> (or double-tap) in the label to add text and click outside the label when you are done. You can also click and drag to rearrange the labels.</p>",
@@ -1142,7 +1144,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1213,7 +1216,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1292,7 +1296,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1368,7 +1373,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1459,7 +1465,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1550,7 +1557,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1612,7 +1620,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1685,7 +1694,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1762,7 +1772,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1842,7 +1853,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1898,7 +1910,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -1977,7 +1990,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2056,7 +2070,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2138,7 +2153,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2191,7 +2207,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2266,7 +2283,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2341,7 +2359,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2417,7 +2436,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2468,7 +2488,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2505,7 +2526,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2576,7 +2598,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2655,7 +2678,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2731,7 +2755,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2822,7 +2847,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2913,7 +2939,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -2975,7 +3002,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3048,7 +3076,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3125,7 +3154,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3205,7 +3235,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3261,7 +3292,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3340,7 +3372,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3419,7 +3452,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3501,7 +3535,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3554,7 +3589,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3629,7 +3665,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3704,7 +3741,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3780,7 +3818,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3831,7 +3870,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3868,7 +3908,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -3939,7 +3980,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4018,7 +4060,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4094,7 +4137,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4185,7 +4229,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4276,7 +4321,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4338,7 +4384,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4411,7 +4458,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4488,7 +4536,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4568,7 +4617,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4624,7 +4674,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4703,7 +4754,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4782,7 +4834,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4864,7 +4917,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4917,7 +4971,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -4992,7 +5047,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -5067,7 +5123,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -5143,7 +5200,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -5194,7 +5252,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "table",
@@ -5232,7 +5291,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p>Here are the correct velocities: </p><p>Velocity from 0-3 seconds: <b>0 m/s</b></p><p>Velocity from 3-6 seconds: <b>2 m/s</b></p><p>Velocity from 6-9 seconds: <b>10 m/s</b></p><p><b>Insert</b> these values into your labels by <b>double-clicking</b> inside the labels and <b>typing</b>.</p>",
@@ -5262,7 +5322,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "position-data-hacky-fix"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -5278,7 +5339,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -5360,7 +5422,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "position-data-hacky-fix"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -5378,7 +5441,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "velocity-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -5463,7 +5527,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-velocity"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "responseBranches": [
@@ -5514,7 +5579,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-velocity"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "responseBranches": [
@@ -5565,7 +5631,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-velocity"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "responseBranches": [
@@ -5616,7 +5683,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-velocity"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "responseBranches": [
@@ -5667,7 +5735,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-velocity"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> The graph is a horizontal segment in which the velocity is 0.</p>",
@@ -5697,7 +5766,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-velocity"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Correct!</b> The graph is a horizontal segment in which the velocity is 0.</p>",
@@ -5729,7 +5799,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "activeDatadefs": [
             "position-data"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -5747,7 +5818,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "velocity-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": " <p>The position-time graph of the car's motion displays in the top window and the velocity time graph displays in the bottom.</p><p>How do the labels describing the motion compare in the two graphs?</p>",
@@ -5786,7 +5858,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -5858,7 +5931,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -5866,7 +5940,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/car-mps",
           "data": [],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -5956,7 +6031,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -5974,7 +6050,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "student-velocity-prediction"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -6058,7 +6135,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -6074,7 +6152,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -6170,7 +6249,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -6186,7 +6266,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -6282,7 +6363,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -6298,7 +6380,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -6394,7 +6477,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -6410,7 +6494,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -6506,7 +6591,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -6522,7 +6608,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -6598,7 +6685,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": [],
           "activeDatadefs": [
             "car-in-reverse-position"
-          ]
+          ],
+          "showGraphGrid": true
         },
         "bottom": {
           "type": "graph",
@@ -6614,7 +6702,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
               }
             ]
           ],
-          "annotations": []
+          "annotations": [],
+          "showGraphGrid": true
         }
       },
       "tools": [
@@ -6687,7 +6776,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
@@ -6735,7 +6825,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is moving forward with constant velocity, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
@@ -6783,7 +6874,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is moving forward with constant velocity, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
@@ -6831,7 +6923,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows positive velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
@@ -6879,7 +6972,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> From 5 to 11 seconds, the velocity was 3 m/s, which means that the object was moving at a steady rate forward. This corresponds to Segment C.</p>",
@@ -6906,7 +7000,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Correct!</b> From 5 to 11 seconds, the velocity was 3 m/s, which means that the object was moving at a steady rate forward. This corresponds to Segment C.</p>",
@@ -6933,7 +7028,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
@@ -6981,7 +7077,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is stopped, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
@@ -7029,7 +7126,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is stopped, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
@@ -7077,7 +7175,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows 0 velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
@@ -7125,7 +7224,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> From 0 to 5 seconds, the velocity was 0, which means that the object was not moving. This corresponds to Segment A.</p>",
@@ -7152,7 +7252,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Correct!</b> From 0 to 5 seconds, the velocity was 0, which means that the object was not moving. This corresponds to Segment A.</p>",
@@ -7179,7 +7280,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
@@ -7227,7 +7329,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is moving backward, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
@@ -7275,7 +7378,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is moving backward, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
@@ -7323,7 +7427,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows negative velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
@@ -7371,7 +7476,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Incorrect.</b> From 11 to 20 seconds, the velocity was -5 m/s, which means that the object was moving at a steady rate backward. This corresponds to Segment E.</p>",
@@ -7399,7 +7505,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           ],
           "annotations": [
             "identify-the-motion-labels"
-          ]
+          ],
+          "showGraphGrid": true
         }
       },
       "beforeText": "<p><b>Correct!</b> From 11 to 20 seconds, the velocity was -5 m/s, which means that the object was moving at a steady rate backward. This corresponds to Segment E.</p>",
