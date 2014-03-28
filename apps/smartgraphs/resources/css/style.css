@@ -95,7 +95,7 @@ body.sc-theme {
   background-color: #ffffff;
 }
 
-.text-wrapper p, .text-wrapper h1, .text-wrapper img {
+.text-wrapper p, .text-wrapper h1, .text-wrapper h2,  .text-wrapper img {
   margin: 10px;
 }
 
