@@ -48,7 +48,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
           self.scrollTo(0,0);
         }.observes('Smartgraphs.activityPageController.content'),
 
-        contentView: SC.View.design({
+        contentView: Smartgraphs.MathJaxView.design({
           classNames: 'text-content',
           useStaticLayout: YES,
 

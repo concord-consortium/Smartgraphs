@@ -21,7 +21,8 @@ config 'raphael_views/raphael_views',
 config 'raphael_views/g_raphael',
   :required => 'raphael_views/g_raphael_base'
 config 'raphael_views/g_raphael_base',
-  :required => 'raphael_views/raphael'
+  :required => 'raphael_views/raphael',
+  :javascript_libs => ["http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"]
 
 proxy '/db', :to => 'localhost:5984', :url => ''
 
