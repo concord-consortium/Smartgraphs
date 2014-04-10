@@ -118,7 +118,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         });
         return;
       case 'image':
-        Smartgraphs.activityViewController.showImage(pane, config.path, config.caption);
+        Smartgraphs.activityViewController.showImage(pane, config.path, config.caption, config.showFullImage);
         return;
     }
   },

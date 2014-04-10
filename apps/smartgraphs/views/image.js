@@ -23,7 +23,19 @@ Smartgraphs.ImageView = SC.View.extend(
   */
   imageURL: null,
   imageURLBindingDefault: SC.Binding.oneWay(),
-
+  showFullImage: false,
+  scaleMethod: function() {
+    if (this.get('showFullImage')) {
+      return SC.BEST_FIT;
+    }
+   return SC.FILL_PROPORTIONALLY;
+  }.property().observes('showFullImage'),
+  alignMethod: function() {
+    if (this.get('showFullImage')) {
+      return SC.ALIGN_BOTTOM;
+    }
+   return SC.ALIGN_CENTER;
+  }.property().observes('showFullImage'),
   /**
     @property String
 
@@ -55,7 +67,7 @@ Smartgraphs.ImageView = SC.View.extend(
     // optimization.
     useCanvas: false,
 
-    scale: SC.FILL_PROPORTIONALLY,
-    align: SC.ALIGN_CENTER
+    scaleBinding: '.parentView.scaleMethod',
+    alignBinding: '.parentView.alignMethod'
   })
 });

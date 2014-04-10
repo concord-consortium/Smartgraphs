@@ -208,12 +208,14 @@ Smartgraphs.activityPageDef = SC.Page.extend({
 
   firstImageView: Smartgraphs.ImageView.design({
     imageURLBinding: 'Smartgraphs.activityViewController.firstImageValue',
-    captionBinding:  'Smartgraphs.activityViewController.firstImageCaption'
+    captionBinding:  'Smartgraphs.activityViewController.firstImageCaption',
+    showFullImageBinding:  'Smartgraphs.activityViewController.firstShowFullImage'
   }),
 
   secondImageView: Smartgraphs.ImageView.design({
     imageURLBinding: 'Smartgraphs.activityViewController.secondImageValue',
-    captionBinding:  'Smartgraphs.activityViewController.secondImageCaption'
+    captionBinding:  'Smartgraphs.activityViewController.secondImageCaption',
+    showFullImageBinding:  'Smartgraphs.activityViewController.secondShowFullImage'
   }),
 
   firstGraphPane: Smartgraphs.GraphPane.design({
