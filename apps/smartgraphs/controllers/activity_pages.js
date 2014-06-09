@@ -37,6 +37,14 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
     return indexSet && indexSet.firstObject();
   }.property('selection', '[]').cacheable(),
 
+  maxPageCount: function() {
+    var content = this.get('content');
+    if (!content) {
+      return 0;
+    }
+    return this.get('content').get('length');
+  }.property('content').cacheable(),
+
   selectFirstPage: function () {
     if (this.get('length') > 0) {
       this.selectObject(this.objectAt(0));
