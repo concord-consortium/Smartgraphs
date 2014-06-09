@@ -118,21 +118,21 @@ Smartgraphs.mainPage = SC.Page.design({
     bottomToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_BOTTOM,
       classNames: 'bottom-toolbar'.w(),
-      childViews: ['backButton', 'pageButtons', 'nextButton'],
+      childViews: ['pageButtons', 'nextButton'],
 
-      backButton: SC.ButtonView.design({
-        layout: { left: 20, centerY: 0, height: 24, width: 80 },
-        title: 'Back',
-        // theme: 'point-left',
-        theme: 'capsule',
-        action: 'gotoPreviousPage',
-        isSwipeLeft: YES,
-
-        isEnabledBinding: 'Smartgraphs.activityViewController.enableBackPageButton'
-      }),
+      // Back button removed: https://www.pivotaltracker.com/story/show/72097370
+      // backButton: SC.ButtonView.design({
+      //   layout: { left: 20, centerY: 0, height: 24, width: 80 },
+      //   title: 'Back',
+      //   // theme: 'point-left',
+      //   theme: 'capsule',
+      //   action: 'gotoPreviousPage',
+      //   isSwipeLeft: YES,
+      //   isEnabledBinding: 'Smartgraphs.activityViewController.enableBackPageButton'
+      // }),
 
       pageButtons: Smartgraphs.PaginationView.design({
-        layout: { left: 120, right: 120, height: 24, centerY: 0 },
+        layout: { left: 20, right: 120, height: 24, centerY: 0 },
         maxPageBinding: 'Smartgraphs.activityPagesController.maxPageCount',
         currentPageBinding: 'Smartgraphs.activityPagesController.currentPageNumber'
       }),
