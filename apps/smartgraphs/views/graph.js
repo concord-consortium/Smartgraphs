@@ -21,6 +21,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
   xAxisBinding: '*graphController.xAxis',
   yAxisBinding: '*graphController.yAxis',
+  maxYValueBinding: '*graphController.yAxis.max',
   graphableDataObjectsBinding: '*graphController.graphableDataObjects',
   annotationListBinding: '*graphController.annotationList',
   requestedCursorStyleBinding: '*graphController.requestedCursorStyle',
@@ -37,6 +38,28 @@ Smartgraphs.GraphView = SC.View.extend(
   dataHolder:        SC.outlet('graphCanvasView.dataHolder'),
   annotationsHolder: SC.outlet('graphCanvasView.annotationsHolder'),
   overlayAnnotationsHolder: SC.outlet('graphCanvasView.overlayAnnotationsHolder'),
+
+  extraGutter: function() {
+    var _showAnimation = this.get('showAnimation');
+    var _channelWidth  = this.get('channelWidth') || 0;
+    if (_showAnimation) {
+      return _channelWidth;
+    }
+    return 0;
+  }.property('showAnimation channelWidth'),
+
+  leftPadding: function () {
+    var defaultWidth = 50;
+    var legendMax  = this.get('maxYValue') || 0;
+    legendMax = ('' + Math.abs(legendMax)).length;
+    var labelWidth = 7 * legendMax + 40;
+    labelWidth = defaultWidth > labelWidth ? defaultWidth : labelWidth;
+    return labelWidth + this.get('extraGutter');
+  }.property('yAxisView maxYValue extraGutter'),
+
+  yLabelLocation: function() {
+    return this.get('extraGutter') + 20;
+  }.property('extraGutter'),
 
   // Array of label's layout.
   arrLabelsLayout: [],
@@ -78,6 +101,8 @@ Smartgraphs.GraphView = SC.View.extend(
       context.setClass('hideGraph', NO);
     }
     // end changes
+
+    this.padding.left = this.get('leftPadding');
     if (this.createRenderer && renderer) {
       if (firstTime) {
         renderer.render(context);
@@ -91,10 +116,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
   // adjust left border depending on whether we show the animation or not.
   showAnimationDidChange: function () {
-    var showAnimation = this.get('showAnimation'),
-        channelWidth  = this.get('channelWidth');
-
-    this.padding.left = 50 + (showAnimation ? channelWidth : 0);
+    this.padding.left = this.get('leftPadding');
     this.replaceLayer();
   }.observes('showAnimation'),
 
