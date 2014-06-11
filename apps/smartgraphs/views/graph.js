@@ -21,7 +21,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
   xAxisBinding: '*graphController.xAxis',
   yAxisBinding: '*graphController.yAxis',
-  maxYValueBinding: '*graphController.yAxis.max',
   graphableDataObjectsBinding: '*graphController.graphableDataObjects',
   annotationListBinding: '*graphController.annotationList',
   requestedCursorStyleBinding: '*graphController.requestedCursorStyle',
@@ -50,12 +49,16 @@ Smartgraphs.GraphView = SC.View.extend(
 
   leftPadding: function () {
     var defaultWidth = 50;
-    var legendMax  = this.get('maxYValue') || 0;
+    var yAxis = this.get('yAxis');
+    var legendMax  = 10;
+    if (yAxis) {
+      legendMax = yAxis.get('max') || 10;
+    }
     legendMax = ('' + Math.abs(legendMax)).length;
     var labelWidth = 7 * legendMax + 40;
     labelWidth = defaultWidth > labelWidth ? defaultWidth : labelWidth;
     return labelWidth + this.get('extraGutter');
-  }.property('yAxisView maxYValue extraGutter'),
+  }.property('yAxisView extraGutter'),
 
   yLabelLocation: function() {
     return this.get('extraGutter') + 20;
