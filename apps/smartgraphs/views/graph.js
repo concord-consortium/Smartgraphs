@@ -70,7 +70,7 @@ Smartgraphs.GraphView = SC.View.extend(
   // Interaction modality of current pointer gesture, if any; values are "touch" or "mouse"
   interactionModality: null,
 
-  padding: { top: 15, right: 15, bottom: 45, left: 45 },
+  padding: { top: 50, right: 15, bottom: 45, left: 45 },
 
   childViews: 'titleView tooltipView graphCanvasView topAnnotationsHolder legendView'.w(),
 
