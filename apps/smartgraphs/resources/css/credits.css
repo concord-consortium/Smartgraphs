@@ -1,6 +1,6 @@
 .sc-view.creditsBox {
   font: 12px arial, helvetica, sans-serif;
-  background: #fff;
+  background: #fff !important;
   color: #3f3f3f;
   line-height: 160%;
   padding:    0px;
@@ -34,9 +34,22 @@
   background: sc_static('nsf.png') no-repeat;
   min-height: 75px;
   padding-left: 75px;
+  clear: both;
 }
 
 #credits-logos                  { margin: 0 0 1.5em;       }
-#credits-logos img              { margin: 0 40px .5em 3px; }
-#credits-logos #credits-cc-logo { margin-right: 0;         }
+#credits-logos span             { margin: 0 40px .5em 3px; display: block; float: left;}
 #credits-authorName             { font-size: 1.1em;        }
+
+#credits-sg-logo {
+  margin-right: 0;
+  width: 234px;
+  height: 62px;
+  background: sc_static('smartgraphs.png');
+}
+
+#credits-cc-logo {
+  width: 200px;
+  height: 62px;
+  background: sc_static('concord.png');
+}
