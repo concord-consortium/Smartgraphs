@@ -2,7 +2,9 @@
 Smartgraphs.CreditsPane = SC.View.extend({
   classNames:   "creditsBox".w(),
 
-  projectInfo:  "SmartGraphs software (smartgraphs.org) is based upon "+
+  projectInfo:  "SmartGraphs software " +
+                "(<a target='_blank' href='http://smartgraphs.org'>smartgraphs.org</a>) "+
+                "is based upon "+
                 "work supported by the National Science Foundation "+
                 "under Grant No. DRL-0918522. "+
                 "Any opinions, findings, conclusions, or recommendations "+
