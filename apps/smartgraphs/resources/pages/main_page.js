@@ -38,7 +38,7 @@ Smartgraphs.mainPage = SC.Page.design({
     topToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_TOP,
 
-      childViews: ['title', 'editButton', 'runButton', 'creditsButton'],
+      childViews: ['title', 'editButton', 'runButton', 'creditsButton', 'homeButton'],
 
       title: SC.LabelView.design({
         layout: { centerY: 0, height: 24, left: 8, width: 400 },
@@ -47,19 +47,47 @@ Smartgraphs.mainPage = SC.Page.design({
         valueBinding:   'Smartgraphs.activityController.title'
       }),
 
+
       creditsButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        adjustLayout: function () {
+          if (Smartgraphs.toolbarController.get('shouldShowHomeButton')) {
+            this.adjust({right: 120});
+          }
+        }.observes('Smartgraphs.toolbarController.shouldShowHomeButton'),
+        init: function() {
+          sc_super();
+          this.adjustLayout();
+        },
         isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowCreditsButton',
+        displayProperties: ['layout'],
         title: 'Credits',
         action: 'showCredits'
       }),
 
+      homeButton: SC.ButtonView.design({
+        layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowHomeButton',
+        title: 'Home',
+        action: 'goHome'
+      }),
+
       editButton: SC.ButtonView.design({
         layout: { right: 120, centerY: 0, height: 24, width: 80 },
+        adjustLayout: function () {
+          if (Smartgraphs.toolbarController.get('shouldShowHomeButton')) {
+            this.adjust({right: 220});
+          }
+        }.observes('Smartgraphs.toolbarController.shouldShowHomeButton'),
+        init: function() {
+          sc_super();
+          this.adjustLayout();
+        },
         shouldShowEditButtonBinding: 'Smartgraphs.toolbarController.shouldShowEditButton',
         isVisible: function () {
           return Smartgraphs.toolbarController.get('shouldShowEditButton') && Smartgraphs.get('showEditButton');
         }.property('shouldShowEditButton'),
+        displayProperties: ['layout'],
         title: 'Edit',
         action: 'openAuthorView'
       }),

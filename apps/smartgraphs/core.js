@@ -65,7 +65,14 @@ Smartgraphs = SC.Application.create(
 
   // hide the "Edit" button by default in production, show by default in dev, unless overridden
   // (Edit button allows navigation of the activity using the outline)
-  showEditButton: typeof window.showEditButton === 'undefined' ? (! window.isProduction) : window.showEditButton
+  showEditButton: typeof window.showEditButton === 'undefined' ? (! window.isProduction) : window.showEditButton,
+
+  // hide the "Home" button by default
+  // (Home button allows return to home page, by default index.html)
+  showHomeButton: typeof window.showHomeButton === 'undefined' ? NO : window.showHomeButton,
+
+  // "Home page" location, used by the Home button. By default, /index.html
+  activityHome: typeof window.activityHome === 'undefined' ? '/index.html' : window.activityHome
 
 });
 

@@ -43,6 +43,10 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     Smartgraphs.appWindowController.showActivityView();
   },
 
+  goHome: function () {
+    document.location.href = Smartgraphs.get('activityHome');
+  },
+
   exitState: function () {
     Smartgraphs.activityController.cleanup();
     Smartgraphs.sessionController.endSession();
