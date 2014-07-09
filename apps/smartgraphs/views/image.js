@@ -52,7 +52,7 @@ Smartgraphs.ImageView = SC.View.extend(
     valueBindingDefault: SC.Binding.oneWay(),
 
     isVisible: function () {
-      return !!this.get('value');
+      return !!this.get('value').trim();
     }.property('value'),
 
     classNames: 'floating-caption',
