@@ -24,18 +24,25 @@ Smartgraphs.ImageView = SC.View.extend(
   imageURL: null,
   imageURLBindingDefault: SC.Binding.oneWay(),
   showFullImage: false,
+  displayProperties: ['imageURL','showFullImage','caption'],
+
   scaleMethod: function() {
     if (this.get('showFullImage')) {
       return SC.BEST_FIT;
     }
-   return SC.FILL_PROPORTIONALLY;
-  }.property().observes('showFullImage'),
+    return SC.FILL_PROPORTIONALLY;
+  }.property('showFullImage'),
+
   alignMethod: function() {
     if (this.get('showFullImage')) {
-      return SC.ALIGN_BOTTOM;
+      return SC.ALIGN_TOP;
+      // If this is ALIGN_BOTTOM, the image wont display immediately.
+      // when in the top-right panel.
+      // If its middle, it is sometimes obscured in top-right panel.
     }
-   return SC.ALIGN_CENTER;
-  }.property().observes('showFullImage'),
+    return SC.ALIGN_CENTER;
+  }.property('showFullImage'),
+  
   /**
     @property String
 
@@ -66,7 +73,6 @@ Smartgraphs.ImageView = SC.View.extend(
     // The image doesn't always stretch to fill if we allow SC.ImageView to use the <canvas>
     // optimization.
     useCanvas: false,
-
     scaleBinding: '.parentView.scaleMethod',
     alignBinding: '.parentView.alignMethod'
   })
