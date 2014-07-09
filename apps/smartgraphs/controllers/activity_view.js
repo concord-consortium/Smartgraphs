@@ -17,6 +17,8 @@ Smartgraphs.activityViewController = SC.Object.create(
   bottomPaneNowShowing: null,
   singlePaneNowShowing: null,
 
+  showSpinner: NO,
+
   firstImageValue: null,
   firstImageCaption: null,
   firstShowFullImage: null,

@@ -12,7 +12,7 @@ sc_require('resources/pages/main_page');
 Smartgraphs.activityPageDef = SC.Page.extend({
 
   activityView: SC.View.design({
-    childViews: 'instructionsWrapper dataWrapper'.w(),
+    childViews: 'instructionsWrapper dataWrapper spinner'.w(),
 
     theme: 'sc-ace',
     loadingMessage: 'Loading Activity...',
@@ -171,6 +171,23 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       dataView: SC.ContainerView.design({
         layout: { top: 4, right: 4, bottom: 4, left: 4 },
         nowShowingBinding: 'Smartgraphs.activityViewController.dataViewNowShowing'
+      })
+    }),
+
+    // .........
+    // SPINNER to show during page transitions
+    spinner: SC.View.design({
+      layout: { left: 0, right: 0, top: 0, bottom: 0 },
+      isVisibleBinding: 'Smartgraphs.activityViewController.showSpinner',
+      classNames: 'page-spinner'.w(),
+
+      childViews: 'spinnerImage'.w(),
+
+      spinnerImage: SC.ImageView.design({
+        layout: { centerX: -50, centerY: 0, width: 100, height: 100},
+        canLoadInBackground: true,
+        useCanvas: NO,
+        useImageQueue: NO
       })
     })
   }),

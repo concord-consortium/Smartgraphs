@@ -402,3 +402,20 @@ ul.sg-pagination li.page.current {
 ul.sg-pagination li.page.unseen {
   opacity: 0.3;
 }
+
+/**
+ * Spinner between slow-loading pages
+ *
+ */
+.page-spinner {
+  background-color: rgba(255, 255, 255, 0.6);
+  opacity: 0.5;
+}
+
+/**
+ * using 'content' setting here so we can refer to sc_static in css, instead of in code,
+ * where we wouldn't be able to find and relitivize the url when building mobile app.
+ */
+.page-spinner img {
+  content: sc_static('resources/images/page_loading.png')
+}

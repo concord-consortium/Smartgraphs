@@ -53,6 +53,11 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     // Submit GA step change event:
     Smartgraphs.sendGaEvent('Step Change', "(" + this.get('url') + ")");
 
+    // Hide spinner if we've shown it
+    if (Smartgraphs.showSpinner) {
+      Smartgraphs.activityViewController.set("showSpinner", NO);
+    }
+
     // See if this is a terminal step and do last-step tasks if needed
     if (Smartgraphs.activityPagesController.isLastPage() && this.get('isTerminalStep')) { // Test for is-this-last-step
         // Submit GA activity completed event if relevant

@@ -86,10 +86,24 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     action will fail and the system will remain in the ACTIVITY_STEP_SUBMITTED state.
   */
   gotoNextPage: function () {
-    this.submitStep();
-    this.invokeLast(function () {
-      Smartgraphs.statechart.sendAction('gotoNextPage');
-    });
+    if (Smartgraphs.showSpinner) {
+      // this is a little ugly, but if we want to consistantly show spinner we have to push the action
+      // into a setTimeout, to push it to the end of the stack. SC.invokeLater does not work as consistently.
+      Smartgraphs.activityViewController.set("showSpinner", YES);
+      var self = this;
+      setTimeout(function(){
+        self.submitStep();
+        self.invokeLast(function () {
+          Smartgraphs.statechart.sendAction('gotoNextPage');
+        });
+      }, 1);
+    } else {
+      this.submitStep();
+      this.invokeLast(function () {
+        Smartgraphs.statechart.sendAction('gotoNextPage');
+      });
+    }
+
   },
 
   /**

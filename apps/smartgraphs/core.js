@@ -8,6 +8,7 @@
 
 // set to YES before building a production release
 window.isProduction = NO;
+window.showSpinner = YES;
 
 /** @namespace
 
@@ -72,7 +73,10 @@ Smartgraphs = SC.Application.create(
   showHomeButton: typeof window.showHomeButton === 'undefined' ? NO : window.showHomeButton,
 
   // "Home page" location, used by the Home button. By default, /index.html
-  activityHome: typeof window.activityHome === 'undefined' ? '/index.html' : window.activityHome
+  activityHome: typeof window.activityHome === 'undefined' ? '/index.html' : window.activityHome,
+
+  // whether to show a spinner between each page
+  showSpinner: !! window.showSpinner
 
 });
 
