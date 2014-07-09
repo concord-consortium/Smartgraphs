@@ -8,7 +8,6 @@
 
 // set to YES before building a production release
 window.isProduction = NO;
-window.showSpinner = YES;
 
 /** @namespace
 
