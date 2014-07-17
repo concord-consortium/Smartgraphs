@@ -46,6 +46,15 @@ Smartgraphs.activityViewController = SC.Object.create(
   // "output" properties
 
   enableBackAndForward: NO,
+  softKeyboardShowing: NO,
+
+  onShowKeyboard: function() {
+    this.set('softKeyboardShowing',YES);
+  },
+
+  onHideKeyboard: function() {
+    this.set('softKeyboardShowing',NO);
+  },
 
   showSubmitButton: function () {
     return !(this.get('hideSubmitButton') || this.get('nextButtonShouldSubmit'));
@@ -60,8 +69,11 @@ Smartgraphs.activityViewController = SC.Object.create(
   }.property('canGotoNextPage', 'isFinalStep', 'nextButtonShouldSubmit', 'canSubmit').cacheable(),
 
   enableNextPageButton: function () {
+    if (this.get('softKeyboardShowing')) {
+      return false;
+    }
     return (this.get('enableBackAndForward') && !this.get('isLastPage')) || this.get('highlightNextPageButton');
-  }.property('enableBackAndForward', 'isLastPage', 'highlightNextPageButton').cacheable(),
+  }.property('enableBackAndForward', 'isLastPage', 'highlightNextPageButton', 'softKeyboardShowing').cacheable(),
 
   enableBackPageButton: function () {
     return (this.get('enableBackAndForward') && !this.get('isFirstPage'));
