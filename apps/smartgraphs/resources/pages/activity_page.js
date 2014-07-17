@@ -113,8 +113,9 @@ Smartgraphs.activityPageDef = SC.Page.extend({
                 layout: {
                   width: 180,
                   right: 0,
-                  height: 24
+                  height: Smartgraphs.buttonHeight
                 },
+                controlSize: Smartgraphs.buttonControlSize,
                 touchBoundary: { left: 50, right: 50, top: 50, bottom: 50 },
 
                 action: 'submitStep',

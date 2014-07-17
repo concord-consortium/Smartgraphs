@@ -75,7 +75,11 @@ Smartgraphs = SC.Application.create(
   activityHome: typeof window.activityHome === 'undefined' ? '/index.html' : window.activityHome,
 
   // whether to show a spinner between each page
-  showSpinner: !! window.showSpinner
+  showSpinner: !! window.showSpinner,
+
+  // whether to use large submit and next buttons
+  buttonControlSize: !! window.showLargeButtons ? SC.HUGE_CONTROL_SIZE : SC.REGULAR_CONTROL_SIZE,
+  buttonHeight:      !! window.showLargeButtons ? 30 : 24
 
 });
 

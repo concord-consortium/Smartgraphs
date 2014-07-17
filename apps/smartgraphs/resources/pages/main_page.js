@@ -166,7 +166,8 @@ Smartgraphs.mainPage = SC.Page.design({
       }),
 
       nextButton: SC.ButtonView.design({
-        layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        layout: { right: 20, centerY: 0, height: Smartgraphs.buttonHeight, width: 80 },
+        controlSize: Smartgraphs.buttonControlSize,
         touchBoundary: { left: 50, right: 50, top: 50, bottom: 50 },
         title: 'Next',
         // theme: 'point-right',
