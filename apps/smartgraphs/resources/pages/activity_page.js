@@ -126,31 +126,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
                 titleDidChange: function () {
                   var metrics = SC.metricsForString(this.get('title'), this.getPath('parentView.layer'), ['sc-button-label', 'text-wrapper']);
                   this.adjust('width', metrics.width + 48);
-                }.observes('title'),
-
-                /** The default implementation of this private property does not correctly account for changes to the
-                   vertical position of this button resulting from the growing/shrinking of the StaticContentView in
-                   flow above us. This a problem because the parent class SC.Button's touchEnd uses _touchBoundaryFrame
-                   to calculate whether the touch ended on this button or off of it (and therefore whether the touch
-                   should be counted as a "click" on this button, or not.).
-
-                   Attempting to notifyPropertyChange('_touchBoundaryFrame') in touchStart did not correct the
-                   incorrect behavior; the fix here is to use jQuery's offset() function, although we lose the benefit
-                   of caching by doing so.
-
-                   Without this fix, whenever the activityStepDialog view grows or shrinks between steps by an amount
-                   greater than (the button height + the 50px 'slop' specified by touchBoundary), then touches to the
-                   button do not click it.
-                */
-                _touchBoundaryFrame: function () {
-                  var frame  = this.get('frame'),
-                      offset = this.$().offset();
-
-                  frame.x = offset.left;
-                  frame.y = offset.top;
-                  return frame;
-                }.property()
-
+                }.observes('title')
               })
             })
           })
