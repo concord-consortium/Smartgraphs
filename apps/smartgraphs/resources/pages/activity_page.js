@@ -115,6 +115,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
                   right: 0,
                   height: 24
                 },
+                touchBoundary: { left: 50, right: 50, top: 50, bottom: 50 },
 
                 action: 'submitStep',
 
