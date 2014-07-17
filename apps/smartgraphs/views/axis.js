@@ -21,8 +21,8 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
     // rendering with firstTime =TRUE). Thus draw the axis only after the graph is onscreen by waiting until after
     // didCreateLayer. Note that this means the elements that make up the axis are not children of the layer...
     if (!firstTime) {
-      this.drawAxis();
-      this.drawLabel();
+      this.invokeLast(this.drawAxis);
+      this.invokeLast(this.drawLabel);
     }
   },
 
