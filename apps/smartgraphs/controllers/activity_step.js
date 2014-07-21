@@ -241,27 +241,35 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if ( !this.get('canSubmit') ) return NO;
 
     var branches = this.get('responseBranches'),
+        self = this,
         branch,
         i;
 
-    this.executeCommands(this.get('afterSubmissionCommands'));
-    this.setVariables(this.get('variableAssignments'));
+    SC.RunLoop.begin();
+    Smartgraphs.activityViewController.set('enableSubmitButton', false)
+    Smartgraphs.statechart.sendAction('disableSubmission');
+    SC.RunLoop.end();
 
-    if (branches && branches.length > 0) {
-      for (i = 0; i < branches.length; i++) {
-        branch = branches[i];
-        if (Smartgraphs.evaluator.evaluate(branch.criterion)) {
-          Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: branch.step });
-          return;
+    setTimeout(function(){
+      self.executeCommands(self.get('afterSubmissionCommands'));
+      self.setVariables(self.get('variableAssignments'));
+
+      if (branches && branches.length > 0) {
+        for (i = 0; i < branches.length; i++) {
+          branch = branches[i];
+          if (Smartgraphs.evaluator.evaluate(branch.criterion)) {
+            Smartgraphs.statechart.sendAction('gotoStep', self, { stepId: branch.step });
+            return;
+          }
         }
       }
-    }
 
-    var defaultBranch = this.get('defaultBranch');
+      var defaultBranch = self.get('defaultBranch');
 
-    if (defaultBranch) {
-      Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
-    }
+      if (defaultBranch) {
+        Smartgraphs.statechart.sendAction('gotoStep', self, { stepId: defaultBranch.get('id') });
+      }
+    }, 1);
   },
 
   /**
