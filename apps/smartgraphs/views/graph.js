@@ -1013,30 +1013,9 @@ Smartgraphs.GraphView = SC.View.extend(
         this.inputAreaView._mouseDownOrTouchStart(evt);
       },
 
-      // The following code that relates to touchStarted and touchTimeout is an ugly hack to solve a bug
-      // in the Android app, where the touchEnd event is not triggered during a construct-a-line sequence.
-      // This bug occurs in the Chromium-based WebView used in Android 4.4 KitKat. It seems to be related to
-      // https://code.google.com/p/chromium/issues/detail?id=152913 and https://code.google.com/p/android/issues/detail?id=19827
-      // but is not exactly the same, and does not seem to be resolved by adding touch.preventDefault() to touchStart.
-      //
-      // This hack simply starts a timer on touchStart and, if no movement occurs for 750 ms, automatically calls touchEnd.
-      // It also uses a touchStarted flag to prevent accidentally calling touchEnd twice for the same touch.
-
-      touchStarted: false,
-
-      touchTimeout: null,
-
       touchStart: function (touch) {
         this.setPath('graphView.interactionModality', 'touch');
         this.inputAreaView._mouseDownOrTouchStart(touch);
-        touch.preventDefault();
-        var self = this;
-        this.set('touchStarted', true);
-        touchTimeout = setTimeout(function() {
-          self.set('touchTimeout', null);
-          self.touchEnd(touch);
-        }, 750);
-        this.set('touchTimeout', touchTimeout);
       },
 
       mouseDragged: function (evt) {
@@ -1045,17 +1024,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
       touchesDragged: function (touch) {
         this.inputAreaView._mouseOrTouchesDragged(touch);
-        touch.preventDefault();
-
-        if (touchTimeout = this.get('touchTimeout')) {
-          clearTimeout(touchTimeout);
-          var self = this;
-          touchTimeout = setTimeout(function() {
-            self.set('touchTimeout', null);
-            self.touchEnd(touch);
-          }, 750);
-          this.set('touchTimeout', touchTimeout);
-        }
       },
 
       mouseUp: function (evt) {
@@ -1063,10 +1031,7 @@ Smartgraphs.GraphView = SC.View.extend(
       },
 
       touchEnd: function (touch) {
-        if (this.get('touchStarted')) {
-          this.inputAreaView._touchEndOrTouchCancel(touch);
-          this.set('touchStarted', false);
-        }
+        this.inputAreaView._touchEndOrTouchCancel(touch);
       },
 
       touchCancel: function (touch) {
