@@ -388,6 +388,11 @@ Smartgraphs.GraphView = SC.View.extend(
     displayProperties: ['show', 'point.xFixed', 'point.yFixed'],
 
     render: function (context) {
+
+      if (!this.get('layer')) {
+        return;
+      }
+
       // Intended offset from mouse pointer location, if displayed at pointer location
       var X_OFFSET = 5;
       var Y_OFFSET = 5;

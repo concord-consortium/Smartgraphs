@@ -167,6 +167,7 @@ Smartgraphs.GRAPHING_TOOL = SC.State.extend(
           return NO;
         }
         Smartgraphs.graphingTool.moveSelectedPoint(args.x, args.y);
+        return YES;
       },
 
       dataPointUp: function(context, args) {

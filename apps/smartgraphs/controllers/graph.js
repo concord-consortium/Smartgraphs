@@ -177,6 +177,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   currentlyDraggedPoint: null,
 
+  lastDraggedPoint: null,
+
   /**
     @property {Smartgraphs.Point}
 
@@ -258,8 +260,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     The toolTipPoint's x and y properties may be null, in which case there is no point to show.
   */
   toolTipPoint: function() {
-    return this.get('currentlyDraggedPoint') || this.get('currentlyHoveredPoint') || this.get('currentPointerLocation');
-  }.property('currentlyDraggedPoint', 'currentlyHoveredPoint').cacheable(),
+    return this.get('currentlyDraggedPoint') || this.get('currentlyHoveredPoint') || this.get('lastDraggedPoint') || this.get('currentPointerLocation');
+  }.property('currentlyDraggedPoint', 'currentlyHoveredPoint', 'lastDraggedPoint').cacheable(),
 
   /**
     Add a datadef to this controller
@@ -508,6 +510,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('graphableDataObjects', []);
     this.set('arrLegends', []);
     this.set('dataRepresentations', []);
+    this.set('lastDraggedPoint', null);
     this.clearAnnotations();
     this.clearDatadefs();
   },
@@ -773,6 +776,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.setPath('currentlyDraggedPoint.y', y);
   },
 
+  setLastDraggedPoint: function(x, y) {
+    if (x === null) {
+      this.set('lastDraggedPoint', null);
+      return;
+    }
+
+    if ( ! this.get('lastDraggedPoint') ) {
+      this.set('lastDraggedPoint', Smartgraphs.Point.create());
+    }
+    this.setPath('lastDraggedPoint.x', x);
+    this.setPath('lastDraggedPoint.y', y);
+  },
+
   setPointerLocation: function (x, y) {
     if (x === null) {
       y = null;
@@ -835,6 +851,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
 
   inputAreaMouseDown: function (x, y) {
+    this.setLastDraggedPoint(null);
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('mouseDownAtPoint', this, { x: x, y: y });
     }
@@ -854,15 +871,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
     }
     this.setCurrentlyDraggedPoint(x, y);
+    this.setLastDraggedPoint(x, y);
     this.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   },
 
   dataPointDragged: function (dataRepresentation, x, y) {
+    var actionSent = NO;
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
-      Smartgraphs.statechart.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
+      actionSent = Smartgraphs.statechart.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y });
     }
-    this.setCurrentlyDraggedPoint(x, y);
-    this.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
+    actionSent = this.sendAction('dataPointDragged', this, { dataRepresentation: dataRepresentation,  x: x, y: y  });
+    if (actionSent) {
+      this.setCurrentlyDraggedPoint(x, y);
+    }
   },
 
   dataPointUp: function (dataRepresentation, x, y) {
