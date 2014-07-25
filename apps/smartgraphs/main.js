@@ -29,12 +29,14 @@ Smartgraphs.main = function main() {
     // window.location.hash = '/shared/gravity';      // default activity
   }
 
-  // prevent unintended reload or back button; use 'onbeforeunload' syntax rather than $.bind just to be sure
-  // there's only one handler (and $.bind doesn't really try to normalize this handler anyway)
-  // This handler is removed when the activity is finished
-  window.onbeforeunload = function () {
-    return "You will lose your place in the activity if you leave this page.";
-  };
+  if (Smartgraphs.get('warnUserBeforeExiting')){
+    // prevent unintended reload or back button; use 'onbeforeunload' syntax rather than $.bind just to be sure
+    // there's only one handler (and $.bind doesn't really try to normalize this handler anyway)
+    // This handler is removed when the activity is finished
+    window.onbeforeunload = function () {
+      return "You will lose your place in the activity if you leave this page.";
+    };
+  }
 
   // and kick things off
   Smartgraphs.statechart.initStatechart();

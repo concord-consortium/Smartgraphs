@@ -72,14 +72,17 @@ Smartgraphs = SC.Application.create(
   showHomeButton: typeof window.showHomeButton === 'undefined' ? NO : window.showHomeButton,
 
   // "Home page" location, used by the Home button. By default, /index.html
-  activityHome: typeof window.activityHome === 'undefined' ? '/index.html' : window.activityHome,
+  activityHome:   typeof window.activityHome === 'undefined' ? '/index.html' : window.activityHome,
 
   // whether to show a spinner between each page
-  showSpinner: !! window.showSpinner,
+  showSpinner:    !! window.showSpinner,
 
   // whether to use large submit and next buttons
   buttonControlSize: !! window.showLargeButtons ? SC.HUGE_CONTROL_SIZE : SC.REGULAR_CONTROL_SIZE,
-  buttonHeight:      !! window.showLargeButtons ? 30 : 24
+  buttonHeight:      !! window.showLargeButtons ? 30 : 24,
+
+  // whether user should be alerted with a popup when they navigate away during an activity
+  warnUserBeforeExiting: typeof window.warnUserBeforeExiting === 'undefined' ? YES : window.warnUserBeforeExiting
 
 });
 
