@@ -44,7 +44,14 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   },
 
   goHome: function () {
-    document.location.href = Smartgraphs.get('activityHome');
+    if (Smartgraphs.get('warnUserBeforeExiting') || Smartgraphs.activityPagesController.isLastPage() && Smartgraphs.activityStepController.get('isTerminalStep')) {
+      document.location.href = Smartgraphs.get('activityHome');
+    } else {
+      var exit = window.confirm("Are you sure you want to return to the menu?\n\nYou will lose your place in the activity if you leave this page.\n");
+      if (exit) {
+        document.location.href = Smartgraphs.get('activityHome');
+      }
+    }
   },
 
   exitState: function () {
