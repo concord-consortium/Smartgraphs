@@ -59,6 +59,9 @@ Smartgraphs.activityPageDef = SC.Page.extend({
             this.invokeNext(function() {
               self.notifyPropertyChange('frame');
             });
+            this.invokeLast(function() {
+              self.layoutDidChange();
+            });
           }.observes('Smartgraphs.activityStepController.content'),
 
           introText: SC.StaticContentView.design({
