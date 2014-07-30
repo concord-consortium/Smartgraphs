@@ -11,7 +11,7 @@ Smartgraphs.CreditsPane = SC.View.extend({
                 "expressed in this material are those of the author(s) "+
                 "and do not necessarily reflect the views of the National "+
                 "Science Foundation. The software is copyrighted by "+
-                "the <a target='_blank' href='http://www.concord.org/software-license' "+
+                "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE' "+
                 "title='The Concord Consortium Software License'>"+
                 "Concord Consortium under the GNU Lesser General Public License</a>, "+
                 "which allows you to use and to distribute this software. ",
