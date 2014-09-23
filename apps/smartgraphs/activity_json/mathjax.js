@@ -55,10 +55,30 @@ Smartgraphs.activityDocs["/shared/mathjax"] = {
     "paneConfig": "single",
     "panes": null,
     "isFinalStep": true,
-    "nextButtonShouldSubmit": true
+    "nextButtonShouldSubmit": true,
+    "responseTemplate": "/shared/points-intercepts-and-slopes-oh-my/response-templates/multiple-choice-1"
   }
   ],
-  "responseTemplates": [],
+  "responseTemplates": [
+    {
+      "url": "/shared/points-intercepts-and-slopes-oh-my/response-templates/multiple-choice-1",
+      "templateString": "",
+      "fieldChoicesList": [
+        [
+          "\\(T _{Celsius} = .143 (chirps _{min}) + 4\\)",
+          "y+5=56(x+300)",
+          "y-300=56(x-5)",
+          "y+300=56(x+5)"
+        ]
+      ],
+      "initialValues": [
+        ""
+      ],
+      "fieldTypes": [
+        "multiplechoice"
+      ]
+    }
+  ],
   "axes": [],
   "datadefs": [],
   "tags": [],
