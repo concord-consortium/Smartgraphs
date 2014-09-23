@@ -11,12 +11,4 @@
 
   @extends SC.View
 */
-Smartgraphs.MathJaxView = SC.View.extend({
-  displayPoperties: ['content'],
-  render: function() {
-    sc_super();
-    if(typeof MathJax !== "undefined"){
-      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    }
-  }
-});
+Smartgraphs.MathJaxView = SC.View.extend(Smartgraphs.MathRendering,{ displayPoperties: ['content'] });

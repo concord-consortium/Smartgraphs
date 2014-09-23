@@ -12,7 +12,7 @@
 
   @extends SC.StaticContentView
 */
-Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
+Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(Smartgraphs.MathRendering,
 /** @scope Smartgraphs.ResponseTemplateView.prototype */
 {
 
@@ -97,7 +97,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
   },
 
   makeTextAreaDesign: function (initialValue, fieldIndex) {
-    return SC.TextFieldView.design({
+    return SC.TextFieldView.design(Smartgraphs.MathRendering, {
       isTextArea: YES,
       hint: 'Enter your answer here...',
       applyImmediately: true,
@@ -123,7 +123,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
   },
 
   makeNumericFieldDesign: function (initialValue, fieldIndex) {
-    return SC.TextFieldView.design({
+    return SC.TextFieldView.design(Smartgraphs.MathRendering,{
       isTextArea: NO,
       fieldIndex: fieldIndex,
       value: initialValue,
@@ -144,16 +144,14 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       return prev.concat({ title: item, index: index+1 });
     }, []);
 
-    return SC.RadioView.design({
+    return SC.RadioView.design(Smartgraphs.MathRendering, {
       items: items,
       itemTitleKey: 'title',
       itemValueKey: 'index',
-
       fieldIndex: fieldIndex,
       value: initialValue,
       isEnabledBinding: '.parentView.editingShouldBeEnabled',
       useStaticLayout: YES,
-
       valueDidChange: function () {
         var values = this.getPath('parentView.values');
         if (values) values.replace(this.get('fieldIndex'), 1, this.get('value'));
