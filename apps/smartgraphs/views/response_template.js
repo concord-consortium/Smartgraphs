@@ -97,7 +97,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(Smartgraphs.MathR
   },
 
   makeTextAreaDesign: function (initialValue, fieldIndex) {
-    return SC.TextFieldView.design(Smartgraphs.MathRendering, {
+    return SC.TextFieldView.design({
       isTextArea: YES,
       hint: 'Enter your answer here...',
       applyImmediately: true,
@@ -123,7 +123,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(Smartgraphs.MathR
   },
 
   makeNumericFieldDesign: function (initialValue, fieldIndex) {
-    return SC.TextFieldView.design(Smartgraphs.MathRendering,{
+    return SC.TextFieldView.design({
       isTextArea: NO,
       fieldIndex: fieldIndex,
       value: initialValue,
