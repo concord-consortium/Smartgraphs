@@ -3,7 +3,7 @@
 // Copyright: ©2014 Concord Consortium
 // Author:    Noah Paessel  <npaessel@concord.org>
 // ==========================================================================
-/*globals Smartgraphs MathJax*/
+/*globals Smartgraphs */
 
 /** @class
   A Very simple pagination view, which displays the current page
