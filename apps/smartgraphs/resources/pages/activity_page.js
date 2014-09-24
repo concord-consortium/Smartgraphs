@@ -123,7 +123,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
 
                 action: 'submitStep',
 
-                titleBinding:     'Smartgraphs.activityStepController.submitButtonTitle',
+                titleBinding:     'Smartgraphs.activityStepController.localSubmitButtonTitle',
                 isVisibleBinding: 'Smartgraphs.activityViewController.showSubmitButton',
                 isEnabledBinding: 'Smartgraphs.activityViewController.enableSubmitButton',
                 isDefaultBinding: 'Smartgraphs.activityViewController.enableSubmitButton',

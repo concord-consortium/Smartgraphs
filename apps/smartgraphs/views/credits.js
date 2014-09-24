@@ -1,32 +1,27 @@
+// ==========================================================================
+// Project:   Smartgraphs
+// Copyright: ©2010-2011 Concord Consortium
+// Author:    Noah Paessel <npaessel@concord.org>
+// ==========================================================================
 /*globals Smartgraphs */
+
 Smartgraphs.CreditsPane = SC.View.extend({
   classNames:   "creditsBox".w(),
 
-  projectInfo:  "SmartGraphs software " +
-                "(<a target='_blank' href='http://smartgraphs.org'>smartgraphs.org</a>) "+
-                "is based upon "+
-                "work supported by the National Science Foundation "+
-                "under Grant No. DRL-0918522. "+
-                "Any opinions, findings, conclusions, or recommendations "+
-                "expressed in this material are those of the author(s) "+
-                "and do not necessarily reflect the views of the National "+
-                "Science Foundation. The software is copyrighted by "+
-                "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE' "+
-                "title='The Concord Consortium Software License'>"+
-                "Concord Consortium under the GNU Lesser General Public License</a>, "+
-                "which allows you to use and to distribute this software. ",
+  projectInfo:  '@:views.credits.projectInfo'.loc(),
 
-  authorName: "The SmartGraphs team at the Concord Consortium. ",
+  authorName:   '@:views.credits.authorName'.loc(),
 
-  licenseInfo: "The activity is available under the Creative Commons "+
-                "<a target='_blank' href='http://creativecommons.org/licenses/by-sa/3.0/' title='Creative Commons Attribution-ShareAlike 3.0 Unported License'>"+
-                "Attribution-Share Alike 3.0 Unported license</a>, "+
-                "which allows you to use and to distribute this activity.",
+  licenseInfo:  '@:views.credits.licenseInfo'.loc(),
+
+  projectOf:    '@:views.credits.projectOf'.loc(),
+  
+  activityBy:   '@:views.credits.activityBy',
 
   render: function(context, firstTime) {
     context.push(
       "<div id='credits-container'>",
-        "<h2>SmartGraphs is a project of The Concord Consortium</h2>",
+        "<h2>" + this.get('projectOf') + "</h2>" +
         "<div id='credits-logos'>",
         "  <span id='credits-sg-logo' alt='SmartGraphs' title='SmartGraphs' />",
         "  <span id='credits-cc-logo' alt='The Concord Consortium' title='The Concord Consortium' />",
@@ -35,7 +30,7 @@ Smartgraphs.CreditsPane = SC.View.extend({
           this.get('projectInfo'),
         "</p>",
         "<hr />",
-        "<h2>This SmartGraphs activity was developed by:</h2>",
+        "<h2></h2>",
         "<p id='credits-authorName'>",
           this.get('authorName'),
         "</p>",

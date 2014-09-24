@@ -97,7 +97,7 @@ Smartgraphs.GraphPane = SC.View.extend(
       isEnabledBinding: '.parentView*graphController.startControlIsEnabled',
       isDefaultBinding: '.parentView*graphController.startControlIsDefault',
 
-      title: 'Start',
+      title: '@:views.graph_pane.start'.loc(),
       action: 'startControlWasClicked',
       target: SC.outlet('parentView.graphController.statechart'),
 
@@ -116,7 +116,7 @@ Smartgraphs.GraphPane = SC.View.extend(
       isEnabledBinding: '.parentView*graphController.stopControlIsEnabled',
       isDefaultBinding: '.parentView*graphController.stopControlIsDefault',
 
-      title: 'Stop',
+      title: '@:views.graph_pane.stop'.loc(),
       action: 'stopControlWasClicked',
       target: SC.outlet('parentView.graphController.statechart'),
 
@@ -135,7 +135,7 @@ Smartgraphs.GraphPane = SC.View.extend(
       isEnabledBinding: '.parentView*graphController.clearControlIsEnabled',
       isDefaultBinding: '.parentView*graphController.clearControlIsDefault',
 
-      title: 'Reset',
+      title: '@:views.graph_pane.reset'.loc(),
       action: 'clearControlWasClicked',
       target: SC.outlet('parentView.graphController.statechart'),
       init: function() {

@@ -36,6 +36,15 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
     this.set('submissibilitySubject', null);
   },
+  localSubmitButtonTitle: function() {
+    // see strings.js for these dynamic keys:
+    //   "@:controllers.activity_steps.OK"
+    //   "@:controllers.activity_steps.Check My Answer"
+    //   "@:controllers.activity_steps.Continue"
+    var key = this.get('submitButtonTitle') || "" .trim();
+    var loc_key = "@:controllers.activity_steps.%@".fmt(key); // dynamically create a lookup key
+    return loc_key.loc();
+  }.property('submitButtonTitle').cacheable(),
 
   /**
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.

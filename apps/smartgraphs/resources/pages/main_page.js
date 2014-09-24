@@ -61,14 +61,14 @@ Smartgraphs.mainPage = SC.Page.design({
         },
         isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowCreditsButton',
         displayProperties: ['layout'],
-        title: 'Credits',
+        title: '@:resources.pages.main_page.credits'.loc(),
         action: 'showCredits'
       }),
 
       homeButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
         isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowHomeButton',
-        title: 'Home',
+        title: '@:resources.pages.main_page.home'.loc(),
         action: 'goHome'
       }),
 
@@ -88,14 +88,14 @@ Smartgraphs.mainPage = SC.Page.design({
           return Smartgraphs.toolbarController.get('shouldShowEditButton') && Smartgraphs.get('showEditButton');
         }.property('shouldShowEditButton'),
         displayProperties: ['layout'],
-        title: 'Edit',
+        title: '@:resources.pages.main_page.edit'.loc(),
         action: 'openAuthorView'
       }),
 
       runButton: SC.ButtonView.design({
         layout: { right: 120, centerY: 0, height: 24, width: 80 },
         isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowRunButton',
-        title: 'Run',
+        title: '@:resources.pages.main_page.run'.loc(),
         action: 'runActivity'
       })
     }),
@@ -151,7 +151,7 @@ Smartgraphs.mainPage = SC.Page.design({
       // Back button removed: https://www.pivotaltracker.com/story/show/72097370
       // backButton: SC.ButtonView.design({
       //   layout: { left: 20, centerY: 0, height: 24, width: 80 },
-      //   title: 'Back',
+      //   title: '@:resources.pages.main_page.back'.loc(),
       //   // theme: 'point-left',
       //   theme: 'capsule',
       //   action: 'gotoPreviousPage',
@@ -169,7 +169,7 @@ Smartgraphs.mainPage = SC.Page.design({
         layout: { right: 20, centerY: 0, height: Smartgraphs.buttonHeight, width: 80 },
         controlSize: Smartgraphs.buttonControlSize,
         touchBoundary: { left: 50, right: 50, top: 50, bottom: 50 },
-        title: 'Next',
+        title: '@:resources.pages.main_page.next'.loc(),
         // theme: 'point-right',
         theme: 'capsule',
         action: 'gotoNextPage',
