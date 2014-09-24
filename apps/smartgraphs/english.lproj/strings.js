@@ -1,5 +1,6 @@
-// Project:   Welcome Strings
-// Copyright: ©2011 Apple Inc.
+// Project:   SmartGraphs English Language Strings
+// Copyright: ©2014 Concord Consortium
+// Author:  npaessel@concord.org
 // ==========================================================================
 /* globals SC */
 
