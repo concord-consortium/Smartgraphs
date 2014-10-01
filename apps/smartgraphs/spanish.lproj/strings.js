@@ -15,61 +15,57 @@ SC.stringsFor('Spanish', {
   // ==========================================================================
   // ./views/credits.js
   // ==========================================================================
-  '@:views.credits.projectInfo': "★"+
-      "SmartGraphs software " +
+  '@:views.credits.projectInfo': "Software SmartGraphs" +
       "(<a target='_blank' href='http://smartgraphs.org'>smartgraphs.org</a>) "+
-      "is based upon "+
-      "work supported by the National Science Foundation "+
-      "under Grant No. DRL-0918522. "+
-      "Any opinions, findings, conclusions, or recommendations "+
-      "expressed in this material are those of the author(s) "+
-      "and do not necessarily reflect the views of the National "+
-      "Science Foundation. The software is copyrighted by "+
+      "está basado en trabajo apoyado por la National Science Foundationunder Subvención No. DRL-0918522."+
+      "Las opiniones, resultados, conclusiones o recomendaciones expresadas en este material son las del autor (s)"+
+      "y no reflejan necesariamente las opiniones de la National Science Foundation." +
+      "El software es propiedad intelectual de"+
       "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE' "+
-      "title='The Concord Consortium Software License'>"+
-      "Concord Consortium under the GNU Lesser General Public License</a>, "+
-      "which allows you to use and to distribute this software. ",
+      "title='La Licencia Concord Software Consortium'>"+
+      "Concord Consortium bajo la Licencia Pública General de GNU</a>, "+
+      "que le permite utilizar y distribuir este software. ",
 
   '@:views.credits.authorName': "★"+
-      "The SmartGraphs team at the Concord Consortium. ",
+      "El equipo SmartGraphs en el Concord Consortium. ",
   
   '@:views.credits.licenseInfo': "★"+
-      "The activity is available under the Creative Commons "+
+      "La actividad está disponible bajo la licencia Creative Commons"+
       "<a target='_blank' href='http://creativecommons.org/licenses/by-sa/3.0/' title='Creative Commons Attribution-ShareAlike 3.0 Unported License'>"+
-      "Attribution-Share Alike 3.0 Unported license</a>, "+
-      "which allows you to use and to distribute this activity.",
+      "Reconocimiento-Compartir Igual 3.0 Unported</a>, "+
+      "que le permite utilizar y distribuir esta actividad.",
 
-  '@:views.credits.projectOf':  "SmartGraphs is a project of The Concord Consortium",
-  '@:views.credits.activityBy': "This SmartGraphs activity was developed by:",
+  '@:views.credits.projectOf':  "SmartGraphs es un proyecto de The Concord Consortium",
+  '@:views.credits.activityBy': "Esta actividad fue desarrollado por SmartGraphs:",
 
   // ==========================================================================
   // ./controllers/activity_pages.js
   // ==========================================================================
-  '@:controllers.activity_pages.page_number':  '★ Page %@', //.loc(page.get('pageNumber') + 1),
-  '@:controllers.activity_pages.step_number':  '★ Step %@', //.loc(stepNum++),
+  '@:controllers.activity_pages.page_number':  'Página %@', //.loc(page.get('pageNumber') + 1),
+  '@:controllers.activity_pages.step_number':  'Paso %@', //.loc(stepNum++),
 
   // ==========================================================================
   // ./resources/pages/main_page.js
   // ==========================================================================
-  '@:resources.pages.main_page.credits': '★ Credits',
-  '@:resources.pages.main_page.home':    '★ Home',
-  '@:resources.pages.main_page.edit':    '★ Edit',
-  '@:resources.pages.main_page.run':     '★ Run',
-  '@:resources.pages.main_page.back':    '★ Back',
-  '@:resources.pages.main_page.next':    '★ Next',
+  '@:resources.pages.main_page.credits': 'Créditos',
+  '@:resources.pages.main_page.home':    'Inicio',
+  '@:resources.pages.main_page.edit':    'Editar',
+  '@:resources.pages.main_page.run':     'Run',
+  '@:resources.pages.main_page.back':    'Anterior',
+  '@:resources.pages.main_page.next':    'Siguiente',
 
   // ==========================================================================
   // ./controllers/activity_step.js
   // ==========================================================================
-  '@:controllers.activity_steps.OK':               '★ OK',
-  '@:controllers.activity_steps.Check My Answer':  '★ Check My Answer',
-  '@:controllers.activity_steps.Continue':         '★ Continue',
+  '@:controllers.activity_steps.OK':               'OK',
+  '@:controllers.activity_steps.Check My Answer':  'Compruebe Mi respuesta',
+  '@:controllers.activity_steps.Continue':         'Continuar',
 
 
   // ==========================================================================
   // ./views/graph_pane.js
   // ==========================================================================
-  '@:views.graph_pane.start': '★ Start',
-  '@:views.graph_pane.stop':  '★ Stop',
-  '@:views.graph_pane.reset': '★ Reset'
+  '@:views.graph_pane.start': 'Inicio',
+  '@:views.graph_pane.stop':  'Deténgase',
+  '@:views.graph_pane.reset': 'Reanudar'
 }) ;
