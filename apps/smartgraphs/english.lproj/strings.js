@@ -41,7 +41,8 @@ SC.stringsFor('English', {
 
   '@:views.credits.projectOf':  "SmartGraphs is a project of The Concord Consortium",
   '@:views.credits.activityBy': "This SmartGraphs activity was developed by:",
-
+  '@:views.credits.close':      "Close",
+  
   // ==========================================================================
   // ./controllers/activity_pages.js
   // ==========================================================================
@@ -71,5 +72,11 @@ SC.stringsFor('English', {
   // ==========================================================================
   '@:views.graph_pane.start': 'Start',
   '@:views.graph_pane.stop':  'Stop',
-  '@:views.graph_pane.reset': 'Reset'
+  '@:views.graph_pane.reset': 'Reset',
+
+
+  // ==========================================================================
+  // .views/response_template.js
+  // ==========================================================================
+  '@:views.response_template.textarea': 'Enter your answer here …'
 }) ;

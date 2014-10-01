@@ -26,18 +26,16 @@ SC.stringsFor('Spanish', {
       "Concord Consortium bajo la Licencia Pública General de GNU</a>, "+
       "que le permite utilizar y distribuir este software. ",
 
-  '@:views.credits.authorName': "★"+
-      "El equipo SmartGraphs en el Concord Consortium. ",
+  '@:views.credits.authorName': "El equipo SmartGraphs en el Concord Consortium. ",
   
-  '@:views.credits.licenseInfo': "★"+
-      "La actividad está disponible bajo la licencia Creative Commons"+
+  '@:views.credits.licenseInfo': "La actividad está disponible bajo la licencia Creative Commons"+
       "<a target='_blank' href='http://creativecommons.org/licenses/by-sa/3.0/' title='Creative Commons Attribution-ShareAlike 3.0 Unported License'>"+
       "Reconocimiento-Compartir Igual 3.0 Unported</a>, "+
       "que le permite utilizar y distribuir esta actividad.",
 
   '@:views.credits.projectOf':  "SmartGraphs es un proyecto de The Concord Consortium",
   '@:views.credits.activityBy': "Esta actividad fue desarrollado por SmartGraphs:",
-
+  '@:views.credits.close':      "Cerrar",
   // ==========================================================================
   // ./controllers/activity_pages.js
   // ==========================================================================
@@ -58,7 +56,7 @@ SC.stringsFor('Spanish', {
   // ./controllers/activity_step.js
   // ==========================================================================
   '@:controllers.activity_steps.OK':               'OK',
-  '@:controllers.activity_steps.Check My Answer':  'Compruebe Mi respuesta',
+  '@:controllers.activity_steps.Check My Answer':  'Compruebe Mi Respuesta',
   '@:controllers.activity_steps.Continue':         'Continuar',
 
 
@@ -67,5 +65,10 @@ SC.stringsFor('Spanish', {
   // ==========================================================================
   '@:views.graph_pane.start': 'Inicio',
   '@:views.graph_pane.stop':  'Deténgase',
-  '@:views.graph_pane.reset': 'Reanudar'
+  '@:views.graph_pane.reset': 'Reanudar',
+
+  // ==========================================================================
+  // .views/response_template.js
+  // ==========================================================================
+  '@:views.response_template.textarea': 'Escriba su respuesta aquí …'
 }) ;

@@ -51,7 +51,7 @@ Smartgraphs.CreditsPane.show  = function(aboutText) {
     childViews  : 'closeButton'.w(),
     closeButton : SC.ButtonView.design({
         layout    : { centerX: 0, bottom: 5, height: 24, width: 80 },
-        title     : 'close',
+        title     : '@:views.credits.close'.loc(),
         isVisible : YES,
         isEnabled : YES,
         action    : function () { ret.remove(); }

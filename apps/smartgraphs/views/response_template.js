@@ -99,7 +99,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(Smartgraphs.MathR
   makeTextAreaDesign: function (initialValue, fieldIndex) {
     return SC.TextFieldView.design({
       isTextArea: YES,
-      hint: 'Enter your answer here...',
+      hint: '@:views.response_template.textarea'.loc(),
       applyImmediately: true,
       fieldIndex: fieldIndex,
       value: initialValue,
