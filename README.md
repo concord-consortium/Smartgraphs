@@ -81,7 +81,21 @@ The response should be something like:
 
 More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
 
+### Updating the Sensor applet jars
+
+As of 2015-01 the sensor jars are provided by a git subproject called [Lab Sensor Applet Interface Dist](https://github.com/concord-consortium/lab-sensor-applet-interface-dist).
+
+Once this distrobution repo for the sensors has been updated, you can update this SmartGraphs repo to use these new jar files by taking the following steps:
+
+* Update the git submodules: → `git submodule update --init --recursive`
+* Delete the old jar resources: → `rm -rf apps/smartgraphs/resources/jars/<timestamp>`
+* Copy the new jar files: →  `cp -r ./frameworks/lab-sensor-applet-interface-dist/jars/* ./apps/smartgraphs/resources/jars/`
+
+
+
 ### Start the applets server
+
+(Noah Paessel 2015-01 -- I can't think of why you would need to do this anymore* )
 
 If you will be using the sensor applet, start the applet server in another console window:
 
