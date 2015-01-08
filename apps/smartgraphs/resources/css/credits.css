@@ -48,6 +48,15 @@
   background: sc_static('smartgraphs.png');
 }
 
+#creidts-graph-literacy-logo {
+  margin-right: 0;
+  color: green;
+  width: 234px;
+  height: 62px;
+  background: sc_static('graph-literacy.gif');
+  background-repeat: no-repeat;
+}
+
 #credits-cc-logo {
   width: 200px;
   height: 62px;

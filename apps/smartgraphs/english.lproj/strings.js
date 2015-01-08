@@ -30,9 +30,22 @@ SC.stringsFor('English', {
       "Concord Consortium under the GNU Lesser General Public License</a>, "+
       "which allows you to use and to distribute this software. ",
 
+  '@:views.credits.projectInfo.graph_literacy': ""+
+      "Graph Literacy " +
+      "(<a target='_blank' href='http://concord.org/projects/graph-literacy'>concord.org/projects/graph-literacy</a>) "+
+      "is based upon "+
+      "work supported by the National Science Foundation "+
+      "under Grant No. DRL-1256490. "+
+      "Any opinions, findings, conclusions, or recommendations "+
+      "expressed in this material are those of the author(s) "+
+      "and do not necessarily reflect the views of the National "+
+      "Science Foundation. The software is copyrighted by "+
+      "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE' "+
+      "title='The Concord Consortium Software License'>"+
+      "Concord Consortium under the GNU Lesser General Public License</a>, "+
+      "which allows you to use and to distribute this software. ",
   '@:views.credits.authorName': ""+
       "The SmartGraphs team at the Concord Consortium. ",
-  
   '@:views.credits.licenseInfo': ""+
       "The activity is available under the Creative Commons "+
       "<a target='_blank' href='http://creativecommons.org/licenses/by-sa/3.0/' title='Creative Commons Attribution-ShareAlike 3.0 Unported License'>"+
@@ -40,7 +53,9 @@ SC.stringsFor('English', {
       "which allows you to use and to distribute this activity.",
 
   '@:views.credits.projectOf':  "SmartGraphs is a project of The Concord Consortium",
+  '@:views.credits.projectOf.graph_literacy':  "Graph Literacy is a project of The Concord Consortium",
   '@:views.credits.activityBy': "This SmartGraphs activity was developed by:",
+  '@:views.credits.activityBy.graph_literacy': "Graph Literacy activity was developed by:",
   '@:views.credits.close':      "Close",
   
   // ==========================================================================

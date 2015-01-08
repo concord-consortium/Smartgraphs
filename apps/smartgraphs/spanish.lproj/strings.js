@@ -26,6 +26,18 @@ SC.stringsFor('Spanish', {
       "Concord Consortium bajo la Licencia Pública General de GNU</a>, "+
       "que le permite utilizar y distribuir este software. ",
 
+  '@:views.credits.projectInfo.graph_literacy': ""+
+      "Graph Literacy " +
+      "(<a target='_blank' href='http://concord.org/projects/graph-literacy'>concord.org/projects/graph-literacy</a>) "+
+      "está basado en trabajo apoyado por la National Science Foundationunder Subvención No. DRL-0918522."+
+      "Las opiniones, resultados, conclusiones o recomendaciones expresadas en este material son las del autor (s)"+
+      "y no reflejan necesariamente las opiniones de la National Science Foundation." +
+      "El software es propiedad intelectual de"+
+      "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE' "+
+      "title='La Licencia Concord Software Consortium'>"+
+      "Concord Consortium bajo la Licencia Pública General de GNU</a>, "+
+      "que le permite utilizar y distribuir este software. ",
+
   '@:views.credits.authorName': "El equipo SmartGraphs en el Concord Consortium. ",
   
   '@:views.credits.licenseInfo': "La actividad está disponible bajo la licencia Creative Commons"+
@@ -34,7 +46,9 @@ SC.stringsFor('Spanish', {
       "que le permite utilizar y distribuir esta actividad.",
 
   '@:views.credits.projectOf':  "SmartGraphs es un proyecto de The Concord Consortium",
+  '@:views.credits.projectOf.graph_literacy':  "Graph Literacy es un proyecto de The Concord Consortium",
   '@:views.credits.activityBy': "Esta actividad fue desarrollado por SmartGraphs:",
+  '@:views.credits.activityBy.graph_literacy': "Esta actividad fue desarrollado por Graph Literacy:",
   '@:views.credits.close':      "Cerrar",
   // ==========================================================================
   // ./controllers/activity_pages.js
