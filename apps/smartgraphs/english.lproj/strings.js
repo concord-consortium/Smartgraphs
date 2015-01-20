@@ -93,5 +93,16 @@ SC.stringsFor('English', {
   // ==========================================================================
   // .views/response_template.js
   // ==========================================================================
-  '@:views.response_template.textarea': 'Enter your answer here …'
+  '@:views.response_template.textarea': 'Enter your answer here …',
+
+  // ==========================================================================
+  // states/activity.js
+  // ==========================================================================
+  '@:states.activity.nav_ok': "OK",
+  '@:states.activity.nav_cancel': "Cancel",
+  '@:states.activity.nav_title': "Restart?",
+  '@:states.activity.nav_home': "" +
+    "Are you sure you want to return to the menu?\n\n" +
+    "You will lose your place in the activity if you leave this page.\n"
+
 }) ;

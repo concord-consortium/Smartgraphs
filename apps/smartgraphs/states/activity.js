@@ -44,15 +44,40 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   },
 
   goHome: function () {
+
+    var confirmNavigateHome = function() {
+      var buttons = ["@:states.activity.nav_cancel".loc(), "@:states.activity.nav_ok".loc()];
+      var okButtonIndex = 2; // 1 offset index
+      var title = "@:states.activity.nav_title".loc();
+      var confirmText = "@:states.activity.nav_home".loc();
+
+      var doNavigateHome = function() {
+        document.location.href = Smartgraphs.get('activityHome');
+      };
+
+      var confirmCallback = function(buttonIndex) {
+        if(okButtonIndex === buttonIndex) {
+          doNavigateHome();
+        }
+      };
+      try {
+        // Use the Cordova plugin "cordova-plugin-dialogs", which looks better.
+        // if its available, see: https://github.com/apache/cordova-plugin-dialogs
+        navigator.notification.confirm(confirmText, confirmCallback, title, buttons);
+      }
+      catch(err) {
+        // fail-over to default window.confirm() function in most browsers
+        // window.confirm is ugly, because it puts the URL in the dialog box
+        if (window.confirm(confirmText)) {
+          doNavigateHome();
+        }
+      }
+    };
+
     if (Smartgraphs.get('warnUserBeforeExiting') || Smartgraphs.activityPagesController.isLastPage() && Smartgraphs.activityStepController.get('isTerminalStep')) {
       document.location.href = Smartgraphs.get('activityHome');
     } else {
-      setTimeout(function() {
-        var exit = window.confirm("Are you sure you want to return to the menu?\n\nYou will lose your place in the activity if you leave this page.\n");
-        if (exit) {
-          document.location.href = Smartgraphs.get('activityHome');
-        }
-      }, 1);
+      setTimeout(confirmNavigateHome, 1);
     }
   },
 
