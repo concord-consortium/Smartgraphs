@@ -5,11 +5,11 @@
 /* globals SC */
 
 // Place strings you want to localize here.  In your app, use the key and
-// localize it using "key string".loc(). 
+// localize it using "key string".loc().
 // look for strings matching "@:" using `grep -r "@:" ./apps/smartrgaphs
 
 SC.stringsFor('Spanish', {
-  
+
   "@:TEST": "Testing Spanish",
 
   // ==========================================================================
@@ -21,9 +21,9 @@ SC.stringsFor('Spanish', {
       "Las opiniones, resultados, conclusiones o recomendaciones expresadas en este material son las del autor (s)"+
       "y no reflejan necesariamente las opiniones de la National Science Foundation." +
       "El software es propiedad intelectual de"+
-      "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE' "+
+      "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE.md' "+
       "title='La Licencia Concord Software Consortium'>"+
-      "Concord Consortium bajo la Licencia Pública General de GNU</a>, "+
+      "Concord Consortium bajo la Licencia Pública General de MIT</a>, "+
       "que le permite utilizar y distribuir este software. ",
 
   '@:views.credits.projectInfo.graph_literacy': ""+
@@ -33,16 +33,16 @@ SC.stringsFor('Spanish', {
       "Las opiniones, resultados, conclusiones o recomendaciones expresadas en este material son las del autor (s)"+
       "y no reflejan necesariamente las opiniones de la National Science Foundation." +
       "El software es propiedad intelectual de"+
-      "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE' "+
+      "the <a target='_blank' href='https://github.com/concord-consortium/Smartgraphs/blob/master/LICENSE.md' "+
       "title='La Licencia Concord Software Consortium'>"+
-      "Concord Consortium bajo la Licencia Pública General de GNU</a>, "+
+      "Concord Consortium bajo la Licencia Pública General de MIT</a>, "+
       "que le permite utilizar y distribuir este software. ",
 
   '@:views.credits.authorName': "El equipo SmartGraphs en el Concord Consortium. ",
-  
+
   '@:views.credits.licenseInfo': "La actividad está disponible bajo la licencia Creative Commons"+
-      "<a target='_blank' href='http://creativecommons.org/licenses/by-sa/3.0/' title='Creative Commons Attribution-ShareAlike 3.0 Unported License'>"+
-      "Reconocimiento-Compartir Igual 3.0 Unported</a>, "+
+      "<a target='_blank' href='http://creativecommons.org/licenses/by/4.0/' title='Creative Commons Attribution 4.0'"+
+      "Creative Commons Attribution 4.0 (CC-BY)</a>, " +
       "que le permite utilizar y distribuir esta actividad.",
 
   '@:views.credits.projectOf':  "SmartGraphs es un proyecto de The Concord Consortium",
