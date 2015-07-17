@@ -9,7 +9,7 @@ require File.expand_path('../frameworks/jasmine-sproutcore/builders/jasmine_buil
 config :all, :required => [:sproutcore]
 
 config :smartgraphs,
-  :required => ['sproutcore/statechart', 'raphael_views/raphael_views', 'raphael_views/g_raphael'],
+  :required => ['sproutcore/statechart', 'raphael_views/raphael_views', 'raphael_views/g_raphael', 'video-js'],
   :load_fixtures => true,
   :layout => 'lib/index.rhtml',
   :title => 'SmartGraphs',
